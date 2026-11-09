@@ -1,44 +1,44 @@
 {
-    editor = {
-        __sourceinfo_showmenu = { },
-        __sourceinfo_default = { },
-        description = "Собирать Runtime.Editor",
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
+    vulkan = {
         showmenu = true,
-        __sourceinfo_description = {
-            ["Собирать Runtime.Editor"] = {
-                line = 28,
-                file = "./xmake.lua"
-            }
-        },
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
+        __sourceinfo_default = { },
+        __sourceinfo_showmenu = { },
         default = true
     },
-    tools = {
-        __sourceinfo_showmenu = { },
-        __sourceinfo_default = { },
-        description = "Собирать Empire.Tools",
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        showmenu = true,
+    editor = {
         __sourceinfo_description = {
-            ["Собирать Empire.Tools"] = {
+            ["Собирать Runtime.Editor"] = {
                 line = 29,
                 file = "./xmake.lua"
             }
         },
-        default = true
+        showmenu = true,
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
+        __sourceinfo_default = { },
+        __sourceinfo_showmenu = { },
+        default = true,
+        description = "Собирать Runtime.Editor"
     },
     opengl = {
-        __sourceinfo_showmenu = { },
         showmenu = true,
-        default = true,
         __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_default = { }
+        __sourceinfo_default = { },
+        __sourceinfo_showmenu = { },
+        default = true
     },
-    vulkan = {
-        __sourceinfo_showmenu = { },
+    tools = {
+        __sourceinfo_description = {
+            ["Собирать Empire.Tools"] = {
+                line = 30,
+                file = "./xmake.lua"
+            }
+        },
         showmenu = true,
-        default = true,
         __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_default = { }
+        __sourceinfo_default = { },
+        __sourceinfo_showmenu = { },
+        default = true,
+        description = "Собирать Empire.Tools"
     }
 }

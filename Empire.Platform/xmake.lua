@@ -1,4 +1,5 @@
 includes(
+    "Platform.ThirdParty",
     "Platform.Time",
     "Platform.Threading",
     "Platform.FileSystem",
@@ -7,6 +8,7 @@ includes(
     "Platform.Environment",
     "Platform.Network",
     "Platform.App",
+    "Platform.Events",
     "Platform.Window",
     "Platform.Monitor",
     "Platform.Cursor",
@@ -14,6 +16,5 @@ includes(
     "Platform.Clipboard",
     "Platform.Dialog",
     "Platform.Surface",
-    "Platform.Audio",
-    "Platform.ThirdParty"
+    "Platform.Audio"
 )

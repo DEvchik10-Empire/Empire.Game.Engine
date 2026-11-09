@@ -1,3 +1,3 @@
-target("Empire.Editor")
+target("Runtime.Editor")
     add_headerfiles("*.hpp")
     add_files("*.cpp")

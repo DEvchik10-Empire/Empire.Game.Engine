@@ -22,6 +22,7 @@ option("opengl")  set_default(true)                  set_showmenu(true) option_e
 option("d3d12")   set_default(is_plat("windows"))    set_showmenu(true) option_end()
 option("d3d11")   set_default(is_plat("windows"))    set_showmenu(true) option_end()
 option("metal")   set_default(is_plat("macosx"))     set_showmenu(true) option_end()
+option("uwp")     set_default(false)                 set_showmenu(true) set_description("Собирать UWP-бэкенды (только Windows)") option_end()
 
 -- что собирать (xmake f --tests=y --editor=n ...)
 option("tests")   set_default(false) set_showmenu(true) set_description("Собирать Empire.Tests")  option_end()
@@ -39,7 +40,7 @@ rule("Empire.Module")
         local mode  = (config.get("mode"):gsub("^%l", string.upper))
         local root  = path.join(os.projectdir(), "Empire.Build", "Build." .. plat .. "." .. mode)
         local name  = target:name()
-        -- слой: явно через set_values (Empire.Client -> Game), иначе по имени без префикса Empire.
+        -- слой: явно через set_values, иначе первая часть имени без префикса Empire. (Runtime.Game -> Runtime)
         local layer = target:values("Empire.Layer") or name:gsub("^Empire%.", ""):match("^[^%.]+")
 
         target:set("targetdir", path.join(root, "Build." .. layer))
@@ -80,7 +81,6 @@ includes(
     "Empire.Runtime"
 )
 
-if has_config("tools")  then includes("Empire.Tools")  end
 if has_config("tests")  then includes("Empire.Tests")  end
 
 -- xmake run Empire.Test  : собрать и прогнать Unit, затем Integration
@@ -110,6 +110,67 @@ if has_config("tests") then
     target_end()
 end
 
+-- xmake run Empire.Game / Empire.Client / Empire.Server / Empire.Standalone / Empire.Editor
+-- Короткие имена запуска: сами таргеты называются Runtime.* (слой Runtime), эти только запускают их.
+-- Аргументы после имени передаются программе: xmake run Empire.Standalone --host
+-- Под отладчиком запускать напрямую: xmake run -d Runtime.Game
+target("Empire.Game")
+    set_kind("phony")
+    add_deps("Runtime.Game")
+    on_run(function (target)
+        import("core.base.option")
+        for _, dep in pairs(target:deps()) do
+            os.execv(dep:targetfile(), option.get("arguments") or {})
+        end
+    end)
+target_end()
+
+target("Empire.Client")
+    set_kind("phony")
+    add_deps("Runtime.Client")
+    on_run(function (target)
+        import("core.base.option")
+        for _, dep in pairs(target:deps()) do
+            os.execv(dep:targetfile(), option.get("arguments") or {})
+        end
+    end)
+target_end()
+
+target("Empire.Server")
+    set_kind("phony")
+    add_deps("Runtime.Server")
+    on_run(function (target)
+        import("core.base.option")
+        for _, dep in pairs(target:deps()) do
+            os.execv(dep:targetfile(), option.get("arguments") or {})
+        end
+    end)
+target_end()
+
+target("Empire.Standalone")
+    set_kind("phony")
+    add_deps("Runtime.Standalone")
+    on_run(function (target)
+        import("core.base.option")
+        for _, dep in pairs(target:deps()) do
+            os.execv(dep:targetfile(), option.get("arguments") or {})
+        end
+    end)
+target_end()
+
+if has_config("editor") then
+    target("Empire.Editor")
+        set_kind("phony")
+        add_deps("Runtime.Editor")
+        on_run(function (target)
+            import("core.base.option")
+            for _, dep in pairs(target:deps()) do
+                os.execv(dep:targetfile(), option.get("arguments") or {})
+            end
+        end)
+    target_end()
+end
+
 -- xmake run Empire.Release : Release-сборка и запуск Empire.Game
 -- xmake run Empire.Debug   : Debug-сборка и запуск Empire.Game под отладчиком (нужен gdb или lldb)
 -- Режим на время запуска переключается и потом возвращается обратно.
@@ -124,8 +185,8 @@ target("Empire.Release")
         if previous ~= "release" then
             os.execv(xmake, {"f", "-m", "release", "-y"}, {curdir = root})
         end
-        os.execv(xmake, {"build", "Empire.Game"}, {curdir = root})
-        os.execv(xmake, {"run", "Empire.Game"}, {curdir = root})
+        os.execv(xmake, {"build", "Runtime.Game"}, {curdir = root})
+        os.execv(xmake, {"run", "Runtime.Game"}, {curdir = root})
         if previous ~= "release" then
             os.execv(xmake, {"f", "-m", previous, "-y"}, {curdir = root})
         end
@@ -142,8 +203,8 @@ target("Empire.Debug")
         if previous ~= "debug" then
             os.execv(xmake, {"f", "-m", "debug", "-y"}, {curdir = root})
         end
-        os.execv(xmake, {"build", "Empire.Game"}, {curdir = root})
-        os.execv(xmake, {"run", "-d", "Empire.Game"}, {curdir = root})
+        os.execv(xmake, {"build", "Runtime.Game"}, {curdir = root})
+        os.execv(xmake, {"run", "-d", "Runtime.Game"}, {curdir = root})
         if previous ~= "debug" then
             os.execv(xmake, {"f", "-m", previous, "-y"}, {curdir = root})
         end

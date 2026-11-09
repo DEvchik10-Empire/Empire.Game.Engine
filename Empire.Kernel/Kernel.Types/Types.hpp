@@ -5,6 +5,7 @@
 #include <string>
 #include <string_view>
 #include <iostream>
+#include <stdexcept>
 
 namespace DEvchik10Empire
 {
@@ -12,9 +13,8 @@ namespace DEvchik10Empire
     {
         namespace EngineKernel
         {
-            class Types
+            namespace Types
             {
-            public:
                 // Signed integers
                 using i8  = std::int8_t;
                 using i16 = std::int16_t;
@@ -46,7 +46,6 @@ namespace DEvchik10Empire
 
                 // Characters
                 using Char   = char;
-                using Char8  = char8_t;
                 using Char16 = char16_t;
                 using Char32 = char32_t;
 
@@ -57,10 +56,15 @@ namespace DEvchik10Empire
                 using i = int;
 
                 // Standard streams
-                inline static std::istream& Cin = std::cin;
-                inline static std::ostream& Cout = std::cout;
-                inline static std::ostream& Cerr = std::cerr;
-            };
+                inline std::istream& Cin  = std::cin;
+                inline std::ostream& Cout = std::cout;
+                inline std::ostream& Cerr = std::cerr;
+
+                using Error = std::runtime_error;
+
+                template <typename T>
+                inline String ToString(T value) { return std::to_string(value); }
+            }
         }
     }
 }

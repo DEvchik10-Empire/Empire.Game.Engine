@@ -1,7 +1,6 @@
 -- редактор: один исполняемый файл из подпапок Editor.*
-target("Empire.Editor")
+target("Runtime.Editor")
     set_kind("binary")
-    set_values("Empire.Layer", "Runtime")
     add_files("*.cpp")
     add_deps("Engine.Application", "Engine.Assets", "Engine.ECS", "Engine.Node", "Engine.UI", "Engine.Input", "Engine.Rendering")
 

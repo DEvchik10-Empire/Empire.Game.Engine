@@ -9,13 +9,16 @@
 
 Точки входа (исполняемые файлы), общий код в `Runtime.Shared`:
 
-| Цель | Папка | Что это |
-|---|---|---|
-| `Empire.Game` | `Runtime.Game` | основная точка входа игры |
-| `Empire.Client` | `Runtime.Client` | клиент: окно, рендер, звук, UI, сеть |
-| `Empire.Server` | `Runtime.Server` | выделенный сервер без окна, рендера и звука |
-| `Empire.Standalone` | `Runtime.Standalone` | клиент и сервер в одном процессе (peer-to-peer, client-host), режим задаётся аргументами |
-| `Empire.Editor` | `Runtime.Editor` | редактор (`--editor=n` отключает), подпапки `Editor.*` собираются в один файл |
+| Цель | Запуск | Папка | Что это |
+|---|---|---|---|
+| `Runtime.Game` | `Empire.Game` | `Runtime.Game` | основная точка входа игры |
+| `Runtime.Client` | `Empire.Client` | `Runtime.Game/Game.Client` | клиент: окно, рендер, звук, UI, сеть |
+| `Runtime.Server` | `Empire.Server` | `Runtime.Game/Game.Server` | выделенный сервер без окна, рендера и звука |
+| `Runtime.Standalone` | `Empire.Standalone` | `Runtime.Game/Game.Standalone` | клиент и сервер в одном процессе (peer-to-peer, client-host), режим задаётся аргументами |
+| `Runtime.Editor` | `Empire.Editor` | `Runtime.Editor` | редактор (`--editor=n` отключает), подпапки `Editor.*` собираются в один файл |
+
+`Empire.*` это короткие имена запуска (`xmake run Empire.Editor`), они просто запускают соответствующий `Runtime.*`.
+Под отладчиком запускать напрямую: `xmake run -d Runtime.Game`.
 
 ## Сборка
 
@@ -33,7 +36,7 @@ xmake
 
 ```
 xmake run Empire.Release         # Release-сборка и запуск Empire.Game
-xmake run Empire.Debug           # Debug-сборка и запуск Empire.Game под отладчиком
+xmake run Empire.Debug           # Debug-сборка и запуск Empire.Game под отладчиком (gdb/lldb)
 xmake run Empire.Game            # запуск в текущем режиме
 xmake run Empire.Client
 xmake run Empire.Server

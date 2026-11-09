@@ -24,7 +24,7 @@ namespace DEvchik10Empire
         {
             namespace PlatformApp
             {
-                namespace Legacy
+                namespace XCB
                 {
                     class Connection;
                 }
@@ -36,7 +36,7 @@ namespace DEvchik10Empire
 
 Полный namespace для рассмотренных классов платформы:
 
-`DEvchik10Empire::EmpireGameEngine::EmpirePlatform::PlatformApp::Legacy`
+`DEvchik10Empire::EmpireGameEngine::EmpirePlatform::PlatformApp::XCB`
 
 Классы в этом пространстве имён:
 
@@ -61,8 +61,8 @@ namespace DEvchik10Empire
 Пример:
 
 ```cpp
-// #include "Legacy.EventQueue.hpp"
-// #include "Legacy.Connection.hpp"
+// #include "XCB.EventQueue.hpp"
+// #include "XCB.Connection.hpp"
 ```
 
 Это необходимо, чтобы было видно, какие заголовки использует реализация и какие пути нужно обновить вручную.
@@ -77,7 +77,7 @@ namespace DEvchik10Empire
 - Не путать зависимость между классами с зависимостью между подсистемами.
 - Общий заголовок-обёртка может подключать сторонние библиотеки, если это принято в проекте.
 
-Например, `Legacy/Legacy.hpp` может подключать:
+Например, `ThirdParty.XCB/XCB.hpp` может подключать:
 
 ```cpp
 #pragma once
@@ -91,8 +91,8 @@ namespace DEvchik10Empire
 
 В текущем переносе используются имена:
 
-- `Legacy.EventQueue.hpp`
-- `Legacy.EventQueue.cpp`
+- `XCB.EventQueue.hpp`
+- `XCB.EventQueue.cpp`
 
 Названия классов сохраняются:
 
@@ -116,7 +116,7 @@ namespace DEvchik10Empire
 
 ## 7. Платформенный слой
 
-В проекте имеется платформенный слой. Рассмотренная Legacy-реализация использует XCB.
+В проекте имеется платформенный слой. Рассмотренная XCB-реализация использует библиотеку XCB.
 
 ### Connection
 
