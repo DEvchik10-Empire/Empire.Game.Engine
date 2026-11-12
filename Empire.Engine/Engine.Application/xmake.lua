@@ -8,4 +8,3 @@ includes(
     "Application.Lifecycle",
     "Application.CommandLine"
 )
-v1.1.0-Dev-26.11.12
