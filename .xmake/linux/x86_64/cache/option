@@ -1,36 +1,5 @@
 {
-    vulkan = {
-        showmenu = true,
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_default = { },
-        __sourceinfo_showmenu = { },
-        default = true
-    },
-    opengl = {
-        showmenu = true,
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_default = { },
-        __sourceinfo_showmenu = { },
-        default = true
-    },
-    editor = {
-        showmenu = true,
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_default = { },
-        __sourceinfo_description = {
-            ["Собирать Runtime.Editor"] = {
-                file = "./xmake.lua",
-                line = 29
-            }
-        },
-        description = "Собирать Runtime.Editor",
-        __sourceinfo_showmenu = { },
-        default = true
-    },
     tools = {
-        showmenu = true,
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_default = { },
         __sourceinfo_description = {
             ["Собирать Empire.Tools"] = {
                 file = "./xmake.lua",
@@ -38,7 +7,38 @@
             }
         },
         description = "Собирать Empire.Tools",
+        default = true,
         __sourceinfo_showmenu = { },
-        default = true
+        showmenu = true,
+        __sourceinfo_default = { },
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine"
+    },
+    editor = {
+        __sourceinfo_description = {
+            ["Собирать Runtime.Editor"] = {
+                file = "./xmake.lua",
+                line = 29
+            }
+        },
+        description = "Собирать Runtime.Editor",
+        default = true,
+        __sourceinfo_showmenu = { },
+        showmenu = true,
+        __sourceinfo_default = { },
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine"
+    },
+    vulkan = {
+        default = true,
+        __sourceinfo_showmenu = { },
+        showmenu = true,
+        __sourceinfo_default = { },
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine"
+    },
+    opengl = {
+        default = true,
+        __sourceinfo_showmenu = { },
+        showmenu = true,
+        __sourceinfo_default = { },
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine"
     }
 }
