@@ -6,20 +6,6 @@
         __sourceinfo_showmenu = { },
         default = true
     },
-    editor = {
-        __sourceinfo_description = {
-            ["Собирать Runtime.Editor"] = {
-                line = 29,
-                file = "./xmake.lua"
-            }
-        },
-        showmenu = true,
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_default = { },
-        __sourceinfo_showmenu = { },
-        default = true,
-        description = "Собирать Runtime.Editor"
-    },
     opengl = {
         showmenu = true,
         __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
@@ -27,18 +13,32 @@
         __sourceinfo_showmenu = { },
         default = true
     },
-    tools = {
-        __sourceinfo_description = {
-            ["Собирать Empire.Tools"] = {
-                line = 30,
-                file = "./xmake.lua"
-            }
-        },
+    editor = {
         showmenu = true,
         __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
         __sourceinfo_default = { },
+        __sourceinfo_description = {
+            ["Собирать Runtime.Editor"] = {
+                file = "./xmake.lua",
+                line = 29
+            }
+        },
+        description = "Собирать Runtime.Editor",
         __sourceinfo_showmenu = { },
-        default = true,
-        description = "Собирать Empire.Tools"
+        default = true
+    },
+    tools = {
+        showmenu = true,
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
+        __sourceinfo_default = { },
+        __sourceinfo_description = {
+            ["Собирать Empire.Tools"] = {
+                file = "./xmake.lua",
+                line = 30
+            }
+        },
+        description = "Собирать Empire.Tools",
+        __sourceinfo_showmenu = { },
+        default = true
     }
 }

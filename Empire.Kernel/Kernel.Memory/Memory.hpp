@@ -1,17 +1,24 @@
 #pragma once
-// Empire.Kernel / Kernel.Memory — публичный API модуля.
-// Системные заголовки (windows.h, wayland-client.h и т.п.) сюда не попадают.
 
-#if defined(_WIN32)
-    #if defined(KERNEL_MEMORY_EXPORT)
-        #define KERNEL_MEMORY_API __declspec(dllexport)
-    #else
-        #define KERNEL_MEMORY_API __declspec(dllimport)
-    #endif
-#else
-    #define KERNEL_MEMORY_API __attribute__((visibility("default")))
-#endif
+#include "Empire.Kernel/Kernel.Types/Types.hpp"
 
-namespace Empire::Kernel::Memory
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EngineKernel
+        {
+            namespace Memory
+            {
+                void* Allocate(Types::Size ByteCount, Types::Size Alignment = alignof(std::max_align_t));
+                void* Reallocate(
+                    void* MemoryBlock,
+                    Types::Size OldByteCount,
+                    Types::Size NewByteCount,
+                    Types::Size Alignment = alignof(std::max_align_t)
+                );
+                void Deallocate(void* MemoryBlock, Types::Size Alignment = alignof(std::max_align_t)) noexcept;
+            }
+        }
+    }
 }

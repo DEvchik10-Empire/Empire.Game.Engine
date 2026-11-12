@@ -1,4 +1,5 @@
 target("Kernel.Containers")
     add_headerfiles("*.hpp")
     add_files("*.cpp")
-    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory")
+    add_deps("Kernel.Types", "Kernel.Memory")
+    add_cxxflags("-fvisibility=default", {tools = {"gcc", "clang"}})

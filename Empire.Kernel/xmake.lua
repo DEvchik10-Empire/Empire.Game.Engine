@@ -4,8 +4,8 @@ includes(
     "Kernel.Memory",
     "Kernel.Containers",
     "Kernel.Logging",
-    "Kernel.Reflection",
     "Kernel.Events",
-    "Kernel.Config",
-    "Kernel.Services"
+    "Kernel.Services",
+    "Kernel.Reflection",
+    "Kernel.Config"
 )

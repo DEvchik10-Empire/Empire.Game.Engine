@@ -1,17 +1,31 @@
 #pragma once
-// Empire.Kernel / Kernel.Assert — публичный API модуля.
-// Системные заголовки (windows.h, wayland-client.h и т.п.) сюда не попадают.
 
-#if defined(_WIN32)
-    #if defined(KERNEL_ASSERT_EXPORT)
-        #define KERNEL_ASSERT_API __declspec(dllexport)
-    #else
-        #define KERNEL_ASSERT_API __declspec(dllimport)
-    #endif
-#else
-    #define KERNEL_ASSERT_API __attribute__((visibility("default")))
-#endif
+#include <source_location>
+#include <stdexcept>
 
-namespace Empire::Kernel::Assert
+#include "Empire.Kernel/Kernel.Types/Types.hpp"
+
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EngineKernel
+        {
+            namespace Assert
+            {
+                using Error = std::runtime_error;
+
+                void Check(
+                    Types::Bool Condition,
+                    const Types::Char* Message,
+                    const std::source_location& Location = std::source_location::current()
+                );
+
+                [[noreturn]] void Fail(
+                    const Types::Char* Message,
+                    const std::source_location& Location = std::source_location::current()
+                );
+            }
+        }
+    }
 }
