@@ -4,17 +4,7 @@
 #include "Empire.Kernel/Kernel.Sync/Sync.Atomic.hpp"
 #include "Empire.Kernel/Kernel.Sync/Sync.Mutex.hpp"
 
-#if defined(_WIN32)
-    #if !defined(WIN32_LEAN_AND_MEAN)
-        #define WIN32_LEAN_AND_MEAN
-    #endif
-    #if !defined(NOMINMAX)
-        #define NOMINMAX
-    #endif
-    #include <windows.h>
-#else
-    #include <unistd.h>
-#endif
+#include "Empire.Kernel/Kernel.System/System.hpp"
 
 namespace DEvchik10Empire
 {
@@ -48,26 +38,9 @@ namespace DEvchik10Empire
                         return "UNKNOWN";
                     }
 
-                    void WriteToDescriptor(Bool ToStandardError, const Char* Text, Size ByteCount) noexcept
+                    void WriteToStream(Bool ToStandardError, const Char* Text, Size ByteCount)
                     {
-                #if defined(_WIN32)
-                        HANDLE Handle = GetStdHandle(ToStandardError ? STD_ERROR_HANDLE : STD_OUTPUT_HANDLE);
-                        DWORD Written = 0;
-                        WriteFile(Handle, Text, static_cast<DWORD>(ByteCount), &Written, nullptr);
-                #else
-                        const int Descriptor = ToStandardError ? 2 : 1;
-
-                        while (ByteCount > 0)
-                        {
-                            const auto Result = write(Descriptor, Text, ByteCount);
-
-                            if (Result <= 0)
-                                return;
-
-                            Text += Result;
-                            ByteCount -= static_cast<Size>(Result);
-                        }
-                #endif
+                        System::WriteOutput(ToStandardError, Text, ByteCount);
                     }
 
                     Sink& GetActiveSink()
@@ -79,7 +52,7 @@ namespace DEvchik10Empire
 
                 void ConsoleSink::Write(Level Severity, Containers::StringView Line)
                 {
-                    WriteToDescriptor(Severity >= Level::Warning, Line.GetText(), Line.GetCount());
+                    WriteToStream(Severity >= Level::Warning, Line.GetText(), Line.GetCount());
                 }
 
                 void SetMinimumLevel(Level NewMinimumLevel) noexcept

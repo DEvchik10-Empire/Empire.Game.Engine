@@ -1,18 +1,6 @@
 #include "Empire.Kernel/Kernel.Assert/Assert.hpp"
 
-#include <cstdlib>
-
-#if defined(_WIN32)
-    #if !defined(WIN32_LEAN_AND_MEAN)
-        #define WIN32_LEAN_AND_MEAN
-    #endif
-    #if !defined(NOMINMAX)
-        #define NOMINMAX
-    #endif
-    #include <windows.h>
-#else
-    #include <unistd.h>
-#endif
+#include "Empire.Kernel/Kernel.System/System.hpp"
 
 namespace DEvchik10Empire
 {
@@ -28,22 +16,7 @@ namespace DEvchik10Empire
                 {
                     void WriteToStandardError(const Char* Text, Size ByteCount) noexcept
                     {
-                #if defined(_WIN32)
-                        HANDLE Handle = GetStdHandle(STD_ERROR_HANDLE);
-                        DWORD Written = 0;
-                        WriteFile(Handle, Text, static_cast<DWORD>(ByteCount), &Written, nullptr);
-                #else
-                        while (ByteCount > 0)
-                        {
-                            const auto Result = write(2, Text, ByteCount);
-
-                            if (Result <= 0)
-                                return;
-
-                            Text += Result;
-                            ByteCount -= static_cast<Size>(Result);
-                        }
-                #endif
+                        System::WriteOutput(true, Text, ByteCount);
                     }
 
                     class MessageBuffer
@@ -165,7 +138,7 @@ namespace DEvchik10Empire
                     Buffer.Append("\n");
                     Buffer.Flush();
 
-                    std::abort();
+                    System::Terminate();
                 }
             }
         }

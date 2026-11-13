@@ -1,5 +1,15 @@
-#include <Empire.Kernel/Kernel.Config/Config.hpp>
+#include "Empire.Kernel/Kernel.Config/Config.hpp"
 
-namespace Empire::Kernel::Config
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EngineKernel
+        {
+            namespace Config
+            {
+
+            }
+        }
+    }
 }

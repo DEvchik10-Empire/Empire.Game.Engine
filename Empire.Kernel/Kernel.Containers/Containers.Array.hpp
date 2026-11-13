@@ -4,8 +4,6 @@
 #include "Empire.Kernel/Kernel.Memory/Memory.hpp"
 #include "Empire.Kernel/Kernel.Types/Types.Utility.hpp"
 
-#include <initializer_list>
-
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
@@ -49,33 +47,15 @@ namespace DEvchik10Empire
                     public:
                         Array() = default;
 
-                        Array(std::initializer_list<T> Values)
+                        // Array<int>::Of(1, 2, 3): замена списку инициализации, не требующая std::initializer_list.
+                        template <typename... Values>
+                            requires (sizeof...(Values) > 0)
+                        [[nodiscard]] static Array Of(Values&&... Items)
                         {
-                            if (Values.size() == 0)
-                                return;
-
-                            Items = AllocateItems(Values.size());
-                            Capacity = Values.size();
-
-                            try
-                            {
-                                for (const T& Value : Values)
-                                {
-                                    Types::ConstructAt(Items + Count, Value);
-                                    Count++;
-                                }
-                            }
-                            catch (...)
-                            {
-                                for (Types::Size Index = 0; Index < Count; Index++)
-                                    Types::DestroyAt(Items + Index);
-
-                                DeallocateItems(Items);
-                                Items = nullptr;
-                                Count = 0;
-                                Capacity = 0;
-                                throw;
-                            }
+                            Array Result;
+                            Result.Reserve(sizeof...(Values));
+                            (Result.Add(Types::Forward<Values>(Items)), ...);
+                            return Result;
                         }
 
                         Array(const Array& Other)

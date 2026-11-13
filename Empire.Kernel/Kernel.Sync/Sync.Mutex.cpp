@@ -1,17 +1,6 @@
 #include "Empire.Kernel/Kernel.Sync/Sync.Mutex.hpp"
 
-#if defined(_WIN32)
-    #if !defined(WIN32_LEAN_AND_MEAN)
-        #define WIN32_LEAN_AND_MEAN
-    #endif
-    #if !defined(NOMINMAX)
-        #define NOMINMAX
-    #endif
-    #include <windows.h>
-#else
-    #include <sched.h>
-    #include <time.h>
-#endif
+#include "Empire.Kernel/Kernel.System/System.hpp"
 
 namespace DEvchik10Empire
 {
@@ -23,39 +12,6 @@ namespace DEvchik10Empire
         {
             namespace Sync
             {
-                namespace
-                {
-                    void PauseProcessor() noexcept
-                    {
-                #if defined(__x86_64__) || defined(__i386__)
-                        __builtin_ia32_pause();
-                #elif defined(__aarch64__) || defined(__arm__)
-                        __asm__ volatile("yield");
-                #endif
-                    }
-
-                    void YieldThread() noexcept
-                    {
-                #if defined(_WIN32)
-                        SwitchToThread();
-                #else
-                        sched_yield();
-                #endif
-                    }
-
-                    void SleepBriefly() noexcept
-                    {
-                #if defined(_WIN32)
-                        Sleep(1);
-                #else
-                        timespec Duration{};
-                        Duration.tv_sec = 0;
-                        Duration.tv_nsec = 100000;
-                        nanosleep(&Duration, nullptr);
-                #endif
-                    }
-                }
-
                 void Mutex::Lock() noexcept
                 {
                     UInt32 Expected = 0;
@@ -77,16 +33,14 @@ namespace DEvchik10Empire
 
                         Attempts++;
 
-                        if (Attempts < 64)
-                            PauseProcessor();
-                        else if (Attempts < 2048)
-                            YieldThread();
+                        if (Attempts < 2048)
+                            System::YieldThread();
                         else
-                            SleepBriefly();
+                            System::SleepThread(100);
                     }
                 }
 
-                Bool Mutex::TryLock() noexcept
+                [[nodiscard]] Bool Mutex::TryLock() noexcept
                 {
                     UInt32 Expected = 0;
                     return State.CompareExchange(Expected, 1, MemoryOrder::Acquire);

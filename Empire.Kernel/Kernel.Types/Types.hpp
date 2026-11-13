@@ -57,7 +57,9 @@ namespace DEvchik10Empire
                         {
                         }
 
-                        static constexpr SourceLocation Current(
+                        // Встроенные функции компилятора вычисляются в месте вызова, поэтому Current() как аргумент по умолчанию
+                        // даёт место вызова вашей функции.
+                        [[nodiscard]] static constexpr SourceLocation Current(
                             const Char* File = __builtin_FILE(),
                             const Char* Function = __builtin_FUNCTION(),
                             UInt32 Line = static_cast<UInt32>(__builtin_LINE())
@@ -66,9 +68,9 @@ namespace DEvchik10Empire
                             return SourceLocation(File, Function, Line);
                         }
 
-                        constexpr const Char* GetFile() const noexcept { return FileName; }
-                        constexpr const Char* GetFunction() const noexcept { return FunctionName; }
-                        constexpr UInt32 GetLine() const noexcept { return LineNumber; }
+                        [[nodiscard]] constexpr const Char* GetFile() const noexcept { return FileName; }
+                        [[nodiscard]] constexpr const Char* GetFunction() const noexcept { return FunctionName; }
+                        [[nodiscard]] constexpr UInt32 GetLine() const noexcept { return LineNumber; }
                 };
             }
         }

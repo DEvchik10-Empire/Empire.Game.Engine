@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Empire.Kernel/Kernel.Types/Types.hpp"
-
-#include <new>
+#include "Empire.Kernel/Kernel.Types/Types.Placement.hpp"
 
 namespace DEvchik10Empire
 {
@@ -148,7 +147,7 @@ namespace DEvchik10Empire
                 template <typename T, typename... Arguments>
                 T* ConstructAt(T* Location, Arguments&&... Args)
                 {
-                    return ::new (static_cast<void*>(Location)) T(Forward<Arguments>(Args)...);
+                    return ::new (PlacementTag{}, static_cast<void*>(Location)) T(Forward<Arguments>(Args)...);
                 }
 
                 template <typename T>
@@ -195,15 +194,12 @@ namespace DEvchik10Empire
                     return Hash;
                 }
 
-                // Ключ типа без RTTI: хэш от сигнатуры функции. Одинаков во всех .so, в отличие от адреса статической переменной.
+                // Ключ типа без RTTI: хэш подписи функции, в которую компилятор подставляет аргумент шаблона.
+                // Одинаков во всех .so, в отличие от адреса статической переменной. Поддерживаются GCC и Clang.
                 template <typename T>
-                constexpr TypeKey GetTypeKey() noexcept
+                consteval TypeKey GetTypeKey() noexcept
                 {
-                #if defined(_MSC_VER) && !defined(__clang__)
-                    return HashText(__FUNCSIG__);
-                #else
                     return HashText(__PRETTY_FUNCTION__);
-                #endif
                 }
             }
         }

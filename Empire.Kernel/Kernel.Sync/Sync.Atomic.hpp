@@ -2,10 +2,6 @@
 
 #include "Empire.Kernel/Kernel.Types/Types.Utility.hpp"
 
-#if !defined(__GNUC__) && !defined(__clang__)
-    #error "Sync.Atomic requires GCC or Clang atomic builtins"
-#endif
-
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
@@ -14,20 +10,26 @@ namespace DEvchik10Empire
         {
             namespace Sync
             {
+                // Значения совпадают с порядками памяти, которые понимают встроенные атомарные операции GCC и Clang.
                 enum class MemoryOrder : Types::Int32
                 {
-                    Relaxed = __ATOMIC_RELAXED,
-                    Acquire = __ATOMIC_ACQUIRE,
-                    Release = __ATOMIC_RELEASE,
-                    AcquireRelease = __ATOMIC_ACQ_REL,
-                    SequentiallyConsistent = __ATOMIC_SEQ_CST
+                    Relaxed = 0,
+                    Acquire = 2,
+                    Release = 3,
+                    AcquireRelease = 4,
+                    SequentiallyConsistent = 5
                 };
 
                 template <typename T>
                 class Atomic
                 {
                     private:
-                        T Value;
+                        mutable T Value;
+
+                        static constexpr Types::Int32 Raw(MemoryOrder Order) noexcept
+                        {
+                            return static_cast<Types::Int32>(Order);
+                        }
 
                     public:
                         constexpr Atomic() noexcept : Value{} {}
@@ -36,19 +38,19 @@ namespace DEvchik10Empire
                         Atomic(const Atomic&) = delete;
                         Atomic& operator=(const Atomic&) = delete;
 
-                        T Load(MemoryOrder Order = MemoryOrder::SequentiallyConsistent) const noexcept
+                        [[nodiscard]] T Load(MemoryOrder Order = MemoryOrder::SequentiallyConsistent) const noexcept
                         {
-                            return __atomic_load_n(&Value, static_cast<Types::Int32>(Order));
+                            return __atomic_load_n(&Value, Raw(Order));
                         }
 
                         void Store(T NewValue, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
                         {
-                            __atomic_store_n(&Value, NewValue, static_cast<Types::Int32>(Order));
+                            __atomic_store_n(&Value, NewValue, Raw(Order));
                         }
 
                         T Exchange(T NewValue, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
                         {
-                            return __atomic_exchange_n(&Value, NewValue, static_cast<Types::Int32>(Order));
+                            return __atomic_exchange_n(&Value, NewValue, Raw(Order));
                         }
 
                         Types::Bool CompareExchange(
@@ -58,26 +60,19 @@ namespace DEvchik10Empire
                             MemoryOrder Failure = MemoryOrder::Relaxed
                         ) noexcept
                         {
-                            return __atomic_compare_exchange_n(
-                                &Value,
-                                &Expected,
-                                Desired,
-                                false,
-                                static_cast<Types::Int32>(Success),
-                                static_cast<Types::Int32>(Failure)
-                            );
+                            return __atomic_compare_exchange_n(&Value, &Expected, Desired, false, Raw(Success), Raw(Failure));
                         }
 
                         T FetchAdd(T Amount, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
                             requires Types::Integral<T>
                         {
-                            return __atomic_fetch_add(&Value, Amount, static_cast<Types::Int32>(Order));
+                            return __atomic_fetch_add(&Value, Amount, Raw(Order));
                         }
 
                         T FetchSub(T Amount, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
                             requires Types::Integral<T>
                         {
-                            return __atomic_fetch_sub(&Value, Amount, static_cast<Types::Int32>(Order));
+                            return __atomic_fetch_sub(&Value, Amount, Raw(Order));
                         }
                 };
             }

@@ -1,44 +1,44 @@
 {
-    vulkan = {
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_showmenu = { },
-        default = true,
-        __sourceinfo_default = { },
-        showmenu = true
-    },
-    opengl = {
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_showmenu = { },
-        default = true,
-        __sourceinfo_default = { },
-        showmenu = true
-    },
-    editor = {
-        description = "Собирать Runtime.Editor",
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
-        __sourceinfo_showmenu = { },
-        __sourceinfo_default = { },
-        default = true,
-        __sourceinfo_description = {
-            ["Собирать Runtime.Editor"] = {
-                file = "./xmake.lua",
-                line = 29
-            }
-        },
-        showmenu = true
-    },
     tools = {
-        description = "Собирать Empire.Tools",
-        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
         __sourceinfo_showmenu = { },
-        __sourceinfo_default = { },
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
         default = true,
+        description = "Собирать Empire.Tools",
+        showmenu = true,
+        __sourceinfo_default = { },
         __sourceinfo_description = {
             ["Собирать Empire.Tools"] = {
                 file = "./xmake.lua",
                 line = 30
             }
-        },
-        showmenu = true
+        }
+    },
+    opengl = {
+        default = true,
+        showmenu = true,
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
+        __sourceinfo_default = { },
+        __sourceinfo_showmenu = { }
+    },
+    editor = {
+        __sourceinfo_showmenu = { },
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
+        default = true,
+        description = "Собирать Runtime.Editor",
+        showmenu = true,
+        __sourceinfo_default = { },
+        __sourceinfo_description = {
+            ["Собирать Runtime.Editor"] = {
+                file = "./xmake.lua",
+                line = 29
+            }
+        }
+    },
+    vulkan = {
+        default = true,
+        showmenu = true,
+        __scriptdir = "/home/devchik10/Documents/Empire.Game.Engine",
+        __sourceinfo_default = { },
+        __sourceinfo_showmenu = { }
     }
 }
