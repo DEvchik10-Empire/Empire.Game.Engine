@@ -1,7 +1,6 @@
 target("Kernel.System")
     add_headerfiles("*.hpp")
     add_deps("Kernel.Types")
-    add_cxxflags("-fvisibility=default", {tools = {"gcc", "clang"}})
 
 -- бэкенды: ровно один на платформу
 if is_plat("linux") then includes("System.Linux") end
