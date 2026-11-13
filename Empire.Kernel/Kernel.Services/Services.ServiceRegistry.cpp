@@ -12,18 +12,18 @@ namespace DEvchik10Empire
             {
                 void ServiceRegistry::Clear()
                 {
-                    decltype(RegisteredServices) Removed;
+                    Containers::HashMap<TypeKey, Memory::SharedPtr<void>> Removed;
 
                     {
-                        std::lock_guard Lock(Mutex);
-                        Removed.swap(RegisteredServices);
+                        Sync::LockGuard Lock(StateMutex);
+                        Removed = Move(RegisteredServices);
                     }
                 }
 
                 Size ServiceRegistry::GetCount() const
                 {
-                    std::lock_guard Lock(Mutex);
-                    return RegisteredServices.size();
+                    Sync::LockGuard Lock(StateMutex);
+                    return RegisteredServices.GetCount();
                 }
             }
         }

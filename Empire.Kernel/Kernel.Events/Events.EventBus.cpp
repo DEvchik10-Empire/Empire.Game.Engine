@@ -12,34 +12,42 @@ namespace DEvchik10Empire
             {
                 Bool EventBus::Unsubscribe(SubscriptionId Id)
                 {
-                    Listener Removed{0, {}};
+                    Callback Removed;
                     Bool WasRemoved = false;
 
                     {
-                        std::lock_guard Lock(Mutex);
+                        Sync::LockGuard Lock(StateMutex);
 
-                        for (auto MapIt = Listeners.begin(); MapIt != Listeners.end(); ++MapIt)
-                        {
-                            auto& EventListeners = MapIt->second;
+                        TypeKey EmptiedKey = 0;
+                        Bool HasEmptiedKey = false;
 
-                            for (auto ListenerIt = EventListeners.begin(); ListenerIt != EventListeners.end(); ++ListenerIt)
+                        Listeners.ForEach(
+                            [&](const TypeKey& Key, Containers::Array<Listener>& EventListeners)
                             {
-                                if (ListenerIt->Id != Id)
-                                    continue;
+                                for (Size Index = 0; Index < EventListeners.GetCount(); Index++)
+                                {
+                                    if (EventListeners[Index].Id != Id)
+                                        continue;
 
-                                Removed = std::move(*ListenerIt);
-                                EventListeners.erase(ListenerIt);
+                                    Removed = Move(EventListeners[Index].Handler);
+                                    EventListeners.RemoveAt(Index);
+                                    WasRemoved = true;
 
-                                if (EventListeners.empty())
-                                    Listeners.erase(MapIt);
+                                    if (EventListeners.IsEmpty())
+                                    {
+                                        EmptiedKey = Key;
+                                        HasEmptiedKey = true;
+                                    }
 
-                                WasRemoved = true;
-                                break;
+                                    return false;
+                                }
+
+                                return true;
                             }
+                        );
 
-                            if (WasRemoved)
-                                break;
-                        }
+                        if (HasEmptiedKey)
+                            Listeners.Remove(EmptiedKey);
                     }
 
                     return WasRemoved;
@@ -47,27 +55,29 @@ namespace DEvchik10Empire
 
                 void EventBus::Clear()
                 {
-                    decltype(Listeners) Removed;
+                    Containers::HashMap<TypeKey, Containers::Array<Listener>> Removed;
 
                     {
-                        std::lock_guard Lock(Mutex);
-                        Removed.swap(Listeners);
+                        Sync::LockGuard Lock(StateMutex);
+                        Removed = Move(Listeners);
                     }
                 }
 
                 Size EventBus::GetSubscriptionCount() const
                 {
-                    std::lock_guard Lock(Mutex);
+                    Sync::LockGuard Lock(StateMutex);
 
-                    Size Count = 0;
+                    Size Total = 0;
 
-                    for (const auto& [EventType, EventListeners] : Listeners)
-                    {
-                        static_cast<void>(EventType);
-                        Count += EventListeners.size();
-                    }
+                    Listeners.ForEach(
+                        [&](const TypeKey&, const Containers::Array<Listener>& EventListeners)
+                        {
+                            Total += EventListeners.GetCount();
+                            return true;
+                        }
+                    );
 
-                    return Count;
+                    return Total;
                 }
             }
         }

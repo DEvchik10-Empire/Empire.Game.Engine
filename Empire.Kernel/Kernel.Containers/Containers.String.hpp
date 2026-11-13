@@ -1,11 +1,7 @@
 #pragma once
 
-#include "Empire.Kernel/Kernel.Types/Types.hpp"
-
-#include <charconv>
-#include <stdexcept>
-#include <system_error>
-#include <type_traits>
+#include "Empire.Kernel/Kernel.Containers/Containers.StringView.hpp"
+#include "Empire.Kernel/Kernel.Types/Types.Utility.hpp"
 
 namespace DEvchik10Empire
 {
@@ -23,10 +19,12 @@ namespace DEvchik10Empire
                         Types::Size Capacity = 0;
 
                         void Reserve(Types::Size NewCapacity);
+                        void AppendRange(const Types::Char* Source, Types::Size SourceCount);
 
                     public:
                         String() = default;
                         String(const Types::Char* Source);
+                        String(StringView Source);
                         String(const String& Other);
                         String(String&& Other) noexcept;
                         ~String();
@@ -39,38 +37,45 @@ namespace DEvchik10Empire
                         Types::Bool IsEmpty() const noexcept;
                         const Types::Char* GetText() const noexcept;
                         Types::Char* GetData() noexcept;
+                        StringView GetView() const noexcept;
 
                         Types::Char& operator[](Types::Size Index);
                         const Types::Char& operator[](Types::Size Index) const;
 
                         void Append(const Types::Char* Source);
+                        void Append(StringView Source);
                         void Append(const String& Source);
+                        void Append(Types::Char Character);
                         void Clear() noexcept;
+
+                        String& operator+=(const Types::Char* Source);
+                        String& operator+=(const String& Source);
+                        String& operator+=(Types::Char Character);
                 };
 
+                String operator+(const String& Left, const String& Right);
+                String operator+(const String& Left, const Types::Char* Right);
+                String operator+(const Types::Char* Left, const String& Right);
+
+                Types::Bool operator==(const String& Left, const String& Right) noexcept;
+                Types::Bool operator!=(const String& Left, const String& Right) noexcept;
+
+                String FormatSigned(Types::Int64 Value);
+                String FormatUnsigned(Types::UInt64 Value);
+                String FormatFloating(Types::Double Value);
+
                 template <typename T>
+                    requires (Types::Integral<T> || Types::FloatingPoint<T>)
                 String ToString(T Value)
                 {
-                    static_assert(
-                        std::is_arithmetic_v<T>,
-                        "ToString supports arithmetic types"
-                    );
-
-                    if constexpr (std::is_same_v<T, Types::Bool>)
-                    {
+                    if constexpr (Types::IsSame<Types::RemoveCV<T>, Types::Bool>)
                         return String(Value ? "true" : "false");
-                    }
+                    else if constexpr (Types::FloatingPoint<T>)
+                        return FormatFloating(static_cast<Types::Double>(Value));
+                    else if constexpr (Types::IsSigned<T>)
+                        return FormatSigned(static_cast<Types::Int64>(Value));
                     else
-                    {
-                        Types::Char Buffer[128]{};
-                        const auto Result = std::to_chars(Buffer, Buffer + sizeof(Buffer) - 1, Value);
-
-                        if (Result.ec != std::errc{})
-                            throw std::runtime_error("Failed to convert value to String");
-
-                        *Result.ptr = '\0';
-                        return String(Buffer);
-                    }
+                        return FormatUnsigned(static_cast<Types::UInt64>(Value));
                 }
             }
         }

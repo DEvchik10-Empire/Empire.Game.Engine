@@ -1,13 +1,10 @@
 #pragma once
 
-#include "Empire.Kernel/Kernel.Types/Types.hpp"
-
-#include <memory>
-#include <mutex>
-#include <stdexcept>
-#include <typeindex>
-#include <unordered_map>
-#include <utility>
+#include "Empire.Kernel/Kernel.Assert/Assert.hpp"
+#include "Empire.Kernel/Kernel.Containers/Containers.HashMap.hpp"
+#include "Empire.Kernel/Kernel.Memory/Memory.SharedPtr.hpp"
+#include "Empire.Kernel/Kernel.Sync/Sync.Mutex.hpp"
+#include "Empire.Kernel/Kernel.Types/Types.Utility.hpp"
 
 namespace DEvchik10Empire
 {
@@ -20,8 +17,8 @@ namespace DEvchik10Empire
                 class ServiceRegistry
                 {
                     private:
-                        mutable std::mutex Mutex;
-                        std::unordered_map<std::type_index, std::shared_ptr<void>> RegisteredServices;
+                        mutable Sync::Mutex StateMutex;
+                        Containers::HashMap<Types::TypeKey, Memory::SharedPtr<void>> RegisteredServices;
 
                     public:
                         ServiceRegistry() = default;
@@ -29,61 +26,64 @@ namespace DEvchik10Empire
                         ServiceRegistry& operator=(const ServiceRegistry&) = delete;
 
                         template <typename ServiceType>
-                        void Register(std::shared_ptr<ServiceType> Service)
+                        void Register(Memory::SharedPtr<ServiceType> Service)
                         {
                             if (!Service)
-                                throw std::invalid_argument("Cannot register a null service");
+                                throw Assert::InvalidArgumentError("Cannot register a null service");
 
-                            std::lock_guard Lock(Mutex);
-                            const std::type_index Type(typeid(ServiceType));
+                            Sync::LockGuard Lock(StateMutex);
+                            const Types::TypeKey Key = Types::GetTypeKey<ServiceType>();
 
-                            if (RegisteredServices.contains(Type))
-                                throw std::logic_error("Service is already registered");
+                            if (RegisteredServices.Contains(Key))
+                                throw Assert::LogicError("Service is already registered");
 
-                            RegisteredServices.emplace(Type, std::move(Service));
+                            RegisteredServices.Insert(Key, Memory::SharedPtr<void>(Types::Move(Service)));
                         }
 
                         template <typename ServiceType, typename... Arguments>
-                        std::shared_ptr<ServiceType> Create(Arguments&&... Args)
+                        Memory::SharedPtr<ServiceType> Create(Arguments&&... Args)
                         {
-                            auto Service = std::make_shared<ServiceType>(std::forward<Arguments>(Args)...);
+                            Memory::SharedPtr<ServiceType> Service =
+                                Memory::MakeShared<ServiceType>(Types::Forward<Arguments>(Args)...);
+
                             Register<ServiceType>(Service);
                             return Service;
                         }
 
                         template <typename ServiceType>
-                        std::shared_ptr<ServiceType> Get() const
+                        Memory::SharedPtr<ServiceType> Get() const
                         {
-                            std::lock_guard Lock(Mutex);
-                            const auto It = RegisteredServices.find(std::type_index(typeid(ServiceType)));
+                            Sync::LockGuard Lock(StateMutex);
+                            const Memory::SharedPtr<void>* Found = RegisteredServices.Find(Types::GetTypeKey<ServiceType>());
 
-                            if (It == RegisteredServices.end())
+                            if (Found == nullptr)
                                 return nullptr;
 
-                            return std::static_pointer_cast<ServiceType>(It->second);
+                            return Memory::StaticPointerCast<ServiceType>(*Found);
                         }
 
                         template <typename ServiceType>
                         Types::Bool Contains() const
                         {
-                            std::lock_guard Lock(Mutex);
-                            return RegisteredServices.contains(std::type_index(typeid(ServiceType)));
+                            Sync::LockGuard Lock(StateMutex);
+                            return RegisteredServices.Contains(Types::GetTypeKey<ServiceType>());
                         }
 
                         template <typename ServiceType>
                         Types::Bool Remove()
                         {
-                            std::shared_ptr<void> Removed;
+                            Memory::SharedPtr<void> Removed;
 
                             {
-                                std::lock_guard Lock(Mutex);
-                                const auto It = RegisteredServices.find(std::type_index(typeid(ServiceType)));
+                                Sync::LockGuard Lock(StateMutex);
+                                const Types::TypeKey Key = Types::GetTypeKey<ServiceType>();
+                                Memory::SharedPtr<void>* Found = RegisteredServices.Find(Key);
 
-                                if (It == RegisteredServices.end())
+                                if (Found == nullptr)
                                     return false;
 
-                                Removed = std::move(It->second);
-                                RegisteredServices.erase(It);
+                                Removed = Types::Move(*Found);
+                                RegisteredServices.Remove(Key);
                             }
 
                             return true;

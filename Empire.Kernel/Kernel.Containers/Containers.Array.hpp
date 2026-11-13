@@ -1,13 +1,10 @@
 #pragma once
 
-#include "Empire.Kernel/Kernel.Types/Types.hpp"
+#include "Empire.Kernel/Kernel.Assert/Assert.hpp"
+#include "Empire.Kernel/Kernel.Memory/Memory.hpp"
+#include "Empire.Kernel/Kernel.Types/Types.Utility.hpp"
 
 #include <initializer_list>
-#include <limits>
-#include <memory>
-#include <new>
-#include <stdexcept>
-#include <utility>
 
 namespace DEvchik10Empire
 {
@@ -27,49 +24,26 @@ namespace DEvchik10Empire
 
                         static T* AllocateItems(Types::Size ItemCount)
                         {
-                            return std::allocator<T>{}.allocate(ItemCount);
+                            if (ItemCount > Types::MaxValue<Types::Size>() / sizeof(T))
+                                throw Assert::LengthError("Array capacity is too large");
+
+                            return static_cast<T*>(Memory::Allocate(ItemCount * sizeof(T), alignof(T)));
                         }
 
-                        static void DeallocateItems(T* MemoryBlock, Types::Size ItemCount) noexcept
+                        static void DeallocateItems(T* MemoryBlock) noexcept
                         {
-                            if (MemoryBlock != nullptr)
-                                std::allocator<T>{}.deallocate(MemoryBlock, ItemCount);
+                            Memory::Deallocate(MemoryBlock);
                         }
 
-                        void Reserve(Types::Size NewCapacity)
+                        Types::Size GetGrownCapacity() const
                         {
-                            if (NewCapacity <= Capacity)
-                                return;
+                            if (Capacity == 0)
+                                return 4;
 
-                            if (NewCapacity > std::numeric_limits<Types::Size>::max() / sizeof(T))
-                                throw std::length_error("Array capacity is too large");
+                            if (Capacity > Types::MaxValue<Types::Size>() / 2)
+                                throw Assert::LengthError("Array capacity is too large");
 
-                            T* NewItems = AllocateItems(NewCapacity);
-                            Types::Size Constructed = 0;
-
-                            try
-                            {
-                                for (; Constructed < Count; Constructed++)
-                                    std::construct_at(
-                                        NewItems + Constructed,
-                                        std::move_if_noexcept(Items[Constructed])
-                                    );
-                            }
-                            catch (...)
-                            {
-                                for (Types::Size Index = 0; Index < Constructed; Index++)
-                                    std::destroy_at(NewItems + Index);
-
-                                DeallocateItems(NewItems, NewCapacity);
-                                throw;
-                            }
-
-                            for (Types::Size Index = 0; Index < Count; Index++)
-                                std::destroy_at(Items + Index);
-
-                            DeallocateItems(Items, Capacity);
-                            Items = NewItems;
-                            Capacity = NewCapacity;
+                            return Capacity * 2;
                         }
 
                     public:
@@ -87,16 +61,16 @@ namespace DEvchik10Empire
                             {
                                 for (const T& Value : Values)
                                 {
-                                    std::construct_at(Items + Count, Value);
+                                    Types::ConstructAt(Items + Count, Value);
                                     Count++;
                                 }
                             }
                             catch (...)
                             {
                                 for (Types::Size Index = 0; Index < Count; Index++)
-                                    std::destroy_at(Items + Index);
+                                    Types::DestroyAt(Items + Index);
 
-                                DeallocateItems(Items, Capacity);
+                                DeallocateItems(Items);
                                 Items = nullptr;
                                 Count = 0;
                                 Capacity = 0;
@@ -115,14 +89,14 @@ namespace DEvchik10Empire
                             try
                             {
                                 for (; Count < Other.Count; Count++)
-                                    std::construct_at(Items + Count, Other.Items[Count]);
+                                    Types::ConstructAt(Items + Count, Other.Items[Count]);
                             }
                             catch (...)
                             {
                                 for (Types::Size Index = 0; Index < Count; Index++)
-                                    std::destroy_at(Items + Index);
+                                    Types::DestroyAt(Items + Index);
 
-                                DeallocateItems(Items, Capacity);
+                                DeallocateItems(Items);
                                 Items = nullptr;
                                 Count = 0;
                                 Capacity = 0;
@@ -141,7 +115,7 @@ namespace DEvchik10Empire
                         ~Array()
                         {
                             Clear();
-                            DeallocateItems(Items, Capacity);
+                            DeallocateItems(Items);
                         }
 
                         Array& operator=(const Array& Other)
@@ -150,7 +124,7 @@ namespace DEvchik10Empire
                                 return *this;
 
                             Array Copy(Other);
-                            *this = std::move(Copy);
+                            *this = Types::Move(Copy);
                             return *this;
                         }
 
@@ -160,7 +134,7 @@ namespace DEvchik10Empire
                                 return *this;
 
                             Clear();
-                            DeallocateItems(Items, Capacity);
+                            DeallocateItems(Items);
 
                             Items = Other.Items;
                             Count = Other.Count;
@@ -179,10 +153,21 @@ namespace DEvchik10Empire
                         T* GetData() noexcept { return Items; }
                         const T* GetData() const noexcept { return Items; }
 
+                        T* Begin() noexcept { return Items; }
+                        T* End() noexcept { return Items + Count; }
+                        const T* Begin() const noexcept { return Items; }
+                        const T* End() const noexcept { return Items + Count; }
+
+                        // Нижний регистр нужен языку для range-for (for (auto& Item : Array)).
+                        T* begin() noexcept { return Items; }
+                        T* end() noexcept { return Items + Count; }
+                        const T* begin() const noexcept { return Items; }
+                        const T* end() const noexcept { return Items + Count; }
+
                         T& operator[](Types::Size Index)
                         {
                             if (Index >= Count)
-                                throw std::out_of_range("Array index is out of range");
+                                throw Assert::OutOfRangeError("Array index is out of range");
 
                             return Items[Index];
                         }
@@ -190,9 +175,39 @@ namespace DEvchik10Empire
                         const T& operator[](Types::Size Index) const
                         {
                             if (Index >= Count)
-                                throw std::out_of_range("Array index is out of range");
+                                throw Assert::OutOfRangeError("Array index is out of range");
 
                             return Items[Index];
+                        }
+
+                        void Reserve(Types::Size NewCapacity)
+                        {
+                            if (NewCapacity <= Capacity)
+                                return;
+
+                            T* NewItems = AllocateItems(NewCapacity);
+                            Types::Size Constructed = 0;
+
+                            try
+                            {
+                                for (; Constructed < Count; Constructed++)
+                                    Types::ConstructAt(NewItems + Constructed, Types::MoveIfNoexcept(Items[Constructed]));
+                            }
+                            catch (...)
+                            {
+                                for (Types::Size Index = 0; Index < Constructed; Index++)
+                                    Types::DestroyAt(NewItems + Index);
+
+                                DeallocateItems(NewItems);
+                                throw;
+                            }
+
+                            for (Types::Size Index = 0; Index < Count; Index++)
+                                Types::DestroyAt(Items + Index);
+
+                            DeallocateItems(Items);
+                            Items = NewItems;
+                            Capacity = NewCapacity;
                         }
 
                         void Add(const T& Value)
@@ -200,14 +215,12 @@ namespace DEvchik10Empire
                             if (Count == Capacity)
                             {
                                 T Copy(Value);
-                                Reserve(Capacity == 0 ? 4 : Capacity > std::numeric_limits<Types::Size>::max() / 2
-                                    ? throw std::length_error("Array capacity is too large")
-                                    : Capacity * 2);
-                                std::construct_at(Items + Count, std::move(Copy));
+                                Reserve(GetGrownCapacity());
+                                Types::ConstructAt(Items + Count, Types::Move(Copy));
                             }
                             else
                             {
-                                std::construct_at(Items + Count, Value);
+                                Types::ConstructAt(Items + Count, Value);
                             }
 
                             Count++;
@@ -217,15 +230,13 @@ namespace DEvchik10Empire
                         {
                             if (Count == Capacity)
                             {
-                                T Copy(std::move(Value));
-                                Reserve(Capacity == 0 ? 4 : Capacity > std::numeric_limits<Types::Size>::max() / 2
-                                    ? throw std::length_error("Array capacity is too large")
-                                    : Capacity * 2);
-                                std::construct_at(Items + Count, std::move(Copy));
+                                T Copy(Types::Move(Value));
+                                Reserve(GetGrownCapacity());
+                                Types::ConstructAt(Items + Count, Types::Move(Copy));
                             }
                             else
                             {
-                                std::construct_at(Items + Count, std::move(Value));
+                                Types::ConstructAt(Items + Count, Types::Move(Value));
                             }
 
                             Count++;
@@ -234,19 +245,19 @@ namespace DEvchik10Empire
                         void RemoveAt(Types::Size Index)
                         {
                             if (Index >= Count)
-                                throw std::out_of_range("Array index is out of range");
+                                throw Assert::OutOfRangeError("Array index is out of range");
 
                             for (Types::Size Current = Index; Current + 1 < Count; Current++)
-                                Items[Current] = std::move(Items[Current + 1]);
+                                Items[Current] = Types::Move(Items[Current + 1]);
 
                             Count--;
-                            std::destroy_at(Items + Count);
+                            Types::DestroyAt(Items + Count);
                         }
 
                         void Clear() noexcept
                         {
                             for (Types::Size Index = Count; Index > 0; Index--)
-                                std::destroy_at(Items + Index - 1);
+                                Types::DestroyAt(Items + Index - 1);
 
                             Count = 0;
                         }

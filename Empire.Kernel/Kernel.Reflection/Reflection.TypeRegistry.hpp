@@ -1,14 +1,12 @@
 #pragma once
 
+#include "Empire.Kernel/Kernel.Assert/Assert.hpp"
+#include "Empire.Kernel/Kernel.Containers/Containers.HashMap.hpp"
 #include "Empire.Kernel/Kernel.Containers/Containers.String.hpp"
 #include "Empire.Kernel/Kernel.Containers/Containers.StringView.hpp"
-#include "Empire.Kernel/Kernel.Types/Types.hpp"
-
-#include <mutex>
-#include <stdexcept>
-#include <typeindex>
-#include <typeinfo>
-#include <unordered_map>
+#include "Empire.Kernel/Kernel.Memory/Memory.SharedPtr.hpp"
+#include "Empire.Kernel/Kernel.Sync/Sync.Mutex.hpp"
+#include "Empire.Kernel/Kernel.Types/Types.Utility.hpp"
 
 namespace DEvchik10Empire
 {
@@ -27,7 +25,7 @@ namespace DEvchik10Empire
                         Containers::String NameValue;
                         Types::Size SizeValue;
                         Types::Size AlignmentValue;
-                        std::type_index NativeTypeValue;
+                        Types::TypeKey NativeTypeValue;
 
                     public:
                         TypeInfo(
@@ -35,23 +33,24 @@ namespace DEvchik10Empire
                             const Types::Char* Name,
                             Types::Size ByteSize,
                             Types::Size Alignment,
-                            std::type_index NativeType
+                            Types::TypeKey NativeType
                         );
 
                         TypeId GetId() const noexcept;
                         Containers::StringView GetName() const noexcept;
                         Types::Size GetSize() const noexcept;
                         Types::Size GetAlignment() const noexcept;
-                        const std::type_index& GetNativeType() const noexcept;
+                        Types::TypeKey GetNativeType() const noexcept;
                 };
 
+                // Описания хранятся в отдельных блоках, поэтому указатели TypeInfo живут столько же, сколько реестр.
                 class TypeRegistry
                 {
                     private:
-                        mutable std::mutex Mutex;
+                        mutable Sync::Mutex StateMutex;
                         TypeId NextId = 1;
-                        std::unordered_map<TypeId, TypeInfo> RegisteredTypes;
-                        std::unordered_map<std::type_index, TypeId> NativeTypes;
+                        Containers::HashMap<TypeId, Memory::SharedPtr<TypeInfo>> RegisteredTypes;
+                        Containers::HashMap<Types::TypeKey, TypeId> NativeTypes;
 
                     public:
                         TypeRegistry() = default;
@@ -62,7 +61,7 @@ namespace DEvchik10Empire
                         TypeId RegisterType(const Types::Char* Name)
                         {
                             return Register(
-                                std::type_index(typeid(T)),
+                                Types::GetTypeKey<T>(),
                                 Name,
                                 sizeof(T),
                                 alignof(T)
@@ -70,7 +69,7 @@ namespace DEvchik10Empire
                         }
 
                         TypeId Register(
-                            std::type_index NativeType,
+                            Types::TypeKey NativeType,
                             const Types::Char* Name,
                             Types::Size ByteSize,
                             Types::Size Alignment
@@ -82,14 +81,14 @@ namespace DEvchik10Empire
                         template <typename T>
                         const TypeInfo* Find() const
                         {
-                            std::lock_guard Lock(Mutex);
-                            const auto It = NativeTypes.find(std::type_index(typeid(T)));
+                            Sync::LockGuard Lock(StateMutex);
+                            const TypeId* Found = NativeTypes.Find(Types::GetTypeKey<T>());
 
-                            if (It == NativeTypes.end())
+                            if (Found == nullptr)
                                 return nullptr;
 
-                            const auto TypeIt = RegisteredTypes.find(It->second);
-                            return TypeIt == RegisteredTypes.end() ? nullptr : &TypeIt->second;
+                            const Memory::SharedPtr<TypeInfo>* Info = RegisteredTypes.Find(*Found);
+                            return Info == nullptr ? nullptr : Info->Get();
                         }
 
                         Types::Size GetTypeCount() const;

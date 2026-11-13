@@ -1,14 +1,11 @@
 #pragma once
 
-#include "Empire.Kernel/Kernel.Types/Types.hpp"
-
-#include <functional>
-#include <mutex>
-#include <stdexcept>
-#include <typeindex>
-#include <unordered_map>
-#include <utility>
-#include <vector>
+#include "Empire.Kernel/Kernel.Assert/Assert.hpp"
+#include "Empire.Kernel/Kernel.Containers/Containers.Array.hpp"
+#include "Empire.Kernel/Kernel.Containers/Containers.Function.hpp"
+#include "Empire.Kernel/Kernel.Containers/Containers.HashMap.hpp"
+#include "Empire.Kernel/Kernel.Sync/Sync.Mutex.hpp"
+#include "Empire.Kernel/Kernel.Types/Types.Utility.hpp"
 
 namespace DEvchik10Empire
 {
@@ -24,14 +21,21 @@ namespace DEvchik10Empire
                         using SubscriptionId = Types::UInt64;
 
                     private:
+                        using Callback = Containers::Function<void(const void*)>;
+
                         struct Listener
                         {
                             SubscriptionId Id;
-                            std::function<void(const void*)> Callback;
+                            Callback Handler;
+
+                            Listener(SubscriptionId ListenerId, Callback ListenerHandler)
+                                : Id(ListenerId), Handler(Types::Move(ListenerHandler))
+                            {
+                            }
                         };
 
-                        mutable std::mutex Mutex;
-                        std::unordered_map<std::type_index, std::vector<Listener>> Listeners;
+                        mutable Sync::Mutex StateMutex;
+                        Containers::HashMap<Types::TypeKey, Containers::Array<Listener>> Listeners;
                         SubscriptionId NextId = 1;
 
                     public:
@@ -39,26 +43,33 @@ namespace DEvchik10Empire
                         EventBus(const EventBus&) = delete;
                         EventBus& operator=(const EventBus&) = delete;
 
-                        template <typename EventType, typename Callback>
-                        SubscriptionId Subscribe(Callback&& Function)
+                        template <typename EventType, typename Handler>
+                        SubscriptionId Subscribe(Handler&& Function)
                         {
-                            std::function<void(const EventType&)> Handler(std::forward<Callback>(Function));
+                            Callback NewCallback(
+                                [Target = Types::Forward<Handler>(Function)](const void* EventData) mutable
+                                {
+                                    Target(*static_cast<const EventType*>(EventData));
+                                }
+                            );
 
-                            std::lock_guard Lock(Mutex);
+                            Sync::LockGuard Lock(StateMutex);
 
                             if (NextId == 0)
-                                throw std::overflow_error("EventBus subscription id space is exhausted");
+                                throw Assert::OverflowError("EventBus subscription id space is exhausted");
 
                             const SubscriptionId Id = NextId++;
-                            auto& EventListeners = Listeners[std::type_index(typeid(EventType))];
+                            const Types::TypeKey Key = Types::GetTypeKey<EventType>();
 
-                            EventListeners.push_back(Listener{
-                                Id,
-                                [Handler = std::move(Handler)](const void* EventData)
-                                {
-                                    Handler(*static_cast<const EventType*>(EventData));
-                                }
-                            });
+                            Containers::Array<Listener>* EventListeners = Listeners.Find(Key);
+
+                            if (EventListeners == nullptr)
+                            {
+                                Listeners.Insert(Key, Containers::Array<Listener>());
+                                EventListeners = Listeners.Find(Key);
+                            }
+
+                            EventListeners->Add(Listener(Id, Types::Move(NewCallback)));
 
                             return Id;
                         }
@@ -66,31 +77,31 @@ namespace DEvchik10Empire
                         template <typename EventType>
                         void Publish(const EventType& Event) const
                         {
-                            std::vector<std::function<void(const void*)>> Callbacks;
+                            Containers::Array<Callback> Callbacks;
 
                             {
-                                std::lock_guard Lock(Mutex);
-                                const auto It = Listeners.find(std::type_index(typeid(EventType)));
+                                Sync::LockGuard Lock(StateMutex);
+                                const Containers::Array<Listener>* EventListeners = Listeners.Find(Types::GetTypeKey<EventType>());
 
-                                if (It == Listeners.end())
+                                if (EventListeners == nullptr)
                                     return;
 
-                                Callbacks.reserve(It->second.size());
+                                Callbacks.Reserve(EventListeners->GetCount());
 
-                                for (const Listener& Item : It->second)
-                                    Callbacks.push_back(Item.Callback);
+                                for (const Listener& Item : *EventListeners)
+                                    Callbacks.Add(Item.Handler);
                             }
 
-                            for (const auto& Callback : Callbacks)
-                                Callback(&Event);
+                            for (const Callback& Item : Callbacks)
+                                Item(&Event);
                         }
 
                         template <typename EventType>
                         Types::Size GetListenerCount() const
                         {
-                            std::lock_guard Lock(Mutex);
-                            const auto It = Listeners.find(std::type_index(typeid(EventType)));
-                            return It == Listeners.end() ? 0 : It->second.size();
+                            Sync::LockGuard Lock(StateMutex);
+                            const Containers::Array<Listener>* EventListeners = Listeners.Find(Types::GetTypeKey<EventType>());
+                            return EventListeners == nullptr ? 0 : EventListeners->GetCount();
                         }
 
                         Types::Bool Unsubscribe(SubscriptionId Id);

@@ -1,9 +1,5 @@
 #include "Empire.Kernel/Kernel.Reflection/Reflection.TypeRegistry.hpp"
 
-#include <cstring>
-#include <limits>
-#include <tuple>
-
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
@@ -19,7 +15,7 @@ namespace DEvchik10Empire
                     const Char* Name,
                     Size ByteSize,
                     Size Alignment,
-                    std::type_index NativeType
+                    TypeKey NativeType
                 )
                     : IdValue(Id),
                       NameValue(Name),
@@ -36,7 +32,7 @@ namespace DEvchik10Empire
 
                 Containers::StringView TypeInfo::GetName() const noexcept
                 {
-                    return Containers::StringView(NameValue.GetText(), NameValue.GetCount());
+                    return NameValue.GetView();
                 }
 
                 Size TypeInfo::GetSize() const noexcept
@@ -49,112 +45,118 @@ namespace DEvchik10Empire
                     return AlignmentValue;
                 }
 
-                const std::type_index& TypeInfo::GetNativeType() const noexcept
+                TypeKey TypeInfo::GetNativeType() const noexcept
                 {
                     return NativeTypeValue;
                 }
 
                 TypeId TypeRegistry::Register(
-                    std::type_index NativeType,
+                    TypeKey NativeType,
                     const Char* Name,
                     Size ByteSize,
                     Size Alignment
                 )
                 {
                     if (Name == nullptr || Name[0] == '\0')
-                        throw std::invalid_argument("Reflection type name cannot be empty");
+                        throw Assert::InvalidArgumentError("Reflection type name cannot be empty");
 
                     if (Alignment == 0 || (Alignment & (Alignment - 1)) != 0)
-                        throw std::invalid_argument("Reflection type alignment is invalid");
+                        throw Assert::InvalidArgumentError("Reflection type alignment is invalid");
 
-                    std::lock_guard Lock(Mutex);
+                    const Containers::StringView NewName(Name);
 
-                    const auto ExistingType = NativeTypes.find(NativeType);
-                    if (ExistingType != NativeTypes.end())
+                    Sync::LockGuard Lock(StateMutex);
+
+                    const TypeId* ExistingType = NativeTypes.Find(NativeType);
+
+                    if (ExistingType != nullptr)
                     {
-                        const TypeInfo& ExistingInfo = RegisteredTypes.at(ExistingType->second);
-                        const Containers::StringView ExistingName = ExistingInfo.GetName();
-                        const Size NameLength = std::strlen(Name);
+                        const Memory::SharedPtr<TypeInfo>* ExistingInfo = RegisteredTypes.Find(*ExistingType);
 
-                        if (ExistingName.GetCount() != NameLength
-                            || std::memcmp(ExistingName.GetText(), Name, NameLength) != 0)
-                        {
-                            throw std::logic_error("Native type is already registered with another name");
-                        }
+                        if (ExistingInfo == nullptr)
+                            throw Assert::LogicError("Reflection registry is inconsistent");
 
-                        return ExistingInfo.GetId();
+                        if ((*ExistingInfo)->GetName() != NewName)
+                            throw Assert::LogicError("Native type is already registered with another name");
+
+                        return (*ExistingInfo)->GetId();
                     }
 
-                    const Size NameLength = std::strlen(Name);
+                    Bool NameExists = false;
 
-                    for (const auto& [RegisteredId, RegisteredInfo] : RegisteredTypes)
-                    {
-                        static_cast<void>(RegisteredId);
-                        const Containers::StringView RegisteredName = RegisteredInfo.GetName();
-
-                        if (RegisteredName.GetCount() == NameLength
-                            && std::memcmp(RegisteredName.GetText(), Name, NameLength) == 0)
+                    RegisteredTypes.ForEach(
+                        [&](const TypeId&, const Memory::SharedPtr<TypeInfo>& RegisteredInfo)
                         {
-                            throw std::logic_error("Reflection type name is already registered");
+                            if (RegisteredInfo->GetName() == NewName)
+                            {
+                                NameExists = true;
+                                return false;
+                            }
+
+                            return true;
                         }
-                    }
-
-                    if (NextId == 0 || NextId == std::numeric_limits<TypeId>::max())
-                        throw std::overflow_error("Reflection type id space is exhausted");
-
-                    const TypeId Id = NextId++;
-                    auto [TypeIt, TypeInserted] = RegisteredTypes.emplace(
-                        std::piecewise_construct,
-                        std::forward_as_tuple(Id),
-                        std::forward_as_tuple(Id, Name, ByteSize, Alignment, NativeType)
                     );
 
-                    if (!TypeInserted)
-                        throw std::logic_error("Reflection type id collision");
+                    if (NameExists)
+                        throw Assert::LogicError("Reflection type name is already registered");
+
+                    if (NextId == 0 || NextId == MaxValue<TypeId>())
+                        throw Assert::OverflowError("Reflection type id space is exhausted");
+
+                    const TypeId Id = NextId;
+
+                    Memory::SharedPtr<TypeInfo> Info = Memory::MakeShared<TypeInfo>(Id, Name, ByteSize, Alignment, NativeType);
+
+                    if (!RegisteredTypes.Insert(Id, Move(Info)))
+                        throw Assert::LogicError("Reflection type id collision");
 
                     try
                     {
-                        NativeTypes.emplace(NativeType, Id);
+                        NativeTypes.Insert(NativeType, Id);
                     }
                     catch (...)
                     {
-                        RegisteredTypes.erase(TypeIt);
+                        RegisteredTypes.Remove(Id);
                         throw;
                     }
 
+                    NextId++;
                     return Id;
                 }
 
                 const TypeInfo* TypeRegistry::Find(TypeId Id) const
                 {
-                    std::lock_guard Lock(Mutex);
-                    const auto It = RegisteredTypes.find(Id);
-                    return It == RegisteredTypes.end() ? nullptr : &It->second;
+                    Sync::LockGuard Lock(StateMutex);
+                    const Memory::SharedPtr<TypeInfo>* Info = RegisteredTypes.Find(Id);
+                    return Info == nullptr ? nullptr : Info->Get();
                 }
 
                 const TypeInfo* TypeRegistry::FindByName(Containers::StringView Name) const
                 {
-                    std::lock_guard Lock(Mutex);
+                    Sync::LockGuard Lock(StateMutex);
 
-                    for (const auto& [RegisteredId, RegisteredInfo] : RegisteredTypes)
-                    {
-                        static_cast<void>(RegisteredId);
-                        const Containers::StringView RegisteredName = RegisteredInfo.GetName();
+                    const TypeInfo* Result = nullptr;
 
-                        if (RegisteredName.GetCount() == Name.GetCount()
-                            && std::memcmp(RegisteredName.GetText(), Name.GetText(), Name.GetCount()) == 0)
+                    RegisteredTypes.ForEach(
+                        [&](const TypeId&, const Memory::SharedPtr<TypeInfo>& RegisteredInfo)
                         {
-                            return &RegisteredInfo;
-                        }
-                    }
+                            if (RegisteredInfo->GetName() == Name)
+                            {
+                                Result = RegisteredInfo.Get();
+                                return false;
+                            }
 
-                    return nullptr;
+                            return true;
+                        }
+                    );
+
+                    return Result;
                 }
 
                 Size TypeRegistry::GetTypeCount() const
                 {
-                    std::lock_guard Lock(Mutex);
-                    return RegisteredTypes.size();
+                    Sync::LockGuard Lock(StateMutex);
+                    return RegisteredTypes.GetCount();
                 }
             }
         }

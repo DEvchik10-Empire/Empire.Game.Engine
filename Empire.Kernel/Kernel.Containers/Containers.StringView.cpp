@@ -1,6 +1,7 @@
 #include "Empire.Kernel/Kernel.Containers/Containers.StringView.hpp"
 
-#include <stdexcept>
+#include "Empire.Kernel/Kernel.Assert/Assert.hpp"
+#include "Empire.Kernel/Kernel.Memory/Memory.hpp"
 
 namespace DEvchik10Empire
 {
@@ -46,9 +47,20 @@ namespace DEvchik10Empire
                 const Char& StringView::operator[](Size Index) const
                 {
                     if (Index >= Count)
-                        throw std::out_of_range("StringView index is out of range");
+                        throw Assert::OutOfRangeError("StringView index is out of range");
 
                     return Text[Index];
+                }
+
+                Bool operator==(StringView Left, StringView Right) noexcept
+                {
+                    return Left.GetCount() == Right.GetCount()
+                        && Memory::CompareBytes(Left.GetText(), Right.GetText(), Left.GetCount()) == 0;
+                }
+
+                Bool operator!=(StringView Left, StringView Right) noexcept
+                {
+                    return !(Left == Right);
                 }
             }
         }

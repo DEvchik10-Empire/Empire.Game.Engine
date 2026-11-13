@@ -3,9 +3,6 @@
 #include "Empire.Kernel/Kernel.Containers/Containers.StringView.hpp"
 #include "Empire.Kernel/Kernel.Types/Types.hpp"
 
-#include <iostream>
-#include <source_location>
-
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
@@ -25,33 +22,46 @@ namespace DEvchik10Empire
                     Off
                 };
 
-                inline std::istream& Cin = std::cin;
-                inline std::ostream& Cout = std::cout;
-                inline std::ostream& Cerr = std::cerr;
+                // Приёмник записей. Вызывается под внутренним мьютексом логгера, поэтому Write не должен вызывать Logging.
+                class Sink
+                {
+                    public:
+                        virtual ~Sink() = default;
+
+                        virtual void Write(Level Severity, Containers::StringView Line) = 0;
+                };
+
+                // Приёмник по умолчанию: Warning и выше идут в stderr, остальное в stdout.
+                class ConsoleSink final : public Sink
+                {
+                    public:
+                        void Write(Level Severity, Containers::StringView Line) override;
+                };
 
                 void SetMinimumLevel(Level MinimumLevel) noexcept;
                 Level GetMinimumLevel() noexcept;
-                void SetOutput(std::ostream* Output);
-                void SetErrorOutput(std::ostream* Output);
+
+                // nullptr возвращает приёмник по умолчанию. Логгер не владеет переданным приёмником.
+                void SetSink(Sink* NewSink);
 
                 void Write(
                     Level Severity,
                     Containers::StringView Message,
-                    const std::source_location& Location = std::source_location::current()
+                    const Types::SourceLocation& Location = Types::SourceLocation::Current()
                 );
 
                 void Write(
                     Level Severity,
                     const Types::Char* Message,
-                    const std::source_location& Location = std::source_location::current()
+                    const Types::SourceLocation& Location = Types::SourceLocation::Current()
                 );
 
-                void Trace(const Types::Char* Message, const std::source_location& Location = std::source_location::current());
-                void Debug(const Types::Char* Message, const std::source_location& Location = std::source_location::current());
-                void Info(const Types::Char* Message, const std::source_location& Location = std::source_location::current());
-                void Warning(const Types::Char* Message, const std::source_location& Location = std::source_location::current());
-                void Error(const Types::Char* Message, const std::source_location& Location = std::source_location::current());
-                void Fatal(const Types::Char* Message, const std::source_location& Location = std::source_location::current());
+                void Trace(const Types::Char* Message, const Types::SourceLocation& Location = Types::SourceLocation::Current());
+                void Debug(const Types::Char* Message, const Types::SourceLocation& Location = Types::SourceLocation::Current());
+                void Info(const Types::Char* Message, const Types::SourceLocation& Location = Types::SourceLocation::Current());
+                void Warning(const Types::Char* Message, const Types::SourceLocation& Location = Types::SourceLocation::Current());
+                void Error(const Types::Char* Message, const Types::SourceLocation& Location = Types::SourceLocation::Current());
+                void Fatal(const Types::Char* Message, const Types::SourceLocation& Location = Types::SourceLocation::Current());
             }
         }
     }

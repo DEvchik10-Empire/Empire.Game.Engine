@@ -26,6 +26,9 @@ namespace DEvchik10Empire
                         const Types::Char* GetText() const noexcept;
                         const Types::Char& operator[](Types::Size Index) const;
                 };
+
+                Types::Bool operator==(StringView Left, StringView Right) noexcept;
+                Types::Bool operator!=(StringView Left, StringView Right) noexcept;
             }
         }
     }

@@ -1,5 +1,6 @@
 includes(
     "Kernel.Types",
+    "Kernel.Sync",
     "Kernel.Assert",
     "Kernel.Memory",
     "Kernel.Containers",
