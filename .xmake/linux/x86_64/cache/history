@@ -61,6 +61,8 @@
         "xmake ",
         "xmake lua /usr/share/xmake/actions/build/cleaner.lua",
         "xmake l /home/devchik10/.vscode/extensions/tboox.xmake-vscode-2.6.0/assets/explorer.lua",
-        "xmake l /home/devchik10/.vscode/extensions/tboox.xmake-vscode-2.6.0/assets/config.lua"
+        "xmake l /home/devchik10/.vscode/extensions/tboox.xmake-vscode-2.6.0/assets/config.lua",
+        "xmake check",
+        "xmake project -k compile_commands"
     }
 }
