@@ -62,7 +62,6 @@ namespace DEvchik10Empire
 
                 void SleepThread(UInt32 Microseconds) noexcept
                 {
-                    // Деление до сложения: (Microseconds + 999) переполняло UInt32 при больших значениях.
                     Sleep(Microseconds / 1000 + (Microseconds % 1000 != 0 ? 1 : 0));
                 }
 
@@ -70,7 +69,6 @@ namespace DEvchik10Empire
                 {
                     TerminateProcess(GetCurrentProcess(), 3);
 
-                    // Если процесс почему-то не завершился, аварийная остановка вместо пустого цикла.
                     KernelCompiler::Trap();
                 }
             }

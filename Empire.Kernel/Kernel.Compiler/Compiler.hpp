@@ -14,8 +14,6 @@ namespace DEvchik10Empire
         {
             namespace KernelCompiler
             {
-                // Место вызова. Встроенные функции вычисляются там, где используется аргумент по умолчанию,
-                // поэтому вызов без аргументов даёт место вызова вашей функции.
                 [[nodiscard]] constexpr const char* CurrentFileName(const char* File = __builtin_FILE()) noexcept
                 {
                     return File;

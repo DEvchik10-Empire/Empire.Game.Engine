@@ -63,7 +63,6 @@ namespace DEvchik10Empire
 
                 void SleepThread(UInt32 Microseconds) noexcept
                 {
-                    // Деление до сложения: (Microseconds + 999) переполняло UInt32 при больших значениях.
                     Sleep(Microseconds / 1000 + (Microseconds % 1000 != 0 ? 1 : 0));
                 }
 

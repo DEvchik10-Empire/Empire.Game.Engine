@@ -59,8 +59,6 @@ namespace DEvchik10Empire
                         {
                         }
 
-                        // Место вызова вычисляет Kernel.Compiler, поэтому Current() как аргумент по умолчанию
-                        // даёт место вызова вашей функции.
                         [[nodiscard]] static constexpr SourceLocation Current(
                             const Char* File = KernelCompiler::CurrentFileName(),
                             const Char* Function = KernelCompiler::CurrentFunctionName(),

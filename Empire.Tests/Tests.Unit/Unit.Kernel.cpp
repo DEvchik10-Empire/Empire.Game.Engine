@@ -1,5 +1,4 @@
 // Поведенческий тест Kernel: Types, Memory, Containers, Events, Services, Reflection, Logging, Assert, Sync.
-// Тесты используют std (потоки, вывод): ограничение «без std» относится только к Kernel.
 #include "Empire.Tests/Tests.Unit/Unit.Kernel.hpp"
 
 #include "Empire.Kernel/Kernel.Assert/Assert.hpp"

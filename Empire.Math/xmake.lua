@@ -1,4 +1,5 @@
 includes(
+    "Math.Scalar",
     "Math.Simd",
     "Math.Vector",
     "Math.Matrix",
