@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Application/Application.Lifecycle/Lifecycle.hpp>
+#include "Empire.Engine/Engine.Application/Application.Lifecycle/Lifecycle.hpp"
 
-namespace Empire::Engine::Application::Lifecycle
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineApplication
+            {
+                namespace ApplicationLifecycle
+                {
+                }
+            }
+        }
+    }
 }

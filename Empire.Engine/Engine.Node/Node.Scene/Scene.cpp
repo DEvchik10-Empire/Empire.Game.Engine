@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Node/Node.Scene/Scene.hpp>
+#include "Empire.Engine/Engine.Node/Node.Scene/Scene.hpp"
 
-namespace Empire::Engine::Node::Scene
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNode
+            {
+                namespace NodeScene
+                {
+                }
+            }
+        }
+    }
 }

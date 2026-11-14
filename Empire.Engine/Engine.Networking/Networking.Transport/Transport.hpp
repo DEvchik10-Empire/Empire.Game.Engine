@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Networking/Networking.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.hpp"
 
-namespace Empire::Engine::Networking::Transport
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingTransport
+                {
+                }
+            }
+        }
+    }
 }

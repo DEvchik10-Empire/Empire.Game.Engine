@@ -12,6 +12,15 @@
     #define ENGINE_INPUT_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Input
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineInput
+            {
+            }
+        }
+    }
 }

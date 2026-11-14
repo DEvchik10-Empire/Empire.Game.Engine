@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Node/Node.Prefab/Prefab.hpp>
+#include "Empire.Engine/Engine.Node/Node.Prefab/Prefab.hpp"
 
-namespace Empire::Engine::Node::Prefab
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNode
+            {
+                namespace NodePrefab
+                {
+                }
+            }
+        }
+    }
 }

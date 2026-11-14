@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Assets/Assets.Stream/Stream.hpp>
+#include "Empire.Engine/Engine.Assets/Assets.Stream/Stream.hpp"
 
-namespace Empire::Engine::Assets::Stream
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAssets
+            {
+                namespace AssetsStream
+                {
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,14 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.hpp"
 
-namespace Empire::Engine::Rendering
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+            }
+        }
+    }
 }

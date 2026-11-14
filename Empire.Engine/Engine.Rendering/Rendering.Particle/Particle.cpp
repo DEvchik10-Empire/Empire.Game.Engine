@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Particle/Particle.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Particle/Particle.hpp"
 
-namespace Empire::Engine::Rendering::Particle
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingParticle
+                {
+                }
+            }
+        }
+    }
 }

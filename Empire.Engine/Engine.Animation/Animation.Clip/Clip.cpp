@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Animation/Animation.Clip/Clip.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.Clip/Clip.hpp"
 
-namespace Empire::Engine::Animation::Clip
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+                namespace AnimationClip
+                {
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.AI/AI.Perception/Perception.hpp>
+#include "Empire.Engine/Engine.AI/AI.Perception/Perception.hpp"
 
-namespace Empire::Engine::AI::Perception
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AIPerception
+                {
+                }
+            }
+        }
+    }
 }

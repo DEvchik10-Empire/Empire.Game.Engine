@@ -12,6 +12,15 @@
     #define ENGINE_ANIMATION_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Animation
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+            }
+        }
+    }
 }

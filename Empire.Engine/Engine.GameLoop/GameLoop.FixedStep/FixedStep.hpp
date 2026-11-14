@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.GameLoop/GameLoop.hpp>
+#include "Empire.Engine/Engine.GameLoop/GameLoop.hpp"
 
-namespace Empire::Engine::GameLoop::FixedStep
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameLoop
+            {
+                namespace GameLoopFixedStep
+                {
+                }
+            }
+        }
+    }
 }

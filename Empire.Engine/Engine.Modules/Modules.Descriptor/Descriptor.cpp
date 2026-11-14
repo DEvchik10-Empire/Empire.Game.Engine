@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Modules/Modules.Descriptor/Descriptor.hpp>
+#include "Empire.Engine/Engine.Modules/Modules.Descriptor/Descriptor.hpp"
 
-namespace Empire::Engine::Modules::Descriptor
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineModules
+            {
+                namespace ModulesDescriptor
+                {
+                }
+            }
+        }
+    }
 }

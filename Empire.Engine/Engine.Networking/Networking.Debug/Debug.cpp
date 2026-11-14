@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Networking/Networking.Debug/Debug.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.Debug/Debug.hpp"
 
-namespace Empire::Engine::Networking::Debug
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingDebug
+                {
+                }
+            }
+        }
+    }
 }

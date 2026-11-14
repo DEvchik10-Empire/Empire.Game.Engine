@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Assets/Assets.Package/Package.hpp>
+#include "Empire.Engine/Engine.Assets/Assets.Package/Package.hpp"
 
-namespace Empire::Engine::Assets::Package
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAssets
+            {
+                namespace AssetsPackage
+                {
+                }
+            }
+        }
+    }
 }

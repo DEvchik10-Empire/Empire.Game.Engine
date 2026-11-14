@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Sound/Sound.Listener/Listener.hpp>
+#include "Empire.Engine/Engine.Sound/Sound.Listener/Listener.hpp"
 
-namespace Empire::Engine::Sound::Listener
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineSound
+            {
+                namespace SoundListener
+                {
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,14 @@
-#include <Empire.Math/Math.Matrix/Matrix.hpp>
+#include "Empire.Math/Math.Matrix/Matrix.hpp"
 
-namespace Empire::Math::Matrix
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathMatrix
+            {
+            }
+        }
+    }
 }

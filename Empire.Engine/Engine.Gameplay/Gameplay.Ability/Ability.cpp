@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Gameplay/Gameplay.Ability/Ability.hpp>
+#include "Empire.Engine/Engine.Gameplay/Gameplay.Ability/Ability.hpp"
 
-namespace Empire::Engine::Gameplay::Ability
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameplay
+            {
+                namespace GameplayAbility
+                {
+                }
+            }
+        }
+    }
 }

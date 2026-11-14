@@ -12,6 +12,15 @@
     #define ENGINE_JOBS_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Jobs
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineJobs
+            {
+            }
+        }
+    }
 }

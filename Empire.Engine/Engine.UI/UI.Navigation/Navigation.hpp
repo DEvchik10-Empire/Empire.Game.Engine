@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.UI/UI.hpp>
+#include "Empire.Engine/Engine.UI/UI.hpp"
 
-namespace Empire::Engine::UI::Navigation
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineUI
+            {
+                namespace UINavigation
+                {
+                }
+            }
+        }
+    }
 }

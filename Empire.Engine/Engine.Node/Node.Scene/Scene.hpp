@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Node/Node.hpp>
+#include "Empire.Engine/Engine.Node/Node.hpp"
 
-namespace Empire::Engine::Node::Scene
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNode
+            {
+                namespace NodeScene
+                {
+                }
+            }
+        }
+    }
 }

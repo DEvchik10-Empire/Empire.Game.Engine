@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Physics/Physics.Collision/Collision.hpp>
+#include "Empire.Engine/Engine.Physics/Physics.Collision/Collision.hpp"
 
-namespace Empire::Engine::Physics::Collision
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EnginePhysics
+            {
+                namespace PhysicsCollision
+                {
+                }
+            }
+        }
+    }
 }

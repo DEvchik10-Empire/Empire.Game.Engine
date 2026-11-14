@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Input/Input.hpp>
+#include "Empire.Engine/Engine.Input/Input.hpp"
 
-namespace Empire::Engine::Input::Context
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineInput
+            {
+                namespace InputContext
+                {
+                }
+            }
+        }
+    }
 }

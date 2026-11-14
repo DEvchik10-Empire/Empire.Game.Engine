@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.UI/UI.Text/Text.hpp>
+#include "Empire.Engine/Engine.UI/UI.Text/Text.hpp"
 
-namespace Empire::Engine::UI::Text
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineUI
+            {
+                namespace UIText
+                {
+                }
+            }
+        }
+    }
 }

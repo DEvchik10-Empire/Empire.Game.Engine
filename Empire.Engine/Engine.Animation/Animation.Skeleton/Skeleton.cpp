@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Animation/Animation.Skeleton/Skeleton.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.Skeleton/Skeleton.hpp"
 
-namespace Empire::Engine::Animation::Skeleton
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+                namespace AnimationSkeleton
+                {
+                }
+            }
+        }
+    }
 }

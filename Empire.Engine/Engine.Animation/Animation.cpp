@@ -1,5 +1,14 @@
-#include <Empire.Engine/Engine.Animation/Animation.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.hpp"
 
-namespace Empire::Engine::Animation
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+            }
+        }
+    }
 }

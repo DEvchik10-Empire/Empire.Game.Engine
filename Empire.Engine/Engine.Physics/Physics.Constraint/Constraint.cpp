@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Physics/Physics.Constraint/Constraint.hpp>
+#include "Empire.Engine/Engine.Physics/Physics.Constraint/Constraint.hpp"
 
-namespace Empire::Engine::Physics::Constraint
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EnginePhysics
+            {
+                namespace PhysicsConstraint
+                {
+                }
+            }
+        }
+    }
 }

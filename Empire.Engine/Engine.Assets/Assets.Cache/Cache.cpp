@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Assets/Assets.Cache/Cache.hpp>
+#include "Empire.Engine/Engine.Assets/Assets.Cache/Cache.hpp"
 
-namespace Empire::Engine::Assets::Cache
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAssets
+            {
+                namespace AssetsCache
+                {
+                }
+            }
+        }
+    }
 }

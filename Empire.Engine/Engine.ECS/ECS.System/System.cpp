@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.ECS/ECS.System/System.hpp>
+#include "Empire.Engine/Engine.ECS/ECS.System/System.hpp"
 
-namespace Empire::Engine::ECS::System
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineECS
+            {
+                namespace ECSSystem
+                {
+                }
+            }
+        }
+    }
 }

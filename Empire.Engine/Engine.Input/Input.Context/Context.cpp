@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Input/Input.Context/Context.hpp>
+#include "Empire.Engine/Engine.Input/Input.Context/Context.hpp"
 
-namespace Empire::Engine::Input::Context
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineInput
+            {
+                namespace InputContext
+                {
+                }
+            }
+        }
+    }
 }

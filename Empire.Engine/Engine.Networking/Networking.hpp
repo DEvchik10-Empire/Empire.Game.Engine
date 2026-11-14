@@ -12,6 +12,15 @@
     #define ENGINE_NETWORKING_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Networking
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+            }
+        }
+    }
 }

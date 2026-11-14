@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Animation/Animation.Pose/Pose.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.Pose/Pose.hpp"
 
-namespace Empire::Engine::Animation::Pose
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+                namespace AnimationPose
+                {
+                }
+            }
+        }
+    }
 }

@@ -12,6 +12,15 @@
     #define ENGINE_DIAGNOSTICS_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Diagnostics
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineDiagnostics
+            {
+            }
+        }
+    }
 }

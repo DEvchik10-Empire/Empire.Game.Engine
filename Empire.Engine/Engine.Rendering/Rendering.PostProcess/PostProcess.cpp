@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.PostProcess/PostProcess.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.PostProcess/PostProcess.hpp"
 
-namespace Empire::Engine::Rendering::PostProcess
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingPostProcess
+                {
+                }
+            }
+        }
+    }
 }

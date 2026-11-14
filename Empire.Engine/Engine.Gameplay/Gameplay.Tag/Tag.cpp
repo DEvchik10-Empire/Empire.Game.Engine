@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Gameplay/Gameplay.Tag/Tag.hpp>
+#include "Empire.Engine/Engine.Gameplay/Gameplay.Tag/Tag.hpp"
 
-namespace Empire::Engine::Gameplay::Tag
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameplay
+            {
+                namespace GameplayTag
+                {
+                }
+            }
+        }
+    }
 }

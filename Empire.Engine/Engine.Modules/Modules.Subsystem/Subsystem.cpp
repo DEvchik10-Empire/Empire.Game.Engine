@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Modules/Modules.Subsystem/Subsystem.hpp>
+#include "Empire.Engine/Engine.Modules/Modules.Subsystem/Subsystem.hpp"
 
-namespace Empire::Engine::Modules::Subsystem
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineModules
+            {
+                namespace ModulesSubsystem
+                {
+                }
+            }
+        }
+    }
 }

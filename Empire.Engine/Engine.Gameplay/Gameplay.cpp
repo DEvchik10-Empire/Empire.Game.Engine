@@ -1,5 +1,14 @@
-#include <Empire.Engine/Engine.Gameplay/Gameplay.hpp>
+#include "Empire.Engine/Engine.Gameplay/Gameplay.hpp"
 
-namespace Empire::Engine::Gameplay
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameplay
+            {
+            }
+        }
+    }
 }

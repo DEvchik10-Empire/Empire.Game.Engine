@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.ECS/ECS.hpp>
+#include "Empire.Engine/Engine.ECS/ECS.hpp"
 
-namespace Empire::Engine::ECS::Component
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineECS
+            {
+                namespace ECSComponent
+                {
+                }
+            }
+        }
+    }
 }

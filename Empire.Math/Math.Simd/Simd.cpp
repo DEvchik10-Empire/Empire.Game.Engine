@@ -1,5 +1,14 @@
-#include <Empire.Math/Math.Simd/Simd.hpp>
+#include "Empire.Math/Math.Simd/Simd.hpp"
 
-namespace Empire::Math::Simd
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathSimd
+            {
+            }
+        }
+    }
 }

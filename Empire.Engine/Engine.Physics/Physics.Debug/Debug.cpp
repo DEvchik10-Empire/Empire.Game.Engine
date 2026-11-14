@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Physics/Physics.Debug/Debug.hpp>
+#include "Empire.Engine/Engine.Physics/Physics.Debug/Debug.hpp"
 
-namespace Empire::Engine::Physics::Debug
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EnginePhysics
+            {
+                namespace PhysicsDebug
+                {
+                }
+            }
+        }
+    }
 }

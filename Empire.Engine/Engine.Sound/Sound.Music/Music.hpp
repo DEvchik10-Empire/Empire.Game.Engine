@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Sound/Sound.hpp>
+#include "Empire.Engine/Engine.Sound/Sound.hpp"
 
-namespace Empire::Engine::Sound::Music
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineSound
+            {
+                namespace SoundMusic
+                {
+                }
+            }
+        }
+    }
 }

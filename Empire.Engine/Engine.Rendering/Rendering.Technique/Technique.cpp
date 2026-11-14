@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Technique/Technique.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Technique/Technique.hpp"
 
-namespace Empire::Engine::Rendering::Technique
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingTechnique
+                {
+                }
+            }
+        }
+    }
 }

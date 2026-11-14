@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Animation/Animation.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.hpp"
 
-namespace Empire::Engine::Animation::Graph
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+                namespace AnimationGraph
+                {
+                }
+            }
+        }
+    }
 }

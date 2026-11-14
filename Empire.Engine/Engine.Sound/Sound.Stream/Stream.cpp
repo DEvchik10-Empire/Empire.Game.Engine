@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Sound/Sound.Stream/Stream.hpp>
+#include "Empire.Engine/Engine.Sound/Sound.Stream/Stream.hpp"
 
-namespace Empire::Engine::Sound::Stream
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineSound
+            {
+                namespace SoundStream
+                {
+                }
+            }
+        }
+    }
 }

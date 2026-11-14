@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Assets/Assets.Importer/Importer.hpp>
+#include "Empire.Engine/Engine.Assets/Assets.Importer/Importer.hpp"
 
-namespace Empire::Engine::Assets::Importer
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAssets
+            {
+                namespace AssetsImporter
+                {
+                }
+            }
+        }
+    }
 }

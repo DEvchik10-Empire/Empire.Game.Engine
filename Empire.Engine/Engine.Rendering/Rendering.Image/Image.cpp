@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Image/Image.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Image/Image.hpp"
 
-namespace Empire::Engine::Rendering::Image
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingImage
+                {
+                }
+            }
+        }
+    }
 }

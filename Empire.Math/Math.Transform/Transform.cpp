@@ -1,5 +1,14 @@
-#include <Empire.Math/Math.Transform/Transform.hpp>
+#include "Empire.Math/Math.Transform/Transform.hpp"
 
-namespace Empire::Math::Transform
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathTransform
+            {
+            }
+        }
+    }
 }

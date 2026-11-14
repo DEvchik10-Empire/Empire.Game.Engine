@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Networking/Networking.Replication/Replication.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.Replication/Replication.hpp"
 
-namespace Empire::Engine::Networking::Replication
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingReplication
+                {
+                }
+            }
+        }
+    }
 }

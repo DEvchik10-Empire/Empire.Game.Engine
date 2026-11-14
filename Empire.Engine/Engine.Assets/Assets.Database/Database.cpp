@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Assets/Assets.Database/Database.hpp>
+#include "Empire.Engine/Engine.Assets/Assets.Database/Database.hpp"
 
-namespace Empire::Engine::Assets::Database
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAssets
+            {
+                namespace AssetsDatabase
+                {
+                }
+            }
+        }
+    }
 }

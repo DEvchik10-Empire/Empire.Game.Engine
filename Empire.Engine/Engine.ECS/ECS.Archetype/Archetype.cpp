@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.ECS/ECS.Archetype/Archetype.hpp>
+#include "Empire.Engine/Engine.ECS/ECS.Archetype/Archetype.hpp"
 
-namespace Empire::Engine::ECS::Archetype
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineECS
+            {
+                namespace ECSArchetype
+                {
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.GameLoop/GameLoop.FixedStep/FixedStep.hpp>
+#include "Empire.Engine/Engine.GameLoop/GameLoop.FixedStep/FixedStep.hpp"
 
-namespace Empire::Engine::GameLoop::FixedStep
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameLoop
+            {
+                namespace GameLoopFixedStep
+                {
+                }
+            }
+        }
+    }
 }

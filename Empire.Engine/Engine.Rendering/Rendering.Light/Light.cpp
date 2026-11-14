@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Light/Light.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Light/Light.hpp"
 
-namespace Empire::Engine::Rendering::Light
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingLight
+                {
+                }
+            }
+        }
+    }
 }

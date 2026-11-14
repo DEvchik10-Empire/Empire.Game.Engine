@@ -12,6 +12,15 @@
     #define ENGINE_GAMELOOP_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::GameLoop
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameLoop
+            {
+            }
+        }
+    }
 }

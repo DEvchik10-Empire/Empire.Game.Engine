@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.UI/UI.Widget/Widget.hpp>
+#include "Empire.Engine/Engine.UI/UI.Widget/Widget.hpp"
 
-namespace Empire::Engine::UI::Widget
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineUI
+            {
+                namespace UIWidget
+                {
+                }
+            }
+        }
+    }
 }

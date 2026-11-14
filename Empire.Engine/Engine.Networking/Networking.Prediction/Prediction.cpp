@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Networking/Networking.Prediction/Prediction.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.Prediction/Prediction.hpp"
 
-namespace Empire::Engine::Networking::Prediction
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingPrediction
+                {
+                }
+            }
+        }
+    }
 }

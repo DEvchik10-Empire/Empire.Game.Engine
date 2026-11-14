@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Debug/Debug.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Debug/Debug.hpp"
 
-namespace Empire::Engine::Rendering::Debug
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingDebug
+                {
+                }
+            }
+        }
+    }
 }

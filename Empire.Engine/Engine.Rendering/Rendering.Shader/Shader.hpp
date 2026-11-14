@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Rendering/Rendering.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.hpp"
 
-namespace Empire::Engine::Rendering::Shader
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingShader
+                {
+                }
+            }
+        }
+    }
 }

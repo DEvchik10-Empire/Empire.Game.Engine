@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Sound/Sound.Bank/Bank.hpp>
+#include "Empire.Engine/Engine.Sound/Sound.Bank/Bank.hpp"
 
-namespace Empire::Engine::Sound::Bank
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineSound
+            {
+                namespace SoundBank
+                {
+                }
+            }
+        }
+    }
 }

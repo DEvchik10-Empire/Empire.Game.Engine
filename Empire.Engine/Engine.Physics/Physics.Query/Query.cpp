@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Physics/Physics.Query/Query.hpp>
+#include "Empire.Engine/Engine.Physics/Physics.Query/Query.hpp"
 
-namespace Empire::Engine::Physics::Query
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EnginePhysics
+            {
+                namespace PhysicsQuery
+                {
+                }
+            }
+        }
+    }
 }

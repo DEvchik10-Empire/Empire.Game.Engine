@@ -12,6 +12,15 @@
     #define ENGINE_SOUND_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Sound
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineSound
+            {
+            }
+        }
+    }
 }

@@ -12,6 +12,15 @@
     #define ENGINE_ECS_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::ECS
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineECS
+            {
+            }
+        }
+    }
 }

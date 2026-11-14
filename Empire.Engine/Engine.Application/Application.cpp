@@ -1,5 +1,14 @@
-#include <Empire.Engine/Engine.Application/Application.hpp>
+#include "Empire.Engine/Engine.Application/Application.hpp"
 
-namespace Empire::Engine::Application
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineApplication
+            {
+            }
+        }
+    }
 }

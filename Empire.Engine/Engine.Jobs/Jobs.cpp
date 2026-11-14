@@ -1,5 +1,14 @@
-#include <Empire.Engine/Engine.Jobs/Jobs.hpp>
+#include "Empire.Engine/Engine.Jobs/Jobs.hpp"
 
-namespace Empire::Engine::Jobs
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineJobs
+            {
+            }
+        }
+    }
 }

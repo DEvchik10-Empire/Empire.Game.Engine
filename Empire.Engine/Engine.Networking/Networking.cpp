@@ -1,5 +1,14 @@
-#include <Empire.Engine/Engine.Networking/Networking.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.hpp"
 
-namespace Empire::Engine::Networking
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+            }
+        }
+    }
 }

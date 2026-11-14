@@ -12,6 +12,15 @@
     #define MATH_RANDOM_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Math::Random
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathRandom
+            {
+            }
+        }
+    }
 }

@@ -12,6 +12,15 @@
     #define MATH_SIMD_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Math::Simd
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathSimd
+            {
+            }
+        }
+    }
 }

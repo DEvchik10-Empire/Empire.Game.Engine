@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Networking/Networking.Session/Session.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.Session/Session.hpp"
 
-namespace Empire::Engine::Networking::Session
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingSession
+                {
+                }
+            }
+        }
+    }
 }

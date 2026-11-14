@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.UI/UI.Canvas/Canvas.hpp>
+#include "Empire.Engine/Engine.UI/UI.Canvas/Canvas.hpp"
 
-namespace Empire::Engine::UI::Canvas
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineUI
+            {
+                namespace UICanvas
+                {
+                }
+            }
+        }
+    }
 }

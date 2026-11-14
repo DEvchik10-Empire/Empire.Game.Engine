@@ -1,5 +1,14 @@
-#include <Empire.Math/Math.Geometry/Geometry.hpp>
+#include "Empire.Math/Math.Geometry/Geometry.hpp"
 
-namespace Empire::Math::Geometry
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathGeometry
+            {
+            }
+        }
+    }
 }

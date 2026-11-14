@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.UI/UI.Style/Style.hpp>
+#include "Empire.Engine/Engine.UI/UI.Style/Style.hpp"
 
-namespace Empire::Engine::UI::Style
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineUI
+            {
+                namespace UIStyle
+                {
+                }
+            }
+        }
+    }
 }

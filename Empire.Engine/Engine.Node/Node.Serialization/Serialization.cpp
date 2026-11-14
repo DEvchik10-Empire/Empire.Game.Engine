@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Node/Node.Serialization/Serialization.hpp>
+#include "Empire.Engine/Engine.Node/Node.Serialization/Serialization.hpp"
 
-namespace Empire::Engine::Node::Serialization
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNode
+            {
+                namespace NodeSerialization
+                {
+                }
+            }
+        }
+    }
 }

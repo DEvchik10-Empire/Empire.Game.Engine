@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.AI/AI.Utility/Utility.hpp>
+#include "Empire.Engine/Engine.AI/AI.Utility/Utility.hpp"
 
-namespace Empire::Engine::AI::Utility
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AIUtility
+                {
+                }
+            }
+        }
+    }
 }

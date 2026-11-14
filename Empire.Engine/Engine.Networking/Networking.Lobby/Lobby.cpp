@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Networking/Networking.Lobby/Lobby.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.Lobby/Lobby.hpp"
 
-namespace Empire::Engine::Networking::Lobby
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingLobby
+                {
+                }
+            }
+        }
+    }
 }

@@ -12,6 +12,15 @@
     #define ENGINE_UI_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::UI
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineUI
+            {
+            }
+        }
+    }
 }

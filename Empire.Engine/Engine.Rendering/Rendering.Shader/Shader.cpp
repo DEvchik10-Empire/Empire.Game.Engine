@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Shader/Shader.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Shader/Shader.hpp"
 
-namespace Empire::Engine::Rendering::Shader
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingShader
+                {
+                }
+            }
+        }
+    }
 }

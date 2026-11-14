@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Networking/Networking.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.hpp"
 
-namespace Empire::Engine::Networking::Session
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingSession
+                {
+                }
+            }
+        }
+    }
 }

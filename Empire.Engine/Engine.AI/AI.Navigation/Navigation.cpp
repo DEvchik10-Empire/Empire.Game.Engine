@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.AI/AI.Navigation/Navigation.hpp>
+#include "Empire.Engine/Engine.AI/AI.Navigation/Navigation.hpp"
 
-namespace Empire::Engine::AI::Navigation
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AINavigation
+                {
+                }
+            }
+        }
+    }
 }

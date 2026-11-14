@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Input/Input.Binding/Binding.hpp>
+#include "Empire.Engine/Engine.Input/Input.Binding/Binding.hpp"
 
-namespace Empire::Engine::Input::Binding
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineInput
+            {
+                namespace InputBinding
+                {
+                }
+            }
+        }
+    }
 }

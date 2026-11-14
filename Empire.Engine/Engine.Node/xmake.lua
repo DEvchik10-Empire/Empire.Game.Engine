@@ -7,5 +7,6 @@ includes(
     "Node.Hierarchy",
     "Node.Scene",
     "Node.Prefab",
-    "Node.Serialization"
+    "Node.Serialization",
+    "Node.Types"
 )

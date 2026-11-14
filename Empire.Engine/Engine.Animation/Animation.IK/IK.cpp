@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Animation/Animation.IK/IK.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.IK/IK.hpp"
 
-namespace Empire::Engine::Animation::IK
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+                namespace AnimationIK
+                {
+                }
+            }
+        }
+    }
 }

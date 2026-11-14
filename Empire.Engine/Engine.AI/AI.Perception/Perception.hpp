@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.AI/AI.hpp>
+#include "Empire.Engine/Engine.AI/AI.hpp"
 
-namespace Empire::Engine::AI::Perception
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AIPerception
+                {
+                }
+            }
+        }
+    }
 }

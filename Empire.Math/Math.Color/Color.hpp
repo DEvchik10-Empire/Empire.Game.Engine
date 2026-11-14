@@ -12,6 +12,15 @@
     #define MATH_COLOR_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Math::Color
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathColor
+            {
+            }
+        }
+    }
 }

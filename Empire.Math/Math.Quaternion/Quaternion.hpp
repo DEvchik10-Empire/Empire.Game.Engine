@@ -12,6 +12,15 @@
     #define MATH_QUATERNION_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Math::Quaternion
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathQuaternion
+            {
+            }
+        }
+    }
 }

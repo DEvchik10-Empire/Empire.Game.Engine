@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Frame/Frame.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Frame/Frame.hpp"
 
-namespace Empire::Engine::Rendering::Frame
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingFrame
+                {
+                }
+            }
+        }
+    }
 }

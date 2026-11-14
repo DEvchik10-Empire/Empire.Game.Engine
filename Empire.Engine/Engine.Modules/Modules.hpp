@@ -12,6 +12,15 @@
     #define ENGINE_MODULES_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Modules
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineModules
+            {
+            }
+        }
+    }
 }

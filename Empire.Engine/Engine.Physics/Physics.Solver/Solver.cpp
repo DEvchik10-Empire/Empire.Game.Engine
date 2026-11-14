@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Physics/Physics.Solver/Solver.hpp>
+#include "Empire.Engine/Engine.Physics/Physics.Solver/Solver.hpp"
 
-namespace Empire::Engine::Physics::Solver
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EnginePhysics
+            {
+                namespace PhysicsSolver
+                {
+                }
+            }
+        }
+    }
 }

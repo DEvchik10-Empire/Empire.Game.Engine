@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Networking/Networking.Transport/Transport.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.Transport/Transport.hpp"
 
-namespace Empire::Engine::Networking::Transport
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingTransport
+                {
+                }
+            }
+        }
+    }
 }

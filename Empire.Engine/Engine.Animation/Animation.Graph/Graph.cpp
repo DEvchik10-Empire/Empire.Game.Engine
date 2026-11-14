@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Animation/Animation.Graph/Graph.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.Graph/Graph.hpp"
 
-namespace Empire::Engine::Animation::Graph
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+                namespace AnimationGraph
+                {
+                }
+            }
+        }
+    }
 }

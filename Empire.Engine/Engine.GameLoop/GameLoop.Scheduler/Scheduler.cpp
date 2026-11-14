@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.GameLoop/GameLoop.Scheduler/Scheduler.hpp>
+#include "Empire.Engine/Engine.GameLoop/GameLoop.Scheduler/Scheduler.hpp"
 
-namespace Empire::Engine::GameLoop::Scheduler
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameLoop
+            {
+                namespace GameLoopScheduler
+                {
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Application/Application.CommandLine/CommandLine.hpp>
+#include "Empire.Engine/Engine.Application/Application.CommandLine/CommandLine.hpp"
 
-namespace Empire::Engine::Application::CommandLine
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineApplication
+            {
+                namespace ApplicationCommandLine
+                {
+                }
+            }
+        }
+    }
 }

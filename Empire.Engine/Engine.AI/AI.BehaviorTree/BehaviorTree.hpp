@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.AI/AI.hpp>
+#include "Empire.Engine/Engine.AI/AI.hpp"
 
-namespace Empire::Engine::AI::BehaviorTree
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AIBehaviorTree
+                {
+                }
+            }
+        }
+    }
 }

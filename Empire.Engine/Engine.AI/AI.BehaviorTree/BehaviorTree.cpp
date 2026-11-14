@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.AI/AI.BehaviorTree/BehaviorTree.hpp>
+#include "Empire.Engine/Engine.AI/AI.BehaviorTree/BehaviorTree.hpp"
 
-namespace Empire::Engine::AI::BehaviorTree
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AIBehaviorTree
+                {
+                }
+            }
+        }
+    }
 }

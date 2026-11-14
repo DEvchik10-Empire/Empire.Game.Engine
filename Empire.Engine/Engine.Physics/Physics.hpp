@@ -12,6 +12,15 @@
     #define ENGINE_PHYSICS_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Physics
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EnginePhysics
+            {
+            }
+        }
+    }
 }

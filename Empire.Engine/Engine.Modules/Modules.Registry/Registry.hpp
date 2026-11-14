@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Modules/Modules.hpp>
+#include "Empire.Engine/Engine.Modules/Modules.hpp"
 
-namespace Empire::Engine::Modules::Registry
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineModules
+            {
+                namespace ModulesRegistry
+                {
+                }
+            }
+        }
+    }
 }

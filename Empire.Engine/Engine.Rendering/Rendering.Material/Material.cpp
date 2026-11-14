@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Material/Material.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Material/Material.hpp"
 
-namespace Empire::Engine::Rendering::Material
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingMaterial
+                {
+                }
+            }
+        }
+    }
 }

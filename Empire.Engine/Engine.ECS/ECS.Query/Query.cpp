@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.ECS/ECS.Query/Query.hpp>
+#include "Empire.Engine/Engine.ECS/ECS.Query/Query.hpp"
 
-namespace Empire::Engine::ECS::Query
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineECS
+            {
+                namespace ECSQuery
+                {
+                }
+            }
+        }
+    }
 }

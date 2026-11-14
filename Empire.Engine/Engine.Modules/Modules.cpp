@@ -1,5 +1,14 @@
-#include <Empire.Engine/Engine.Modules/Modules.hpp>
+#include "Empire.Engine/Engine.Modules/Modules.hpp"
 
-namespace Empire::Engine::Modules
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineModules
+            {
+            }
+        }
+    }
 }

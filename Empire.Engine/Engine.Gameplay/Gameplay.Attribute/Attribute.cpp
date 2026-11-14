@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Gameplay/Gameplay.Attribute/Attribute.hpp>
+#include "Empire.Engine/Engine.Gameplay/Gameplay.Attribute/Attribute.hpp"
 
-namespace Empire::Engine::Gameplay::Attribute
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameplay
+            {
+                namespace GameplayAttribute
+                {
+                }
+            }
+        }
+    }
 }

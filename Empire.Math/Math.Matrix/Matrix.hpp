@@ -12,6 +12,15 @@
     #define MATH_MATRIX_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Math::Matrix
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathMatrix
+            {
+            }
+        }
+    }
 }

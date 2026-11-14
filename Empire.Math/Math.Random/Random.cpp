@@ -1,5 +1,14 @@
-#include <Empire.Math/Math.Random/Random.hpp>
+#include "Empire.Math/Math.Random/Random.hpp"
 
-namespace Empire::Math::Random
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathRandom
+            {
+            }
+        }
+    }
 }

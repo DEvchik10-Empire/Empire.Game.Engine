@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Sound/Sound.Source/Source.hpp>
+#include "Empire.Engine/Engine.Sound/Sound.Source/Source.hpp"
 
-namespace Empire::Engine::Sound::Source
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineSound
+            {
+                namespace SoundSource
+                {
+                }
+            }
+        }
+    }
 }

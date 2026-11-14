@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Animation/Animation.Curve/Curve.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.Curve/Curve.hpp"
 
-namespace Empire::Engine::Animation::Curve
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+                namespace AnimationCurve
+                {
+                }
+            }
+        }
+    }
 }

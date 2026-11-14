@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.AI/AI.Agent/Agent.hpp>
+#include "Empire.Engine/Engine.AI/AI.Agent/Agent.hpp"
 
-namespace Empire::Engine::AI::Agent
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AIAgent
+                {
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Scripting/Scripting.Binding/Binding.hpp>
+#include "Empire.Engine/Engine.Scripting/Scripting.Binding/Binding.hpp"
 
-namespace Empire::Engine::Scripting::Binding
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineScripting
+            {
+                namespace ScriptingBinding
+                {
+                }
+            }
+        }
+    }
 }

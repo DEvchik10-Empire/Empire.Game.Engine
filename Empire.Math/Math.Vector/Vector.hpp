@@ -12,6 +12,15 @@
     #define MATH_VECTOR_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Math::Vector
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathVector
+            {
+            }
+        }
+    }
 }

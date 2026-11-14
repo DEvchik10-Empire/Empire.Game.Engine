@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Animation/Animation.Retarget/Retarget.hpp>
+#include "Empire.Engine/Engine.Animation/Animation.Retarget/Retarget.hpp"
 
-namespace Empire::Engine::Animation::Retarget
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAnimation
+            {
+                namespace AnimationRetarget
+                {
+                }
+            }
+        }
+    }
 }

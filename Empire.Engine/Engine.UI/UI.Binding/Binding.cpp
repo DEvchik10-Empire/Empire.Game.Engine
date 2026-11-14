@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.UI/UI.Binding/Binding.hpp>
+#include "Empire.Engine/Engine.UI/UI.Binding/Binding.hpp"
 
-namespace Empire::Engine::UI::Binding
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineUI
+            {
+                namespace UIBinding
+                {
+                }
+            }
+        }
+    }
 }

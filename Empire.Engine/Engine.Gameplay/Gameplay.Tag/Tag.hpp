@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Gameplay/Gameplay.hpp>
+#include "Empire.Engine/Engine.Gameplay/Gameplay.hpp"
 
-namespace Empire::Engine::Gameplay::Tag
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineGameplay
+            {
+                namespace GameplayTag
+                {
+                }
+            }
+        }
+    }
 }

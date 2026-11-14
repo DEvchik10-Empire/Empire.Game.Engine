@@ -1,6 +1,18 @@
 #pragma once
-#include <Empire.Engine/Engine.Physics/Physics.hpp>
+#include "Empire.Engine/Engine.Physics/Physics.hpp"
 
-namespace Empire::Engine::Physics::Shape
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EnginePhysics
+            {
+                namespace PhysicsShape
+                {
+                }
+            }
+        }
+    }
 }

@@ -12,6 +12,15 @@
     #define ENGINE_SCRIPTING_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Scripting
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineScripting
+            {
+            }
+        }
+    }
 }

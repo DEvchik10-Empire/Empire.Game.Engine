@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Input/Input.Action/Action.hpp>
+#include "Empire.Engine/Engine.Input/Input.Action/Action.hpp"
 
-namespace Empire::Engine::Input::Action
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineInput
+            {
+                namespace InputAction
+                {
+                }
+            }
+        }
+    }
 }

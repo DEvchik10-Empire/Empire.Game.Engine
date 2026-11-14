@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Environment/Environment.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Environment/Environment.hpp"
 
-namespace Empire::Engine::Rendering::Environment
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingEnvironment
+                {
+                }
+            }
+        }
+    }
 }

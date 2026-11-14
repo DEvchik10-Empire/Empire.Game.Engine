@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Scripting/Scripting.Wasm/Wasm.hpp>
+#include "Empire.Engine/Engine.Scripting/Scripting.Wasm/Wasm.hpp"
 
-namespace Empire::Engine::Scripting::Wasm
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineScripting
+            {
+                namespace ScriptingWasm
+                {
+                }
+            }
+        }
+    }
 }

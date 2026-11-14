@@ -12,6 +12,15 @@
     #define MATH_TRANSFORM_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Math::Transform
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathTransform
+            {
+            }
+        }
+    }
 }

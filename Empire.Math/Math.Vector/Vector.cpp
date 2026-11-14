@@ -1,5 +1,14 @@
-#include <Empire.Math/Math.Vector/Vector.hpp>
+#include "Empire.Math/Math.Vector/Vector.hpp"
 
-namespace Empire::Math::Vector
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathVector
+            {
+            }
+        }
+    }
 }

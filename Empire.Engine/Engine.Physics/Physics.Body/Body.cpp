@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Physics/Physics.Body/Body.hpp>
+#include "Empire.Engine/Engine.Physics/Physics.Body/Body.hpp"
 
-namespace Empire::Engine::Physics::Body
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EnginePhysics
+            {
+                namespace PhysicsBody
+                {
+                }
+            }
+        }
+    }
 }

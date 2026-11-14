@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Sound/Sound.Codec/Codec.hpp>
+#include "Empire.Engine/Engine.Sound/Sound.Codec/Codec.hpp"
 
-namespace Empire::Engine::Sound::Codec
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineSound
+            {
+                namespace SoundCodec
+                {
+                }
+            }
+        }
+    }
 }

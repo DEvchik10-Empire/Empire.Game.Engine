@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Networking/Networking.Bitstream/Bitstream.hpp>
+#include "Empire.Engine/Engine.Networking/Networking.Bitstream/Bitstream.hpp"
 
-namespace Empire::Engine::Networking::Bitstream
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineNetworking
+            {
+                namespace NetworkingBitstream
+                {
+                }
+            }
+        }
+    }
 }

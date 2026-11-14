@@ -1,5 +1,14 @@
-#include <Empire.Math/Math.Quaternion/Quaternion.hpp>
+#include "Empire.Math/Math.Quaternion/Quaternion.hpp"
 
-namespace Empire::Math::Quaternion
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathQuaternion
+            {
+            }
+        }
+    }
 }

@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.UI/UI.Draw/Draw.hpp>
+#include "Empire.Engine/Engine.UI/UI.Draw/Draw.hpp"
 
-namespace Empire::Engine::UI::Draw
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineUI
+            {
+                namespace UIDraw
+                {
+                }
+            }
+        }
+    }
 }

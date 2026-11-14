@@ -12,6 +12,15 @@
     #define ENGINE_RENDERING_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Engine::Rendering
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+            }
+        }
+    }
 }

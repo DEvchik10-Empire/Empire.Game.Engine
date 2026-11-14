@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Modules/Modules.Dependency/Dependency.hpp>
+#include "Empire.Engine/Engine.Modules/Modules.Dependency/Dependency.hpp"
 
-namespace Empire::Engine::Modules::Dependency
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineModules
+            {
+                namespace ModulesDependency
+                {
+                }
+            }
+        }
+    }
 }

@@ -12,6 +12,15 @@
     #define MATH_GEOMETRY_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Math::Geometry
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireMath
+        {
+            namespace MathGeometry
+            {
+            }
+        }
+    }
 }

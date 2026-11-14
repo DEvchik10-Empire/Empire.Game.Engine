@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.Rendering/Rendering.Shadow/Shadow.hpp>
+#include "Empire.Engine/Engine.Rendering/Rendering.Shadow/Shadow.hpp"
 
-namespace Empire::Engine::Rendering::Shadow
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineRendering
+            {
+                namespace RenderingShadow
+                {
+                }
+            }
+        }
+    }
 }

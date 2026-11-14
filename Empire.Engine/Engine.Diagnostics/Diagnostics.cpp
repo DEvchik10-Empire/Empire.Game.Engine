@@ -1,5 +1,14 @@
-#include <Empire.Engine/Engine.Diagnostics/Diagnostics.hpp>
+#include "Empire.Engine/Engine.Diagnostics/Diagnostics.hpp"
 
-namespace Empire::Engine::Diagnostics
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineDiagnostics
+            {
+            }
+        }
+    }
 }

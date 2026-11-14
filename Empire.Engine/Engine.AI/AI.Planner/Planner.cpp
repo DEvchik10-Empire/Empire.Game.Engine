@@ -1,5 +1,17 @@
-#include <Empire.Engine/Engine.AI/AI.Planner/Planner.hpp>
+#include "Empire.Engine/Engine.AI/AI.Planner/Planner.hpp"
 
-namespace Empire::Engine::AI::Planner
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AIPlanner
+                {
+                }
+            }
+        }
+    }
 }
