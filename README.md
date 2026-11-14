@@ -4,11 +4,6 @@
 Math стоит в стороне от этой цепочки: зависит только от Kernel (Types, Assert), от Platform и Graphics не зависит;
 Engine использует Math.
 
-```
-Kernel ─┬─ Math ───────────────┐
-        └─ Platform ─ Graphics ─┴─ Engine ─ Runtime
-```
-
 Namespace и имена файлов повторяют пути папок, подробнее в `ARCHITECTURE.md`.
 
 Что где лежит:
