@@ -1,12 +1,14 @@
 #pragma once
 
+#include "Empire.Kernel/Kernel.Compiler/Compiler.hpp"
+
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Types
+            namespace KernelTypes
             {
                 using Int8 = signed char;
                 using Int16 = short;
@@ -57,12 +59,12 @@ namespace DEvchik10Empire
                         {
                         }
 
-                        // Встроенные функции компилятора вычисляются в месте вызова, поэтому Current() как аргумент по умолчанию
+                        // Место вызова вычисляет Kernel.Compiler, поэтому Current() как аргумент по умолчанию
                         // даёт место вызова вашей функции.
                         [[nodiscard]] static constexpr SourceLocation Current(
-                            const Char* File = __builtin_FILE(),
-                            const Char* Function = __builtin_FUNCTION(),
-                            UInt32 Line = static_cast<UInt32>(__builtin_LINE())
+                            const Char* File = KernelCompiler::CurrentFileName(),
+                            const Char* Function = KernelCompiler::CurrentFunctionName(),
+                            UInt32 Line = KernelCompiler::CurrentLineNumber()
                         ) noexcept
                         {
                             return SourceLocation(File, Function, Line);

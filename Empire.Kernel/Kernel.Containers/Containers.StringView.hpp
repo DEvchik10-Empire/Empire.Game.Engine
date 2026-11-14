@@ -6,29 +6,29 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Containers
+            namespace KernelContainers
             {
                 class StringView
                 {
                     private:
-                        const Types::Char* Text = nullptr;
-                        Types::Size Count = 0;
+                        const KernelTypes::Char* Text = nullptr;
+                        KernelTypes::Size Count = 0;
 
                     public:
                         StringView() = default;
-                        StringView(const Types::Char* Source);
-                        StringView(const Types::Char* Source, Types::Size SourceCount) noexcept;
+                        StringView(const KernelTypes::Char* Source);
+                        StringView(const KernelTypes::Char* Source, KernelTypes::Size SourceCount) noexcept;
 
-                        Types::Size GetCount() const noexcept;
-                        Types::Bool IsEmpty() const noexcept;
-                        const Types::Char* GetText() const noexcept;
-                        const Types::Char& operator[](Types::Size Index) const;
+                        KernelTypes::Size GetCount() const noexcept;
+                        KernelTypes::Bool IsEmpty() const noexcept;
+                        const KernelTypes::Char* GetText() const noexcept;
+                        const KernelTypes::Char& operator[](KernelTypes::Size Index) const;
                 };
 
-                Types::Bool operator==(StringView Left, StringView Right) noexcept;
-                Types::Bool operator!=(StringView Left, StringView Right) noexcept;
+                KernelTypes::Bool operator==(StringView Left, StringView Right) noexcept;
+                KernelTypes::Bool operator!=(StringView Left, StringView Right) noexcept;
             }
         }
     }

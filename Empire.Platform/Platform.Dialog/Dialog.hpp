@@ -12,6 +12,15 @@
     #define PLATFORM_DIALOG_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Platform::Dialog
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformDialog
+            {
+            }
+        }
+    }
 }

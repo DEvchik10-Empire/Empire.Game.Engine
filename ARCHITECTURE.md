@@ -13,7 +13,23 @@
 
 Использовать вложенные блоки `namespace`, а не сокращённую запись `namespace A::B`.
 
-Пример подтверждённой структуры:
+### Правило: namespace повторяет путь папок
+
+Каждая папка на пути к файлу даёт один namespace. Точки из имени папки убираются, слова склеиваются в одно слово. Самый первый namespace это название организации на GitHub.
+
+| Папка | Namespace |
+|---|---|
+| (организация на GitHub) | `DEvchik10Empire` |
+| `Empire.Game.Engine` | `EmpireGameEngine` |
+| `Empire.Kernel` | `EmpireKernel` |
+| `Empire.Platform` | `EmpirePlatform` |
+| `Kernel.Types` | `KernelTypes` |
+| `Platform.App` | `PlatformApp` |
+| `App.XCB` | `AppXCB` |
+
+Файл называется по последнему сегменту папки и имени класса или модуля: `Empire.Platform/Platform.App/App.XCB/XCB.App.hpp`. Для папки модуля `Kernel.Types` файлы называются `Types.hpp`, `Types.Utility.hpp`.
+
+Пример:
 
 ```cpp
 namespace DEvchik10Empire
@@ -22,11 +38,11 @@ namespace DEvchik10Empire
     {
         namespace EmpirePlatform
         {
-            namespace PlatformApp
+            namespace PlatformEvents
             {
-                namespace XCB
+                namespace EventsXCB
                 {
-                    class Connection;
+                    class EventQueue;
                 }
             }
         }
@@ -34,16 +50,13 @@ namespace DEvchik10Empire
 }
 ```
 
-Полный namespace для рассмотренных классов платформы:
+Полный namespace: `DEvchik10Empire::EmpireGameEngine::EmpirePlatform::PlatformEvents::EventsXCB`
 
-`DEvchik10Empire::EmpireGameEngine::EmpirePlatform::PlatformApp::XCB`
+Из `Platform.Events/Events.XCB` на данный момент реализован только класс `EventQueue` (пустой). Класс `Connection` в проекте пока не создан.
 
-Классы в этом пространстве имён:
+Модули `Kernel.Time`, `Kernel.Threading`, `Kernel.FileSystem`, `Kernel.Process`, `Kernel.Library`, `Kernel.Environment` и `Kernel.Network` перенесены из Platform в Kernel (им не нужны окна, они зависят только от Kernel). Namespace у них `EmpireKernel::KernelTime` и т.д. Макросы экспорта и C-стиль в Kernel не используются, встроенные функции и макросы компилятора (`__builtin_FILE/FUNCTION/LINE`, `__atomic_*`, `__ATOMIC_*`) собраны в небольшом модуле `Kernel.Compiler` (`EmpireKernel::KernelCompiler`), остальные модули Kernel пользуются только его обёртками.
 
-- `Connection`
-- `EventQueue`
-
-Иерархия пространств имён следует структуре модулей проекта. Для других подсистем необходимо использовать их фактическую структуру, а не автоматически копировать namespace платформы.
+Заглушки (`*.hpp` / `*.cpp` без классов) уже следуют этому правилу в слоях Kernel и Platform. Остальные слои (Math, Graphics, Engine, Runtime, Tests) пока используют старый шаблон `namespace Empire::A::B` и будут переведены на это правило отдельно.
 
 ## 3. Заголовочные и исходные файлы
 

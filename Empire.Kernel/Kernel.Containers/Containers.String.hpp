@@ -7,23 +7,23 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Containers
+            namespace KernelContainers
             {
                 class String
                 {
                     private:
-                        Types::Char* Text = nullptr;
-                        Types::Size Count = 0;
-                        Types::Size Capacity = 0;
+                        KernelTypes::Char* Text = nullptr;
+                        KernelTypes::Size Count = 0;
+                        KernelTypes::Size Capacity = 0;
 
-                        void Reserve(Types::Size NewCapacity);
-                        void AppendRange(const Types::Char* Source, Types::Size SourceCount);
+                        void Reserve(KernelTypes::Size NewCapacity);
+                        void AppendRange(const KernelTypes::Char* Source, KernelTypes::Size SourceCount);
 
                     public:
                         String() = default;
-                        String(const Types::Char* Source);
+                        String(const KernelTypes::Char* Source);
                         String(StringView Source);
                         String(const String& Other);
                         String(String&& Other) noexcept;
@@ -32,50 +32,50 @@ namespace DEvchik10Empire
                         String& operator=(const String& Other);
                         String& operator=(String&& Other) noexcept;
 
-                        Types::Size GetCount() const noexcept;
-                        Types::Size GetCapacity() const noexcept;
-                        Types::Bool IsEmpty() const noexcept;
-                        const Types::Char* GetText() const noexcept;
-                        Types::Char* GetData() noexcept;
+                        KernelTypes::Size GetCount() const noexcept;
+                        KernelTypes::Size GetCapacity() const noexcept;
+                        KernelTypes::Bool IsEmpty() const noexcept;
+                        const KernelTypes::Char* GetText() const noexcept;
+                        KernelTypes::Char* GetData() noexcept;
                         StringView GetView() const noexcept;
 
-                        Types::Char& operator[](Types::Size Index);
-                        const Types::Char& operator[](Types::Size Index) const;
+                        KernelTypes::Char& operator[](KernelTypes::Size Index);
+                        const KernelTypes::Char& operator[](KernelTypes::Size Index) const;
 
-                        void Append(const Types::Char* Source);
+                        void Append(const KernelTypes::Char* Source);
                         void Append(StringView Source);
                         void Append(const String& Source);
-                        void Append(Types::Char Character);
+                        void Append(KernelTypes::Char Character);
                         void Clear() noexcept;
 
-                        String& operator+=(const Types::Char* Source);
+                        String& operator+=(const KernelTypes::Char* Source);
                         String& operator+=(const String& Source);
-                        String& operator+=(Types::Char Character);
+                        String& operator+=(KernelTypes::Char Character);
                 };
 
                 String operator+(const String& Left, const String& Right);
-                String operator+(const String& Left, const Types::Char* Right);
-                String operator+(const Types::Char* Left, const String& Right);
+                String operator+(const String& Left, const KernelTypes::Char* Right);
+                String operator+(const KernelTypes::Char* Left, const String& Right);
 
-                Types::Bool operator==(const String& Left, const String& Right) noexcept;
-                Types::Bool operator!=(const String& Left, const String& Right) noexcept;
+                KernelTypes::Bool operator==(const String& Left, const String& Right) noexcept;
+                KernelTypes::Bool operator!=(const String& Left, const String& Right) noexcept;
 
-                String FormatSigned(Types::Int64 Value);
-                String FormatUnsigned(Types::UInt64 Value);
-                String FormatFloating(Types::Double Value);
+                String FormatSigned(KernelTypes::Int64 Value);
+                String FormatUnsigned(KernelTypes::UInt64 Value);
+                String FormatFloating(KernelTypes::Double Value);
 
                 template <typename T>
-                    requires (Types::Integral<T> || Types::FloatingPoint<T>)
+                    requires (KernelTypes::Integral<T> || KernelTypes::FloatingPoint<T>)
                 String ToString(T Value)
                 {
-                    if constexpr (Types::IsSame<Types::RemoveCV<T>, Types::Bool>)
+                    if constexpr (KernelTypes::IsSame<KernelTypes::RemoveCV<T>, KernelTypes::Bool>)
                         return String(Value ? "true" : "false");
-                    else if constexpr (Types::FloatingPoint<T>)
-                        return FormatFloating(static_cast<Types::Double>(Value));
-                    else if constexpr (Types::IsSigned<T>)
-                        return FormatSigned(static_cast<Types::Int64>(Value));
+                    else if constexpr (KernelTypes::FloatingPoint<T>)
+                        return FormatFloating(static_cast<KernelTypes::Double>(Value));
+                    else if constexpr (KernelTypes::IsSigned<T>)
+                        return FormatSigned(static_cast<KernelTypes::Int64>(Value));
                     else
-                        return FormatUnsigned(static_cast<Types::UInt64>(Value));
+                        return FormatUnsigned(static_cast<KernelTypes::UInt64>(Value));
                 }
             }
         }

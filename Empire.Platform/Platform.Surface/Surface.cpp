@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Surface/Surface.hpp>
+#include "Empire.Platform/Platform.Surface/Surface.hpp"
 
-namespace Empire::Platform::Surface
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformSurface
+            {
+            }
+        }
+    }
 }

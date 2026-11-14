@@ -1,35 +1,24 @@
 #pragma once
 
+#include "Empire.Kernel/Kernel.Compiler/Compiler.hpp"
 #include "Empire.Kernel/Kernel.Types/Types.Utility.hpp"
 
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Sync
+            namespace KernelSync
             {
-                // Значения совпадают с порядками памяти, которые понимают встроенные атомарные операции GCC и Clang.
-                enum class MemoryOrder : Types::Int32
-                {
-                    Relaxed = 0,
-                    Acquire = 2,
-                    Release = 3,
-                    AcquireRelease = 4,
-                    SequentiallyConsistent = 5
-                };
+                // Порядки памяти и сами атомарные операции определяет Kernel.Compiler.
+                using MemoryOrder = KernelCompiler::AtomicOrder;
 
                 template <typename T>
                 class Atomic
                 {
                     private:
                         mutable T Value;
-
-                        static constexpr Types::Int32 Raw(MemoryOrder Order) noexcept
-                        {
-                            return static_cast<Types::Int32>(Order);
-                        }
 
                     public:
                         constexpr Atomic() noexcept : Value{} {}
@@ -40,39 +29,39 @@ namespace DEvchik10Empire
 
                         [[nodiscard]] T Load(MemoryOrder Order = MemoryOrder::SequentiallyConsistent) const noexcept
                         {
-                            return __atomic_load_n(&Value, Raw(Order));
+                            return KernelCompiler::AtomicLoad(&Value, Order);
                         }
 
                         void Store(T NewValue, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
                         {
-                            __atomic_store_n(&Value, NewValue, Raw(Order));
+                            KernelCompiler::AtomicStore(&Value, NewValue, Order);
                         }
 
                         T Exchange(T NewValue, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
                         {
-                            return __atomic_exchange_n(&Value, NewValue, Raw(Order));
+                            return KernelCompiler::AtomicExchange(&Value, NewValue, Order);
                         }
 
-                        Types::Bool CompareExchange(
+                        KernelTypes::Bool CompareExchange(
                             T& Expected,
                             T Desired,
                             MemoryOrder Success = MemoryOrder::SequentiallyConsistent,
                             MemoryOrder Failure = MemoryOrder::Relaxed
                         ) noexcept
                         {
-                            return __atomic_compare_exchange_n(&Value, &Expected, Desired, false, Raw(Success), Raw(Failure));
+                            return KernelCompiler::AtomicCompareExchange(&Value, &Expected, Desired, Success, Failure);
                         }
 
                         T FetchAdd(T Amount, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
-                            requires Types::Integral<T>
+                            requires KernelTypes::Integral<T>
                         {
-                            return __atomic_fetch_add(&Value, Amount, Raw(Order));
+                            return KernelCompiler::AtomicFetchAdd(&Value, Amount, Order);
                         }
 
                         T FetchSub(T Amount, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
-                            requires Types::Integral<T>
+                            requires KernelTypes::Integral<T>
                         {
-                            return __atomic_fetch_sub(&Value, Amount, Raw(Order));
+                            return KernelCompiler::AtomicFetchSub(&Value, Amount, Order);
                         }
                 };
             }

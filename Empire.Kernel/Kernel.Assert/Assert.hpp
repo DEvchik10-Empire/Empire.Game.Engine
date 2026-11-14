@@ -6,30 +6,30 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Assert
+            namespace KernelAssert
             {
                 class Error
                 {
                     private:
-                        Types::Char MessageText[256];
-                        Types::SourceLocation LocationValue;
+                        KernelTypes::Char MessageText[256];
+                        KernelTypes::SourceLocation LocationValue;
 
                     public:
                         Error(
-                            const Types::Char* Message,
-                            const Types::SourceLocation& Location = Types::SourceLocation::Current()
+                            const KernelTypes::Char* Message,
+                            const KernelTypes::SourceLocation& Location = KernelTypes::SourceLocation::Current()
                         ) noexcept;
 
                         Error(const Error& Other) noexcept = default;
                         Error& operator=(const Error& Other) noexcept = default;
                         virtual ~Error() = default;
 
-                        virtual const Types::Char* GetKind() const noexcept;
+                        virtual const KernelTypes::Char* GetKind() const noexcept;
 
-                        const Types::Char* GetText() const noexcept;
-                        const Types::SourceLocation& GetLocation() const noexcept;
+                        const KernelTypes::Char* GetText() const noexcept;
+                        const KernelTypes::SourceLocation& GetLocation() const noexcept;
                 };
 
                 class LogicError : public Error
@@ -37,7 +37,7 @@ namespace DEvchik10Empire
                     public:
                         using Error::Error;
 
-                        const Types::Char* GetKind() const noexcept override;
+                        const KernelTypes::Char* GetKind() const noexcept override;
                 };
 
                 class InvalidArgumentError : public LogicError
@@ -45,7 +45,7 @@ namespace DEvchik10Empire
                     public:
                         using LogicError::LogicError;
 
-                        const Types::Char* GetKind() const noexcept override;
+                        const KernelTypes::Char* GetKind() const noexcept override;
                 };
 
                 class OutOfRangeError : public LogicError
@@ -53,7 +53,7 @@ namespace DEvchik10Empire
                     public:
                         using LogicError::LogicError;
 
-                        const Types::Char* GetKind() const noexcept override;
+                        const KernelTypes::Char* GetKind() const noexcept override;
                 };
 
                 class LengthError : public LogicError
@@ -61,7 +61,7 @@ namespace DEvchik10Empire
                     public:
                         using LogicError::LogicError;
 
-                        const Types::Char* GetKind() const noexcept override;
+                        const KernelTypes::Char* GetKind() const noexcept override;
                 };
 
                 class OverflowError : public Error
@@ -69,7 +69,7 @@ namespace DEvchik10Empire
                     public:
                         using Error::Error;
 
-                        const Types::Char* GetKind() const noexcept override;
+                        const KernelTypes::Char* GetKind() const noexcept override;
                 };
 
                 class AllocationError : public Error
@@ -77,18 +77,18 @@ namespace DEvchik10Empire
                     public:
                         using Error::Error;
 
-                        const Types::Char* GetKind() const noexcept override;
+                        const KernelTypes::Char* GetKind() const noexcept override;
                 };
 
                 void Check(
-                    Types::Bool Condition,
-                    const Types::Char* Message,
-                    const Types::SourceLocation& Location = Types::SourceLocation::Current()
+                    KernelTypes::Bool Condition,
+                    const KernelTypes::Char* Message,
+                    const KernelTypes::SourceLocation& Location = KernelTypes::SourceLocation::Current()
                 );
 
                 [[noreturn]] void Fail(
-                    const Types::Char* Message,
-                    const Types::SourceLocation& Location = Types::SourceLocation::Current()
+                    const KernelTypes::Char* Message,
+                    const KernelTypes::SourceLocation& Location = KernelTypes::SourceLocation::Current()
                 );
             }
         }

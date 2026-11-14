@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Events/Events.hpp>
+#include "Empire.Platform/Platform.Events/Events.hpp"
 
-namespace Empire::Platform::Events
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformEvents
+            {
+            }
+        }
+    }
 }

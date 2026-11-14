@@ -4,11 +4,11 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Reflection
+            namespace KernelReflection
             {
                 TypeInfo::TypeInfo(
                     TypeId Id,
@@ -30,7 +30,7 @@ namespace DEvchik10Empire
                     return IdValue;
                 }
 
-                Containers::StringView TypeInfo::GetName() const noexcept
+                KernelContainers::StringView TypeInfo::GetName() const noexcept
                 {
                     return NameValue.GetView();
                 }
@@ -58,26 +58,26 @@ namespace DEvchik10Empire
                 )
                 {
                     if (Name == nullptr || Name[0] == '\0')
-                        throw Assert::InvalidArgumentError("Reflection type name cannot be empty");
+                        throw KernelAssert::InvalidArgumentError("Reflection type name cannot be empty");
 
                     if (Alignment == 0 || (Alignment & (Alignment - 1)) != 0)
-                        throw Assert::InvalidArgumentError("Reflection type alignment is invalid");
+                        throw KernelAssert::InvalidArgumentError("Reflection type alignment is invalid");
 
-                    const Containers::StringView NewName(Name);
+                    const KernelContainers::StringView NewName(Name);
 
-                    Sync::LockGuard Lock(StateMutex);
+                    KernelSync::LockGuard Lock(StateMutex);
 
                     const TypeId* ExistingType = NativeTypes.Find(NativeType);
 
                     if (ExistingType != nullptr)
                     {
-                        const Memory::SharedPtr<TypeInfo>* ExistingInfo = RegisteredTypes.Find(*ExistingType);
+                        const KernelMemory::SharedPtr<TypeInfo>* ExistingInfo = RegisteredTypes.Find(*ExistingType);
 
                         if (ExistingInfo == nullptr)
-                            throw Assert::LogicError("Reflection registry is inconsistent");
+                            throw KernelAssert::LogicError("Reflection registry is inconsistent");
 
                         if ((*ExistingInfo)->GetName() != NewName)
-                            throw Assert::LogicError("Native type is already registered with another name");
+                            throw KernelAssert::LogicError("Native type is already registered with another name");
 
                         return (*ExistingInfo)->GetId();
                     }
@@ -85,7 +85,7 @@ namespace DEvchik10Empire
                     Bool NameExists = false;
 
                     RegisteredTypes.ForEach(
-                        [&](const TypeId&, const Memory::SharedPtr<TypeInfo>& RegisteredInfo)
+                        [&](const TypeId&, const KernelMemory::SharedPtr<TypeInfo>& RegisteredInfo)
                         {
                             if (RegisteredInfo->GetName() == NewName)
                             {
@@ -98,17 +98,17 @@ namespace DEvchik10Empire
                     );
 
                     if (NameExists)
-                        throw Assert::LogicError("Reflection type name is already registered");
+                        throw KernelAssert::LogicError("Reflection type name is already registered");
 
                     if (NextId == 0 || NextId == MaxValue<TypeId>())
-                        throw Assert::OverflowError("Reflection type id space is exhausted");
+                        throw KernelAssert::OverflowError("Reflection type id space is exhausted");
 
                     const TypeId Id = NextId;
 
-                    Memory::SharedPtr<TypeInfo> Info = Memory::MakeShared<TypeInfo>(Id, Name, ByteSize, Alignment, NativeType);
+                    KernelMemory::SharedPtr<TypeInfo> Info = KernelMemory::MakeShared<TypeInfo>(Id, Name, ByteSize, Alignment, NativeType);
 
                     if (!RegisteredTypes.Insert(Id, Move(Info)))
-                        throw Assert::LogicError("Reflection type id collision");
+                        throw KernelAssert::LogicError("Reflection type id collision");
 
                     try
                     {
@@ -126,19 +126,19 @@ namespace DEvchik10Empire
 
                 const TypeInfo* TypeRegistry::Find(TypeId Id) const
                 {
-                    Sync::LockGuard Lock(StateMutex);
-                    const Memory::SharedPtr<TypeInfo>* Info = RegisteredTypes.Find(Id);
+                    KernelSync::LockGuard Lock(StateMutex);
+                    const KernelMemory::SharedPtr<TypeInfo>* Info = RegisteredTypes.Find(Id);
                     return Info == nullptr ? nullptr : Info->Get();
                 }
 
-                const TypeInfo* TypeRegistry::FindByName(Containers::StringView Name) const
+                const TypeInfo* TypeRegistry::FindByName(KernelContainers::StringView Name) const
                 {
-                    Sync::LockGuard Lock(StateMutex);
+                    KernelSync::LockGuard Lock(StateMutex);
 
                     const TypeInfo* Result = nullptr;
 
                     RegisteredTypes.ForEach(
-                        [&](const TypeId&, const Memory::SharedPtr<TypeInfo>& RegisteredInfo)
+                        [&](const TypeId&, const KernelMemory::SharedPtr<TypeInfo>& RegisteredInfo)
                         {
                             if (RegisteredInfo->GetName() == Name)
                             {
@@ -155,7 +155,7 @@ namespace DEvchik10Empire
 
                 Size TypeRegistry::GetTypeCount() const
                 {
-                    Sync::LockGuard Lock(StateMutex);
+                    KernelSync::LockGuard Lock(StateMutex);
                     return RegisteredTypes.GetCount();
                 }
             }

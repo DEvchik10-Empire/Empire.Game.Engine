@@ -6,17 +6,17 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Assert
+            namespace KernelAssert
             {
                 namespace
                 {
                     void WriteToStandardError(const Char* Text, Size ByteCount) noexcept
                     {
-                        System::WriteOutput(true, Text, ByteCount);
+                        KernelSystem::WriteOutput(true, Text, ByteCount);
                     }
 
                     class MessageBuffer
@@ -138,7 +138,7 @@ namespace DEvchik10Empire
                     Buffer.Append("\n");
                     Buffer.Flush();
 
-                    System::Terminate();
+                    KernelSystem::Terminate();
                 }
             }
         }

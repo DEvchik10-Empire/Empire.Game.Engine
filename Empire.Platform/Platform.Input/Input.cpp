@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Input/Input.hpp>
+#include "Empire.Platform/Platform.Input/Input.hpp"
 
-namespace Empire::Platform::Input
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformInput
+            {
+            }
+        }
+    }
 }

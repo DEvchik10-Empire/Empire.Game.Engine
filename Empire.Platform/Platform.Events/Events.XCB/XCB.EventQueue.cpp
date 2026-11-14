@@ -1,4 +1,4 @@
-#include "XCB.EventQueue.hpp"
+#include "Empire.Platform/Platform.Events/Events.XCB/XCB.EventQueue.hpp"
 
 namespace DEvchik10Empire
 {
@@ -8,7 +8,7 @@ namespace DEvchik10Empire
         {
             namespace PlatformEvents
             {
-                namespace XCB
+                namespace EventsXCB
                 {
                 }
             }

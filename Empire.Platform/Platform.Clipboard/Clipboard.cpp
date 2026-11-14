@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Clipboard/Clipboard.hpp>
+#include "Empire.Platform/Platform.Clipboard/Clipboard.hpp"
 
-namespace Empire::Platform::Clipboard
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformClipboard
+            {
+            }
+        }
+    }
 }

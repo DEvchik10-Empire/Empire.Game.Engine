@@ -1,6 +1,18 @@
+#include "Empire.Platform/Platform.App/App.hpp"
 
-
-// Приватная реализация: Android
-namespace Empire::Platform::App::Internal::XCB
+// Приватная реализация: XCB
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformApp
+            {
+                namespace AppXCB
+                {
+                }
+            }
+        }
+    }
 }

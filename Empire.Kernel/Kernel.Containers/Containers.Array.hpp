@@ -8,38 +8,38 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Containers
+            namespace KernelContainers
             {
                 template <typename T>
                 class Array
                 {
                     private:
                         T* Items = nullptr;
-                        Types::Size Count = 0;
-                        Types::Size Capacity = 0;
+                        KernelTypes::Size Count = 0;
+                        KernelTypes::Size Capacity = 0;
 
-                        static T* AllocateItems(Types::Size ItemCount)
+                        static T* AllocateItems(KernelTypes::Size ItemCount)
                         {
-                            if (ItemCount > Types::MaxValue<Types::Size>() / sizeof(T))
-                                throw Assert::LengthError("Array capacity is too large");
+                            if (ItemCount > KernelTypes::MaxValue<KernelTypes::Size>() / sizeof(T))
+                                throw KernelAssert::LengthError("Array capacity is too large");
 
-                            return static_cast<T*>(Memory::Allocate(ItemCount * sizeof(T), alignof(T)));
+                            return static_cast<T*>(KernelMemory::Allocate(ItemCount * sizeof(T), alignof(T)));
                         }
 
                         static void DeallocateItems(T* MemoryBlock) noexcept
                         {
-                            Memory::Deallocate(MemoryBlock);
+                            KernelMemory::Deallocate(MemoryBlock);
                         }
 
-                        Types::Size GetGrownCapacity() const
+                        KernelTypes::Size GetGrownCapacity() const
                         {
                             if (Capacity == 0)
                                 return 4;
 
-                            if (Capacity > Types::MaxValue<Types::Size>() / 2)
-                                throw Assert::LengthError("Array capacity is too large");
+                            if (Capacity > KernelTypes::MaxValue<KernelTypes::Size>() / 2)
+                                throw KernelAssert::LengthError("Array capacity is too large");
 
                             return Capacity * 2;
                         }
@@ -54,7 +54,7 @@ namespace DEvchik10Empire
                         {
                             Array Result;
                             Result.Reserve(sizeof...(Values));
-                            (Result.Add(Types::Forward<Values>(Items)), ...);
+                            (Result.Add(KernelTypes::Forward<Values>(Items)), ...);
                             return Result;
                         }
 
@@ -69,12 +69,12 @@ namespace DEvchik10Empire
                             try
                             {
                                 for (; Count < Other.Count; Count++)
-                                    Types::ConstructAt(Items + Count, Other.Items[Count]);
+                                    KernelTypes::ConstructAt(Items + Count, Other.Items[Count]);
                             }
                             catch (...)
                             {
-                                for (Types::Size Index = 0; Index < Count; Index++)
-                                    Types::DestroyAt(Items + Index);
+                                for (KernelTypes::Size Index = 0; Index < Count; Index++)
+                                    KernelTypes::DestroyAt(Items + Index);
 
                                 DeallocateItems(Items);
                                 Items = nullptr;
@@ -104,7 +104,7 @@ namespace DEvchik10Empire
                                 return *this;
 
                             Array Copy(Other);
-                            *this = Types::Move(Copy);
+                            *this = KernelTypes::Move(Copy);
                             return *this;
                         }
 
@@ -127,9 +127,9 @@ namespace DEvchik10Empire
                             return *this;
                         }
 
-                        Types::Size GetCount() const noexcept { return Count; }
-                        Types::Size GetCapacity() const noexcept { return Capacity; }
-                        Types::Bool IsEmpty() const noexcept { return Count == 0; }
+                        KernelTypes::Size GetCount() const noexcept { return Count; }
+                        KernelTypes::Size GetCapacity() const noexcept { return Capacity; }
+                        KernelTypes::Bool IsEmpty() const noexcept { return Count == 0; }
                         T* GetData() noexcept { return Items; }
                         const T* GetData() const noexcept { return Items; }
 
@@ -144,46 +144,46 @@ namespace DEvchik10Empire
                         const T* begin() const noexcept { return Items; }
                         const T* end() const noexcept { return Items + Count; }
 
-                        T& operator[](Types::Size Index)
+                        T& operator[](KernelTypes::Size Index)
                         {
                             if (Index >= Count)
-                                throw Assert::OutOfRangeError("Array index is out of range");
+                                throw KernelAssert::OutOfRangeError("Array index is out of range");
 
                             return Items[Index];
                         }
 
-                        const T& operator[](Types::Size Index) const
+                        const T& operator[](KernelTypes::Size Index) const
                         {
                             if (Index >= Count)
-                                throw Assert::OutOfRangeError("Array index is out of range");
+                                throw KernelAssert::OutOfRangeError("Array index is out of range");
 
                             return Items[Index];
                         }
 
-                        void Reserve(Types::Size NewCapacity)
+                        void Reserve(KernelTypes::Size NewCapacity)
                         {
                             if (NewCapacity <= Capacity)
                                 return;
 
                             T* NewItems = AllocateItems(NewCapacity);
-                            Types::Size Constructed = 0;
+                            KernelTypes::Size Constructed = 0;
 
                             try
                             {
                                 for (; Constructed < Count; Constructed++)
-                                    Types::ConstructAt(NewItems + Constructed, Types::MoveIfNoexcept(Items[Constructed]));
+                                    KernelTypes::ConstructAt(NewItems + Constructed, KernelTypes::MoveIfNoexcept(Items[Constructed]));
                             }
                             catch (...)
                             {
-                                for (Types::Size Index = 0; Index < Constructed; Index++)
-                                    Types::DestroyAt(NewItems + Index);
+                                for (KernelTypes::Size Index = 0; Index < Constructed; Index++)
+                                    KernelTypes::DestroyAt(NewItems + Index);
 
                                 DeallocateItems(NewItems);
                                 throw;
                             }
 
-                            for (Types::Size Index = 0; Index < Count; Index++)
-                                Types::DestroyAt(Items + Index);
+                            for (KernelTypes::Size Index = 0; Index < Count; Index++)
+                                KernelTypes::DestroyAt(Items + Index);
 
                             DeallocateItems(Items);
                             Items = NewItems;
@@ -196,11 +196,11 @@ namespace DEvchik10Empire
                             {
                                 T Copy(Value);
                                 Reserve(GetGrownCapacity());
-                                Types::ConstructAt(Items + Count, Types::Move(Copy));
+                                KernelTypes::ConstructAt(Items + Count, KernelTypes::Move(Copy));
                             }
                             else
                             {
-                                Types::ConstructAt(Items + Count, Value);
+                                KernelTypes::ConstructAt(Items + Count, Value);
                             }
 
                             Count++;
@@ -210,34 +210,34 @@ namespace DEvchik10Empire
                         {
                             if (Count == Capacity)
                             {
-                                T Copy(Types::Move(Value));
+                                T Copy(KernelTypes::Move(Value));
                                 Reserve(GetGrownCapacity());
-                                Types::ConstructAt(Items + Count, Types::Move(Copy));
+                                KernelTypes::ConstructAt(Items + Count, KernelTypes::Move(Copy));
                             }
                             else
                             {
-                                Types::ConstructAt(Items + Count, Types::Move(Value));
+                                KernelTypes::ConstructAt(Items + Count, KernelTypes::Move(Value));
                             }
 
                             Count++;
                         }
 
-                        void RemoveAt(Types::Size Index)
+                        void RemoveAt(KernelTypes::Size Index)
                         {
                             if (Index >= Count)
-                                throw Assert::OutOfRangeError("Array index is out of range");
+                                throw KernelAssert::OutOfRangeError("Array index is out of range");
 
-                            for (Types::Size Current = Index; Current + 1 < Count; Current++)
-                                Items[Current] = Types::Move(Items[Current + 1]);
+                            for (KernelTypes::Size Current = Index; Current + 1 < Count; Current++)
+                                Items[Current] = KernelTypes::Move(Items[Current + 1]);
 
                             Count--;
-                            Types::DestroyAt(Items + Count);
+                            KernelTypes::DestroyAt(Items + Count);
                         }
 
                         void Clear() noexcept
                         {
-                            for (Types::Size Index = Count; Index > 0; Index--)
-                                Types::DestroyAt(Items + Index - 1);
+                            for (KernelTypes::Size Index = Count; Index > 0; Index--)
+                                KernelTypes::DestroyAt(Items + Index - 1);
 
                             Count = 0;
                         }

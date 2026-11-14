@@ -12,6 +12,15 @@
     #define PLATFORM_SURFACE_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Platform::Surface
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformSurface
+            {
+            }
+        }
+    }
 }

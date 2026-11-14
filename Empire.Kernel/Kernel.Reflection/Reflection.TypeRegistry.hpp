@@ -12,45 +12,45 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Reflection
+            namespace KernelReflection
             {
-                using TypeId = Types::UInt64;
+                using TypeId = KernelTypes::UInt64;
 
                 class TypeInfo
                 {
                     private:
                         TypeId IdValue;
-                        Containers::String NameValue;
-                        Types::Size SizeValue;
-                        Types::Size AlignmentValue;
-                        Types::TypeKey NativeTypeValue;
+                        KernelContainers::String NameValue;
+                        KernelTypes::Size SizeValue;
+                        KernelTypes::Size AlignmentValue;
+                        KernelTypes::TypeKey NativeTypeValue;
 
                     public:
                         TypeInfo(
                             TypeId Id,
-                            const Types::Char* Name,
-                            Types::Size ByteSize,
-                            Types::Size Alignment,
-                            Types::TypeKey NativeType
+                            const KernelTypes::Char* Name,
+                            KernelTypes::Size ByteSize,
+                            KernelTypes::Size Alignment,
+                            KernelTypes::TypeKey NativeType
                         );
 
                         TypeId GetId() const noexcept;
-                        Containers::StringView GetName() const noexcept;
-                        Types::Size GetSize() const noexcept;
-                        Types::Size GetAlignment() const noexcept;
-                        Types::TypeKey GetNativeType() const noexcept;
+                        KernelContainers::StringView GetName() const noexcept;
+                        KernelTypes::Size GetSize() const noexcept;
+                        KernelTypes::Size GetAlignment() const noexcept;
+                        KernelTypes::TypeKey GetNativeType() const noexcept;
                 };
 
                 // Описания хранятся в отдельных блоках, поэтому указатели TypeInfo живут столько же, сколько реестр.
                 class TypeRegistry
                 {
                     private:
-                        mutable Sync::Mutex StateMutex;
+                        mutable KernelSync::Mutex StateMutex;
                         TypeId NextId = 1;
-                        Containers::HashMap<TypeId, Memory::SharedPtr<TypeInfo>> RegisteredTypes;
-                        Containers::HashMap<Types::TypeKey, TypeId> NativeTypes;
+                        KernelContainers::HashMap<TypeId, KernelMemory::SharedPtr<TypeInfo>> RegisteredTypes;
+                        KernelContainers::HashMap<KernelTypes::TypeKey, TypeId> NativeTypes;
 
                     public:
                         TypeRegistry() = default;
@@ -58,40 +58,42 @@ namespace DEvchik10Empire
                         TypeRegistry& operator=(const TypeRegistry&) = delete;
 
                         template <typename T>
-                        TypeId RegisterType(const Types::Char* Name)
+                        TypeId RegisterType(const KernelTypes::Char* Name)
                         {
                             return Register(
-                                Types::GetTypeKey<T>(),
+                                KernelTypes::GetTypeKey<T>(),
                                 Name,
                                 sizeof(T),
                                 alignof(T)
                             );
                         }
 
+                        // Регистрация идемпотентна: повторный вызов для того же типа с тем же именем возвращает уже выданный TypeId.
+                        // Тот же тип под другим именем, другой тип под занятым именем, пустое имя и неверное выравнивание бросают исключение.
                         TypeId Register(
-                            Types::TypeKey NativeType,
-                            const Types::Char* Name,
-                            Types::Size ByteSize,
-                            Types::Size Alignment
+                            KernelTypes::TypeKey NativeType,
+                            const KernelTypes::Char* Name,
+                            KernelTypes::Size ByteSize,
+                            KernelTypes::Size Alignment
                         );
 
                         const TypeInfo* Find(TypeId Id) const;
-                        const TypeInfo* FindByName(Containers::StringView Name) const;
+                        const TypeInfo* FindByName(KernelContainers::StringView Name) const;
 
                         template <typename T>
                         const TypeInfo* Find() const
                         {
-                            Sync::LockGuard Lock(StateMutex);
-                            const TypeId* Found = NativeTypes.Find(Types::GetTypeKey<T>());
+                            KernelSync::LockGuard Lock(StateMutex);
+                            const TypeId* Found = NativeTypes.Find(KernelTypes::GetTypeKey<T>());
 
                             if (Found == nullptr)
                                 return nullptr;
 
-                            const Memory::SharedPtr<TypeInfo>* Info = RegisteredTypes.Find(*Found);
+                            const KernelMemory::SharedPtr<TypeInfo>* Info = RegisteredTypes.Find(*Found);
                             return Info == nullptr ? nullptr : Info->Get();
                         }
 
-                        Types::Size GetTypeCount() const;
+                        KernelTypes::Size GetTypeCount() const;
                 };
             }
         }

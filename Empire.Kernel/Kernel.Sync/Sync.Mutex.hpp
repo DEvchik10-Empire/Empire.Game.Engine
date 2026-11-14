@@ -6,16 +6,16 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Sync
+            namespace KernelSync
             {
                 // Мьютекс без зависимостей от ОС-типов в заголовке: короткий спин, затем уступка потока, затем короткий сон.
                 // Конструктор constexpr, поэтому глобальные мьютексы безопасны при любом порядке статической инициализации.
                 class Mutex
                 {
                     private:
-                        Atomic<Types::UInt32> State;
+                        Atomic<KernelTypes::UInt32> State;
 
                     public:
                         constexpr Mutex() noexcept = default;
@@ -24,7 +24,7 @@ namespace DEvchik10Empire
                         Mutex& operator=(const Mutex&) = delete;
 
                         void Lock() noexcept;
-                        Types::Bool TryLock() noexcept;
+                        KernelTypes::Bool TryLock() noexcept;
                         void Unlock() noexcept;
                 };
 

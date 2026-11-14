@@ -8,7 +8,7 @@ namespace DEvchik10Empire
         {
             namespace PlatformEvents
             {
-                namespace XCB
+                namespace EventsXCB
                 {
                     class EventQueue
                     {

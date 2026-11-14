@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Monitor/Monitor.hpp>
+#include "Empire.Platform/Platform.Monitor/Monitor.hpp"
 
-namespace Empire::Platform::Monitor
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformMonitor
+            {
+            }
+        }
+    }
 }

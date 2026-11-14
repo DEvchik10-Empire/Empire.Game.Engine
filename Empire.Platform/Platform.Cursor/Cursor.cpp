@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Cursor/Cursor.hpp>
+#include "Empire.Platform/Platform.Cursor/Cursor.hpp"
 
-namespace Empire::Platform::Cursor
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformCursor
+            {
+            }
+        }
+    }
 }

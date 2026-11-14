@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Audio/Audio.hpp>
+#include "Empire.Platform/Platform.Audio/Audio.hpp"
 
-namespace Empire::Platform::Audio
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformAudio
+            {
+            }
+        }
+    }
 }

@@ -11,11 +11,11 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace System
+            namespace KernelSystem
             {
                 Size GetPageSize() noexcept
                 {

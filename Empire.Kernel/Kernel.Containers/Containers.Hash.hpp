@@ -8,11 +8,11 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Containers
+            namespace KernelContainers
             {
-                constexpr Types::UInt64 MixBits(Types::UInt64 Value) noexcept
+                constexpr KernelTypes::UInt64 MixBits(KernelTypes::UInt64 Value) noexcept
                 {
                     Value += 0x9E3779B97F4A7C15ULL;
                     Value = (Value ^ (Value >> 30)) * 0xBF58476D1CE4E5B9ULL;
@@ -23,34 +23,34 @@ namespace DEvchik10Empire
                 template <typename T>
                 struct Hash;
 
-                template <Types::Integral T>
+                template <KernelTypes::Integral T>
                 struct Hash<T>
                 {
-                    Types::UInt64 operator()(T Value) const noexcept
+                    KernelTypes::UInt64 operator()(T Value) const noexcept
                     {
-                        return MixBits(static_cast<Types::UInt64>(Value));
+                        return MixBits(static_cast<KernelTypes::UInt64>(Value));
                     }
                 };
 
                 template <typename T>
                 struct Hash<T*>
                 {
-                    Types::UInt64 operator()(const T* Value) const noexcept
+                    KernelTypes::UInt64 operator()(const T* Value) const noexcept
                     {
-                        return MixBits(static_cast<Types::UInt64>(reinterpret_cast<Types::UIntPtr>(Value)));
+                        return MixBits(static_cast<KernelTypes::UInt64>(reinterpret_cast<KernelTypes::UIntPtr>(Value)));
                     }
                 };
 
                 template <>
                 struct Hash<StringView>
                 {
-                    Types::UInt64 operator()(StringView Value) const noexcept
+                    KernelTypes::UInt64 operator()(StringView Value) const noexcept
                     {
-                        Types::UInt64 Result = 14695981039346656037ULL;
+                        KernelTypes::UInt64 Result = 14695981039346656037ULL;
 
-                        for (Types::Size Index = 0; Index < Value.GetCount(); Index++)
+                        for (KernelTypes::Size Index = 0; Index < Value.GetCount(); Index++)
                         {
-                            Result ^= static_cast<Types::UInt64>(static_cast<Types::UInt8>(Value.GetText()[Index]));
+                            Result ^= static_cast<KernelTypes::UInt64>(static_cast<KernelTypes::UInt8>(Value.GetText()[Index]));
                             Result *= 1099511628211ULL;
                         }
 
@@ -61,7 +61,7 @@ namespace DEvchik10Empire
                 template <>
                 struct Hash<String>
                 {
-                    Types::UInt64 operator()(const String& Value) const noexcept
+                    KernelTypes::UInt64 operator()(const String& Value) const noexcept
                     {
                         return Hash<StringView>{}(Value.GetView());
                     }

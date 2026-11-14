@@ -6,28 +6,28 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Memory
+            namespace KernelMemory
             {
-                inline constexpr Types::Size DefaultAlignment = 16;
+                inline constexpr KernelTypes::Size DefaultAlignment = 16;
 
                 // Блок хранит перед собой заголовок (исходный указатель, размер, выравнивание),
                 // поэтому Deallocate и Reallocate не требуют размер и выравнивание от вызывающего.
-                void* Allocate(Types::Size ByteCount, Types::Size Alignment = DefaultAlignment);
-                void* Reallocate(void* MemoryBlock, Types::Size NewByteCount);
+                void* Allocate(KernelTypes::Size ByteCount, KernelTypes::Size Alignment = DefaultAlignment);
+                void* Reallocate(void* MemoryBlock, KernelTypes::Size NewByteCount);
                 void Deallocate(void* MemoryBlock) noexcept;
 
-                Types::Size GetBlockByteCount(const void* MemoryBlock) noexcept;
+                KernelTypes::Size GetBlockByteCount(const void* MemoryBlock) noexcept;
 
-                void CopyBytes(void* Destination, const void* Source, Types::Size ByteCount) noexcept;
-                void MoveBytes(void* Destination, const void* Source, Types::Size ByteCount) noexcept;
-                void FillBytes(void* Destination, Types::UInt8 Value, Types::Size ByteCount) noexcept;
-                Types::Int32 CompareBytes(const void* Left, const void* Right, Types::Size ByteCount) noexcept;
+                void CopyBytes(void* Destination, const void* Source, KernelTypes::Size ByteCount) noexcept;
+                void MoveBytes(void* Destination, const void* Source, KernelTypes::Size ByteCount) noexcept;
+                void FillBytes(void* Destination, KernelTypes::UInt8 Value, KernelTypes::Size ByteCount) noexcept;
+                KernelTypes::Int32 CompareBytes(const void* Left, const void* Right, KernelTypes::Size ByteCount) noexcept;
 
-                Types::UInt64 GetLiveByteCount() noexcept;
-                Types::UInt64 GetLiveBlockCount() noexcept;
-                Types::UInt64 GetTotalAllocationCount() noexcept;
+                KernelTypes::UInt64 GetLiveByteCount() noexcept;
+                KernelTypes::UInt64 GetLiveBlockCount() noexcept;
+                KernelTypes::UInt64 GetTotalAllocationCount() noexcept;
             }
         }
     }

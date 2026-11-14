@@ -11,17 +11,17 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Events
+            namespace KernelEvents
             {
                 class EventBus
                 {
                     public:
-                        using SubscriptionId = Types::UInt64;
+                        using SubscriptionId = KernelTypes::UInt64;
 
                     private:
-                        using Callback = Containers::Function<void(const void*)>;
+                        using Callback = KernelContainers::Function<void(const void*)>;
 
                         struct Listener
                         {
@@ -29,13 +29,13 @@ namespace DEvchik10Empire
                             Callback Handler;
 
                             Listener(SubscriptionId ListenerId, Callback ListenerHandler)
-                                : Id(ListenerId), Handler(Types::Move(ListenerHandler))
+                                : Id(ListenerId), Handler(KernelTypes::Move(ListenerHandler))
                             {
                             }
                         };
 
-                        mutable Sync::Mutex StateMutex;
-                        Containers::HashMap<Types::TypeKey, Containers::Array<Listener>> Listeners;
+                        mutable KernelSync::Mutex StateMutex;
+                        KernelContainers::HashMap<KernelTypes::TypeKey, KernelContainers::Array<Listener>> Listeners;
                         SubscriptionId NextId = 1;
 
                     public:
@@ -47,29 +47,29 @@ namespace DEvchik10Empire
                         SubscriptionId Subscribe(Handler&& Function)
                         {
                             Callback NewCallback(
-                                [Target = Types::Forward<Handler>(Function)](const void* EventData) mutable
+                                [Target = KernelTypes::Forward<Handler>(Function)](const void* EventData) mutable
                                 {
                                     Target(*static_cast<const EventType*>(EventData));
                                 }
                             );
 
-                            Sync::LockGuard Lock(StateMutex);
+                            KernelSync::LockGuard Lock(StateMutex);
 
                             if (NextId == 0)
-                                throw Assert::OverflowError("EventBus subscription id space is exhausted");
+                                throw KernelAssert::OverflowError("EventBus subscription id space is exhausted");
 
                             const SubscriptionId Id = NextId++;
-                            const Types::TypeKey Key = Types::GetTypeKey<EventType>();
+                            const KernelTypes::TypeKey Key = KernelTypes::GetTypeKey<EventType>();
 
-                            Containers::Array<Listener>* EventListeners = Listeners.Find(Key);
+                            KernelContainers::Array<Listener>* EventListeners = Listeners.Find(Key);
 
                             if (EventListeners == nullptr)
                             {
-                                Listeners.Insert(Key, Containers::Array<Listener>());
+                                Listeners.Insert(Key, KernelContainers::Array<Listener>());
                                 EventListeners = Listeners.Find(Key);
                             }
 
-                            EventListeners->Add(Listener(Id, Types::Move(NewCallback)));
+                            EventListeners->Add(Listener(Id, KernelTypes::Move(NewCallback)));
 
                             return Id;
                         }
@@ -77,11 +77,11 @@ namespace DEvchik10Empire
                         template <typename EventType>
                         void Publish(const EventType& Event) const
                         {
-                            Containers::Array<Callback> Callbacks;
+                            KernelContainers::Array<Callback> Callbacks;
 
                             {
-                                Sync::LockGuard Lock(StateMutex);
-                                const Containers::Array<Listener>* EventListeners = Listeners.Find(Types::GetTypeKey<EventType>());
+                                KernelSync::LockGuard Lock(StateMutex);
+                                const KernelContainers::Array<Listener>* EventListeners = Listeners.Find(KernelTypes::GetTypeKey<EventType>());
 
                                 if (EventListeners == nullptr)
                                     return;
@@ -97,16 +97,16 @@ namespace DEvchik10Empire
                         }
 
                         template <typename EventType>
-                        Types::Size GetListenerCount() const
+                        KernelTypes::Size GetListenerCount() const
                         {
-                            Sync::LockGuard Lock(StateMutex);
-                            const Containers::Array<Listener>* EventListeners = Listeners.Find(Types::GetTypeKey<EventType>());
+                            KernelSync::LockGuard Lock(StateMutex);
+                            const KernelContainers::Array<Listener>* EventListeners = Listeners.Find(KernelTypes::GetTypeKey<EventType>());
                             return EventListeners == nullptr ? 0 : EventListeners->GetCount();
                         }
 
-                        Types::Bool Unsubscribe(SubscriptionId Id);
+                        KernelTypes::Bool Unsubscribe(SubscriptionId Id);
                         void Clear();
-                        Types::Size GetSubscriptionCount() const;
+                        KernelTypes::Size GetSubscriptionCount() const;
                 };
             }
         }

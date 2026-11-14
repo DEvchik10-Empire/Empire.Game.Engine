@@ -4,9 +4,9 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Config
+            namespace KernelConfig
             {
 
             }

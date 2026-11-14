@@ -4,25 +4,25 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Services
+            namespace KernelServices
             {
                 void ServiceRegistry::Clear()
                 {
-                    Containers::HashMap<TypeKey, Memory::SharedPtr<void>> Removed;
+                    KernelContainers::HashMap<TypeKey, KernelMemory::SharedPtr<void>> Removed;
 
                     {
-                        Sync::LockGuard Lock(StateMutex);
+                        KernelSync::LockGuard Lock(StateMutex);
                         Removed = Move(RegisteredServices);
                     }
                 }
 
                 Size ServiceRegistry::GetCount() const
                 {
-                    Sync::LockGuard Lock(StateMutex);
+                    KernelSync::LockGuard Lock(StateMutex);
                     return RegisteredServices.GetCount();
                 }
             }

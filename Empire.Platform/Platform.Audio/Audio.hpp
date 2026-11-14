@@ -12,6 +12,15 @@
     #define PLATFORM_AUDIO_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Platform::Audio
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformAudio
+            {
+            }
+        }
+    }
 }

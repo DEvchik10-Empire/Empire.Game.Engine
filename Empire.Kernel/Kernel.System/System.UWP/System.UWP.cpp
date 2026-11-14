@@ -1,3 +1,4 @@
+#include "Empire.Kernel/Kernel.Compiler/Compiler.hpp"
 #include "Empire.Kernel/Kernel.System/System.hpp"
 
 #include <windows.h>
@@ -6,11 +7,11 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace System
+            namespace KernelSystem
             {
                 Size GetPageSize() noexcept
                 {
@@ -62,12 +63,13 @@ namespace DEvchik10Empire
 
                 void SleepThread(UInt32 Microseconds) noexcept
                 {
-                    Sleep((Microseconds + 999) / 1000);
+                    // Деление до сложения: (Microseconds + 999) переполняло UInt32 при больших значениях.
+                    Sleep(Microseconds / 1000 + (Microseconds % 1000 != 0 ? 1 : 0));
                 }
 
                 [[noreturn]] void Terminate() noexcept
                 {
-                    __builtin_trap();
+                    KernelCompiler::Trap();
                 }
             }
         }

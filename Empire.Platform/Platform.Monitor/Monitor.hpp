@@ -12,6 +12,15 @@
     #define PLATFORM_MONITOR_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Platform::Monitor
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformMonitor
+            {
+            }
+        }
+    }
 }

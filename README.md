@@ -1,6 +1,22 @@
 # Empire 1.0
 
-Слои: Kernel → Math → Platform → Graphics → Engine → Runtime, а также Tools и Tests.
+Слои: Kernel → Platform → Graphics → Engine → Runtime, а также Tools и Tests.
+Math стоит в стороне от этой цепочки: зависит только от Kernel (Types, Assert), от Platform и Graphics не зависит;
+Engine использует Math.
+
+```
+Kernel ─┬─ Math ───────────────┐
+        └─ Platform ─ Graphics ─┴─ Engine ─ Runtime
+```
+
+Namespace и имена файлов повторяют пути папок, подробнее в `ARCHITECTURE.md`.
+
+Что где лежит:
+- Kernel: `Kernel.Compiler` (встроенные функции компилятора), типы, память, контейнеры, логирование и всё, что напрямую работает с ОС и не знает про окна:
+  `Kernel.System`, `Kernel.Time`, `Kernel.Threading`, `Kernel.FileSystem`, `Kernel.Process`,
+  `Kernel.Library`, `Kernel.Environment`, `Kernel.Network`.
+- Platform: окна и ввод (`App`, `Events`, `Window`, `Surface`, `Input`, `Cursor`, `Monitor`, `Clipboard`, `Dialog`)
+  и `Audio` (разные звуковые бэкенды, как у окон), плюс `ThirdParty` для XCB/XLib.
 
 Сборка идёт в `Empire.Build/Build.<Платформа>.<Режим>/Build.<Слой>/`
 (`Empire.Engine` → `Build.Engine`), режимы друг с другом не смешиваются.

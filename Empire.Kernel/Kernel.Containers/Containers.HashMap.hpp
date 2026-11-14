@@ -9,9 +9,9 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Containers
+            namespace KernelContainers
             {
                 // Открытая адресация, линейный пробинг, ёмкость всегда степень двойки.
                 // Указатели на значения (Find) инвалидируются при любой вставке, которая вызывает рост таблицы.
@@ -20,29 +20,29 @@ namespace DEvchik10Empire
                 class HashMap
                 {
                     static_assert(
-                        Types::IsNothrowMoveConstructible<K> && Types::IsNothrowMoveConstructible<V>,
+                        KernelTypes::IsNothrowMoveConstructible<K> && KernelTypes::IsNothrowMoveConstructible<V>,
                         "HashMap requires nothrow move constructible keys and values"
                     );
 
                     private:
-                        static constexpr Types::UInt8 EmptyState = 0;
-                        static constexpr Types::UInt8 UsedState = 1;
-                        static constexpr Types::UInt8 DeletedState = 2;
-                        static constexpr Types::Size NotFound = Types::MaxValue<Types::Size>();
+                        static constexpr KernelTypes::UInt8 EmptyState = 0;
+                        static constexpr KernelTypes::UInt8 UsedState = 1;
+                        static constexpr KernelTypes::UInt8 DeletedState = 2;
+                        static constexpr KernelTypes::Size NotFound = KernelTypes::MaxValue<KernelTypes::Size>();
 
-                        Types::UInt8* States = nullptr;
+                        KernelTypes::UInt8* States = nullptr;
                         K* Keys = nullptr;
                         V* Values = nullptr;
-                        Types::Size Count = 0;
-                        Types::Size Tombstones = 0;
-                        Types::Size Capacity = 0;
+                        KernelTypes::Size Count = 0;
+                        KernelTypes::Size Tombstones = 0;
+                        KernelTypes::Size Capacity = 0;
                         HasherType Hasher;
 
                         void ReleaseStorage() noexcept
                         {
-                            Memory::Deallocate(States);
-                            Memory::Deallocate(Keys);
-                            Memory::Deallocate(Values);
+                            KernelMemory::Deallocate(States);
+                            KernelMemory::Deallocate(Keys);
+                            KernelMemory::Deallocate(Values);
 
                             States = nullptr;
                             Keys = nullptr;
@@ -50,48 +50,48 @@ namespace DEvchik10Empire
                             Capacity = 0;
                         }
 
-                        void Rehash(Types::Size NewCapacity)
+                        void Rehash(KernelTypes::Size NewCapacity)
                         {
-                            if (NewCapacity > Types::MaxValue<Types::Size>() / (sizeof(K) + sizeof(V) + 1))
-                                throw Assert::LengthError("HashMap capacity is too large");
+                            if (NewCapacity > KernelTypes::MaxValue<KernelTypes::Size>() / (sizeof(K) + sizeof(V) + 1))
+                                throw KernelAssert::LengthError("HashMap capacity is too large");
 
-                            Types::UInt8* NewStates = nullptr;
+                            KernelTypes::UInt8* NewStates = nullptr;
                             K* NewKeys = nullptr;
                             V* NewValues = nullptr;
 
                             try
                             {
-                                NewStates = static_cast<Types::UInt8*>(Memory::Allocate(NewCapacity));
-                                Memory::FillBytes(NewStates, EmptyState, NewCapacity);
-                                NewKeys = static_cast<K*>(Memory::Allocate(NewCapacity * sizeof(K), alignof(K)));
-                                NewValues = static_cast<V*>(Memory::Allocate(NewCapacity * sizeof(V), alignof(V)));
+                                NewStates = static_cast<KernelTypes::UInt8*>(KernelMemory::Allocate(NewCapacity));
+                                KernelMemory::FillBytes(NewStates, EmptyState, NewCapacity);
+                                NewKeys = static_cast<K*>(KernelMemory::Allocate(NewCapacity * sizeof(K), alignof(K)));
+                                NewValues = static_cast<V*>(KernelMemory::Allocate(NewCapacity * sizeof(V), alignof(V)));
                             }
                             catch (...)
                             {
-                                Memory::Deallocate(NewStates);
-                                Memory::Deallocate(NewKeys);
-                                Memory::Deallocate(NewValues);
+                                KernelMemory::Deallocate(NewStates);
+                                KernelMemory::Deallocate(NewKeys);
+                                KernelMemory::Deallocate(NewValues);
                                 throw;
                             }
 
-                            const Types::Size Mask = NewCapacity - 1;
+                            const KernelTypes::Size Mask = NewCapacity - 1;
 
-                            for (Types::Size Old = 0; Old < Capacity; Old++)
+                            for (KernelTypes::Size Old = 0; Old < Capacity; Old++)
                             {
                                 if (States[Old] != UsedState)
                                     continue;
 
-                                Types::Size Index = static_cast<Types::Size>(Hasher(Keys[Old])) & Mask;
+                                KernelTypes::Size Index = static_cast<KernelTypes::Size>(Hasher(Keys[Old])) & Mask;
 
                                 while (NewStates[Index] == UsedState)
                                     Index = (Index + 1) & Mask;
 
-                                Types::ConstructAt(NewKeys + Index, Types::Move(Keys[Old]));
-                                Types::ConstructAt(NewValues + Index, Types::Move(Values[Old]));
+                                KernelTypes::ConstructAt(NewKeys + Index, KernelTypes::Move(Keys[Old]));
+                                KernelTypes::ConstructAt(NewValues + Index, KernelTypes::Move(Values[Old]));
                                 NewStates[Index] = UsedState;
 
-                                Types::DestroyAt(Keys + Old);
-                                Types::DestroyAt(Values + Old);
+                                KernelTypes::DestroyAt(Keys + Old);
+                                KernelTypes::DestroyAt(Values + Old);
                             }
 
                             ReleaseStorage();
@@ -114,12 +114,12 @@ namespace DEvchik10Empire
                             if ((Count + Tombstones + 1) * 10 <= Capacity * 7)
                                 return;
 
-                            Types::Size NewCapacity = Capacity;
+                            KernelTypes::Size NewCapacity = Capacity;
 
                             if ((Count + 1) * 10 > Capacity * 4)
                             {
-                                if (Capacity > Types::MaxValue<Types::Size>() / 4)
-                                    throw Assert::LengthError("HashMap capacity is too large");
+                                if (Capacity > KernelTypes::MaxValue<KernelTypes::Size>() / 4)
+                                    throw KernelAssert::LengthError("HashMap capacity is too large");
 
                                 NewCapacity = Capacity * 2;
                             }
@@ -127,15 +127,15 @@ namespace DEvchik10Empire
                             Rehash(NewCapacity);
                         }
 
-                        Types::Size FindIndex(const K& Key) const
+                        KernelTypes::Size FindIndex(const K& Key) const
                         {
                             if (Capacity == 0)
                                 return NotFound;
 
-                            const Types::Size Mask = Capacity - 1;
-                            Types::Size Index = static_cast<Types::Size>(Hasher(Key)) & Mask;
+                            const KernelTypes::Size Mask = Capacity - 1;
+                            KernelTypes::Size Index = static_cast<KernelTypes::Size>(Hasher(Key)) & Mask;
 
-                            for (Types::Size Probe = 0; Probe < Capacity; Probe++)
+                            for (KernelTypes::Size Probe = 0; Probe < Capacity; Probe++)
                             {
                                 if (States[Index] == EmptyState)
                                     return NotFound;
@@ -149,35 +149,35 @@ namespace DEvchik10Empire
                             return NotFound;
                         }
 
-                        Types::Bool Place(const K& Key, V&& Value, Types::Bool Overwrite)
+                        KernelTypes::Bool Place(const K& Key, V&& Value, KernelTypes::Bool Overwrite)
                         {
-                            const Types::Size Existing = FindIndex(Key);
+                            const KernelTypes::Size Existing = FindIndex(Key);
 
                             if (Existing != NotFound)
                             {
                                 if (Overwrite)
-                                    Values[Existing] = Types::Move(Value);
+                                    Values[Existing] = KernelTypes::Move(Value);
 
                                 return false;
                             }
 
                             GrowIfNeeded();
 
-                            const Types::Size Mask = Capacity - 1;
-                            Types::Size Index = static_cast<Types::Size>(Hasher(Key)) & Mask;
+                            const KernelTypes::Size Mask = Capacity - 1;
+                            KernelTypes::Size Index = static_cast<KernelTypes::Size>(Hasher(Key)) & Mask;
 
                             while (States[Index] == UsedState)
                                 Index = (Index + 1) & Mask;
 
-                            Types::ConstructAt(Keys + Index, Key);
+                            KernelTypes::ConstructAt(Keys + Index, Key);
 
                             try
                             {
-                                Types::ConstructAt(Values + Index, Types::Move(Value));
+                                KernelTypes::ConstructAt(Values + Index, KernelTypes::Move(Value));
                             }
                             catch (...)
                             {
-                                Types::DestroyAt(Keys + Index);
+                                KernelTypes::DestroyAt(Keys + Index);
                                 throw;
                             }
 
@@ -242,47 +242,47 @@ namespace DEvchik10Empire
                             ReleaseStorage();
                         }
 
-                        Types::Size GetCount() const noexcept { return Count; }
-                        Types::Bool IsEmpty() const noexcept { return Count == 0; }
+                        KernelTypes::Size GetCount() const noexcept { return Count; }
+                        KernelTypes::Bool IsEmpty() const noexcept { return Count == 0; }
 
                         // Возвращает true, если ключ был добавлен, и false, если он уже существовал (значение не меняется).
-                        Types::Bool Insert(const K& Key, V Value)
+                        KernelTypes::Bool Insert(const K& Key, V Value)
                         {
-                            return Place(Key, Types::Move(Value), false);
+                            return Place(Key, KernelTypes::Move(Value), false);
                         }
 
                         // Добавляет ключ или заменяет значение существующего.
                         void Set(const K& Key, V Value)
                         {
-                            Place(Key, Types::Move(Value), true);
+                            Place(Key, KernelTypes::Move(Value), true);
                         }
 
                         V* Find(const K& Key)
                         {
-                            const Types::Size Index = FindIndex(Key);
+                            const KernelTypes::Size Index = FindIndex(Key);
                             return Index == NotFound ? nullptr : Values + Index;
                         }
 
                         const V* Find(const K& Key) const
                         {
-                            const Types::Size Index = FindIndex(Key);
+                            const KernelTypes::Size Index = FindIndex(Key);
                             return Index == NotFound ? nullptr : Values + Index;
                         }
 
-                        Types::Bool Contains(const K& Key) const
+                        KernelTypes::Bool Contains(const K& Key) const
                         {
                             return FindIndex(Key) != NotFound;
                         }
 
-                        Types::Bool Remove(const K& Key)
+                        KernelTypes::Bool Remove(const K& Key)
                         {
-                            const Types::Size Index = FindIndex(Key);
+                            const KernelTypes::Size Index = FindIndex(Key);
 
                             if (Index == NotFound)
                                 return false;
 
-                            Types::DestroyAt(Keys + Index);
-                            Types::DestroyAt(Values + Index);
+                            KernelTypes::DestroyAt(Keys + Index);
+                            KernelTypes::DestroyAt(Values + Index);
                             States[Index] = DeletedState;
                             Count--;
                             Tombstones++;
@@ -291,12 +291,12 @@ namespace DEvchik10Empire
 
                         void Clear() noexcept
                         {
-                            for (Types::Size Index = 0; Index < Capacity; Index++)
+                            for (KernelTypes::Size Index = 0; Index < Capacity; Index++)
                             {
                                 if (States[Index] == UsedState)
                                 {
-                                    Types::DestroyAt(Keys + Index);
-                                    Types::DestroyAt(Values + Index);
+                                    KernelTypes::DestroyAt(Keys + Index);
+                                    KernelTypes::DestroyAt(Values + Index);
                                 }
 
                                 States[Index] = EmptyState;
@@ -310,7 +310,7 @@ namespace DEvchik10Empire
                         template <typename Visitor>
                         void ForEach(Visitor&& Visit)
                         {
-                            for (Types::Size Index = 0; Index < Capacity; Index++)
+                            for (KernelTypes::Size Index = 0; Index < Capacity; Index++)
                             {
                                 if (States[Index] == UsedState && !Visit(Keys[Index], Values[Index]))
                                     return;
@@ -320,7 +320,7 @@ namespace DEvchik10Empire
                         template <typename Visitor>
                         void ForEach(Visitor&& Visit) const
                         {
-                            for (Types::Size Index = 0; Index < Capacity; Index++)
+                            for (KernelTypes::Size Index = 0; Index < Capacity; Index++)
                             {
                                 if (States[Index] == UsedState && !Visit(Keys[Index], Values[Index]))
                                     return;

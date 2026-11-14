@@ -4,11 +4,11 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Events
+            namespace KernelEvents
             {
                 Bool EventBus::Unsubscribe(SubscriptionId Id)
                 {
@@ -16,13 +16,13 @@ namespace DEvchik10Empire
                     Bool WasRemoved = false;
 
                     {
-                        Sync::LockGuard Lock(StateMutex);
+                        KernelSync::LockGuard Lock(StateMutex);
 
                         TypeKey EmptiedKey = 0;
                         Bool HasEmptiedKey = false;
 
                         Listeners.ForEach(
-                            [&](const TypeKey& Key, Containers::Array<Listener>& EventListeners)
+                            [&](const TypeKey& Key, KernelContainers::Array<Listener>& EventListeners)
                             {
                                 for (Size Index = 0; Index < EventListeners.GetCount(); Index++)
                                 {
@@ -55,22 +55,22 @@ namespace DEvchik10Empire
 
                 void EventBus::Clear()
                 {
-                    Containers::HashMap<TypeKey, Containers::Array<Listener>> Removed;
+                    KernelContainers::HashMap<TypeKey, KernelContainers::Array<Listener>> Removed;
 
                     {
-                        Sync::LockGuard Lock(StateMutex);
+                        KernelSync::LockGuard Lock(StateMutex);
                         Removed = Move(Listeners);
                     }
                 }
 
                 Size EventBus::GetSubscriptionCount() const
                 {
-                    Sync::LockGuard Lock(StateMutex);
+                    KernelSync::LockGuard Lock(StateMutex);
 
                     Size Total = 0;
 
                     Listeners.ForEach(
-                        [&](const TypeKey&, const Containers::Array<Listener>& EventListeners)
+                        [&](const TypeKey&, const KernelContainers::Array<Listener>& EventListeners)
                         {
                             Total += EventListeners.GetCount();
                             return true;

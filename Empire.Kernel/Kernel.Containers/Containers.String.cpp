@@ -7,11 +7,11 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Containers
+            namespace KernelContainers
             {
                 namespace
                 {
@@ -27,9 +27,9 @@ namespace DEvchik10Empire
 
                     Char* DuplicateText(const Char* Source, Size SourceCount)
                     {
-                        Char* Result = static_cast<Char*>(Memory::Allocate(SourceCount + 1, alignof(Char)));
+                        Char* Result = static_cast<Char*>(KernelMemory::Allocate(SourceCount + 1, alignof(Char)));
 
-                        Memory::CopyBytes(Result, Source, SourceCount);
+                        KernelMemory::CopyBytes(Result, Source, SourceCount);
                         Result[SourceCount] = '\0';
 
                         return Result;
@@ -76,7 +76,7 @@ namespace DEvchik10Empire
 
                 String::~String()
                 {
-                    Memory::Deallocate(Text);
+                    KernelMemory::Deallocate(Text);
                 }
 
                 String& String::operator=(const String& Other)
@@ -89,7 +89,7 @@ namespace DEvchik10Empire
                     if (Other.Count > 0)
                         NewText = DuplicateText(Other.Text, Other.Count);
 
-                    Memory::Deallocate(Text);
+                    KernelMemory::Deallocate(Text);
                     Text = NewText;
                     Count = Other.Count;
                     Capacity = Other.Count;
@@ -102,7 +102,7 @@ namespace DEvchik10Empire
                     if (this == &Other)
                         return *this;
 
-                    Memory::Deallocate(Text);
+                    KernelMemory::Deallocate(Text);
 
                     Text = Other.Text;
                     Count = Other.Count;
@@ -148,7 +148,7 @@ namespace DEvchik10Empire
                 Char& String::operator[](Size Index)
                 {
                     if (Index >= Count)
-                        throw Assert::OutOfRangeError("String index is out of range");
+                        throw KernelAssert::OutOfRangeError("String index is out of range");
 
                     return Text[Index];
                 }
@@ -156,7 +156,7 @@ namespace DEvchik10Empire
                 const Char& String::operator[](Size Index) const
                 {
                     if (Index >= Count)
-                        throw Assert::OutOfRangeError("String index is out of range");
+                        throw KernelAssert::OutOfRangeError("String index is out of range");
 
                     return Text[Index];
                 }
@@ -167,14 +167,14 @@ namespace DEvchik10Empire
                         return;
 
                     if (NewCapacity == MaxValue<Size>())
-                        throw Assert::LengthError("String capacity is too large");
+                        throw KernelAssert::LengthError("String capacity is too large");
 
-                    Char* NewText = static_cast<Char*>(Memory::Allocate(NewCapacity + 1, alignof(Char)));
+                    Char* NewText = static_cast<Char*>(KernelMemory::Allocate(NewCapacity + 1, alignof(Char)));
 
-                    Memory::CopyBytes(NewText, Text, Count);
+                    KernelMemory::CopyBytes(NewText, Text, Count);
                     NewText[Count] = '\0';
 
-                    Memory::Deallocate(Text);
+                    KernelMemory::Deallocate(Text);
                     Text = NewText;
                     Capacity = NewCapacity;
                 }
@@ -185,7 +185,7 @@ namespace DEvchik10Empire
                         return;
 
                     if (SourceCount > MaxValue<Size>() - Count - 1)
-                        throw Assert::LengthError("String size is too large");
+                        throw KernelAssert::LengthError("String size is too large");
 
                     const UIntPtr SourceAddress = reinterpret_cast<UIntPtr>(Source);
                     const UIntPtr TextAddress = reinterpret_cast<UIntPtr>(Text);
@@ -217,7 +217,7 @@ namespace DEvchik10Empire
                     if (IsInternal)
                         Source = Text + SourceOffset;
 
-                    Memory::MoveBytes(Text + Count, Source, SourceCount);
+                    KernelMemory::MoveBytes(Text + Count, Source, SourceCount);
 
                     Count = NewCount;
                     Text[Count] = '\0';

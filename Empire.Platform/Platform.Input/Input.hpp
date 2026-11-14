@@ -12,6 +12,15 @@
     #define PLATFORM_INPUT_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Platform::Input
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformInput
+            {
+            }
+        }
+    }
 }

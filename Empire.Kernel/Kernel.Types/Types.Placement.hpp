@@ -4,9 +4,9 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Types
+            namespace KernelTypes
             {
                 struct PlacementTag
                 {
@@ -18,7 +18,7 @@ namespace DEvchik10Empire
 
 inline void* operator new(
     decltype(sizeof(0)),
-    DEvchik10Empire::EmpireGameEngine::EngineKernel::Types::PlacementTag,
+    DEvchik10Empire::EmpireGameEngine::EmpireKernel::KernelTypes::PlacementTag,
     void* Location
 )
 {
@@ -27,7 +27,7 @@ inline void* operator new(
 
 inline void operator delete(
     void*,
-    DEvchik10Empire::EmpireGameEngine::EngineKernel::Types::PlacementTag,
+    DEvchik10Empire::EmpireGameEngine::EmpireKernel::KernelTypes::PlacementTag,
     void*
 ) noexcept
 {

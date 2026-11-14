@@ -12,6 +12,15 @@
     #define PLATFORM_EVENTS_API __attribute__((visibility("default")))
 #endif
 
-namespace Empire::Platform::Events
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformEvents
+            {
+            }
+        }
+    }
 }

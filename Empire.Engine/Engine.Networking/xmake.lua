@@ -1,7 +1,7 @@
 target("Engine.Networking")
     add_headerfiles("*.hpp")
     add_files("*.cpp")
-    add_deps("Engine.ECS", "Engine.Jobs", "Platform.Network", "Kernel.Events")
+    add_deps("Engine.ECS", "Engine.Jobs", "Kernel.Network", "Kernel.Events")
 
 includes(
     "Networking.Bitstream",

@@ -10,15 +10,15 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Services
+            namespace KernelServices
             {
                 class ServiceRegistry
                 {
                     private:
-                        mutable Sync::Mutex StateMutex;
-                        Containers::HashMap<Types::TypeKey, Memory::SharedPtr<void>> RegisteredServices;
+                        mutable KernelSync::Mutex StateMutex;
+                        KernelContainers::HashMap<KernelTypes::TypeKey, KernelMemory::SharedPtr<void>> RegisteredServices;
 
                     public:
                         ServiceRegistry() = default;
@@ -26,63 +26,63 @@ namespace DEvchik10Empire
                         ServiceRegistry& operator=(const ServiceRegistry&) = delete;
 
                         template <typename ServiceType>
-                        void Register(Memory::SharedPtr<ServiceType> Service)
+                        void Register(KernelMemory::SharedPtr<ServiceType> Service)
                         {
                             if (!Service)
-                                throw Assert::InvalidArgumentError("Cannot register a null service");
+                                throw KernelAssert::InvalidArgumentError("Cannot register a null service");
 
-                            Sync::LockGuard Lock(StateMutex);
-                            const Types::TypeKey Key = Types::GetTypeKey<ServiceType>();
+                            KernelSync::LockGuard Lock(StateMutex);
+                            const KernelTypes::TypeKey Key = KernelTypes::GetTypeKey<ServiceType>();
 
                             if (RegisteredServices.Contains(Key))
-                                throw Assert::LogicError("Service is already registered");
+                                throw KernelAssert::LogicError("Service is already registered");
 
-                            RegisteredServices.Insert(Key, Memory::SharedPtr<void>(Types::Move(Service)));
+                            RegisteredServices.Insert(Key, KernelMemory::SharedPtr<void>(KernelTypes::Move(Service)));
                         }
 
                         template <typename ServiceType, typename... Arguments>
-                        Memory::SharedPtr<ServiceType> Create(Arguments&&... Args)
+                        KernelMemory::SharedPtr<ServiceType> Create(Arguments&&... Args)
                         {
-                            Memory::SharedPtr<ServiceType> Service =
-                                Memory::MakeShared<ServiceType>(Types::Forward<Arguments>(Args)...);
+                            KernelMemory::SharedPtr<ServiceType> Service =
+                                KernelMemory::MakeShared<ServiceType>(KernelTypes::Forward<Arguments>(Args)...);
 
                             Register<ServiceType>(Service);
                             return Service;
                         }
 
                         template <typename ServiceType>
-                        Memory::SharedPtr<ServiceType> Get() const
+                        KernelMemory::SharedPtr<ServiceType> Get() const
                         {
-                            Sync::LockGuard Lock(StateMutex);
-                            const Memory::SharedPtr<void>* Found = RegisteredServices.Find(Types::GetTypeKey<ServiceType>());
+                            KernelSync::LockGuard Lock(StateMutex);
+                            const KernelMemory::SharedPtr<void>* Found = RegisteredServices.Find(KernelTypes::GetTypeKey<ServiceType>());
 
                             if (Found == nullptr)
                                 return nullptr;
 
-                            return Memory::StaticPointerCast<ServiceType>(*Found);
+                            return KernelMemory::StaticPointerCast<ServiceType>(*Found);
                         }
 
                         template <typename ServiceType>
-                        Types::Bool Contains() const
+                        KernelTypes::Bool Contains() const
                         {
-                            Sync::LockGuard Lock(StateMutex);
-                            return RegisteredServices.Contains(Types::GetTypeKey<ServiceType>());
+                            KernelSync::LockGuard Lock(StateMutex);
+                            return RegisteredServices.Contains(KernelTypes::GetTypeKey<ServiceType>());
                         }
 
                         template <typename ServiceType>
-                        Types::Bool Remove()
+                        KernelTypes::Bool Remove()
                         {
-                            Memory::SharedPtr<void> Removed;
+                            KernelMemory::SharedPtr<void> Removed;
 
                             {
-                                Sync::LockGuard Lock(StateMutex);
-                                const Types::TypeKey Key = Types::GetTypeKey<ServiceType>();
-                                Memory::SharedPtr<void>* Found = RegisteredServices.Find(Key);
+                                KernelSync::LockGuard Lock(StateMutex);
+                                const KernelTypes::TypeKey Key = KernelTypes::GetTypeKey<ServiceType>();
+                                KernelMemory::SharedPtr<void>* Found = RegisteredServices.Find(Key);
 
                                 if (Found == nullptr)
                                     return false;
 
-                                Removed = Types::Move(*Found);
+                                Removed = KernelTypes::Move(*Found);
                                 RegisteredServices.Remove(Key);
                             }
 
@@ -90,7 +90,7 @@ namespace DEvchik10Empire
                         }
 
                         void Clear();
-                        Types::Size GetCount() const;
+                        KernelTypes::Size GetCount() const;
                 };
             }
         }

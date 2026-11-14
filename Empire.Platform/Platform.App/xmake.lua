@@ -1,4 +1,6 @@
 target("Platform.App")
+    add_headerfiles("*.hpp")
+    add_files("*.cpp")
     add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory")
 
 -- бэкенды: Noop собирается везде, остальные выбираются платформой

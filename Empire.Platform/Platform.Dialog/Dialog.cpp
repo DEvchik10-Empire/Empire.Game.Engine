@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Dialog/Dialog.hpp>
+#include "Empire.Platform/Platform.Dialog/Dialog.hpp"
 
-namespace Empire::Platform::Dialog
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformDialog
+            {
+            }
+        }
+    }
 }

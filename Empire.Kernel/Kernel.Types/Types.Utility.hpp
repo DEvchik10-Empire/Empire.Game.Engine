@@ -7,9 +7,9 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Types
+            namespace KernelTypes
             {
                 template <typename T>
                 struct RemoveReferenceTrait
@@ -104,7 +104,7 @@ namespace DEvchik10Empire
                 inline constexpr Bool IsSigned = static_cast<RemoveCV<T>>(-1) < static_cast<RemoveCV<T>>(0);
 
                 template <typename T>
-                inline constexpr Bool IsCopyConstructible = requires(const T& Value) { new T(Value); };
+                inline constexpr Bool IsCopyConstructible = requires(const T& Value) { T(Value); };
 
                 template <typename T>
                 inline constexpr Bool IsNothrowMoveConstructible = noexcept(T(Declval<T>()));
@@ -199,7 +199,7 @@ namespace DEvchik10Empire
                 template <typename T>
                 consteval TypeKey GetTypeKey() noexcept
                 {
-                    return HashText(__PRETTY_FUNCTION__);
+                    return HashText(KernelCompiler::TypeSignature<T>());
                 }
             }
         }

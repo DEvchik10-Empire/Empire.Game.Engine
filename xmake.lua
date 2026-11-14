@@ -12,7 +12,7 @@ set_config("builddir", "Empire.Build")
 -- по умолчанию каждый модуль это .so; Tools.* и Tests.* переопределяют на binary
 set_kind("shared")
 
--- <Empire.Platform/Platform.Time/Time.hpp>
+-- "Empire.Kernel/Kernel.Time/Time.hpp"
 add_includedirs("$(projectdir)")
 add_cxxflags("-fvisibility=hidden", "-fvisibility-inlines-hidden", {tools = {"gcc", "clang"}})
 

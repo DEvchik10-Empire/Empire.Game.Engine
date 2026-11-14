@@ -1,16 +1,17 @@
 #include "Empire.Kernel/Kernel.Sync/Sync.Mutex.hpp"
 
+#include "Empire.Kernel/Kernel.Compiler/Compiler.hpp"
 #include "Empire.Kernel/Kernel.System/System.hpp"
 
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Sync
+            namespace KernelSync
             {
                 void Mutex::Lock() noexcept
                 {
@@ -19,7 +20,9 @@ namespace DEvchik10Empire
                     if (State.CompareExchange(Expected, 1, MemoryOrder::Acquire))
                         return;
 
+                    // Этапы ожидания: короткое вращение с Pause, затем уступка процессора, затем короткий сон (долгое ожидание не жжёт процессор).
                     UInt32 Attempts = 0;
+                    const UInt32 SleepMicroseconds = 50;
 
                     for (;;)
                     {
@@ -33,10 +36,18 @@ namespace DEvchik10Empire
 
                         Attempts++;
 
-                        if (Attempts < 2048)
-                            System::YieldThread();
+                        if (Attempts < 8)
+                        {
+                            KernelCompiler::Pause();
+                        }
+                        else if (Attempts < 2048)
+                        {
+                            KernelSystem::YieldThread();
+                        }
                         else
-                            System::SleepThread(100);
+                        {
+                            KernelSystem::SleepThread(SleepMicroseconds);
+                        }
                     }
                 }
 

@@ -10,16 +10,16 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Logging
+            namespace KernelLogging
             {
                 namespace
                 {
-                    Sync::Atomic<UInt8> MinimumLevelValue(static_cast<UInt8>(Level::Info));
-                    Sync::Mutex OutputMutex;
+                    KernelSync::Atomic<UInt8> MinimumLevelValue(static_cast<UInt8>(Level::Info));
+                    KernelSync::Mutex OutputMutex;
                     Sink* CurrentSink = nullptr;
 
                     const Char* GetLevelName(Level Severity) noexcept
@@ -40,7 +40,33 @@ namespace DEvchik10Empire
 
                     void WriteToStream(Bool ToStandardError, const Char* Text, Size ByteCount)
                     {
-                        System::WriteOutput(ToStandardError, Text, ByteCount);
+                        KernelSystem::WriteOutput(ToStandardError, Text, ByteCount);
+                    }
+
+                    // Укорачивает путь файла: после последнего "Empire.Game.Engine/", а без него только имя файла.
+                    KernelContainers::StringView ShortenPath(const Char* Path) noexcept
+                    {
+                        constexpr const Char Marker[] = "Empire.Game.Engine/";
+                        constexpr Size MarkerLength = sizeof(Marker) - 1;
+
+                        const Char* Start = Path;
+                        const Char* Name = Path;
+
+                        for (const Char* Cursor = Path; *Cursor != '\0'; Cursor++)
+                        {
+                            if (*Cursor == '/' || *Cursor == '\\')
+                                Name = Cursor + 1;
+
+                            Size Matched = 0;
+
+                            while (Matched < MarkerLength && Cursor[Matched] != '\0' && Cursor[Matched] == Marker[Matched])
+                                Matched++;
+
+                            if (Matched == MarkerLength)
+                                Start = Cursor + MarkerLength;
+                        }
+
+                        return KernelContainers::StringView(Start != Path ? Start : Name);
                     }
 
                     Sink& GetActiveSink()
@@ -50,51 +76,51 @@ namespace DEvchik10Empire
                     }
                 }
 
-                void ConsoleSink::Write(Level Severity, Containers::StringView Line)
+                void ConsoleSink::Write(Level Severity, KernelContainers::StringView Line)
                 {
                     WriteToStream(Severity >= Level::Warning, Line.GetText(), Line.GetCount());
                 }
 
                 void SetMinimumLevel(Level NewMinimumLevel) noexcept
                 {
-                    MinimumLevelValue.Store(static_cast<UInt8>(NewMinimumLevel), Sync::MemoryOrder::Relaxed);
+                    MinimumLevelValue.Store(static_cast<UInt8>(NewMinimumLevel), KernelSync::MemoryOrder::Relaxed);
                 }
 
                 Level GetMinimumLevel() noexcept
                 {
-                    return static_cast<Level>(MinimumLevelValue.Load(Sync::MemoryOrder::Relaxed));
+                    return static_cast<Level>(MinimumLevelValue.Load(KernelSync::MemoryOrder::Relaxed));
                 }
 
                 void SetSink(Sink* NewSink)
                 {
-                    Sync::LockGuard Lock(OutputMutex);
+                    KernelSync::LockGuard Lock(OutputMutex);
                     CurrentSink = NewSink;
                 }
 
-                void Write(Level Severity, Containers::StringView Message, const SourceLocation& Location)
+                void Write(Level Severity, KernelContainers::StringView Message, const SourceLocation& Location)
                 {
                     if (Severity == Level::Off || Severity < GetMinimumLevel())
                         return;
 
-                    Containers::String Line;
+                    KernelContainers::String Line;
 
                     Line.Append("[");
                     Line.Append(GetLevelName(Severity));
                     Line.Append("] ");
                     Line.Append(Message);
                     Line.Append(" (");
-                    Line.Append(Location.GetFile());
+                    Line.Append(ShortenPath(Location.GetFile()));
                     Line.Append(":");
-                    Line.Append(Containers::FormatUnsigned(Location.GetLine()));
+                    Line.Append(KernelContainers::FormatUnsigned(Location.GetLine()));
                     Line.Append(")\n");
 
-                    Sync::LockGuard Lock(OutputMutex);
+                    KernelSync::LockGuard Lock(OutputMutex);
                     GetActiveSink().Write(Severity, Line.GetView());
                 }
 
                 void Write(Level Severity, const Char* Message, const SourceLocation& Location)
                 {
-                    Write(Severity, Containers::StringView(Message), Location);
+                    Write(Severity, KernelContainers::StringView(Message), Location);
                 }
 
                 void Trace(const Char* Message, const SourceLocation& Location) { Write(Level::Trace, Message, Location); }

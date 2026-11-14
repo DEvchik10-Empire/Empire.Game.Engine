@@ -7,11 +7,11 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        using namespace EngineKernel::Types;
+        using namespace EmpireKernel::KernelTypes;
 
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Containers
+            namespace KernelContainers
             {
                 StringView::StringView(const Char* Source)
                 {
@@ -47,7 +47,7 @@ namespace DEvchik10Empire
                 const Char& StringView::operator[](Size Index) const
                 {
                     if (Index >= Count)
-                        throw Assert::OutOfRangeError("StringView index is out of range");
+                        throw KernelAssert::OutOfRangeError("StringView index is out of range");
 
                     return Text[Index];
                 }
@@ -55,7 +55,7 @@ namespace DEvchik10Empire
                 Bool operator==(StringView Left, StringView Right) noexcept
                 {
                     return Left.GetCount() == Right.GetCount()
-                        && Memory::CompareBytes(Left.GetText(), Right.GetText(), Left.GetCount()) == 0;
+                        && KernelMemory::CompareBytes(Left.GetText(), Right.GetText(), Left.GetCount()) == 0;
                 }
 
                 Bool operator!=(StringView Left, StringView Right) noexcept

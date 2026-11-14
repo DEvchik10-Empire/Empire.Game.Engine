@@ -1,5 +1,14 @@
-#include <Empire.Platform/Platform.Window/Window.hpp>
+#include "Empire.Platform/Platform.Window/Window.hpp"
 
-namespace Empire::Platform::Window
+namespace DEvchik10Empire
 {
+    namespace EmpireGameEngine
+    {
+        namespace EmpirePlatform
+        {
+            namespace PlatformWindow
+            {
+            }
+        }
+    }
 }

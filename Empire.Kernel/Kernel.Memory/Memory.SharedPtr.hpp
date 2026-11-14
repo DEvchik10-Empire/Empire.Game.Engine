@@ -8,14 +8,14 @@ namespace DEvchik10Empire
 {
     namespace EmpireGameEngine
     {
-        namespace EngineKernel
+        namespace EmpireKernel
         {
-            namespace Memory
+            namespace KernelMemory
             {
                 class ControlBlock
                 {
                     private:
-                        Sync::Atomic<Types::Size> StrongCount{1};
+                        KernelSync::Atomic<KernelTypes::Size> StrongCount{1};
 
                     public:
                         ControlBlock() = default;
@@ -28,21 +28,21 @@ namespace DEvchik10Empire
 
                         void AddReference() noexcept
                         {
-                            StrongCount.FetchAdd(1, Sync::MemoryOrder::Relaxed);
+                            StrongCount.FetchAdd(1, KernelSync::MemoryOrder::Relaxed);
                         }
 
                         void Release() noexcept
                         {
-                            if (StrongCount.FetchSub(1, Sync::MemoryOrder::AcquireRelease) == 1)
+                            if (StrongCount.FetchSub(1, KernelSync::MemoryOrder::AcquireRelease) == 1)
                             {
                                 DestroyObject();
                                 Free();
                             }
                         }
 
-                        Types::Size GetCount() const noexcept
+                        KernelTypes::Size GetCount() const noexcept
                         {
-                            return StrongCount.Load(Sync::MemoryOrder::Relaxed);
+                            return StrongCount.Load(KernelSync::MemoryOrder::Relaxed);
                         }
                 };
 
@@ -50,14 +50,14 @@ namespace DEvchik10Empire
                 class InlineControlBlock final : public ControlBlock
                 {
                     private:
-                        alignas(T) Types::UInt8 Storage[sizeof(T)];
+                        alignas(T) KernelTypes::UInt8 Storage[sizeof(T)];
                         T* Object = nullptr;
 
                     public:
                         template <typename... Arguments>
                         explicit InlineControlBlock(Arguments&&... Args)
                         {
-                            Object = Types::ConstructAt(reinterpret_cast<T*>(Storage), Types::Forward<Arguments>(Args)...);
+                            Object = KernelTypes::ConstructAt(reinterpret_cast<T*>(Storage), KernelTypes::Forward<Arguments>(Args)...);
                         }
 
                         T* GetObject() noexcept
@@ -67,13 +67,13 @@ namespace DEvchik10Empire
 
                         void DestroyObject() noexcept override
                         {
-                            Types::DestroyAt(Object);
+                            KernelTypes::DestroyAt(Object);
                         }
 
                         void Free() noexcept override
                         {
                             this->~InlineControlBlock();
-                            Memory::Deallocate(this);
+                            KernelMemory::Deallocate(this);
                         }
                 };
 
@@ -113,7 +113,7 @@ namespace DEvchik10Empire
 
                     public:
                         SharedPtr() noexcept = default;
-                        SharedPtr(Types::NullPointer) noexcept {}
+                        SharedPtr(KernelTypes::NullPointer) noexcept {}
 
                         SharedPtr(const SharedPtr& Other) noexcept
                             : Pointer(Other.Pointer), Block(Other.Block)
@@ -158,8 +158,8 @@ namespace DEvchik10Empire
                                 return *this;
 
                             SharedPtr Copy(Other);
-                            Types::Swap(Pointer, Copy.Pointer);
-                            Types::Swap(Block, Copy.Block);
+                            KernelTypes::Swap(Pointer, Copy.Pointer);
+                            KernelTypes::Swap(Block, Copy.Block);
                             return *this;
                         }
 
@@ -192,42 +192,42 @@ namespace DEvchik10Empire
                         }
 
                         auto& operator*() const noexcept
-                            requires (!Types::IsVoid<T>)
+                            requires (!KernelTypes::IsVoid<T>)
                         {
                             return *Pointer;
                         }
 
-                        explicit operator Types::Bool() const noexcept
+                        explicit operator KernelTypes::Bool() const noexcept
                         {
                             return Pointer != nullptr;
                         }
 
-                        Types::Size GetUseCount() const noexcept
+                        KernelTypes::Size GetUseCount() const noexcept
                         {
                             return Block == nullptr ? 0 : Block->GetCount();
                         }
                 };
 
                 template <typename T>
-                Types::Bool operator==(const SharedPtr<T>& Left, Types::NullPointer) noexcept
+                KernelTypes::Bool operator==(const SharedPtr<T>& Left, KernelTypes::NullPointer) noexcept
                 {
                     return Left.Get() == nullptr;
                 }
 
                 template <typename T>
-                Types::Bool operator!=(const SharedPtr<T>& Left, Types::NullPointer) noexcept
+                KernelTypes::Bool operator!=(const SharedPtr<T>& Left, KernelTypes::NullPointer) noexcept
                 {
                     return Left.Get() != nullptr;
                 }
 
                 template <typename T, typename U>
-                Types::Bool operator==(const SharedPtr<T>& Left, const SharedPtr<U>& Right) noexcept
+                KernelTypes::Bool operator==(const SharedPtr<T>& Left, const SharedPtr<U>& Right) noexcept
                 {
                     return Left.Get() == Right.Get();
                 }
 
                 template <typename T, typename U>
-                Types::Bool operator!=(const SharedPtr<T>& Left, const SharedPtr<U>& Right) noexcept
+                KernelTypes::Bool operator!=(const SharedPtr<T>& Left, const SharedPtr<U>& Right) noexcept
                 {
                     return Left.Get() != Right.Get();
                 }
@@ -237,16 +237,16 @@ namespace DEvchik10Empire
                 {
                     using Block = InlineControlBlock<T>;
 
-                    void* Storage = Memory::Allocate(sizeof(Block), alignof(Block));
+                    void* Storage = KernelMemory::Allocate(sizeof(Block), alignof(Block));
                     Block* NewBlock = nullptr;
 
                     try
                     {
-                        NewBlock = Types::ConstructAt(static_cast<Block*>(Storage), Types::Forward<Arguments>(Args)...);
+                        NewBlock = KernelTypes::ConstructAt(static_cast<Block*>(Storage), KernelTypes::Forward<Arguments>(Args)...);
                     }
                     catch (...)
                     {
-                        Memory::Deallocate(Storage);
+                        KernelMemory::Deallocate(Storage);
                         throw;
                     }
 
