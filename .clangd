@@ -1,0 +1,2 @@
+CompileFlags:
+  Add: [-I/home/devchik10/Documents/Empire.Game.Engine, -std=c++26]

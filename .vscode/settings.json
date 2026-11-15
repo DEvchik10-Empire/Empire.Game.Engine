@@ -1,0 +1,4 @@
+{
+    "xmake.compileCommandsDirectory": ".",
+    "clangd.arguments": ["--compile-commands-dir=${workspaceFolder}"]
+}
