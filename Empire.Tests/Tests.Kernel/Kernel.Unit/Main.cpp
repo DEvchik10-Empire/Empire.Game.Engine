@@ -1,7 +1,10 @@
 #include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.Algorithms.hpp"
+#include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.Concurrent.hpp"
 #include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.Containers.hpp"
 #include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.FastArray.hpp"
+#include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.HashTables.hpp"
 #include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.Kernel.hpp"
+#include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.TempAllocator.hpp"
 
 int main(int argc, char** argv)
 {
@@ -12,6 +15,9 @@ int main(int argc, char** argv)
     const int AlgorithmsResult = RunAlgorithmsUnitTests();
     const int FastArrayResult = RunFastArrayUnitTests();
     const int ContainersResult = RunContainersUnitTests();
+    const int HashTablesResult = RunHashTablesUnitTests();
+    const int ConcurrentResult = RunConcurrentUnitTests();
+    const int TempAllocatorResult = RunTempAllocatorUnitTests();
 
     if (KernelResult != 0)
     {
@@ -23,5 +29,20 @@ int main(int argc, char** argv)
         return AlgorithmsResult;
     }
 
-    return FastArrayResult != 0 ? FastArrayResult : ContainersResult;
+    if (FastArrayResult != 0)
+    {
+        return FastArrayResult;
+    }
+
+    if (ContainersResult != 0)
+    {
+        return ContainersResult;
+    }
+
+    if (HashTablesResult != 0)
+    {
+        return HashTablesResult;
+    }
+
+    return ConcurrentResult != 0 ? ConcurrentResult : TempAllocatorResult;
 }

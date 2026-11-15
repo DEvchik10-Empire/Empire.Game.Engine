@@ -18,6 +18,16 @@ namespace DEvchik10Empire
                     }
                 };
 
+                // Сравнение на равенство (ключи хеш-таблиц)
+                struct EqualTo
+                {
+                    template <typename Left, typename Right>
+                    constexpr bool operator()(const Left& LeftValue, const Right& RightValue) const
+                    {
+                        return LeftValue == RightValue;
+                    }
+                };
+
                 struct Greater
                 {
                     template <typename Left, typename Right>

@@ -165,6 +165,24 @@ namespace DEvchik10Empire
                     Location->~T();
                 }
 
+                // Ближайшая степень двойки, не меньшая Value (для 0 и 1 возвращает 1)
+                [[nodiscard]] constexpr UInt32 NextPowerOfTwo(UInt32 Value) noexcept
+                {
+                    return Value <= 1 ? UInt32(1) : UInt32(1) << (32 - KernelCompiler::CountLeadingZeros(Value - 1));
+                }
+
+                // Округлить Value вверх до кратного Alignment (Alignment степень двойки)
+                [[nodiscard]] constexpr Size AlignUp(Size Value, Size Alignment) noexcept
+                {
+                    return (Value + Alignment - 1) & ~(Alignment - 1);
+                }
+
+                // Является ли Value степенью двойки (0 не является)
+                [[nodiscard]] constexpr bool IsPowerOfTwo(UInt32 Value) noexcept
+                {
+                    return Value != 0 && (Value & (Value - 1)) == 0;
+                }
+
                 template <typename T>
                 constexpr const T& Min(const T& Left, const T& Right) noexcept
                 {

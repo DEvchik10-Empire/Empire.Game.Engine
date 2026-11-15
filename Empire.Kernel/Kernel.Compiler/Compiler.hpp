@@ -66,6 +66,76 @@ namespace DEvchik10Empire
                 template <typename T, typename... Arguments>
                 inline constexpr bool IsTriviallyConstructible = __is_trivially_constructible(T, Arguments...);
 
+                // Размер строки кэша: структуры, к которым обращаются разные потоки, выравниваются по нему против ложного разделения
+                inline constexpr unsigned int CacheLineSize = 64;
+
+                // Число нулевых бит с младшего края. Для нуля возвращает 32 (у __builtin_ctz результат для нуля не определён).
+                [[nodiscard]] constexpr unsigned int CountTrailingZeros(unsigned int Value) noexcept
+                {
+                    return Value != 0 ? static_cast<unsigned int>(__builtin_ctz(Value)) : 32u;
+                }
+
+                // Число нулевых бит со старшего края. Для нуля возвращает 32.
+                [[nodiscard]] constexpr unsigned int CountLeadingZeros(unsigned int Value) noexcept
+                {
+                    return Value != 0 ? static_cast<unsigned int>(__builtin_clz(Value)) : 32u;
+                }
+
+                // Работа с группой из 16 байт, нужна открытой адресации в хеш-таблицах (по 16 корзин за раз).
+                // Читает ровно 16 байт по Bytes, выравнивание не требуется. Результат это маска из 16 бит: бит i равен 1,
+                // если условие выполнено для байта i. На x86 это одна инструкция pcmpeqb плюс pmovmskb, на остальных
+                // архитектурах пока обычный цикл (для NEON будет свой путь в Math.Simd).
+
+                // Какие из 16 байт равны Value
+                [[nodiscard]] inline unsigned int EqualMask16(const unsigned char* Bytes, unsigned char Value) noexcept
+                {
+#if defined(__SSE2__)
+                    typedef char Vector16 __attribute__((vector_size(16)));
+
+                    Vector16 Loaded;
+                    __builtin_memcpy(&Loaded, Bytes, 16);
+
+                    Vector16 Expected;
+                    for (int Index = 0; Index < 16; ++Index)
+                    {
+                        Expected[Index] = static_cast<char>(Value);
+                    }
+
+                    return static_cast<unsigned int>(__builtin_ia32_pmovmskb128(Loaded == Expected));
+#else
+                    unsigned int Mask = 0;
+
+                    for (unsigned int Index = 0; Index < 16; ++Index)
+                    {
+                        Mask |= static_cast<unsigned int>(Bytes[Index] == Value) << Index;
+                    }
+
+                    return Mask;
+#endif
+                }
+
+                // У каких из 16 байт старший бит равен 1
+                [[nodiscard]] inline unsigned int HighBitMask16(const unsigned char* Bytes) noexcept
+                {
+#if defined(__SSE2__)
+                    typedef char Vector16 __attribute__((vector_size(16)));
+
+                    Vector16 Loaded;
+                    __builtin_memcpy(&Loaded, Bytes, 16);
+
+                    return static_cast<unsigned int>(__builtin_ia32_pmovmskb128(Loaded));
+#else
+                    unsigned int Mask = 0;
+
+                    for (unsigned int Index = 0; Index < 16; ++Index)
+                    {
+                        Mask |= static_cast<unsigned int>((Bytes[Index] & 0x80) != 0) << Index;
+                    }
+
+                    return Mask;
+#endif
+                }
+
                 // Подсказка процессору, что поток крутится в ожидании (снижает нагрузку на шину и соседний гипер-поток).
                 inline void Pause() noexcept
                 {
