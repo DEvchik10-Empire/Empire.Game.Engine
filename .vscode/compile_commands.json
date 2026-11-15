@@ -1,0 +1,1291 @@
+[
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_QUEUE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Queue/Graphics.Queue/linux/x86_64/release/Empire.Graphics/Graphics.Queue/Queue.cpp.o", "Empire.Graphics/Graphics.Queue/Queue.cpp"],
+  "file": "Empire.Graphics/Graphics.Queue/Queue.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_QUEUE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Queue/Graphics.Queue/linux/x86_64/release/Empire.Graphics/Graphics.Queue/Queue.Vulkan/Queue.Vulkan.cpp.o", "Empire.Graphics/Graphics.Queue/Queue.Vulkan/Queue.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Queue/Queue.Vulkan/Queue.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_QUEUE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Queue/Graphics.Queue/linux/x86_64/release/Empire.Graphics/Graphics.Queue/Queue.OpenGL/Queue.OpenGL.cpp.o", "Empire.Graphics/Graphics.Queue/Queue.OpenGL/Queue.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Queue/Queue.OpenGL/Queue.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_RENDERPASS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.RenderPass/Graphics.RenderPass/linux/x86_64/release/Empire.Graphics/Graphics.RenderPass/RenderPass.cpp.o", "Empire.Graphics/Graphics.RenderPass/RenderPass.cpp"],
+  "file": "Empire.Graphics/Graphics.RenderPass/RenderPass.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_RENDERPASS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.RenderPass/Graphics.RenderPass/linux/x86_64/release/Empire.Graphics/Graphics.RenderPass/RenderPass.Vulkan/RenderPass.Vulkan.cpp.o", "Empire.Graphics/Graphics.RenderPass/RenderPass.Vulkan/RenderPass.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.RenderPass/RenderPass.Vulkan/RenderPass.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_RENDERPASS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.RenderPass/Graphics.RenderPass/linux/x86_64/release/Empire.Graphics/Graphics.RenderPass/RenderPass.OpenGL/RenderPass.OpenGL.cpp.o", "Empire.Graphics/Graphics.RenderPass/RenderPass.OpenGL/RenderPass.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.RenderPass/RenderPass.OpenGL/RenderPass.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DKERNEL_CONTAINERS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Kernel.Containers/Kernel.Containers/linux/x86_64/release/Empire.Kernel/Kernel.Containers/Containers.cpp.o", "Empire.Kernel/Kernel.Containers/Containers.cpp"],
+  "file": "Empire.Kernel/Kernel.Containers/Containers.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_THREADING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Threading/Platform.Threading/linux/x86_64/release/Empire.Platform/Platform.Threading/Threading.cpp.o", "Empire.Platform/Platform.Threading/Threading.cpp"],
+  "file": "Empire.Platform/Platform.Threading/Threading.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_THREADING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Threading/Platform.Threading/linux/x86_64/release/Empire.Platform/Platform.Threading/Threading.Linux/Threading.Linux.cpp.o", "Empire.Platform/Platform.Threading/Threading.Linux/Threading.Linux.cpp"],
+  "file": "Empire.Platform/Platform.Threading/Threading.Linux/Threading.Linux.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_SIMD_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Simd/Math.Simd/linux/x86_64/release/Empire.Math/Math.Simd/Simd.cpp.o", "Empire.Math/Math.Simd/Simd.cpp"],
+  "file": "Empire.Math/Math.Simd/Simd.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_SIMD_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Simd/Math.Simd/linux/x86_64/release/Empire.Math/Math.Simd/Simd.Scalar/Simd.Scalar.cpp.o", "Empire.Math/Math.Simd/Simd.Scalar/Simd.Scalar.cpp"],
+  "file": "Empire.Math/Math.Simd/Simd.Scalar/Simd.Scalar.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_SIMD_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Simd/Math.Simd/linux/x86_64/release/Empire.Math/Math.Simd/Simd.SSE/Simd.SSE.cpp.o", "Empire.Math/Math.Simd/Simd.SSE/Simd.SSE.cpp"],
+  "file": "Empire.Math/Math.Simd/Simd.SSE/Simd.SSE.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_SIMD_EXPORT", "-DNDEBUG", "-mavx2", "-mfma", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Simd/Math.Simd/linux/x86_64/release/Empire.Math/Math.Simd/Simd.AVX/Simd.AVX.cpp.o", "Empire.Math/Math.Simd/Simd.AVX/Simd.AVX.cpp"],
+  "file": "Empire.Math/Math.Simd/Simd.AVX/Simd.AVX.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_ADAPTER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Adapter/Graphics.Adapter/linux/x86_64/release/Empire.Graphics/Graphics.Adapter/Adapter.cpp.o", "Empire.Graphics/Graphics.Adapter/Adapter.cpp"],
+  "file": "Empire.Graphics/Graphics.Adapter/Adapter.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_ADAPTER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Adapter/Graphics.Adapter/linux/x86_64/release/Empire.Graphics/Graphics.Adapter/Adapter.Vulkan/Adapter.Vulkan.cpp.o", "Empire.Graphics/Graphics.Adapter/Adapter.Vulkan/Adapter.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Adapter/Adapter.Vulkan/Adapter.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_ADAPTER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Adapter/Graphics.Adapter/linux/x86_64/release/Empire.Graphics/Graphics.Adapter/Adapter.OpenGL/Adapter.OpenGL.cpp.o", "Empire.Graphics/Graphics.Adapter/Adapter.OpenGL/Adapter.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Adapter/Adapter.OpenGL/Adapter.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Resource/Resource.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Resource/Resource.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Resource/Resource.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Frame/Frame.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Frame/Frame.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Frame/Frame.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Shader/Shader.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Shader/Shader.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Shader/Shader.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Graph/Graph.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Graph/Graph.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Graph/Graph.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Mesh/Mesh.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Mesh/Mesh.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Mesh/Mesh.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Image/Image.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Image/Image.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Image/Image.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Material/Material.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Material/Material.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Material/Material.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Technique/Technique.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Technique/Technique.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Technique/Technique.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.View/View.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.View/View.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.View/View.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Light/Light.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Light/Light.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Light/Light.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Shadow/Shadow.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Shadow/Shadow.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Shadow/Shadow.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Environment/Environment.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Environment/Environment.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Environment/Environment.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.PostProcess/PostProcess.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.PostProcess/PostProcess.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.PostProcess/PostProcess.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Particle/Particle.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Particle/Particle.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Particle/Particle.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_RENDERING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Rendering/Engine.Rendering/linux/x86_64/release/Empire.Engine/Engine.Rendering/Rendering.Debug/Debug.cpp.o", "Empire.Engine/Engine.Rendering/Rendering.Debug/Debug.cpp"],
+  "file": "Empire.Engine/Engine.Rendering/Rendering.Debug/Debug.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_JOBS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Jobs/Engine.Jobs/linux/x86_64/release/Empire.Engine/Engine.Jobs/Jobs.cpp.o", "Empire.Engine/Engine.Jobs/Jobs.cpp"],
+  "file": "Empire.Engine/Engine.Jobs/Jobs.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMELOOP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.GameLoop/Engine.GameLoop/linux/x86_64/release/Empire.Engine/Engine.GameLoop/GameLoop.cpp.o", "Empire.Engine/Engine.GameLoop/GameLoop.cpp"],
+  "file": "Empire.Engine/Engine.GameLoop/GameLoop.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMELOOP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.GameLoop/Engine.GameLoop/linux/x86_64/release/Empire.Engine/Engine.GameLoop/GameLoop.Clock/Clock.cpp.o", "Empire.Engine/Engine.GameLoop/GameLoop.Clock/Clock.cpp"],
+  "file": "Empire.Engine/Engine.GameLoop/GameLoop.Clock/Clock.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMELOOP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.GameLoop/Engine.GameLoop/linux/x86_64/release/Empire.Engine/Engine.GameLoop/GameLoop.FixedStep/FixedStep.cpp.o", "Empire.Engine/Engine.GameLoop/GameLoop.FixedStep/FixedStep.cpp"],
+  "file": "Empire.Engine/Engine.GameLoop/GameLoop.FixedStep/FixedStep.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMELOOP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.GameLoop/Engine.GameLoop/linux/x86_64/release/Empire.Engine/Engine.GameLoop/GameLoop.Scheduler/Scheduler.cpp.o", "Empire.Engine/Engine.GameLoop/GameLoop.Scheduler/Scheduler.cpp"],
+  "file": "Empire.Engine/Engine.GameLoop/GameLoop.Scheduler/Scheduler.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_APPLICATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Application/Engine.Application/linux/x86_64/release/Empire.Engine/Engine.Application/Application.cpp.o", "Empire.Engine/Engine.Application/Application.cpp"],
+  "file": "Empire.Engine/Engine.Application/Application.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_APPLICATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Application/Engine.Application/linux/x86_64/release/Empire.Engine/Engine.Application/Application.Entry/Entry.cpp.o", "Empire.Engine/Engine.Application/Application.Entry/Entry.cpp"],
+  "file": "Empire.Engine/Engine.Application/Application.Entry/Entry.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_APPLICATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Application/Engine.Application/linux/x86_64/release/Empire.Engine/Engine.Application/Application.Lifecycle/Lifecycle.cpp.o", "Empire.Engine/Engine.Application/Application.Lifecycle/Lifecycle.cpp"],
+  "file": "Empire.Engine/Engine.Application/Application.Lifecycle/Lifecycle.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_APPLICATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Application/Engine.Application/linux/x86_64/release/Empire.Engine/Engine.Application/Application.CommandLine/CommandLine.cpp.o", "Empire.Engine/Engine.Application/Application.CommandLine/CommandLine.cpp"],
+  "file": "Empire.Engine/Engine.Application/Application.CommandLine/CommandLine.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SAMPLER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Sampler/Graphics.Sampler/linux/x86_64/release/Empire.Graphics/Graphics.Sampler/Sampler.cpp.o", "Empire.Graphics/Graphics.Sampler/Sampler.cpp"],
+  "file": "Empire.Graphics/Graphics.Sampler/Sampler.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SAMPLER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Sampler/Graphics.Sampler/linux/x86_64/release/Empire.Graphics/Graphics.Sampler/Sampler.Vulkan/Sampler.Vulkan.cpp.o", "Empire.Graphics/Graphics.Sampler/Sampler.Vulkan/Sampler.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Sampler/Sampler.Vulkan/Sampler.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SAMPLER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Sampler/Graphics.Sampler/linux/x86_64/release/Empire.Graphics/Graphics.Sampler/Sampler.OpenGL/Sampler.OpenGL.cpp.o", "Empire.Graphics/Graphics.Sampler/Sampler.OpenGL/Sampler.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Sampler/Sampler.OpenGL/Sampler.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_LIBRARY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Library/Platform.Library/linux/x86_64/release/Empire.Platform/Platform.Library/Library.cpp.o", "Empire.Platform/Platform.Library/Library.cpp"],
+  "file": "Empire.Platform/Platform.Library/Library.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_LIBRARY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Library/Platform.Library/linux/x86_64/release/Empire.Platform/Platform.Library/Library.Linux/Library.Linux.cpp.o", "Empire.Platform/Platform.Library/Library.Linux/Library.Linux.cpp"],
+  "file": "Empire.Platform/Platform.Library/Library.Linux/Library.Linux.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_CLIPBOARD_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Clipboard/Platform.Clipboard/linux/x86_64/release/Empire.Platform/Platform.Clipboard/Clipboard.cpp.o", "Empire.Platform/Platform.Clipboard/Clipboard.cpp"],
+  "file": "Empire.Platform/Platform.Clipboard/Clipboard.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_CLIPBOARD_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Clipboard/Platform.Clipboard/linux/x86_64/release/Empire.Platform/Platform.Clipboard/Clipboard.Wayland/Clipboard.Wayland.cpp.o", "Empire.Platform/Platform.Clipboard/Clipboard.Wayland/Clipboard.Wayland.cpp"],
+  "file": "Empire.Platform/Platform.Clipboard/Clipboard.Wayland/Clipboard.Wayland.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_CLIPBOARD_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Clipboard/Platform.Clipboard/linux/x86_64/release/Empire.Platform/Platform.Clipboard/Clipboard.Legacy/Clipboard.Legacy.cpp.o", "Empire.Platform/Platform.Clipboard/Clipboard.Legacy/Clipboard.Legacy.cpp"],
+  "file": "Empire.Platform/Platform.Clipboard/Clipboard.Legacy/Clipboard.Legacy.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_WINDOW_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Window/Platform.Window/linux/x86_64/release/Empire.Platform/Platform.Window/Window.cpp.o", "Empire.Platform/Platform.Window/Window.cpp"],
+  "file": "Empire.Platform/Platform.Window/Window.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_WINDOW_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Window/Platform.Window/linux/x86_64/release/Empire.Platform/Platform.Window/Window.Wayland/Window.Wayland.cpp.o", "Empire.Platform/Platform.Window/Window.Wayland/Window.Wayland.cpp"],
+  "file": "Empire.Platform/Platform.Window/Window.Wayland/Window.Wayland.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_WINDOW_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Window/Platform.Window/linux/x86_64/release/Empire.Platform/Platform.Window/Window.Legacy/Window.Legacy.cpp.o", "Empire.Platform/Platform.Window/Window.Legacy/Window.Legacy.cpp"],
+  "file": "Empire.Platform/Platform.Window/Window.Legacy/Window.Legacy.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Tools.ShaderCompiler/Tools.ShaderCompiler/linux/x86_64/release/Empire.Tools/Tools.ShaderCompiler/Main.cpp.o", "Empire.Tools/Tools.ShaderCompiler/Main.cpp"],
+  "file": "Empire.Tools/Tools.ShaderCompiler/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_PROCESS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Process/Platform.Process/linux/x86_64/release/Empire.Platform/Platform.Process/Process.cpp.o", "Empire.Platform/Platform.Process/Process.cpp"],
+  "file": "Empire.Platform/Platform.Process/Process.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_PROCESS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Process/Platform.Process/linux/x86_64/release/Empire.Platform/Platform.Process/Process.Linux/Process.Linux.cpp.o", "Empire.Platform/Platform.Process/Process.Linux/Process.Linux.cpp"],
+  "file": "Empire.Platform/Platform.Process/Process.Linux/Process.Linux.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_MATRIX_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Matrix/Math.Matrix/linux/x86_64/release/Empire.Math/Math.Matrix/Matrix.cpp.o", "Empire.Math/Math.Matrix/Matrix.cpp"],
+  "file": "Empire.Math/Math.Matrix/Matrix.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.cpp.o", "Empire.Engine/Engine.Physics/Physics.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.Shape/Shape.cpp.o", "Empire.Engine/Engine.Physics/Physics.Shape/Shape.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.Shape/Shape.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.Collision/Collision.cpp.o", "Empire.Engine/Engine.Physics/Physics.Collision/Collision.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.Collision/Collision.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.Solver/Solver.cpp.o", "Empire.Engine/Engine.Physics/Physics.Solver/Solver.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.Solver/Solver.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.Constraint/Constraint.cpp.o", "Empire.Engine/Engine.Physics/Physics.Constraint/Constraint.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.Constraint/Constraint.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.Body/Body.cpp.o", "Empire.Engine/Engine.Physics/Physics.Body/Body.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.Body/Body.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.Query/Query.cpp.o", "Empire.Engine/Engine.Physics/Physics.Query/Query.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.Query/Query.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.Character/Character.cpp.o", "Empire.Engine/Engine.Physics/Physics.Character/Character.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.Character/Character.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_PHYSICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Physics/Engine.Physics/linux/x86_64/release/Empire.Engine/Engine.Physics/Physics.Debug/Debug.cpp.o", "Empire.Engine/Engine.Physics/Physics.Debug/Debug.cpp"],
+  "file": "Empire.Engine/Engine.Physics/Physics.Debug/Debug.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Client/Empire.Client/linux/x86_64/release/Empire.Runtime/Runtime.Client/Main.cpp.o", "Empire.Runtime/Runtime.Client/Main.cpp"],
+  "file": "Empire.Runtime/Runtime.Client/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_MODULES_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Modules/Engine.Modules/linux/x86_64/release/Empire.Engine/Engine.Modules/Modules.cpp.o", "Empire.Engine/Engine.Modules/Modules.cpp"],
+  "file": "Empire.Engine/Engine.Modules/Modules.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_MODULES_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Modules/Engine.Modules/linux/x86_64/release/Empire.Engine/Engine.Modules/Modules.Subsystem/Subsystem.cpp.o", "Empire.Engine/Engine.Modules/Modules.Subsystem/Subsystem.cpp"],
+  "file": "Empire.Engine/Engine.Modules/Modules.Subsystem/Subsystem.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_MODULES_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Modules/Engine.Modules/linux/x86_64/release/Empire.Engine/Engine.Modules/Modules.Registry/Registry.cpp.o", "Empire.Engine/Engine.Modules/Modules.Registry/Registry.cpp"],
+  "file": "Empire.Engine/Engine.Modules/Modules.Registry/Registry.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_MODULES_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Modules/Engine.Modules/linux/x86_64/release/Empire.Engine/Engine.Modules/Modules.Descriptor/Descriptor.cpp.o", "Empire.Engine/Engine.Modules/Modules.Descriptor/Descriptor.cpp"],
+  "file": "Empire.Engine/Engine.Modules/Modules.Descriptor/Descriptor.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_MODULES_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Modules/Engine.Modules/linux/x86_64/release/Empire.Engine/Engine.Modules/Modules.Dependency/Dependency.cpp.o", "Empire.Engine/Engine.Modules/Modules.Dependency/Dependency.cpp"],
+  "file": "Empire.Engine/Engine.Modules/Modules.Dependency/Dependency.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_BUFFER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Buffer/Graphics.Buffer/linux/x86_64/release/Empire.Graphics/Graphics.Buffer/Buffer.cpp.o", "Empire.Graphics/Graphics.Buffer/Buffer.cpp"],
+  "file": "Empire.Graphics/Graphics.Buffer/Buffer.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_BUFFER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Buffer/Graphics.Buffer/linux/x86_64/release/Empire.Graphics/Graphics.Buffer/Buffer.Vulkan/Buffer.Vulkan.cpp.o", "Empire.Graphics/Graphics.Buffer/Buffer.Vulkan/Buffer.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Buffer/Buffer.Vulkan/Buffer.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_BUFFER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Buffer/Graphics.Buffer/linux/x86_64/release/Empire.Graphics/Graphics.Buffer/Buffer.OpenGL/Buffer.OpenGL.cpp.o", "Empire.Graphics/Graphics.Buffer/Buffer.OpenGL/Buffer.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Buffer/Buffer.OpenGL/Buffer.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DKERNEL_CONFIG_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Kernel.Config/Kernel.Config/linux/x86_64/release/Empire.Kernel/Kernel.Config/Config.cpp.o", "Empire.Kernel/Kernel.Config/Config.cpp"],
+  "file": "Empire.Kernel/Kernel.Config/Config.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Tools.AssetCompiler/Tools.AssetCompiler/linux/x86_64/release/Empire.Tools/Tools.AssetCompiler/Main.cpp.o", "Empire.Tools/Tools.AssetCompiler/Main.cpp"],
+  "file": "Empire.Tools/Tools.AssetCompiler/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DKERNEL_SERVICES_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Kernel.Services/Kernel.Services/linux/x86_64/release/Empire.Kernel/Kernel.Services/Services.cpp.o", "Empire.Kernel/Kernel.Services/Services.cpp"],
+  "file": "Empire.Kernel/Kernel.Services/Services.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.cpp.o", "Empire.Engine/Engine.Assets/Assets.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.Handle/Handle.cpp.o", "Empire.Engine/Engine.Assets/Assets.Handle/Handle.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.Handle/Handle.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.Database/Database.cpp.o", "Empire.Engine/Engine.Assets/Assets.Database/Database.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.Database/Database.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.Package/Package.cpp.o", "Empire.Engine/Engine.Assets/Assets.Package/Package.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.Package/Package.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.Loader/Loader.cpp.o", "Empire.Engine/Engine.Assets/Assets.Loader/Loader.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.Loader/Loader.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.Importer/Importer.cpp.o", "Empire.Engine/Engine.Assets/Assets.Importer/Importer.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.Importer/Importer.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.Cache/Cache.cpp.o", "Empire.Engine/Engine.Assets/Assets.Cache/Cache.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.Cache/Cache.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.Stream/Stream.cpp.o", "Empire.Engine/Engine.Assets/Assets.Stream/Stream.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.Stream/Stream.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ASSETS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Assets/Engine.Assets/linux/x86_64/release/Empire.Engine/Engine.Assets/Assets.HotReload/HotReload.cpp.o", "Empire.Engine/Engine.Assets/Assets.HotReload/HotReload.cpp"],
+  "file": "Empire.Engine/Engine.Assets/Assets.HotReload/HotReload.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_PIPELINE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Pipeline/Graphics.Pipeline/linux/x86_64/release/Empire.Graphics/Graphics.Pipeline/Pipeline.cpp.o", "Empire.Graphics/Graphics.Pipeline/Pipeline.cpp"],
+  "file": "Empire.Graphics/Graphics.Pipeline/Pipeline.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_PIPELINE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Pipeline/Graphics.Pipeline/linux/x86_64/release/Empire.Graphics/Graphics.Pipeline/Pipeline.Vulkan/Pipeline.Vulkan.cpp.o", "Empire.Graphics/Graphics.Pipeline/Pipeline.Vulkan/Pipeline.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Pipeline/Pipeline.Vulkan/Pipeline.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_PIPELINE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Pipeline/Graphics.Pipeline/linux/x86_64/release/Empire.Graphics/Graphics.Pipeline/Pipeline.OpenGL/Pipeline.OpenGL.cpp.o", "Empire.Graphics/Graphics.Pipeline/Pipeline.OpenGL/Pipeline.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Pipeline/Pipeline.OpenGL/Pipeline.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_VECTOR_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Vector/Math.Vector/linux/x86_64/release/Empire.Math/Math.Vector/Vector.cpp.o", "Empire.Math/Math.Vector/Vector.cpp"],
+  "file": "Empire.Math/Math.Vector/Vector.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_COLOR_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Color/Math.Color/linux/x86_64/release/Empire.Math/Math.Color/Color.cpp.o", "Empire.Math/Math.Color/Color.cpp"],
+  "file": "Empire.Math/Math.Color/Color.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_APP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.App/Platform.App/linux/x86_64/release/Empire.Platform/Platform.App/App.cpp.o", "Empire.Platform/Platform.App/App.cpp"],
+  "file": "Empire.Platform/Platform.App/App.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_APP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.App/Platform.App/linux/x86_64/release/Empire.Platform/Platform.App/App.Wayland/App.Wayland.cpp.o", "Empire.Platform/Platform.App/App.Wayland/App.Wayland.cpp"],
+  "file": "Empire.Platform/Platform.App/App.Wayland/App.Wayland.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_APP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.App/Platform.App/linux/x86_64/release/Empire.Platform/Platform.App/App.Legacy/Legacy.EventQueue.cpp.o", "Empire.Platform/Platform.App/App.Legacy/Legacy.EventQueue.cpp"],
+  "file": "Empire.Platform/Platform.App/App.Legacy/Legacy.EventQueue.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_APP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.App/Platform.App/linux/x86_64/release/Empire.Platform/Platform.App/App.Legacy/Legacy.Connection.cpp.o", "Empire.Platform/Platform.App/App.Legacy/Legacy.Connection.cpp"],
+  "file": "Empire.Platform/Platform.App/App.Legacy/Legacy.Connection.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_BINDGROUP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.BindGroup/Graphics.BindGroup/linux/x86_64/release/Empire.Graphics/Graphics.BindGroup/BindGroup.cpp.o", "Empire.Graphics/Graphics.BindGroup/BindGroup.cpp"],
+  "file": "Empire.Graphics/Graphics.BindGroup/BindGroup.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_BINDGROUP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.BindGroup/Graphics.BindGroup/linux/x86_64/release/Empire.Graphics/Graphics.BindGroup/BindGroup.Vulkan/BindGroup.Vulkan.cpp.o", "Empire.Graphics/Graphics.BindGroup/BindGroup.Vulkan/BindGroup.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.BindGroup/BindGroup.Vulkan/BindGroup.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_BINDGROUP_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.BindGroup/Graphics.BindGroup/linux/x86_64/release/Empire.Graphics/Graphics.BindGroup/BindGroup.OpenGL/BindGroup.OpenGL.cpp.o", "Empire.Graphics/Graphics.BindGroup/BindGroup.OpenGL/BindGroup.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.BindGroup/BindGroup.OpenGL/BindGroup.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Tools.Profiler/Tools.Profiler/linux/x86_64/release/Empire.Tools/Tools.Profiler/Main.cpp.o", "Empire.Tools/Tools.Profiler/Main.cpp"],
+  "file": "Empire.Tools/Tools.Profiler/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_GEOMETRY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Geometry/Math.Geometry/linux/x86_64/release/Empire.Math/Math.Geometry/Geometry.cpp.o", "Empire.Math/Math.Geometry/Geometry.cpp"],
+  "file": "Empire.Math/Math.Geometry/Geometry.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DKERNEL_ASSERT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Kernel.Assert/Kernel.Assert/linux/x86_64/release/Empire.Kernel/Kernel.Assert/Assert.cpp.o", "Empire.Kernel/Kernel.Assert/Assert.cpp"],
+  "file": "Empire.Kernel/Kernel.Assert/Assert.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.cpp.o", "Empire.Engine/Engine.Animation/Animation.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Curve/Curve.cpp.o", "Empire.Engine/Engine.Animation/Animation.Curve/Curve.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Curve/Curve.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Clip/Clip.cpp.o", "Empire.Engine/Engine.Animation/Animation.Clip/Clip.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Clip/Clip.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Skeleton/Skeleton.cpp.o", "Empire.Engine/Engine.Animation/Animation.Skeleton/Skeleton.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Skeleton/Skeleton.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Pose/Pose.cpp.o", "Empire.Engine/Engine.Animation/Animation.Pose/Pose.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Pose/Pose.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Blend/Blend.cpp.o", "Empire.Engine/Engine.Animation/Animation.Blend/Blend.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Blend/Blend.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.IK/IK.cpp.o", "Empire.Engine/Engine.Animation/Animation.IK/IK.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.IK/IK.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Retarget/Retarget.cpp.o", "Empire.Engine/Engine.Animation/Animation.Retarget/Retarget.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Retarget/Retarget.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Morph/Morph.cpp.o", "Empire.Engine/Engine.Animation/Animation.Morph/Morph.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Morph/Morph.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Skinning/Skinning.cpp.o", "Empire.Engine/Engine.Animation/Animation.Skinning/Skinning.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Skinning/Skinning.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ANIMATION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Animation/Engine.Animation/linux/x86_64/release/Empire.Engine/Engine.Animation/Animation.Graph/Graph.cpp.o", "Empire.Engine/Engine.Animation/Animation.Graph/Graph.cpp"],
+  "file": "Empire.Engine/Engine.Animation/Animation.Graph/Graph.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_TIME_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Time/Platform.Time/linux/x86_64/release/Empire.Platform/Platform.Time/Time.cpp.o", "Empire.Platform/Platform.Time/Time.cpp"],
+  "file": "Empire.Platform/Platform.Time/Time.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_TIME_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Time/Platform.Time/linux/x86_64/release/Empire.Platform/Platform.Time/Time.Linux/Time.Linux.cpp.o", "Empire.Platform/Platform.Time/Time.Linux/Time.Linux.cpp"],
+  "file": "Empire.Platform/Platform.Time/Time.Linux/Time.Linux.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_SURFACE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Surface/Platform.Surface/linux/x86_64/release/Empire.Platform/Platform.Surface/Surface.cpp.o", "Empire.Platform/Platform.Surface/Surface.cpp"],
+  "file": "Empire.Platform/Platform.Surface/Surface.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_SURFACE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Surface/Platform.Surface/linux/x86_64/release/Empire.Platform/Platform.Surface/Surface.Wayland/Surface.Wayland.cpp.o", "Empire.Platform/Platform.Surface/Surface.Wayland/Surface.Wayland.cpp"],
+  "file": "Empire.Platform/Platform.Surface/Surface.Wayland/Surface.Wayland.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_SURFACE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Surface/Platform.Surface/linux/x86_64/release/Empire.Platform/Platform.Surface/Surface.Legacy/Surface.Legacy.cpp.o", "Empire.Platform/Platform.Surface/Surface.Legacy/Surface.Legacy.cpp"],
+  "file": "Empire.Platform/Platform.Surface/Surface.Legacy/Surface.Legacy.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.Runtime/Runtime.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.Runtime/Runtime.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.Runtime/Runtime.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.Lua/Lua.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.Lua/Lua.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.Lua/Lua.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.Wasm/Wasm.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.Wasm/Wasm.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.Wasm/Wasm.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.Bridge/Bridge.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.Bridge/Bridge.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.Bridge/Bridge.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.Binding/Binding.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.Binding/Binding.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.Binding/Binding.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.Component/Component.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.Component/Component.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.Component/Component.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.HotReload/HotReload.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.HotReload/HotReload.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.HotReload/HotReload.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DENGINE_SCRIPTING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Scripting/Engine.Scripting/linux/x86_64/release/Empire.Engine/Engine.Scripting/Scripting.Debugger/Debugger.cpp.o", "Empire.Engine/Engine.Scripting/Scripting.Debugger/Debugger.cpp"],
+  "file": "Empire.Engine/Engine.Scripting/Scripting.Debugger/Debugger.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_TEXTURE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Texture/Graphics.Texture/linux/x86_64/release/Empire.Graphics/Graphics.Texture/Texture.cpp.o", "Empire.Graphics/Graphics.Texture/Texture.cpp"],
+  "file": "Empire.Graphics/Graphics.Texture/Texture.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_TEXTURE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Texture/Graphics.Texture/linux/x86_64/release/Empire.Graphics/Graphics.Texture/Texture.Vulkan/Texture.Vulkan.cpp.o", "Empire.Graphics/Graphics.Texture/Texture.Vulkan/Texture.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Texture/Texture.Vulkan/Texture.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_TEXTURE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Texture/Graphics.Texture/linux/x86_64/release/Empire.Graphics/Graphics.Texture/Texture.OpenGL/Texture.OpenGL.cpp.o", "Empire.Graphics/Graphics.Texture/Texture.OpenGL/Texture.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Texture/Texture.OpenGL/Texture.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SEMAPHORE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Semaphore/Graphics.Semaphore/linux/x86_64/release/Empire.Graphics/Graphics.Semaphore/Semaphore.cpp.o", "Empire.Graphics/Graphics.Semaphore/Semaphore.cpp"],
+  "file": "Empire.Graphics/Graphics.Semaphore/Semaphore.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SEMAPHORE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Semaphore/Graphics.Semaphore/linux/x86_64/release/Empire.Graphics/Graphics.Semaphore/Semaphore.Vulkan/Semaphore.Vulkan.cpp.o", "Empire.Graphics/Graphics.Semaphore/Semaphore.Vulkan/Semaphore.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Semaphore/Semaphore.Vulkan/Semaphore.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SEMAPHORE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Semaphore/Graphics.Semaphore/linux/x86_64/release/Empire.Graphics/Graphics.Semaphore/Semaphore.OpenGL/Semaphore.OpenGL.cpp.o", "Empire.Graphics/Graphics.Semaphore/Semaphore.OpenGL/Semaphore.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Semaphore/Semaphore.OpenGL/Semaphore.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NODE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Node/Engine.Node/linux/x86_64/release/Empire.Engine/Engine.Node/Node.cpp.o", "Empire.Engine/Engine.Node/Node.cpp"],
+  "file": "Empire.Engine/Engine.Node/Node.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NODE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Node/Engine.Node/linux/x86_64/release/Empire.Engine/Engine.Node/Node.Hierarchy/Hierarchy.cpp.o", "Empire.Engine/Engine.Node/Node.Hierarchy/Hierarchy.cpp"],
+  "file": "Empire.Engine/Engine.Node/Node.Hierarchy/Hierarchy.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NODE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Node/Engine.Node/linux/x86_64/release/Empire.Engine/Engine.Node/Node.Scene/Scene.cpp.o", "Empire.Engine/Engine.Node/Node.Scene/Scene.cpp"],
+  "file": "Empire.Engine/Engine.Node/Node.Scene/Scene.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NODE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Node/Engine.Node/linux/x86_64/release/Empire.Engine/Engine.Node/Node.Prefab/Prefab.cpp.o", "Empire.Engine/Engine.Node/Node.Prefab/Prefab.cpp"],
+  "file": "Empire.Engine/Engine.Node/Node.Prefab/Prefab.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NODE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Node/Engine.Node/linux/x86_64/release/Empire.Engine/Engine.Node/Node.Serialization/Serialization.cpp.o", "Empire.Engine/Engine.Node/Node.Serialization/Serialization.cpp"],
+  "file": "Empire.Engine/Engine.Node/Node.Serialization/Serialization.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DRUNTIME_SHARED_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Runtime.Shared/Runtime.Shared/linux/x86_64/release/Empire.Runtime/Runtime.Shared/Shared.cpp.o", "Empire.Runtime/Runtime.Shared/Shared.cpp"],
+  "file": "Empire.Runtime/Runtime.Shared/Shared.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_QUERY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Query/Graphics.Query/linux/x86_64/release/Empire.Graphics/Graphics.Query/Query.cpp.o", "Empire.Graphics/Graphics.Query/Query.cpp"],
+  "file": "Empire.Graphics/Graphics.Query/Query.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_QUERY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Query/Graphics.Query/linux/x86_64/release/Empire.Graphics/Graphics.Query/Query.Vulkan/Query.Vulkan.cpp.o", "Empire.Graphics/Graphics.Query/Query.Vulkan/Query.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Query/Query.Vulkan/Query.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_QUERY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Query/Graphics.Query/linux/x86_64/release/Empire.Graphics/Graphics.Query/Query.OpenGL/Query.OpenGL.cpp.o", "Empire.Graphics/Graphics.Query/Query.OpenGL/Query.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Query/Query.OpenGL/Query.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_DIALOG_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Dialog/Platform.Dialog/linux/x86_64/release/Empire.Platform/Platform.Dialog/Dialog.cpp.o", "Empire.Platform/Platform.Dialog/Dialog.cpp"],
+  "file": "Empire.Platform/Platform.Dialog/Dialog.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_DIALOG_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Dialog/Platform.Dialog/linux/x86_64/release/Empire.Platform/Platform.Dialog/Dialog.Wayland/Dialog.Wayland.cpp.o", "Empire.Platform/Platform.Dialog/Dialog.Wayland/Dialog.Wayland.cpp"],
+  "file": "Empire.Platform/Platform.Dialog/Dialog.Wayland/Dialog.Wayland.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_DIALOG_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Dialog/Platform.Dialog/linux/x86_64/release/Empire.Platform/Platform.Dialog/Dialog.Legacy/Dialog.Legacy.cpp.o", "Empire.Platform/Platform.Dialog/Dialog.Legacy/Dialog.Legacy.cpp"],
+  "file": "Empire.Platform/Platform.Dialog/Dialog.Legacy/Dialog.Legacy.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.cpp.o", "Empire.Engine/Engine.Networking/Networking.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Bitstream/Bitstream.cpp.o", "Empire.Engine/Engine.Networking/Networking.Bitstream/Bitstream.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Bitstream/Bitstream.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Transport/Transport.cpp.o", "Empire.Engine/Engine.Networking/Networking.Transport/Transport.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Transport/Transport.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Session/Session.cpp.o", "Empire.Engine/Engine.Networking/Networking.Session/Session.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Session/Session.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Message/Message.cpp.o", "Empire.Engine/Engine.Networking/Networking.Message/Message.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Message/Message.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Snapshot/Snapshot.cpp.o", "Empire.Engine/Engine.Networking/Networking.Snapshot/Snapshot.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Snapshot/Snapshot.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Replication/Replication.cpp.o", "Empire.Engine/Engine.Networking/Networking.Replication/Replication.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Replication/Replication.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Prediction/Prediction.cpp.o", "Empire.Engine/Engine.Networking/Networking.Prediction/Prediction.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Prediction/Prediction.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Lobby/Lobby.cpp.o", "Empire.Engine/Engine.Networking/Networking.Lobby/Lobby.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Lobby/Lobby.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_NETWORKING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Networking/Engine.Networking/linux/x86_64/release/Empire.Engine/Engine.Networking/Networking.Debug/Debug.cpp.o", "Empire.Engine/Engine.Networking/Networking.Debug/Debug.cpp"],
+  "file": "Empire.Engine/Engine.Networking/Networking.Debug/Debug.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMEPLAY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Gameplay/Engine.Gameplay/linux/x86_64/release/Empire.Engine/Engine.Gameplay/Gameplay.cpp.o", "Empire.Engine/Engine.Gameplay/Gameplay.cpp"],
+  "file": "Empire.Engine/Engine.Gameplay/Gameplay.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMEPLAY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Gameplay/Engine.Gameplay/linux/x86_64/release/Empire.Engine/Engine.Gameplay/Gameplay.Tag/Tag.cpp.o", "Empire.Engine/Engine.Gameplay/Gameplay.Tag/Tag.cpp"],
+  "file": "Empire.Engine/Engine.Gameplay/Gameplay.Tag/Tag.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMEPLAY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Gameplay/Engine.Gameplay/linux/x86_64/release/Empire.Engine/Engine.Gameplay/Gameplay.Attribute/Attribute.cpp.o", "Empire.Engine/Engine.Gameplay/Gameplay.Attribute/Attribute.cpp"],
+  "file": "Empire.Engine/Engine.Gameplay/Gameplay.Attribute/Attribute.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMEPLAY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Gameplay/Engine.Gameplay/linux/x86_64/release/Empire.Engine/Engine.Gameplay/Gameplay.Effect/Effect.cpp.o", "Empire.Engine/Engine.Gameplay/Gameplay.Effect/Effect.cpp"],
+  "file": "Empire.Engine/Engine.Gameplay/Gameplay.Effect/Effect.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMEPLAY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Gameplay/Engine.Gameplay/linux/x86_64/release/Empire.Engine/Engine.Gameplay/Gameplay.Ability/Ability.cpp.o", "Empire.Engine/Engine.Gameplay/Gameplay.Ability/Ability.cpp"],
+  "file": "Empire.Engine/Engine.Gameplay/Gameplay.Ability/Ability.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_GAMEPLAY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Gameplay/Engine.Gameplay/linux/x86_64/release/Empire.Engine/Engine.Gameplay/Gameplay.Cue/Cue.cpp.o", "Empire.Engine/Engine.Gameplay/Gameplay.Cue/Cue.cpp"],
+  "file": "Empire.Engine/Engine.Gameplay/Gameplay.Cue/Cue.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_ENVIRONMENT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Environment/Platform.Environment/linux/x86_64/release/Empire.Platform/Platform.Environment/Environment.cpp.o", "Empire.Platform/Platform.Environment/Environment.cpp"],
+  "file": "Empire.Platform/Platform.Environment/Environment.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_ENVIRONMENT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Environment/Platform.Environment/linux/x86_64/release/Empire.Platform/Platform.Environment/Environment.Linux/Environment.Linux.cpp.o", "Empire.Platform/Platform.Environment/Environment.Linux/Environment.Linux.cpp"],
+  "file": "Empire.Platform/Platform.Environment/Environment.Linux/Environment.Linux.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_DEVICE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Device/Graphics.Device/linux/x86_64/release/Empire.Graphics/Graphics.Device/Device.cpp.o", "Empire.Graphics/Graphics.Device/Device.cpp"],
+  "file": "Empire.Graphics/Graphics.Device/Device.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_DEVICE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Device/Graphics.Device/linux/x86_64/release/Empire.Graphics/Graphics.Device/Device.Vulkan/Device.Vulkan.cpp.o", "Empire.Graphics/Graphics.Device/Device.Vulkan/Device.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Device/Device.Vulkan/Device.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_DEVICE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Device/Graphics.Device/linux/x86_64/release/Empire.Graphics/Graphics.Device/Device.OpenGL/Device.OpenGL.cpp.o", "Empire.Graphics/Graphics.Device/Device.OpenGL/Device.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Device/Device.OpenGL/Device.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_MONITOR_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Monitor/Platform.Monitor/linux/x86_64/release/Empire.Platform/Platform.Monitor/Monitor.cpp.o", "Empire.Platform/Platform.Monitor/Monitor.cpp"],
+  "file": "Empire.Platform/Platform.Monitor/Monitor.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_MONITOR_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Monitor/Platform.Monitor/linux/x86_64/release/Empire.Platform/Platform.Monitor/Monitor.Wayland/Monitor.Wayland.cpp.o", "Empire.Platform/Platform.Monitor/Monitor.Wayland/Monitor.Wayland.cpp"],
+  "file": "Empire.Platform/Platform.Monitor/Monitor.Wayland/Monitor.Wayland.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_MONITOR_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Monitor/Platform.Monitor/linux/x86_64/release/Empire.Platform/Platform.Monitor/Monitor.Legacy/Monitor.Legacy.cpp.o", "Empire.Platform/Platform.Monitor/Monitor.Legacy/Monitor.Legacy.cpp"],
+  "file": "Empire.Platform/Platform.Monitor/Monitor.Legacy/Monitor.Legacy.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Editor/Empire.Editor/linux/x86_64/release/Empire.Runtime/Runtime.Editor/Main.cpp.o", "Empire.Runtime/Runtime.Editor/Main.cpp"],
+  "file": "Empire.Runtime/Runtime.Editor/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Editor/Empire.Editor/linux/x86_64/release/Empire.Runtime/Runtime.Editor/Editor.Framework/Framework.cpp.o", "Empire.Runtime/Runtime.Editor/Editor.Framework/Framework.cpp"],
+  "file": "Empire.Runtime/Runtime.Editor/Editor.Framework/Framework.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Editor/Empire.Editor/linux/x86_64/release/Empire.Runtime/Runtime.Editor/Editor.Viewport/Viewport.cpp.o", "Empire.Runtime/Runtime.Editor/Editor.Viewport/Viewport.cpp"],
+  "file": "Empire.Runtime/Runtime.Editor/Editor.Viewport/Viewport.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Editor/Empire.Editor/linux/x86_64/release/Empire.Runtime/Runtime.Editor/Editor.Panel/Panel.cpp.o", "Empire.Runtime/Runtime.Editor/Editor.Panel/Panel.cpp"],
+  "file": "Empire.Runtime/Runtime.Editor/Editor.Panel/Panel.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Editor/Empire.Editor/linux/x86_64/release/Empire.Runtime/Runtime.Editor/Editor.Gizmo/Gizmo.cpp.o", "Empire.Runtime/Runtime.Editor/Editor.Gizmo/Gizmo.cpp"],
+  "file": "Empire.Runtime/Runtime.Editor/Editor.Gizmo/Gizmo.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Editor/Empire.Editor/linux/x86_64/release/Empire.Runtime/Runtime.Editor/Editor.Tool/Tool.cpp.o", "Empire.Runtime/Runtime.Editor/Editor.Tool/Tool.cpp"],
+  "file": "Empire.Runtime/Runtime.Editor/Editor.Tool/Tool.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Editor/Empire.Editor/linux/x86_64/release/Empire.Runtime/Runtime.Editor/Editor.Plugin/Plugin.cpp.o", "Empire.Runtime/Runtime.Editor/Editor.Plugin/Plugin.cpp"],
+  "file": "Empire.Runtime/Runtime.Editor/Editor.Plugin/Plugin.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_NETWORK_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Network/Platform.Network/linux/x86_64/release/Empire.Platform/Platform.Network/Network.cpp.o", "Empire.Platform/Platform.Network/Network.cpp"],
+  "file": "Empire.Platform/Platform.Network/Network.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_NETWORK_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Network/Platform.Network/linux/x86_64/release/Empire.Platform/Platform.Network/Network.Linux/Network.Linux.cpp.o", "Empire.Platform/Platform.Network/Network.Linux/Network.Linux.cpp"],
+  "file": "Empire.Platform/Platform.Network/Network.Linux/Network.Linux.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_FENCE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Fence/Graphics.Fence/linux/x86_64/release/Empire.Graphics/Graphics.Fence/Fence.cpp.o", "Empire.Graphics/Graphics.Fence/Fence.cpp"],
+  "file": "Empire.Graphics/Graphics.Fence/Fence.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_FENCE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Fence/Graphics.Fence/linux/x86_64/release/Empire.Graphics/Graphics.Fence/Fence.Vulkan/Fence.Vulkan.cpp.o", "Empire.Graphics/Graphics.Fence/Fence.Vulkan/Fence.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Fence/Fence.Vulkan/Fence.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_FENCE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Fence/Graphics.Fence/linux/x86_64/release/Empire.Graphics/Graphics.Fence/Fence.OpenGL/Fence.OpenGL.cpp.o", "Empire.Graphics/Graphics.Fence/Fence.OpenGL/Fence.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Fence/Fence.OpenGL/Fence.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SHADER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Shader/Graphics.Shader/linux/x86_64/release/Empire.Graphics/Graphics.Shader/Shader.cpp.o", "Empire.Graphics/Graphics.Shader/Shader.cpp"],
+  "file": "Empire.Graphics/Graphics.Shader/Shader.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SHADER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Shader/Graphics.Shader/linux/x86_64/release/Empire.Graphics/Graphics.Shader/Shader.Vulkan/Shader.Vulkan.cpp.o", "Empire.Graphics/Graphics.Shader/Shader.Vulkan/Shader.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Shader/Shader.Vulkan/Shader.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SHADER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Shader/Graphics.Shader/linux/x86_64/release/Empire.Graphics/Graphics.Shader/Shader.OpenGL/Shader.OpenGL.cpp.o", "Empire.Graphics/Graphics.Shader/Shader.OpenGL/Shader.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Shader/Shader.OpenGL/Shader.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_RANDOM_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Random/Math.Random/linux/x86_64/release/Empire.Math/Math.Random/Random.cpp.o", "Empire.Math/Math.Random/Random.cpp"],
+  "file": "Empire.Math/Math.Random/Random.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_QUATERNION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Quaternion/Math.Quaternion/linux/x86_64/release/Empire.Math/Math.Quaternion/Quaternion.cpp.o", "Empire.Math/Math.Quaternion/Quaternion.cpp"],
+  "file": "Empire.Math/Math.Quaternion/Quaternion.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_DIAGNOSTICS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Diagnostics/Engine.Diagnostics/linux/x86_64/release/Empire.Engine/Engine.Diagnostics/Diagnostics.cpp.o", "Empire.Engine/Engine.Diagnostics/Diagnostics.cpp"],
+  "file": "Empire.Engine/Engine.Diagnostics/Diagnostics.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_CURSOR_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Cursor/Platform.Cursor/linux/x86_64/release/Empire.Platform/Platform.Cursor/Cursor.cpp.o", "Empire.Platform/Platform.Cursor/Cursor.cpp"],
+  "file": "Empire.Platform/Platform.Cursor/Cursor.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_CURSOR_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Cursor/Platform.Cursor/linux/x86_64/release/Empire.Platform/Platform.Cursor/Cursor.Wayland/Cursor.Wayland.cpp.o", "Empire.Platform/Platform.Cursor/Cursor.Wayland/Cursor.Wayland.cpp"],
+  "file": "Empire.Platform/Platform.Cursor/Cursor.Wayland/Cursor.Wayland.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_CURSOR_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Cursor/Platform.Cursor/linux/x86_64/release/Empire.Platform/Platform.Cursor/Cursor.Legacy/Cursor.Legacy.cpp.o", "Empire.Platform/Platform.Cursor/Cursor.Legacy/Cursor.Legacy.cpp"],
+  "file": "Empire.Platform/Platform.Cursor/Cursor.Legacy/Cursor.Legacy.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DGRAPHICS_COMMON_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Common/Graphics.Common/linux/x86_64/release/Empire.Graphics/Graphics.Common/Common.cpp.o", "Empire.Graphics/Graphics.Common/Common.cpp"],
+  "file": "Empire.Graphics/Graphics.Common/Common.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Tools.Packager/Tools.Packager/linux/x86_64/release/Empire.Tools/Tools.Packager/Main.cpp.o", "Empire.Tools/Tools.Packager/Main.cpp"],
+  "file": "Empire.Tools/Tools.Packager/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_INPUT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Input/Engine.Input/linux/x86_64/release/Empire.Engine/Engine.Input/Input.cpp.o", "Empire.Engine/Engine.Input/Input.cpp"],
+  "file": "Empire.Engine/Engine.Input/Input.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_INPUT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Input/Engine.Input/linux/x86_64/release/Empire.Engine/Engine.Input/Input.Action/Action.cpp.o", "Empire.Engine/Engine.Input/Input.Action/Action.cpp"],
+  "file": "Empire.Engine/Engine.Input/Input.Action/Action.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_INPUT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Input/Engine.Input/linux/x86_64/release/Empire.Engine/Engine.Input/Input.Context/Context.cpp.o", "Empire.Engine/Engine.Input/Input.Context/Context.cpp"],
+  "file": "Empire.Engine/Engine.Input/Input.Context/Context.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_INPUT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Input/Engine.Input/linux/x86_64/release/Empire.Engine/Engine.Input/Input.Binding/Binding.cpp.o", "Empire.Engine/Engine.Input/Input.Binding/Binding.cpp"],
+  "file": "Empire.Engine/Engine.Input/Input.Binding/Binding.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ECS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.ECS/Engine.ECS/linux/x86_64/release/Empire.Engine/Engine.ECS/ECS.cpp.o", "Empire.Engine/Engine.ECS/ECS.cpp"],
+  "file": "Empire.Engine/Engine.ECS/ECS.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ECS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.ECS/Engine.ECS/linux/x86_64/release/Empire.Engine/Engine.ECS/ECS.Entity/Entity.cpp.o", "Empire.Engine/Engine.ECS/ECS.Entity/Entity.cpp"],
+  "file": "Empire.Engine/Engine.ECS/ECS.Entity/Entity.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ECS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.ECS/Engine.ECS/linux/x86_64/release/Empire.Engine/Engine.ECS/ECS.Component/Component.cpp.o", "Empire.Engine/Engine.ECS/ECS.Component/Component.cpp"],
+  "file": "Empire.Engine/Engine.ECS/ECS.Component/Component.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ECS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.ECS/Engine.ECS/linux/x86_64/release/Empire.Engine/Engine.ECS/ECS.Archetype/Archetype.cpp.o", "Empire.Engine/Engine.ECS/ECS.Archetype/Archetype.cpp"],
+  "file": "Empire.Engine/Engine.ECS/ECS.Archetype/Archetype.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ECS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.ECS/Engine.ECS/linux/x86_64/release/Empire.Engine/Engine.ECS/ECS.Query/Query.cpp.o", "Empire.Engine/Engine.ECS/ECS.Query/Query.cpp"],
+  "file": "Empire.Engine/Engine.ECS/ECS.Query/Query.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ECS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.ECS/Engine.ECS/linux/x86_64/release/Empire.Engine/Engine.ECS/ECS.System/System.cpp.o", "Empire.Engine/Engine.ECS/ECS.System/System.cpp"],
+  "file": "Empire.Engine/Engine.ECS/ECS.System/System.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_ECS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.ECS/Engine.ECS/linux/x86_64/release/Empire.Engine/Engine.ECS/ECS.Schedule/Schedule.cpp.o", "Empire.Engine/Engine.ECS/ECS.Schedule/Schedule.cpp"],
+  "file": "Empire.Engine/Engine.ECS/ECS.Schedule/Schedule.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DKERNEL_REFLECTION_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Kernel.Reflection/Kernel.Reflection/linux/x86_64/release/Empire.Kernel/Kernel.Reflection/Reflection.cpp.o", "Empire.Kernel/Kernel.Reflection/Reflection.cpp"],
+  "file": "Empire.Kernel/Kernel.Reflection/Reflection.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DKERNEL_LOGGING_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Kernel.Logging/Kernel.Logging/linux/x86_64/release/Empire.Kernel/Kernel.Logging/Logging.cpp.o", "Empire.Kernel/Kernel.Logging/Logging.cpp"],
+  "file": "Empire.Kernel/Kernel.Logging/Logging.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.cpp.o", "Empire.Engine/Engine.UI/UI.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Layout/Layout.cpp.o", "Empire.Engine/Engine.UI/UI.Layout/Layout.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Layout/Layout.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Text/Text.cpp.o", "Empire.Engine/Engine.UI/UI.Text/Text.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Text/Text.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Style/Style.cpp.o", "Empire.Engine/Engine.UI/UI.Style/Style.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Style/Style.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Widget/Widget.cpp.o", "Empire.Engine/Engine.UI/UI.Widget/Widget.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Widget/Widget.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Binding/Binding.cpp.o", "Empire.Engine/Engine.UI/UI.Binding/Binding.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Binding/Binding.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Navigation/Navigation.cpp.o", "Empire.Engine/Engine.UI/UI.Navigation/Navigation.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Navigation/Navigation.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Animation/Animation.cpp.o", "Empire.Engine/Engine.UI/UI.Animation/Animation.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Animation/Animation.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Draw/Draw.cpp.o", "Empire.Engine/Engine.UI/UI.Draw/Draw.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Draw/Draw.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_UI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.UI/Engine.UI/linux/x86_64/release/Empire.Engine/Engine.UI/UI.Canvas/Canvas.cpp.o", "Empire.Engine/Engine.UI/UI.Canvas/Canvas.cpp"],
+  "file": "Empire.Engine/Engine.UI/UI.Canvas/Canvas.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DKERNEL_EVENTS_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Kernel.Events/Kernel.Events/linux/x86_64/release/Empire.Kernel/Kernel.Events/Events.cpp.o", "Empire.Kernel/Kernel.Events/Events.cpp"],
+  "file": "Empire.Kernel/Kernel.Events/Events.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DKERNEL_MEMORY_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Kernel.Memory/Kernel.Memory/linux/x86_64/release/Empire.Kernel/Kernel.Memory/Memory.cpp.o", "Empire.Kernel/Kernel.Memory/Memory.cpp"],
+  "file": "Empire.Kernel/Kernel.Memory/Memory.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.cpp.o", "Empire.Engine/Engine.Sound/Sound.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Dsp/Dsp.cpp.o", "Empire.Engine/Engine.Sound/Sound.Dsp/Dsp.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Dsp/Dsp.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Codec/Codec.cpp.o", "Empire.Engine/Engine.Sound/Sound.Codec/Codec.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Codec/Codec.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Stream/Stream.cpp.o", "Empire.Engine/Engine.Sound/Sound.Stream/Stream.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Stream/Stream.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Effect/Effect.cpp.o", "Empire.Engine/Engine.Sound/Sound.Effect/Effect.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Effect/Effect.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Mixer/Mixer.cpp.o", "Empire.Engine/Engine.Sound/Sound.Mixer/Mixer.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Mixer/Mixer.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Spatial/Spatial.cpp.o", "Empire.Engine/Engine.Sound/Sound.Spatial/Spatial.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Spatial/Spatial.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Source/Source.cpp.o", "Empire.Engine/Engine.Sound/Sound.Source/Source.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Source/Source.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Listener/Listener.cpp.o", "Empire.Engine/Engine.Sound/Sound.Listener/Listener.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Listener/Listener.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Bank/Bank.cpp.o", "Empire.Engine/Engine.Sound/Sound.Bank/Bank.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Bank/Bank.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_SOUND_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.Sound/Engine.Sound/linux/x86_64/release/Empire.Engine/Engine.Sound/Sound.Music/Music.cpp.o", "Empire.Engine/Engine.Sound/Sound.Music/Music.cpp"],
+  "file": "Empire.Engine/Engine.Sound/Sound.Music/Music.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Game/Empire.Game/linux/x86_64/release/Empire.Runtime/Runtime.Game/Main.cpp.o", "Empire.Runtime/Runtime.Game/Main.cpp"],
+  "file": "Empire.Runtime/Runtime.Game/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Server/Empire.Server/linux/x86_64/release/Empire.Runtime/Runtime.Server/Main.cpp.o", "Empire.Runtime/Runtime.Server/Main.cpp"],
+  "file": "Empire.Runtime/Runtime.Server/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.cpp.o", "Empire.Engine/Engine.AI/AI.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.Blackboard/Blackboard.cpp.o", "Empire.Engine/Engine.AI/AI.Blackboard/Blackboard.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.Blackboard/Blackboard.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.Navigation/Navigation.cpp.o", "Empire.Engine/Engine.AI/AI.Navigation/Navigation.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.Navigation/Navigation.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.Steering/Steering.cpp.o", "Empire.Engine/Engine.AI/AI.Steering/Steering.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.Steering/Steering.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.BehaviorTree/BehaviorTree.cpp.o", "Empire.Engine/Engine.AI/AI.BehaviorTree/BehaviorTree.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.BehaviorTree/BehaviorTree.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.Utility/Utility.cpp.o", "Empire.Engine/Engine.AI/AI.Utility/Utility.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.Utility/Utility.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.Planner/Planner.cpp.o", "Empire.Engine/Engine.AI/AI.Planner/Planner.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.Planner/Planner.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.Perception/Perception.cpp.o", "Empire.Engine/Engine.AI/AI.Perception/Perception.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.Perception/Perception.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DENGINE_AI_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Engine.AI/Engine.AI/linux/x86_64/release/Empire.Engine/Engine.AI/AI.Agent/Agent.cpp.o", "Empire.Engine/Engine.AI/AI.Agent/Agent.cpp"],
+  "file": "Empire.Engine/Engine.AI/AI.Agent/Agent.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_COMMANDBUFFER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.CommandBuffer/Graphics.CommandBuffer/linux/x86_64/release/Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.cpp.o", "Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.cpp"],
+  "file": "Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_COMMANDBUFFER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.CommandBuffer/Graphics.CommandBuffer/linux/x86_64/release/Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.Vulkan/CommandBuffer.Vulkan.cpp.o", "Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.Vulkan/CommandBuffer.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.Vulkan/CommandBuffer.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_COMMANDBUFFER_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.CommandBuffer/Graphics.CommandBuffer/linux/x86_64/release/Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.OpenGL/CommandBuffer.OpenGL.cpp.o", "Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.OpenGL/CommandBuffer.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.CommandBuffer/CommandBuffer.OpenGL/CommandBuffer.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DMATH_TRANSFORM_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Math.Transform/Math.Transform/linux/x86_64/release/Empire.Math/Math.Transform/Transform.cpp.o", "Empire.Math/Math.Transform/Transform.cpp"],
+  "file": "Empire.Math/Math.Transform/Transform.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_AUDIO_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Audio/Platform.Audio/linux/x86_64/release/Empire.Platform/Platform.Audio/Audio.cpp.o", "Empire.Platform/Platform.Audio/Audio.cpp"],
+  "file": "Empire.Platform/Platform.Audio/Audio.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_AUDIO_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Audio/Platform.Audio/linux/x86_64/release/Empire.Platform/Platform.Audio/Audio.PipeWire/Audio.PipeWire.cpp.o", "Empire.Platform/Platform.Audio/Audio.PipeWire/Audio.PipeWire.cpp"],
+  "file": "Empire.Platform/Platform.Audio/Audio.PipeWire/Audio.PipeWire.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_AUDIO_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Audio/Platform.Audio/linux/x86_64/release/Empire.Platform/Platform.Audio/Audio.ALSA/Audio.ALSA.cpp.o", "Empire.Platform/Platform.Audio/Audio.ALSA/Audio.ALSA.cpp"],
+  "file": "Empire.Platform/Platform.Audio/Audio.ALSA/Audio.ALSA.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Tools.Cli/Tools.Cli/linux/x86_64/release/Empire.Tools/Tools.Cli/Main.cpp.o", "Empire.Tools/Tools.Cli/Main.cpp"],
+  "file": "Empire.Tools/Tools.Cli/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_INPUT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Input/Platform.Input/linux/x86_64/release/Empire.Platform/Platform.Input/Input.cpp.o", "Empire.Platform/Platform.Input/Input.cpp"],
+  "file": "Empire.Platform/Platform.Input/Input.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_INPUT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Input/Platform.Input/linux/x86_64/release/Empire.Platform/Platform.Input/Input.Wayland/Input.Wayland.cpp.o", "Empire.Platform/Platform.Input/Input.Wayland/Input.Wayland.cpp"],
+  "file": "Empire.Platform/Platform.Input/Input.Wayland/Input.Wayland.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_INPUT_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.Input/Platform.Input/linux/x86_64/release/Empire.Platform/Platform.Input/Input.Legacy/Input.Legacy.cpp.o", "Empire.Platform/Platform.Input/Input.Legacy/Input.Legacy.cpp"],
+  "file": "Empire.Platform/Platform.Input/Input.Legacy/Input.Legacy.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SWAPCHAIN_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.SwapChain/Graphics.SwapChain/linux/x86_64/release/Empire.Graphics/Graphics.SwapChain/SwapChain.cpp.o", "Empire.Graphics/Graphics.SwapChain/SwapChain.cpp"],
+  "file": "Empire.Graphics/Graphics.SwapChain/SwapChain.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SWAPCHAIN_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.SwapChain/Graphics.SwapChain/linux/x86_64/release/Empire.Graphics/Graphics.SwapChain/SwapChain.Vulkan/SwapChain.Vulkan.cpp.o", "Empire.Graphics/Graphics.SwapChain/SwapChain.Vulkan/SwapChain.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.SwapChain/SwapChain.Vulkan/SwapChain.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_SWAPCHAIN_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.SwapChain/Graphics.SwapChain/linux/x86_64/release/Empire.Graphics/Graphics.SwapChain/SwapChain.OpenGL/SwapChain.OpenGL.cpp.o", "Empire.Graphics/Graphics.SwapChain/SwapChain.OpenGL/SwapChain.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.SwapChain/SwapChain.OpenGL/SwapChain.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_INSTANCE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Instance/Graphics.Instance/linux/x86_64/release/Empire.Graphics/Graphics.Instance/Instance.cpp.o", "Empire.Graphics/Graphics.Instance/Instance.cpp"],
+  "file": "Empire.Graphics/Graphics.Instance/Instance.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_INSTANCE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Instance/Graphics.Instance/linux/x86_64/release/Empire.Graphics/Graphics.Instance/Instance.Vulkan/Instance.Vulkan.cpp.o", "Empire.Graphics/Graphics.Instance/Instance.Vulkan/Instance.Vulkan.cpp"],
+  "file": "Empire.Graphics/Graphics.Instance/Instance.Vulkan/Instance.Vulkan.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DGRAPHICS_INSTANCE_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Graphics.Instance/Graphics.Instance/linux/x86_64/release/Empire.Graphics/Graphics.Instance/Instance.OpenGL/Instance.OpenGL.cpp.o", "Empire.Graphics/Graphics.Instance/Instance.OpenGL/Instance.OpenGL.cpp"],
+  "file": "Empire.Graphics/Graphics.Instance/Instance.OpenGL/Instance.OpenGL.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-IEmpire.Graphics/Graphics.ThirdParty", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Empire.Standalone/Empire.Standalone/linux/x86_64/release/Empire.Runtime/Runtime.Standalone/Main.cpp.o", "Empire.Runtime/Runtime.Standalone/Main.cpp"],
+  "file": "Empire.Runtime/Runtime.Standalone/Main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_FILESYSTEM_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.FileSystem/Platform.FileSystem/linux/x86_64/release/Empire.Platform/Platform.FileSystem/FileSystem.cpp.o", "Empire.Platform/Platform.FileSystem/FileSystem.cpp"],
+  "file": "Empire.Platform/Platform.FileSystem/FileSystem.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Game.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fPIC", "-Wall", "-Werror", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Game.Engine", "-DPLATFORM_FILESYSTEM_EXPORT", "-DNDEBUG", "-o", "/home/devchik10/Documents/Empire.Game.Engine/Empire.Build/Build.Linux.Release/.Obj/Platform.FileSystem/Platform.FileSystem/linux/x86_64/release/Empire.Platform/Platform.FileSystem/FileSystem.Linux/FileSystem.Linux.cpp.o", "Empire.Platform/Platform.FileSystem/FileSystem.Linux/FileSystem.Linux.cpp"],
+  "file": "Empire.Platform/Platform.FileSystem/FileSystem.Linux/FileSystem.Linux.cpp"
+}]
