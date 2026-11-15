@@ -1,4 +1,4 @@
-. Core / Foundation
+1. Core / Foundation
 
 База, на которой вообще всё держится:
 
