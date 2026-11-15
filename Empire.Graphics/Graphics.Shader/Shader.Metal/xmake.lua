@@ -1,3 +1,0 @@
--- Приватный бэкенд Graphics.Shader: Metal. Наружу не виден.
-target("Graphics.Shader")
-    add_files("*.cpp")

@@ -1,5 +1,0 @@
-target("Empire.Tests.Math.Unit")
-    set_kind("binary")
-    add_files("*.cpp")
-    add_deps("Kernel.Types", "Kernel.Assert")
-    add_deps("Math.Scalar", "Math.Vector", "Math.Matrix", "Math.Quaternion", "Math.Transform", "Math.Geometry")

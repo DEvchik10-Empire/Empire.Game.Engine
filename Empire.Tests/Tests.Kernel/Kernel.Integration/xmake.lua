@@ -1,5 +1,0 @@
-target("Empire.Tests.Kernel.Integration")
-    set_kind("binary")
-    add_files("*.cpp")
-    add_deps("Tests.Mock", "Engine.Application", "Engine.ECS")
-    add_deps("Kernel.Memory")
