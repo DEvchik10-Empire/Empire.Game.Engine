@@ -1,0 +1,5 @@
+target("Empire.Tests.Kernel.Unit")
+    set_kind("binary")
+    add_files("*.cpp")
+    add_deps("Tests.Mock", "Engine.Application", "Engine.ECS")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Kernel.Containers", "Kernel.Algorithms", "Kernel.Sync", "Kernel.Events", "Kernel.Logging", "Kernel.Reflection", "Kernel.Services")

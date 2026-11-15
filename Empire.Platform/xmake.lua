@@ -1,0 +1,13 @@
+includes(
+    "Platform.ThirdParty",
+    "Platform.App",
+    "Platform.Events",
+    "Platform.Window",
+    "Platform.Monitor",
+    "Platform.Cursor",
+    "Platform.Input",
+    "Platform.Clipboard",
+    "Platform.Dialog",
+    "Platform.Surface",
+    "Platform.Audio"
+)
