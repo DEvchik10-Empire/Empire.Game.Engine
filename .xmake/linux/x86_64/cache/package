@@ -1,0 +1,25 @@
+{
+    ["pkgconfig::wayland-client"] = {
+        static = true,
+        version = "1.26.0",
+        links = {
+            "wayland-client",
+            "m"
+        },
+        __requirestr = "pkgconfig::wayland-client",
+        __enabled = true,
+        libfiles = {
+            "/usr/lib/libwayland-client.so",
+            "/usr/lib/libm.a"
+        },
+        shared = true
+    },
+    ["pkgconfig::xcb"] = {
+        version = "1.17.0",
+        links = "xcb",
+        __requirestr = "pkgconfig::xcb",
+        __enabled = true,
+        libfiles = "/usr/lib/libxcb.so",
+        shared = true
+    }
+}

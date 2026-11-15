@@ -1,0 +1,11 @@
+{
+    mtimes = {
+        ["Engine/Math/xmake.lua"] = 1791117943,
+        ["xmake.lua"] = 1791409926,
+        ["Engine/Platform/xmake.lua"] = 1791420176
+    },
+    recheck = false,
+    options = {
+        clean = true
+    }
+}
