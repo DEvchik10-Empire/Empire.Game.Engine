@@ -38,6 +38,34 @@ namespace DEvchik10Empire
                     return __PRETTY_FUNCTION__;
                 }
 
+                // Отладочная ли сборка. Единственное место, где это читается из препроцессора (xmake в release задаёт NDEBUG).
+#ifdef NDEBUG
+                inline constexpr bool IsDebugBuild = false;
+#else
+                inline constexpr bool IsDebugBuild = true;
+#endif
+
+                // Свойства типов, которые компилятор отдаёт только встроенными функциями (у Clang для деструктора
+                // есть __is_trivially_destructible, а __has_trivial_destructor он считает устаревшим; у GCC наоборот).
+                template <typename T>
+                inline constexpr bool IsTriviallyCopyable = __is_trivially_copyable(T);
+
+#if defined(__has_builtin)
+#if __has_builtin(__is_trivially_destructible)
+                template <typename T>
+                inline constexpr bool IsTriviallyDestructible = __is_trivially_destructible(T);
+#else
+                template <typename T>
+                inline constexpr bool IsTriviallyDestructible = __has_trivial_destructor(T);
+#endif
+#else
+                template <typename T>
+                inline constexpr bool IsTriviallyDestructible = __has_trivial_destructor(T);
+#endif
+
+                template <typename T, typename... Arguments>
+                inline constexpr bool IsTriviallyConstructible = __is_trivially_constructible(T, Arguments...);
+
                 // Подсказка процессору, что поток крутится в ожидании (снижает нагрузку на шину и соседний гипер-поток).
                 inline void Pause() noexcept
                 {

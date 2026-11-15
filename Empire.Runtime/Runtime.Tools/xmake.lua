@@ -4,4 +4,5 @@ includes(
     "Tools.Packager",
     "Tools.Profiler",
     "Tools.Cli"
+--    "Tools.Serialization"
 )

@@ -107,6 +107,15 @@ namespace DEvchik10Empire
                 inline constexpr Bool IsCopyConstructible = requires(const T& Value) { T(Value); };
 
                 template <typename T>
+                inline constexpr Bool IsTriviallyCopyable = KernelCompiler::IsTriviallyCopyable<T>;
+
+                template <typename T>
+                inline constexpr Bool IsTriviallyDestructible = KernelCompiler::IsTriviallyDestructible<T>;
+
+                template <typename T, typename... Arguments>
+                inline constexpr Bool IsTriviallyConstructible = KernelCompiler::IsTriviallyConstructible<T, Arguments...>;
+
+                template <typename T>
                 inline constexpr Bool IsNothrowMoveConstructible = noexcept(T(Declval<T>()));
 
                 template <typename T>

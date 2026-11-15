@@ -13,6 +13,7 @@ includes(
     "Kernel.Assert",
     "Kernel.Memory",
     "Kernel.Containers",
+    "Kernel.Algorithms",
     "Kernel.Logging",
     "Kernel.Events",
     "Kernel.Services",

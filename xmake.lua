@@ -24,11 +24,6 @@ option("d3d11")   set_default(is_plat("windows"))    set_showmenu(true) option_e
 option("metal")   set_default(is_plat("macosx"))     set_showmenu(true) option_end()
 option("uwp")     set_default(false)                 set_showmenu(true) set_description("Собирать UWP-бэкенды (только Windows)") option_end()
 
--- что собирать (xmake f --tests=y --editor=n ...)
-option("tests")   set_default(false) set_showmenu(true) set_description("Собирать Empire.Tests")  option_end()
-option("editor")  set_default(true)  set_showmenu(true) set_description("Собирать Runtime.Editor") option_end()
-option("tools")   set_default(true)  set_showmenu(true) set_description("Собирать Empire.Tools")  option_end()
-
 -- Engine.Application.so, без префикса lib; у каждого модуля свой EXPORT-макрос
 rule("Empire.Module")
     on_load(function (target)
@@ -80,35 +75,6 @@ includes(
     "Empire.Engine",
     "Empire.Runtime"
 )
-
-if has_config("tests")  then includes("Empire.Tests")  end
-
--- xmake run Empire.Test  : собрать и прогнать Unit, затем Integration
--- xmake run Empire.Bench : собрать и прогнать бенчмарки
--- (работают только при --tests=y; режим Debug/Release задаётся через xmake f -m)
-if has_config("tests") then
-    target("Empire.Test")
-        set_kind("phony")
-        add_deps("Empire.Tests.Unit", "Empire.Tests.Integration")
-        on_run(function (target)
-            import("core.project.project")
-            for _, name in ipairs({"Empire.Tests.Unit", "Empire.Tests.Integration"}) do
-                print("==> " .. name)
-                os.execv(project.target(name):targetfile())
-            end
-        end)
-    target_end()
-
-    target("Empire.Bench")
-        set_kind("phony")
-        add_deps("Empire.Tests.Benchmark")
-        on_run(function (target)
-            import("core.project.project")
-            print("==> Empire.Tests.Benchmark")
-            os.execv(project.target("Empire.Tests.Benchmark"):targetfile())
-        end)
-    target_end()
-end
 
 -- xmake run Empire.Game / Empire.Client / Empire.Server / Empire.Standalone / Empire.Editor
 -- Короткие имена запуска: сами таргеты называются Runtime.* (слой Runtime), эти только запускают их.
