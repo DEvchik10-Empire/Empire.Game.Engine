@@ -1,0 +1,271 @@
+[
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.App/Wayland/Registry.cpp.o", "Engine/Platform/Empire.App/Wayland/Registry.cpp"],
+  "file": "Engine/Platform/Empire.App/Wayland/Registry.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.App/Wayland/Compositor.cpp.o", "Engine/Platform/Empire.App/Wayland/Compositor.cpp"],
+  "file": "Engine/Platform/Empire.App/Wayland/Compositor.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.App/Wayland/Display.cpp.o", "Engine/Platform/Empire.App/Wayland/Display.cpp"],
+  "file": "Engine/Platform/Empire.App/Wayland/Display.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.App/Wayland/Interface.cpp.o", "Engine/Platform/Empire.App/Wayland/Interface.cpp"],
+  "file": "Engine/Platform/Empire.App/Wayland/Interface.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.App/legasy/EventQueue.cpp.o", "Engine/Platform/Empire.App/legasy/EventQueue.cpp"],
+  "file": "Engine/Platform/Empire.App/legasy/EventQueue.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.App/legasy/Connection.cpp.o", "Engine/Platform/Empire.App/legasy/Connection.cpp"],
+  "file": "Engine/Platform/Empire.App/legasy/Connection.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/WindowImplFactory.cpp.o", "Engine/Platform/Empire.Window/WindowImplFactory.cpp"],
+  "file": "Engine/Platform/Empire.Window/WindowImplFactory.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/Wayland/XdgWmBase.cpp.o", "Engine/Platform/Empire.Window/Wayland/XdgWmBase.cpp"],
+  "file": "Engine/Platform/Empire.Window/Wayland/XdgWmBase.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/Wayland/ShmPool.cpp.o", "Engine/Platform/Empire.Window/Wayland/ShmPool.cpp"],
+  "file": "Engine/Platform/Empire.Window/Wayland/ShmPool.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/Wayland/Window.cpp.o", "Engine/Platform/Empire.Window/Wayland/Window.cpp"],
+  "file": "Engine/Platform/Empire.Window/Wayland/Window.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/Wayland/Impl.cpp.o", "Engine/Platform/Empire.Window/Wayland/Impl.cpp"],
+  "file": "Engine/Platform/Empire.Window/Wayland/Impl.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/Wayland/Surface.cpp.o", "Engine/Platform/Empire.Window/Wayland/Surface.cpp"],
+  "file": "Engine/Platform/Empire.Window/Wayland/Surface.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/Wayland/Buffer.cpp.o", "Engine/Platform/Empire.Window/Wayland/Buffer.cpp"],
+  "file": "Engine/Platform/Empire.Window/Wayland/Buffer.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/Wayland/Shm.cpp.o", "Engine/Platform/Empire.Window/Wayland/Shm.cpp"],
+  "file": "Engine/Platform/Empire.Window/Wayland/Shm.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/legasy/Window.cpp.o", "Engine/Platform/Empire.Window/legasy/Window.cpp"],
+  "file": "Engine/Platform/Empire.Window/legasy/Window.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/Empire.Window/legasy/Impl.cpp.o", "Engine/Platform/Empire.Window/legasy/Impl.cpp"],
+  "file": "Engine/Platform/Empire.Window/legasy/Impl.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-O3", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform/linux/x86_64/release/Engine/Platform/ThirdParty/Wayland/xdg-shell-protocol.c.o", "Engine/Platform/ThirdParty/Wayland/xdg-shell-protocol.c"],
+  "file": "Engine/Platform/ThirdParty/Wayland/xdg-shell-protocol.c"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform.Test.Wayland/linux/x86_64/release/Engine/Platform/Tests/Wayland/TestMain.cpp.o", "Engine/Platform/Tests/Wayland/TestMain.cpp"],
+  "file": "Engine/Platform/Tests/Wayland/TestMain.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Math.cpp.o", "Engine/Math/Math.cpp"],
+  "file": "Engine/Math/Math.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Transform/Transform.cpp.o", "Engine/Math/Transform/Transform.cpp"],
+  "file": "Engine/Math/Transform/Transform.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Geometry/Frustum.cpp.o", "Engine/Math/Geometry/Frustum.cpp"],
+  "file": "Engine/Math/Geometry/Frustum.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Geometry/AABB.cpp.o", "Engine/Math/Geometry/AABB.cpp"],
+  "file": "Engine/Math/Geometry/AABB.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Geometry/Plane.cpp.o", "Engine/Math/Geometry/Plane.cpp"],
+  "file": "Engine/Math/Geometry/Plane.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Geometry/Sphere.cpp.o", "Engine/Math/Geometry/Sphere.cpp"],
+  "file": "Engine/Math/Geometry/Sphere.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Geometry/OBB.cpp.o", "Engine/Math/Geometry/OBB.cpp"],
+  "file": "Engine/Math/Geometry/OBB.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Geometry/CatmullRom.cpp.o", "Engine/Math/Geometry/CatmullRom.cpp"],
+  "file": "Engine/Math/Geometry/CatmullRom.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Geometry/Ray.cpp.o", "Engine/Math/Geometry/Ray.cpp"],
+  "file": "Engine/Math/Geometry/Ray.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Geometry/Bezier.cpp.o", "Engine/Math/Geometry/Bezier.cpp"],
+  "file": "Engine/Math/Geometry/Bezier.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Vector/Vector4.cpp.o", "Engine/Math/Vector/Vector4.cpp"],
+  "file": "Engine/Math/Vector/Vector4.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Vector/Vector3.cpp.o", "Engine/Math/Vector/Vector3.cpp"],
+  "file": "Engine/Math/Vector/Vector3.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Vector/Vector2.cpp.o", "Engine/Math/Vector/Vector2.cpp"],
+  "file": "Engine/Math/Vector/Vector2.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Quaternion/Quaternion.cpp.o", "Engine/Math/Quaternion/Quaternion.cpp"],
+  "file": "Engine/Math/Quaternion/Quaternion.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Matrix/Matrix2.cpp.o", "Engine/Math/Matrix/Matrix2.cpp"],
+  "file": "Engine/Math/Matrix/Matrix2.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Matrix/Matrix3.cpp.o", "Engine/Math/Matrix/Matrix3.cpp"],
+  "file": "Engine/Math/Matrix/Matrix3.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/Math/linux/x86_64/release/Engine/Math/Matrix/Matrix4.cpp.o", "Engine/Math/Matrix/Matrix4.cpp"],
+  "file": "Engine/Math/Matrix/Matrix4.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Device/Vulkan/VkCommon.cpp.o", "Engine/Rendering/Empire.Device/Vulkan/VkCommon.cpp"],
+  "file": "Engine/Rendering/Empire.Device/Vulkan/VkCommon.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Device/Vulkan/VkInstance.cpp.o", "Engine/Rendering/Empire.Device/Vulkan/VkInstance.cpp"],
+  "file": "Engine/Rendering/Empire.Device/Vulkan/VkInstance.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Device/Vulkan/VkDevice.cpp.o", "Engine/Rendering/Empire.Device/Vulkan/VkDevice.cpp"],
+  "file": "Engine/Rendering/Empire.Device/Vulkan/VkDevice.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.SwapChain/Vulkan/VkSurface.cpp.o", "Engine/Rendering/Empire.SwapChain/Vulkan/VkSurface.cpp"],
+  "file": "Engine/Rendering/Empire.SwapChain/Vulkan/VkSurface.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.SwapChain/Vulkan/VkSwapChain.cpp.o", "Engine/Rendering/Empire.SwapChain/Vulkan/VkSwapChain.cpp"],
+  "file": "Engine/Rendering/Empire.SwapChain/Vulkan/VkSwapChain.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.CommandBuffer/Vulkan/VkFrameContext.cpp.o", "Engine/Rendering/Empire.CommandBuffer/Vulkan/VkFrameContext.cpp"],
+  "file": "Engine/Rendering/Empire.CommandBuffer/Vulkan/VkFrameContext.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Buffer/Vulkan/VkBuffer.cpp.o", "Engine/Rendering/Empire.Buffer/Vulkan/VkBuffer.cpp"],
+  "file": "Engine/Rendering/Empire.Buffer/Vulkan/VkBuffer.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Buffer/Vulkan/VkMesh.cpp.o", "Engine/Rendering/Empire.Buffer/Vulkan/VkMesh.cpp"],
+  "file": "Engine/Rendering/Empire.Buffer/Vulkan/VkMesh.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Texture/Vulkan/VkDepthImage.cpp.o", "Engine/Rendering/Empire.Texture/Vulkan/VkDepthImage.cpp"],
+  "file": "Engine/Rendering/Empire.Texture/Vulkan/VkDepthImage.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Shader/Vulkan/VkShaderModule.cpp.o", "Engine/Rendering/Empire.Shader/Vulkan/VkShaderModule.cpp"],
+  "file": "Engine/Rendering/Empire.Shader/Vulkan/VkShaderModule.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Pipeline/Vulkan/VkUniformSet.cpp.o", "Engine/Rendering/Empire.Pipeline/Vulkan/VkUniformSet.cpp"],
+  "file": "Engine/Rendering/Empire.Pipeline/Vulkan/VkUniformSet.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Pipeline/Vulkan/VkSceneTarget.cpp.o", "Engine/Rendering/Empire.Pipeline/Vulkan/VkSceneTarget.cpp"],
+  "file": "Engine/Rendering/Empire.Pipeline/Vulkan/VkSceneTarget.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Pipeline/Vulkan/VkGraphicsPipeline.cpp.o", "Engine/Rendering/Empire.Pipeline/Vulkan/VkGraphicsPipeline.cpp"],
+  "file": "Engine/Rendering/Empire.Pipeline/Vulkan/VkGraphicsPipeline.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering/linux/x86_64/release/Engine/Rendering/Empire.Mesh/Mesh.cpp.o", "Engine/Rendering/Empire.Mesh/Mesh.cpp"],
+  "file": "Engine/Rendering/Empire.Mesh/Mesh.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering.Test.Vulkan/linux/x86_64/release/Tests/Rendering/TestMain.cpp.o", "Tests/Rendering/TestMain.cpp"],
+  "file": "Tests/Rendering/TestMain.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-DNDEBUG", "-o", "build/.objs/Empire.Platform.Test.legasy/linux/x86_64/release/Engine/Platform/Tests/legasy/TestMain.cpp.o", "Engine/Platform/Tests/legasy/TestMain.cpp"],
+  "file": "Engine/Platform/Tests/legasy/TestMain.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I.", "-IEngine/Math", "-DNDEBUG", "-o", "build/.objs/MathTests/linux/x86_64/release/Engine/Math/Tests/main.cpp.o", "Engine/Math/Tests/main.cpp"],
+  "file": "Engine/Math/Tests/main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DNDEBUG", "-o", "build/.objs/Empire.Platform.Test.auto/linux/x86_64/release/Engine/Platform/Tests/test.cpp.o", "Engine/Platform/Tests/test.cpp"],
+  "file": "Engine/Platform/Tests/test.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-O3", "-std=c++26", "-I/home/devchik10/Documents/Empire.Engine", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform", "-I/home/devchik10/Documents/Empire.Engine/Engine/Rendering", "-I/home/devchik10/Documents/Empire.Engine/Engine/Platform/ThirdParty/Wayland", "-DEMPIRE_SHADER_DIR=\"/home/devchik10/Documents/Empire.Engine/build/shaders\"", "-DNDEBUG", "-o", "build/.objs/Empire.Rendering.Test.Scene/linux/x86_64/release/Tests/Rendering/SceneMain.cpp.o", "Tests/Rendering/SceneMain.cpp"],
+  "file": "Tests/Rendering/SceneMain.cpp"
+}]
