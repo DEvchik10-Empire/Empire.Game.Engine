@@ -1,0 +1,96 @@
+[
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/MathTests/linux/x86_64/release/Tests/main.cpp.o", "Tests/main.cpp"],
+  "file": "Tests/main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Math.cpp.o", "Math.cpp"],
+  "file": "Math.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Transform/Transform.cpp.o", "Transform/Transform.cpp"],
+  "file": "Transform/Transform.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Tests/main.cpp.o", "Tests/main.cpp"],
+  "file": "Tests/main.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Geometry/Frustum.cpp.o", "Geometry/Frustum.cpp"],
+  "file": "Geometry/Frustum.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Geometry/AABB.cpp.o", "Geometry/AABB.cpp"],
+  "file": "Geometry/AABB.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Geometry/Plane.cpp.o", "Geometry/Plane.cpp"],
+  "file": "Geometry/Plane.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Geometry/Sphere.cpp.o", "Geometry/Sphere.cpp"],
+  "file": "Geometry/Sphere.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Geometry/OBB.cpp.o", "Geometry/OBB.cpp"],
+  "file": "Geometry/OBB.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Geometry/CatmullRom.cpp.o", "Geometry/CatmullRom.cpp"],
+  "file": "Geometry/CatmullRom.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Geometry/Ray.cpp.o", "Geometry/Ray.cpp"],
+  "file": "Geometry/Ray.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Geometry/Bezier.cpp.o", "Geometry/Bezier.cpp"],
+  "file": "Geometry/Bezier.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Vector/Vector4.cpp.o", "Vector/Vector4.cpp"],
+  "file": "Vector/Vector4.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Vector/Vector3.cpp.o", "Vector/Vector3.cpp"],
+  "file": "Vector/Vector3.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Vector/Vector2.cpp.o", "Vector/Vector2.cpp"],
+  "file": "Vector/Vector2.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Quaternion/Quaternion.cpp.o", "Quaternion/Quaternion.cpp"],
+  "file": "Quaternion/Quaternion.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Matrix/Matrix2.cpp.o", "Matrix/Matrix2.cpp"],
+  "file": "Matrix/Matrix2.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Matrix/Matrix3.cpp.o", "Matrix/Matrix3.cpp"],
+  "file": "Matrix/Matrix3.cpp"
+},
+{
+  "directory": "/home/devchik10/Documents/Empire.Engine/Engine/Math",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-std=c++26", "-I../..", "-I.", "-o", "build/.objs/Math/linux/x86_64/release/Matrix/Matrix4.cpp.o", "Matrix/Matrix4.cpp"],
+  "file": "Matrix/Matrix4.cpp"
+}]

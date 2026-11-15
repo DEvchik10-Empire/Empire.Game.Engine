@@ -1,0 +1,6 @@
+{
+    errdata = "\27[01m\27[KEmpire.Window/Wayland/Window.cpp:1:9:\27[m\27[K \27[01;35m\27[Kwarning: \27[m\27[K‘\27[01m\27[K#pragma once\27[m\27[K’ in main file [\27[01;35m\27[K-Wpragma-once-outside-header\27[m\27[K]\
+    1 | #pragma \27[01;35m\27[Konce\27[m\27[K\
+      |         \27[01;35m\27[K^~~~\27[m\27[K\
+"
+}
