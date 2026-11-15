@@ -1,0 +1,4 @@
+target("Kernel.Logging")
+    add_headerfiles("*.hpp")
+    add_files("*.cpp")
+    add_deps("Kernel.Types", "Kernel.System", "Kernel.Assert", "Kernel.Memory", "Kernel.Containers", "Kernel.Sync")

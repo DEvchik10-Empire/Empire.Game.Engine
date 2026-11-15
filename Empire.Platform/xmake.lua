@@ -1,0 +1,20 @@
+includes(
+    "Platform.ThirdParty",
+    "Platform.Time",
+    "Platform.Threading",
+    "Platform.FileSystem",
+    "Platform.Process",
+    "Platform.Library",
+    "Platform.Environment",
+    "Platform.Network",
+    "Platform.App",
+    "Platform.Events",
+    "Platform.Window",
+    "Platform.Monitor",
+    "Platform.Cursor",
+    "Platform.Input",
+    "Platform.Clipboard",
+    "Platform.Dialog",
+    "Platform.Surface",
+    "Platform.Audio"
+)

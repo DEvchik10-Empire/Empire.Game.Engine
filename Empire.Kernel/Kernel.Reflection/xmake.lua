@@ -1,0 +1,4 @@
+target("Kernel.Reflection")
+    add_headerfiles("*.hpp")
+    add_files("Reflection.TypeRegistry.cpp")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Kernel.Containers", "Kernel.Sync")

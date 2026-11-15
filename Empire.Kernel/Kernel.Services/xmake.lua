@@ -1,0 +1,4 @@
+target("Kernel.Services")
+    add_headerfiles("*.hpp")
+    add_files("Services.ServiceRegistry.cpp")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Kernel.Containers", "Kernel.Sync")
