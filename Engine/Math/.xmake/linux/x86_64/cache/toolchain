@@ -1,0 +1,145 @@
+{
+    swift_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    yasm_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    gcc_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = {
+            program = "/usr/bin/gcc",
+            name = "gcc"
+        }
+    },
+    cross_arch_x86_64_plat_linux = {
+        __global = true,
+        arch = "x86_64",
+        plat = "linux"
+    },
+    nasm_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    envs_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    gfortran_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    tool_target_MathTests_linux_x86_64_cxx = {
+        toolname = "gxx",
+        program = "/usr/bin/g++",
+        toolchain_info = {
+            name = "gcc",
+            arch = "x86_64",
+            cachekey = "gcc_arch_x86_64_plat_linux",
+            plat = "linux"
+        }
+    },
+    tool_target_Math_linux_x86_64_cxx = {
+        toolname = "gxx",
+        program = "/usr/bin/g++",
+        toolchain_info = {
+            name = "gcc",
+            arch = "x86_64",
+            cachekey = "gcc_arch_x86_64_plat_linux",
+            plat = "linux"
+        }
+    },
+    fasm_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    ascendc_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = false
+    },
+    go_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    tool_target_Math_linux_x86_64_ar = {
+        toolname = "ar",
+        program = "/usr/bin/ar",
+        toolchain_info = {
+            name = "gcc",
+            arch = "x86_64",
+            cachekey = "gcc_arch_x86_64_plat_linux",
+            plat = "linux"
+        }
+    },
+    cuda_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    rust_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    nim_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = false
+    },
+    fpc_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = true
+    },
+    zig_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = false
+    },
+    dotnet_arch_x86_64_plat_linux = {
+        plat = "linux",
+        arch = "x86_64",
+        __global = true,
+        __checked = false
+    },
+    clang_arch_x86_64_plat_linux = {
+        __global = true,
+        arch = "x86_64",
+        plat = "linux"
+    },
+    tool_target_MathTests_linux_x86_64_ld = {
+        toolname = "gxx",
+        program = "/usr/bin/g++",
+        toolchain_info = {
+            name = "gcc",
+            arch = "x86_64",
+            cachekey = "gcc_arch_x86_64_plat_linux",
+            plat = "linux"
+        }
+    }
+}

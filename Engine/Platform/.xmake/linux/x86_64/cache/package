@@ -1,0 +1,17 @@
+{
+    ["pkgconfig::wayland-client"] = {
+        links = {
+            "wayland-client",
+            "m"
+        },
+        shared = true,
+        libfiles = {
+            "/usr/lib/libwayland-client.so",
+            "/usr/lib/libm.a"
+        },
+        __enabled = true,
+        static = true,
+        __requirestr = "pkgconfig::wayland-client",
+        version = "1.26.0"
+    }
+}
