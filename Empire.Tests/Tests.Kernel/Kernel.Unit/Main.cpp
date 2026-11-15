@@ -1,4 +1,4 @@
-#include "Empire.Tests/Tests.Unit/Unit.Kernel.hpp"
+#include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.Kernel.hpp"
 
 int main(int argc, char** argv)
 {

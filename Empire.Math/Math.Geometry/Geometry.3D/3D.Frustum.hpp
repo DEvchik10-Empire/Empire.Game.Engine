@@ -16,7 +16,8 @@ namespace DEvchik10Empire
                 namespace Geometry3D
                 {
                     using namespace EmpireKernel;
-                    using MathMatrix::Matrix4;
+                    using MathMatrix::DepthRange;
+                using MathMatrix::Matrix4;
                     using MathVector::Vector3;
 
                     struct Frustum
@@ -28,7 +29,7 @@ namespace DEvchik10Empire
                         Plane Top;
                         Plane Bottom;
 
-                        static Frustum FromMatrix(const Matrix4& ViewProjection) noexcept;
+                        static Frustum FromMatrix(const Matrix4& ViewProjection, DepthRange Depth = DepthRange::ZeroToOne) noexcept;
 
                         KernelTypes::Bool ContainsPoint(const Vector3& Point) const noexcept;
                     };

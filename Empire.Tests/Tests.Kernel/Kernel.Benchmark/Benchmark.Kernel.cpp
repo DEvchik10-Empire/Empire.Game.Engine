@@ -1,6 +1,6 @@
 // Сравнение аллокатора Kernel с malloc: скорость (1, 2, 4, 8 потоков) и задержка одного вызова.
 // Время самого медленного потока, лучшее из нескольких запусков; задержка: медиана перцентилей по запускам.
-#include "Empire.Tests/Tests.Benchmark/Benchmark.Kernel.hpp"
+#include "Empire.Tests/Tests.Kernel/Kernel.Benchmark/Benchmark.Kernel.hpp"
 
 #include "Empire.Kernel/Kernel.Memory/Memory.hpp"
 

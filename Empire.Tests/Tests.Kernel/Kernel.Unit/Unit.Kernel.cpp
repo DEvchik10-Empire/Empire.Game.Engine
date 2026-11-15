@@ -1,5 +1,5 @@
 // Поведенческий тест Kernel: Types, Memory, Containers, Events, Services, Reflection, Logging, Assert, Sync.
-#include "Empire.Tests/Tests.Unit/Unit.Kernel.hpp"
+#include "Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.Kernel.hpp"
 
 #include "Empire.Kernel/Kernel.Assert/Assert.hpp"
 #include "Empire.Kernel/Kernel.Containers/Containers.Array.hpp"
@@ -269,7 +269,7 @@ int RunKernelUnitTests()
         {
             std::printf("    строка лога: \"%s\"\n", Cap.Lines[0].c_str());
             // путь укорочен (без абсолютного префикса), строка заканчивается переводом строки
-            CHECK(Cap.Lines[0].find("(Empire.Tests/Tests.Unit/Unit.Kernel.cpp:") != std::string::npos || Cap.Lines[0].find("(Unit.Kernel.cpp:") != std::string::npos);
+            CHECK(Cap.Lines[0].find("(Empire.Tests/Tests.Kernel/Kernel.Unit/Unit.Kernel.cpp:") != std::string::npos || Cap.Lines[0].find("(Unit.Kernel.cpp:") != std::string::npos);
             CHECK(Cap.Lines[0].find('/') != 0 && Cap.Lines[0].back() == '\n');
         }
         K::KernelLogging::SetMinimumLevel(K::KernelLogging::Level::Off); K::KernelLogging::Fatal("off"); CHECK(Cap.Lines.size() == 2);

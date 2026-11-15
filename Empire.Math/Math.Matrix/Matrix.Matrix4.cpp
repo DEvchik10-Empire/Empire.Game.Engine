@@ -109,13 +109,23 @@ namespace DEvchik10Empire
                         RotationX(Rotation.X);
                 }
 
-                Matrix4 Matrix4::Perspective(KernelTypes::Float FieldOfView, KernelTypes::Float AspectRatio, KernelTypes::Float NearPlane, KernelTypes::Float FarPlane) noexcept
+                Matrix4 Matrix4::Perspective(KernelTypes::Float FieldOfView, KernelTypes::Float AspectRatio, KernelTypes::Float NearPlane, KernelTypes::Float FarPlane, DepthRange Depth) noexcept
                 {
                     const KernelTypes::Float HalfFieldOfView =
                         FieldOfView * 0.5f;
 
                     const KernelTypes::Float FocalLength =
                         1.0f / std::tan(HalfFieldOfView);
+
+                    const KernelTypes::Bool ZeroToOne = Depth == DepthRange::ZeroToOne;
+
+                    const KernelTypes::Float DepthScale = ZeroToOne
+                        ? FarPlane / (NearPlane - FarPlane)
+                        : (FarPlane + NearPlane) / (NearPlane - FarPlane);
+
+                    const KernelTypes::Float DepthOffset = ZeroToOne
+                        ? (FarPlane * NearPlane) / (NearPlane - FarPlane)
+                        : (2.0f * FarPlane * NearPlane) / (NearPlane - FarPlane);
 
                     return {
                         FocalLength / AspectRatio, 0.0f, 0.0f, 0.0f,
@@ -124,10 +134,8 @@ namespace DEvchik10Empire
 
                         0.0f,
                         0.0f,
-                        (FarPlane + NearPlane) /
-                            (NearPlane - FarPlane),
-                        (2.0f * FarPlane * NearPlane) /
-                            (NearPlane - FarPlane),
+                        DepthScale,
+                        DepthOffset,
 
                         0.0f,
                         0.0f,
@@ -136,8 +144,18 @@ namespace DEvchik10Empire
                     };
                 }
 
-                Matrix4 Matrix4::Orthographic(KernelTypes::Float Left, KernelTypes::Float Right, KernelTypes::Float Bottom, KernelTypes::Float Top, KernelTypes::Float NearPlane, KernelTypes::Float FarPlane) noexcept
+                Matrix4 Matrix4::Orthographic(KernelTypes::Float Left, KernelTypes::Float Right, KernelTypes::Float Bottom, KernelTypes::Float Top, KernelTypes::Float NearPlane, KernelTypes::Float FarPlane, DepthRange Depth) noexcept
                 {
+                    const KernelTypes::Bool ZeroToOne = Depth == DepthRange::ZeroToOne;
+
+                    const KernelTypes::Float DepthScale = ZeroToOne
+                        ? -1.0f / (FarPlane - NearPlane)
+                        : -2.0f / (FarPlane - NearPlane);
+
+                    const KernelTypes::Float DepthOffset = ZeroToOne
+                        ? -NearPlane / (FarPlane - NearPlane)
+                        : -(FarPlane + NearPlane) / (FarPlane - NearPlane);
+
                     return {
                         2.0f / (Right - Left),
                         0.0f,
@@ -151,9 +169,8 @@ namespace DEvchik10Empire
 
                         0.0f,
                         0.0f,
-                        -2.0f / (FarPlane - NearPlane),
-                        -(FarPlane + NearPlane) /
-                            (FarPlane - NearPlane),
+                        DepthScale,
+                        DepthOffset,
 
                         0.0f,
                         0.0f,

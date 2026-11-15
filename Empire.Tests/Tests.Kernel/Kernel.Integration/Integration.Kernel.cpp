@@ -1,6 +1,6 @@
 // Многопоточные проверки аллокатора Kernel: блоки выделяются в одних потоках, освобождаются в других,
 // потоки завершаются с непустыми кэшами, выделение идёт из деструкторов thread_local.
-#include "Empire.Tests/Tests.Integration/Integration.Kernel.hpp"
+#include "Empire.Tests/Tests.Kernel/Kernel.Integration/Integration.Kernel.hpp"
 
 #include "Empire.Kernel/Kernel.Memory/Memory.hpp"
 

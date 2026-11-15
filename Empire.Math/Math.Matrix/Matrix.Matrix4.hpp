@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Empire.Kernel/Kernel.Types/Types.hpp"
+#include "Empire.Math/Math.Matrix/Matrix.DepthRange.hpp"
 #include "Empire.Math/Math.Vector/Vector.Vector3.hpp"
 #include "Empire.Math/Math.Vector/Vector.Vector4.hpp"
 
@@ -42,9 +43,9 @@ namespace DEvchik10Empire
 
                     static Matrix4 Rotation(const Vector3& Rotation) noexcept;
 
-                    static Matrix4 Perspective(KernelTypes::Float FieldOfView, KernelTypes::Float AspectRatio, KernelTypes::Float NearPlane, KernelTypes::Float FarPlane) noexcept;
+                    static Matrix4 Perspective(KernelTypes::Float FieldOfView, KernelTypes::Float AspectRatio, KernelTypes::Float NearPlane, KernelTypes::Float FarPlane, DepthRange Depth = DepthRange::ZeroToOne) noexcept;
 
-                    static Matrix4 Orthographic(KernelTypes::Float Left, KernelTypes::Float Right, KernelTypes::Float Bottom, KernelTypes::Float Top, KernelTypes::Float NearPlane, KernelTypes::Float FarPlane) noexcept;
+                    static Matrix4 Orthographic(KernelTypes::Float Left, KernelTypes::Float Right, KernelTypes::Float Bottom, KernelTypes::Float Top, KernelTypes::Float NearPlane, KernelTypes::Float FarPlane, DepthRange Depth = DepthRange::ZeroToOne) noexcept;
 
                     static Matrix4 LookAt(const Vector3& Eye, const Vector3& Target, const Vector3& Up) noexcept;
 
