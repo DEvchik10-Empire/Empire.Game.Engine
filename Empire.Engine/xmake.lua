@@ -1,0 +1,20 @@
+includes(
+    "Engine.Modules",
+    "Engine.GameLoop",
+    "Engine.Application",
+    "Engine.Jobs",
+    "Engine.Diagnostics",
+    "Engine.Input",
+    "Engine.Assets",
+    "Engine.ECS",
+    "Engine.Node",
+    "Engine.Gameplay",
+    "Engine.Rendering",
+    "Engine.Physics",
+    "Engine.Sound",
+    "Engine.Animation",
+    "Engine.Networking",
+    "Engine.UI",
+    "Engine.AI",
+    "Engine.Scripting"
+)

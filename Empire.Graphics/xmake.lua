@@ -1,0 +1,20 @@
+includes(
+    "Graphics.Common",
+    "Graphics.Instance",
+    "Graphics.Adapter",
+    "Graphics.Device",
+    "Graphics.Queue",
+    "Graphics.SwapChain",
+    "Graphics.Buffer",
+    "Graphics.Texture",
+    "Graphics.Sampler",
+    "Graphics.Shader",
+    "Graphics.BindGroup",
+    "Graphics.Pipeline",
+    "Graphics.RenderPass",
+    "Graphics.CommandBuffer",
+    "Graphics.Fence",
+    "Graphics.Semaphore",
+    "Graphics.Query",
+    "Graphics.ThirdParty"
+)
