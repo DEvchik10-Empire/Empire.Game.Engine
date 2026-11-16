@@ -1,3 +1,5 @@
--- Приватный бэкенд Platform.App: Wayland. Наружу не виден.
 target("Platform.App")
+    add_headerfiles("*.hpp")
     add_files("*.cpp")
+    add_deps("Kernel.Containers", "Kernel.Memory", "Platform.ThirdParty", "Platform.ThirdParty.Wayland")
+    add_syslinks("wayland-client")
