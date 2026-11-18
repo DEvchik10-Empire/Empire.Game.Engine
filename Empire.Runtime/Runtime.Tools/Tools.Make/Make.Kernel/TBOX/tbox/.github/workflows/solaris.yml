@@ -1,0 +1,42 @@
+name: Solaris
+
+on:
+  pull_request:
+  push:
+  release:
+    types: [published]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    concurrency:
+        group: ${{ github.ref }}-${{ github.base_ref }}-${{ github.head_ref }}-Solaris
+        cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Tests
+        id: test
+        uses: vmactions/solaris-vm@v1
+        with:
+          usesh: true
+          prepare: |
+            # Try OpenCSW first (for older Solaris)
+            if command -v pkgutil >/dev/null 2>&1; then
+              pkgutil -U || true
+              pkgutil -y -i socat git gmake bash gcc4g++ 2>/dev/null || pkgutil -y -i socat git gmake bash gcc5g++ 2>/dev/null || true
+            fi
+            # Try IPS (for newer Solaris)
+            if command -v pkg >/dev/null 2>&1; then
+              pkg install --accept developer/gcc developer/build/gnu-make developer/versioning/git || true
+            fi
+          run: |
+            cd $GITHUB_WORKSPACE
+            bash ./configure
+            gmake -j4
+            gmake run
+

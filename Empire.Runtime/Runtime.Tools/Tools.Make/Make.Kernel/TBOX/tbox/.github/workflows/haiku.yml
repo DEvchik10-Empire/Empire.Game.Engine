@@ -1,0 +1,34 @@
+name: Haiku
+
+on:
+  pull_request:
+  push:
+  release:
+    types: [published]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    concurrency:
+        group: ${{ github.ref }}-${{ github.base_ref }}-${{ github.head_ref }}-Haiku
+        cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Tests
+        uses: vmactions/haiku-vm@v1
+        with:
+          usesh: true
+          mem: 4096
+          copyback: false
+          prepare: |
+            pkgman install -y git curl unzip make bash perl
+          run: |
+            cd $GITHUB_WORKSPACE
+            ./configure
+            make -j2
+            make run
