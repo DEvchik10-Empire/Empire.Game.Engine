@@ -1,0 +1,2 @@
+Project("{#projtypeguid#}") = "#targetname#", "#vcxprojdir_relative_sln#\#targetname_inpath#.#projext#", "{#target_id#}"
+EndProject

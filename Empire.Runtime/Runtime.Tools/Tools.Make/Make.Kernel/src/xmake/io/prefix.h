@@ -1,0 +1,116 @@
+/*!A cross-platform build utility based on Lua
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Copyright (C) 2015-present, Xmake Open Source Community.
+ *
+ * @author      ruki
+ * @file        prefix.h
+ *
+ */
+#ifndef XM_IO_PREFIX_H
+#define XM_IO_PREFIX_H
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
+#include "../prefix.h"
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * macros
+ */
+#define XM_IO_BLOCK_MAXN (TB_STREAM_BLOCK_MAXN * 10)
+
+// return io error
+#define xm_io_return_error(lua, error)                                                                                 \
+    do {                                                                                                               \
+        lua_pushnil(lua);                                                                                              \
+        lua_pushliteral(lua, error);                                                                                   \
+        return 2;                                                                                                      \
+    } while (0)
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * types
+ */
+typedef enum __xm_io_file_type_e {
+    XM_IO_FILE_TYPE_FILE = 0 //!< disk file
+
+        ,
+    XM_IO_FILE_TYPE_STDIN  = 1,
+    XM_IO_FILE_TYPE_STDOUT = 2,
+    XM_IO_FILE_TYPE_STDERR = 3
+
+        ,
+    XM_IO_FILE_FLAG_TTY = 0x10 //!< mark tty std stream
+} xm_io_file_type_e;
+
+/* use negetive numbers for this enum, its a extension for tb_charset_type_e
+ * before adding new values, make sure they have not conflicts with values in tb_charset_type_e
+ */
+typedef enum __xm_io_file_encoding_e {
+    XM_IO_FILE_ENCODING_UNKNOWN = -1,
+    XM_IO_FILE_ENCODING_BINARY  = -2
+} xm_io_file_encoding_e;
+
+// the file type
+typedef struct __xm_io_file_t {
+    union {
+        /* the normal file for XM_IO_FILE_TYPE_FILE
+         *
+         * direct:    file_ref -> stream -> file
+         * transcode: file_ref -> fstream -> stream -> file
+         */
+        tb_stream_ref_t file_ref;
+
+        // the standard io file
+        tb_stdfile_ref_t std_ref;
+    } u;
+
+    tb_stream_ref_t stream;   // the file stream for XM_IO_FILE_TYPE_FILE
+    tb_stream_ref_t fstream;  // the file charset stream filter
+    tb_size_t mode;     // tb_file_mode_t
+    tb_size_t type;     // xm_io_file_type_e
+    tb_size_t encoding; // value of xm_io_file_encoding_e or tb_charset_type_e
+    tb_bool_t utfbom;   // write utf-bom for utf encoding?
+    tb_buffer_t rcache; // the read line cache buffer
+    tb_buffer_t wcache; // the write line cache buffer
+} xm_io_file_t;
+
+static __tb_inline__ tb_bool_t xm_io_file_is_file(xm_io_file_t const *file) {
+    return file && file->type == XM_IO_FILE_TYPE_FILE;
+}
+
+static __tb_inline__ tb_bool_t xm_io_file_is_std(xm_io_file_t const *file) {
+    return file && file->type != XM_IO_FILE_TYPE_FILE;
+}
+
+static __tb_inline__ tb_bool_t xm_io_file_is_tty(xm_io_file_t const *file) {
+    return file && (file->type & XM_IO_FILE_FLAG_TTY);
+}
+
+// check pipe file
+static __tb_inline__ tb_bool_t xm_pipe_file_is_valid(lua_State *lua, tb_int_t index) {
+    return xm_lua_ispointer(lua, index) || xm_lua_isinteger(lua, index);
+}
+
+// get the pipe file from arguments
+static __tb_inline__ tb_pipe_file_ref_t xm_pipe_file_get(lua_State *lua, tb_int_t index) {
+    tb_pipe_file_ref_t pipe_file = tb_null;
+    if (xm_lua_isinteger(lua, index))
+        pipe_file = (tb_pipe_file_ref_t)(tb_size_t)(tb_long_t)lua_tointeger(lua, index);
+    else if (xm_lua_ispointer(lua, index))
+        pipe_file = (tb_pipe_file_ref_t)xm_lua_topointer(lua, index);
+    return pipe_file;
+}
+
+#endif

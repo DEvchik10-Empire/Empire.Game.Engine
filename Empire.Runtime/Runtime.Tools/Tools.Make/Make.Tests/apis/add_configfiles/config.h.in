@@ -1,0 +1,16 @@
+#define HAVE_${module}_H
+#define HELLO "${hello} ${ARCH} ${PLAT}"
+
+${define FOO_ENABLE}
+${define FOO_ENABLE2}
+${define FOO_STRING}
+${define FOO_DEFINE}
+
+${define FOO2_ENABLE}
+${define FOO2_ENABLE2}
+${define FOO2_STRING}
+
+${define_export MYLIB}
+${define_custom FOO_STRING arg1 arg2}
+
+#define HAVE_SSE2 ${default HAVE_SSE2 0}

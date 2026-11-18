@@ -1,0 +1,644 @@
+--!A cross-platform build utility based on Lua
+--
+-- Licensed under the Apache License, Version 2.0 (the "License");
+-- you may not use this file except in compliance with the License.
+-- You may obtain a copy of the License at
+--
+--     http://www.apache.org/licenses/LICENSE-2.0
+--
+-- Unless required by applicable law or agreed to in writing, software
+-- distributed under the License is distributed on an "AS IS" BASIS,
+-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-- See the License for the specific language governing permissions and
+-- limitations under the License.
+--
+-- Copyright (C) 2015-present, Xmake Open Source Community.
+--
+-- @author      ruki
+-- @file        batchcmds.lua
+--
+
+-- imports
+import("core.base.option")
+import("core.base.object")
+import("core.base.tty")
+import("core.base.colors")
+import("core.project.depend")
+import("core.theme.theme")
+import("core.tool.linker")
+import("core.tool.compiler")
+import("core.language.language")
+import("core.sandbox.sandbox")
+import("utils.run_script")
+import("utils.progress", {alias = "progress_utils"})
+import("utils.binary.rpath", {alias = "rpath_utils"})
+
+-- define module
+local batchcmds = batchcmds or object { _init = {"_TARGET", "_CMDS", "_DEPINFO", "_tip"}}
+
+-- run command: show
+function _runcmd_show(cmd, opt)
+    local format = cmd.format
+    if format then
+        cprint(format, table.unpack(cmd.argv))
+    end
+end
+
+-- run command: show_progress
+function _runcmd_show_progress(cmd, opt)
+    local format = cmd.format
+    local progress = cmd.progress
+    if format and progress then
+        progress_utils.show(progress, format, table.unpack(cmd.argv))
+    end
+end
+
+-- run command: os.runv
+function _runcmd_runv(cmd, opt)
+    if cmd.program then
+        if not opt.dryrun then
+            os.runv(cmd.program, cmd.argv, cmd.opt)
+        end
+    end
+end
+
+-- run command: os.vrunv
+function _runcmd_vrunv(cmd, opt)
+    if cmd.program then
+        if opt.dryrun then
+            vprint(os.args(table.join(cmd.program, cmd.argv)))
+        else
+            os.vrunv(cmd.program, cmd.argv, cmd.opt)
+        end
+    end
+end
+
+-- run command: os.execv
+function _runcmd_execv(cmd, opt)
+    if cmd.program then
+        if not opt.dryrun then
+            os.execv(cmd.program, cmd.argv, cmd.opt)
+        end
+    end
+end
+
+-- run command: os.vexecv
+function _runcmd_vexecv(cmd, opt)
+    if cmd.program then
+        if opt.dryrun then
+            vprint(os.args(table.join(cmd.program, cmd.argv)))
+        else
+            os.vexecv(cmd.program, cmd.argv, cmd.opt)
+        end
+    end
+end
+
+-- run command: lua
+function _runcmd_lua(cmd, opt)
+    if cmd.script then
+        if not opt.dryrun then
+            local runopt = table.clone(cmd.opt) or {}
+            runopt.arguments = cmd.argv
+            runopt.quiet = true
+            -- it will run in a separate native thread, which will not block other coroutine jobs
+            runopt.thread = true
+            run_script(cmd.script, runopt)
+        end
+    end
+end
+
+-- run command: vlua
+function _runcmd_vlua(cmd, opt)
+    if cmd.script then
+        vprint(os.args(table.join("xmake", "lua", cmd.script, cmd.argv)))
+        if not opt.dryrun then
+            local runopt = table.clone(cmd.opt) or {}
+            runopt.arguments = cmd.argv
+            if option.get("diagnosis") then
+                runopt.verbose = true
+                runopt.diagnosis = true
+            else
+                runopt.quiet = not option.get("verbose")
+            end
+            -- it will run in a separate native thread, which will not block other coroutine jobs
+            runopt.thread = true
+            run_script(cmd.script, runopt)
+        end
+    end
+end
+
+-- run command: call
+function _runcmd_call(cmd, opt)
+    local func = cmd.func
+    if func then
+        if not opt.dryrun then
+            local argv = table.clone(cmd.argv)
+            if cmd.opt then
+                table.insert(argv, cmd.opt)
+            end
+            func(table.unpack(argv))
+        end
+    end
+end
+
+-- run command: os.mkdir
+function _runcmd_mkdir(cmd, opt)
+    local dir = cmd.dir
+    if not opt.dryrun and not os.isdir(dir) then
+        os.mkdir(dir)
+    end
+end
+
+-- run command: os.cd
+function _runcmd_cd(cmd, opt)
+    local dir = cmd.dir
+    if not opt.dryrun then
+        os.cd(dir)
+    end
+end
+
+-- run command: os.rm
+function _runcmd_rm(cmd, opt)
+    local filepath = cmd.filepath
+    if not opt.dryrun then
+        os.tryrm(filepath, opt)
+    end
+end
+
+-- run command: os.rmdir
+function _runcmd_rmdir(cmd, opt)
+    local dir = cmd.dir
+    if not opt.dryrun and os.isdir(dir) then
+        os.tryrm(dir, opt)
+    end
+end
+
+-- run command: os.cp
+function _runcmd_cp(cmd, opt)
+    if not opt.dryrun then
+        os.cp(cmd.srcpath, cmd.dstpath, cmd.opt)
+    end
+end
+
+-- run command: os.mv
+function _runcmd_mv(cmd, opt)
+    if not opt.dryrun then
+        os.mv(cmd.srcpath, cmd.dstpath, cmd.opt)
+    end
+end
+
+-- run command: os.ln
+function _runcmd_ln(cmd, opt)
+    if not opt.dryrun then
+        os.ln(cmd.srcpath, cmd.dstpath, cmd.opt)
+    end
+end
+
+-- run command: clean rpath
+function _runcmd_clean_rpath(cmd, opt)
+    if not opt.dryrun then
+        rpath_utils.clean(cmd.filepath, cmd.opt)
+    end
+end
+
+-- run command: insert rpath
+function _runcmd_insert_rpath(cmd, opt)
+    if not opt.dryrun then
+        rpath_utils.insert(cmd.filepath, cmd.rpath, cmd.opt)
+    end
+end
+
+-- run command: remove rpath
+function _runcmd_remove_rpath(cmd, opt)
+    if not opt.dryrun then
+        rpath_utils.remove(cmd.filepath, cmd.rpath, cmd.opt)
+    end
+end
+
+-- run command: change rpath
+function _runcmd_change_rpath(cmd, opt)
+    if not opt.dryrun then
+        rpath_utils.change(cmd.filepath, cmd.rpath_old, cmd.rpath_new, cmd.opt)
+    end
+end
+
+-- run command
+function _runcmd(cmd, opt)
+    local kind = cmd.kind
+    local maps = _g.maps
+    if not maps then
+        maps =
+        {
+            show          = _runcmd_show,
+            show_progress = _runcmd_show_progress,
+            runv          = _runcmd_runv,
+            vrunv         = _runcmd_vrunv,
+            execv         = _runcmd_execv,
+            vexecv        = _runcmd_vexecv,
+            lua           = _runcmd_lua,
+            vlua          = _runcmd_vlua,
+            call          = _runcmd_call,
+            mkdir         = _runcmd_mkdir,
+            rmdir         = _runcmd_rmdir,
+            cd            = _runcmd_cd,
+            rm            = _runcmd_rm,
+            cp            = _runcmd_cp,
+            mv            = _runcmd_mv,
+            ln            = _runcmd_ln,
+            clean_rpath   = _runcmd_clean_rpath,
+            insert_rpath  = _runcmd_insert_rpath,
+            remove_rpath  = _runcmd_remove_rpath,
+            change_rpath  = _runcmd_change_rpath
+        }
+        _g.maps = maps
+    end
+    local script = maps[kind]
+    if script then
+        script(cmd, opt)
+    end
+end
+
+-- run commands
+function _runcmds(cmds, opt)
+    for _, cmd in ipairs(cmds) do
+        _runcmd(cmd, opt)
+    end
+end
+
+-- is empty? (no pending commands)
+--
+-- @return      true if no commands
+--
+function batchcmds:empty()
+    return #self:cmds() == 0
+end
+
+-- get all pending commands
+--
+-- @return      the commands array
+--
+function batchcmds:cmds()
+    return self._CMDS
+end
+
+-- add command: run program silently
+--
+-- @param program   the program path
+-- @param argv      the arguments (optional)
+-- @param opt       the options, e.g. {envs = {}}
+--
+function batchcmds:runv(program, argv, opt)
+    table.insert(self:cmds(), {kind = "runv", program = program, argv = argv, opt = opt})
+end
+
+-- add command: run program with verbose output
+--
+-- @param program   the program path
+-- @param argv      the arguments (optional)
+-- @param opt       the options, e.g. {envs = {}}
+--
+function batchcmds:vrunv(program, argv, opt)
+    table.insert(self:cmds(), {kind = "vrunv", program = program, argv = argv, opt = opt})
+end
+
+-- add command: os.execv
+function batchcmds:execv(program, argv, opt)
+    table.insert(self:cmds(), {kind = "execv", program = program, argv = argv, opt = opt})
+end
+
+-- add command: os.vexecv
+function batchcmds:vexecv(program, argv, opt)
+    table.insert(self:cmds(), {kind = "vexecv", program = program, argv = argv, opt = opt})
+end
+
+-- add command: run lua script
+--
+-- @param script the lua script path or module name
+-- @param argv   the arguments (optional)
+-- @param opt    the options (optional)
+--
+function batchcmds:lua(script, argv, opt)
+    table.insert(self:cmds(), {kind = "lua", script = script, argv = argv, opt = opt})
+end
+
+-- add command: run lua script, command or module
+function batchcmds:vlua(script, argv, opt)
+    table.insert(self:cmds(), {kind = "vlua", script = script, argv = argv, opt = opt})
+end
+
+-- add command: call lua function
+function batchcmds:call(func, argv, opt)
+    local functype = type(func)
+    if functype == "string" then
+        self:lua(func, argv, opt)
+    else
+        assert(functype == "function")
+        sandbox.fork(func)
+        table.insert(self:cmds(), {kind = "call", func = func, argv = argv, opt = opt})
+    end
+end
+
+-- add command: compile source files
+--
+-- @param sourcefiles the source file paths
+-- @param objectfile  the output object file path
+-- @param opt         the options, e.g. {sourcekind = "cxx", configs = {}}
+--
+function batchcmds:compile(sourcefiles, objectfile, opt)
+
+    -- bind target if exists
+    opt = opt or {}
+    opt.target = self._TARGET
+
+    -- wrap path for sourcefiles, because we need to translate path for project generator
+    if not path.instance_of(sourcefiles) then
+        if type(sourcefiles) == "table"  then
+            local sourcefiles_wrap = {}
+            for _, sourcefile in ipairs(sourcefiles) do
+                table.insert(sourcefiles_wrap, path(sourcefile))
+            end
+            sourcefiles = sourcefiles_wrap
+        else
+            sourcefiles = path(sourcefiles)
+        end
+    end
+
+    -- load compiler and get compilation command
+    local sourcekind = opt.sourcekind
+    if not sourcekind and (type(sourcefiles) == "string" or path.instance_of(sourcefiles)) then
+        sourcekind = language.sourcekind_of(tostring(sourcefiles))
+    end
+    local compiler_inst = compiler.load(sourcekind, opt)
+    local _, argv = compiler_inst:compargv(sourcefiles, path(objectfile), opt)
+
+    -- add compilation command and bind run environments of compiler
+    self:mkdir(path.directory(objectfile))
+    self:compilev(argv, table.join({sourcekind = sourcekind, compiler = compiler_inst}, opt))
+end
+
+-- add command: compiler.compilev
+function batchcmds:compilev(argv, opt)
+
+    -- bind target if exists
+    opt = opt or {}
+    opt.target = self._TARGET
+    opt.verbose = (opt.verbose == nil) and true or opt.verbose
+
+    -- load compiler and get compilation command
+    local compiler_inst = opt.compiler
+    if not compiler_inst then
+        local sourcekind = opt.sourcekind
+        compiler_inst = compiler.load(sourcekind, opt)
+    end
+
+    -- we need to translate path for the project generator
+    local patterns = {"^([%-/]external:I)(.*)",
+                      "^([%-/]I)(.*)",
+                      "^([%-/]Fp)(.*)",
+                      "^([%-/]Fd)(.*)",
+                      "^([%-/]Yu)(.*)",
+                      "^([%-/]FI)(.*)"}
+    for idx, item in ipairs(argv) do
+        if type(item) == "string" then
+            for _, pattern in ipairs(patterns) do
+                local _, count = item:gsub(pattern, function (prefix, value)
+                    argv[idx] = path(value, function (p) return prefix .. p end)
+                end)
+                if count > 0 then
+                    break
+                end
+            end
+        end
+    end
+
+    -- add compilation command and bind run environments of compiler
+    if opt.verbose then
+        self:vrunv(compiler_inst:program(), argv, {envs = table.join(compiler_inst:runenvs(), opt.envs)})
+    else
+        self:runv(compiler_inst:program(), argv, {envs = table.join(compiler_inst:runenvs(), opt.envs)})
+    end
+end
+
+-- add command: link object files
+--
+-- @param objectfiles the object file paths
+-- @param targetfile  the output target file path
+-- @param opt         the options (optional)
+--
+function batchcmds:link(objectfiles, targetfile, opt)
+
+    -- bind target if exists
+    local target = self._TARGET
+    opt = opt or {}
+    opt.target = target
+
+    -- wrap path for objectfiles, because we need to translate path for project generator
+    local objectfiles_wrap = {}
+    for _, objectfile in ipairs(objectfiles) do
+        table.insert(objectfiles_wrap, path(objectfile))
+    end
+    objectfiles = objectfiles_wrap
+
+    -- load linker and get link command
+    local linker_inst = target and target:linker() or linker.load(opt.targetkind, opt.sourcekinds, opt)
+    local program, argv = linker_inst:linkargv(objectfiles, path(targetfile), opt)
+
+    -- we need to translate path for the project generator
+    local patterns = {"^([%-/]L)(.*)",
+                      "^([%-/]F)(.*)",
+                      "^([%-/]libpath:)(.*)"}
+    for idx, item in ipairs(argv) do
+        if type(item) == "string" then
+            for _, pattern in ipairs(patterns) do
+                local _, count = item:gsub(pattern, function (prefix, value)
+                    argv[idx] = path(value, function (p) return prefix .. p end)
+                end)
+                if count > 0 then
+                    break
+                end
+            end
+        end
+    end
+
+    -- add link command and bind run environments of linker
+    self:mkdir(path.directory(targetfile))
+    self:vrunv(program, argv, {envs = table.join(linker_inst:runenvs(), opt.envs)})
+end
+
+-- add command: create directory
+--
+-- @param dir   the directory path
+--
+function batchcmds:mkdir(dir)
+    table.insert(self:cmds(), {kind = "mkdir", dir = dir})
+end
+
+-- add command: remove directory
+--
+-- @param dir   the directory path
+-- @param opt   the options, e.g. {emptydirs = true}
+--
+function batchcmds:rmdir(dir, opt)
+    table.insert(self:cmds(), {kind = "rmdir", dir = dir, opt = opt})
+end
+
+-- add command: remove file
+--
+-- @param filepath the file path
+-- @param opt      the options (optional)
+--
+function batchcmds:rm(filepath, opt)
+    table.insert(self:cmds(), {kind = "rm", filepath = filepath, opt = opt})
+end
+
+-- add command: copy files or directories
+--
+-- @param srcpath   the source path (supports patterns)
+-- @param dstpath   the destination path
+-- @param opt       the options, e.g. {rootdir = "", symlink = true}
+--
+function batchcmds:cp(srcpath, dstpath, opt)
+    table.insert(self:cmds(), {kind = "cp", srcpath = srcpath, dstpath = dstpath, opt = opt})
+end
+
+-- add command: move files or directories
+--
+-- @param srcpath   the source path
+-- @param dstpath   the destination path
+-- @param opt       the options (optional)
+--
+function batchcmds:mv(srcpath, dstpath, opt)
+    table.insert(self:cmds(), {kind = "mv", srcpath = srcpath, dstpath = dstpath, opt = opt})
+end
+
+-- add command: os.ln
+function batchcmds:ln(srcpath, dstpath, opt)
+    table.insert(self:cmds(), {kind = "ln", srcpath = srcpath, dstpath = dstpath, opt = opt})
+end
+
+-- add command: change directory
+--
+-- @param dir   the directory path
+-- @param opt   the options (optional)
+--
+function batchcmds:cd(dir, opt)
+    table.insert(self:cmds(), {kind = "cd", dir = dir, opt = opt})
+end
+
+-- add command: show message
+--
+-- @param format the format string
+-- @param ...    the format arguments
+--
+function batchcmds:show(format, ...)
+    table.insert(self:cmds(), {kind = "show", format = format, argv = table.pack(...)})
+end
+
+-- add command: show message with progress
+--
+-- @param progress  the progress value (0 ~ 100)
+-- @param format    the format string with color markup
+-- @param ...       the format arguments
+--
+function batchcmds:show_progress(progress, format, ...)
+    table.insert(self:cmds(), {kind = "show_progress", progress = progress, format = format, argv = table.pack(...)})
+end
+
+-- add command: clean rpath
+function batchcmds:clean_rpath(filepath, opt)
+    table.insert(self:cmds(), {kind = "clean_rpath", filepath = filepath, opt = opt})
+end
+
+-- add command: insert rpath
+function batchcmds:insert_rpath(filepath, rpath, opt)
+    table.insert(self:cmds(), {kind = "insert_rpath", filepath = filepath, rpath = rpath, opt = opt})
+end
+
+-- add command: remove rpath
+function batchcmds:remove_rpath(filepath, rpath, opt)
+    table.insert(self:cmds(), {kind = "remove_rpath", filepath = filepath, rpath = rpath, opt = opt})
+end
+
+-- add command: change rpath
+function batchcmds:change_rpath(filepath, rpath_old, rpath_new, opt)
+    table.insert(self:cmds(), {kind = "change_rpath", filepath = filepath, rpath_old = rpath_old, rpath_new = rpath_new, opt = opt})
+end
+
+-- add raw command for the specific generator or xpack format
+--
+-- @param kind   the command kind
+-- @param rawstr the raw command string
+--
+function batchcmds:rawcmd(kind, rawstr)
+    table.insert(self:cmds(), {kind = kind, rawstr = rawstr})
+end
+
+-- get depinfo
+function batchcmds:depinfo()
+    return self._DEPINFO
+end
+
+-- add dependent files for incremental build
+--
+-- @param ...   the dependent file paths
+--
+function batchcmds:add_depfiles(...)
+    local depinfo = self._DEPINFO or {}
+    depinfo.files = depinfo.files or {}
+    table.join2(depinfo.files, ...)
+    self._DEPINFO = depinfo
+end
+
+-- add dependent values
+function batchcmds:add_depvalues(...)
+    local depinfo = self._DEPINFO or {}
+    depinfo.values = depinfo.values or {}
+    table.join2(depinfo.values, ...)
+    self._DEPINFO = depinfo
+end
+
+-- set the last modification time for dependency checking
+--
+-- @param lastmtime  the last modification time
+--
+function batchcmds:set_depmtime(lastmtime)
+    local depinfo = self._DEPINFO or {}
+    depinfo.lastmtime = lastmtime
+    self._DEPINFO = depinfo
+end
+
+-- set the cache file path for dependency info
+--
+-- @param cachefile  the dependency cache file path
+--
+function batchcmds:set_depcache(cachefile)
+    local depinfo = self._DEPINFO or {}
+    depinfo.dependfile = cachefile
+    self._DEPINFO = depinfo
+end
+
+-- run cmds
+function batchcmds:runcmds(opt)
+    opt = opt or {}
+    if self:empty() then
+        return
+    end
+    local depinfo = self:depinfo()
+    if depinfo and depinfo.files then
+        depend.on_changed(function ()
+            _runcmds(self:cmds(), opt)
+        end, table.join(depinfo, {dryrun = opt.dryrun, changed = opt.changed}))
+    else
+        _runcmds(self:cmds(), opt)
+    end
+end
+
+-- new a batch commands for rule/xx_xxcmd_xxx()
+--
+-- @params opt      options, e.g. {target = ..}
+--
+function new(opt)
+    opt = opt or {}
+    return batchcmds {_TARGET = opt.target, _CMDS = {}}
+end
+
