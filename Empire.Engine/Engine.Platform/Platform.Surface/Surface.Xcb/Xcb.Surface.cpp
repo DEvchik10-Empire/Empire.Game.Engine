@@ -29,8 +29,8 @@ namespace DEvchik10Empire
                                 return false;
                             }
 
-                            ConnectionXcb::Connection& XcbConnection =
-                                ConnectionXcb::Connection::Instance();
+                            PlatformApp::ConnectionXcb::Connection& XcbConnection =
+                                PlatformApp::ConnectionXcb::Connection::Instance();
                             if (XcbConnection.Get() == nullptr)
                             {
                                 ErrorCode = XcbConnection.GetErrorCode();
@@ -158,10 +158,10 @@ namespace DEvchik10Empire
 
                         Int32 Surface::GetErrorCode() const noexcept
                         {
-                            if (ConnectionXcb::Connection::Instance().Get() != nullptr)
+                            if (PlatformApp::ConnectionXcb::Connection::Instance().Get() != nullptr)
                             {
                                 const Int32 ConnectionError = xcb_connection_has_error(
-                                    ConnectionXcb::Connection::Instance().Get()
+                                    PlatformApp::ConnectionXcb::Connection::Instance().Get()
                                 );
                                 if (ConnectionError != 0)
                                 {
@@ -179,13 +179,13 @@ namespace DEvchik10Empire
                                 return;
                             }
 
-                            if (ConnectionXcb::Connection::Instance().Get() != nullptr)
+                            if (PlatformApp::ConnectionXcb::Connection::Instance().Get() != nullptr)
                             {
                                 xcb_destroy_window(
-                                    ConnectionXcb::Connection::Instance().Get(),
+                                    PlatformApp::ConnectionXcb::Connection::Instance().Get(),
                                     Window
                                 );
-                                (void)xcb_flush(ConnectionXcb::Connection::Instance().Get());
+                                (void)xcb_flush(PlatformApp::ConnectionXcb::Connection::Instance().Get());
                             }
 
                             Window = XCB_WINDOW_NONE;
