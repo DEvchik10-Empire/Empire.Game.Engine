@@ -1,20 +1,6 @@
 #pragma once
 
-namespace DEvchik10Empire
-{
-    namespace EmpireGameEngine
-    {
-        namespace EmpireEngine
-        {
-            namespace EnginePlatform
-            {
-                namespace PlatformThirdParty
-                {
-                    namespace ThirdPartyXLib
-                    {
-                    }
-                }
-            }
-        }
-    }
-}
+#include <X11/Xlib.h>
+
+// Xlib defines Bool as a macro; keep it from replacing the engine's Bool type.
+#undef Bool

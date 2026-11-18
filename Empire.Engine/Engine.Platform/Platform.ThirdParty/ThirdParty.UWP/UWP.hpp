@@ -1,20 +1,5 @@
 #pragma once
 
-namespace DEvchik10Empire
-{
-    namespace EmpireGameEngine
-    {
-        namespace EmpireEngine
-        {
-            namespace EnginePlatform
-            {
-                namespace PlatformThirdParty
-                {
-                    namespace ThirdPartyUWP
-                    {
-                    }
-                }
-            }
-        }
-    }
-}
+#include <winrt/Windows.ApplicationModel.Activation.h>
+#include <winrt/Windows.ApplicationModel.Core.h>
+#include <winrt/Windows.UI.Core.h>

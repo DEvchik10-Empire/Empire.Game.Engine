@@ -1,4 +1,5 @@
 target("Platform.Input")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Platform.App", "Platform.Window")
     -- файлы добавляют бэкенды, см. includes ниже
 
 includes("Input.Noop")

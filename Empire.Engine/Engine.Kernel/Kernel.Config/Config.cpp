@@ -10,6 +10,7 @@ namespace DEvchik10Empire
             {
                 namespace KernelConfig
                 {
+
                 }
             }
         }

@@ -1,4 +1,5 @@
 target("Platform.App")
+    add_deps("Kernel.Types")
     -- файлы добавляют бэкенды, см. includes ниже
 
 includes("App.Noop")

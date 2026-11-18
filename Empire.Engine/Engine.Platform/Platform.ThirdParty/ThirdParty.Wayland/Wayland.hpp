@@ -1,20 +1,5 @@
 #pragma once
 
-namespace DEvchik10Empire
-{
-    namespace EmpireGameEngine
-    {
-        namespace EmpireEngine
-        {
-            namespace EnginePlatform
-            {
-                namespace PlatformThirdParty
-                {
-                    namespace ThirdPartyWayland
-                    {
-                    }
-                }
-            }
-        }
-    }
-}
+#include <wayland-client.h>
+
+#include "Empire.Engine/Engine.Platform/Platform.ThirdParty/ThirdParty.Wayland/xdg-shell-client-protocol.h"

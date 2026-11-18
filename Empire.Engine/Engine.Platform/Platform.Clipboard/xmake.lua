@@ -1,4 +1,5 @@
 target("Platform.Clipboard")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Platform.App")
     -- файлы добавляют бэкенды, см. includes ниже
 
 includes("Clipboard.Noop")

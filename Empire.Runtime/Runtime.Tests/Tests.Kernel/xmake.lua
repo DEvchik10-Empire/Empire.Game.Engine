@@ -1,4 +1,5 @@
-target("Tests.Kernel")
-    set_kind("binary")
-    add_files("*.cpp")
-    add_tests("default")
+includes(
+    "Kernel.Unit",
+    "Kernel.Integration",
+    "Kernel.Benchmark"
+)

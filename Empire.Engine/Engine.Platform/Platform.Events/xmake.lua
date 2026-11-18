@@ -1,4 +1,5 @@
 target("Platform.Events")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory")
     -- файлы добавляют бэкенды, см. includes ниже
 
 includes("Events.Noop")

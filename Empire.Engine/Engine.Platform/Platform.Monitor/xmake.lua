@@ -1,4 +1,5 @@
 target("Platform.Monitor")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Platform.App")
     -- файлы добавляют бэкенды, см. includes ниже
 
 includes("Monitor.Noop")

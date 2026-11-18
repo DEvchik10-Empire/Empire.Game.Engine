@@ -1,4 +1,5 @@
 target("Math.Simd")
+    add_deps("Kernel.Types", "Kernel.Assert")
     -- файлы добавляют бэкенды, см. includes ниже
 
 includes("Simd.Scalar")

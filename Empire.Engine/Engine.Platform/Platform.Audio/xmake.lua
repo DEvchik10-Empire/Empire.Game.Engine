@@ -1,4 +1,5 @@
 target("Platform.Audio")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory")
     -- файлы добавляют бэкенды, см. includes ниже
 
 if is_plat("linux") then includes("Audio.ALSA") end

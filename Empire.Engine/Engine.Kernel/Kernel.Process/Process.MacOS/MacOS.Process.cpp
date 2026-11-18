@@ -1,3 +1,6 @@
+#include "Empire.Engine/Engine.Kernel/Kernel.Process/Process.hpp"
+
+// Приватная реализация: MacOS
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine

@@ -1,3 +1,6 @@
+#include "Empire.Engine/Engine.Kernel/Kernel.FileSystem/FileSystem.hpp"
+
+// Приватная реализация: Linux
 namespace DEvchik10Empire
 {
     namespace EmpireGameEngine

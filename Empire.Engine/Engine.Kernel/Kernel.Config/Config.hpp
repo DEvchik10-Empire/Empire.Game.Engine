@@ -10,6 +10,7 @@ namespace DEvchik10Empire
             {
                 namespace KernelConfig
                 {
+                    // Пока пусто: модуль в xmake закомментирован до появления реального API.
                 }
             }
         }

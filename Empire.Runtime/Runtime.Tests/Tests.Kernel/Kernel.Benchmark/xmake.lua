@@ -1,0 +1,5 @@
+target("Kernel.Benchmark")
+    set_kind("binary")
+    add_files("*.cpp")
+    add_deps("Kernel.Memory")
+    add_tests("default")
