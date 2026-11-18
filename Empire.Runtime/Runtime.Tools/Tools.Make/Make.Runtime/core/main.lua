@@ -46,10 +46,10 @@ local thread        = require("base/thread")
 -- init the option menu
 local menu =
 {
-    title = "${bright}xmake v" .. _VERSION .. ", A cross-platform build utility based on " .. (xmake._LUAJIT and "LuaJIT" or "Lua") .. "${clear}"
-,   copyright = "Copyright (C) 2015-present Ruki Wang, ${underline}https://xmake.io${clear}"
+    title = "${bright}Empire MakeTool v" .. _VERSION .. ", Empire Engine build system based on " .. (xmake._LUAJIT and "LuaJIT" or "Lua") .. "${clear}"
+,   copyright = "Empire MakeTool | Based on Xmake 3.1.2 (upstream notices retained)"
 
-    -- the tasks: xmake [task]
+    -- the tasks: MakeTool [task]
 ,   function ()
         local tasks = task.tasks() or {}
         if xmake.in_main_thread() then
@@ -224,7 +224,7 @@ function main._init()
     end
 
     -- init project paths only for xmake engine
-    if xmake._NAME == "xmake" then
+    if xmake._NAME == "xmake" or xmake._NAME == "MakeTool" then
         local opt_projectdir, opt_projectfile = options.project, options.file
 
         -- init the project directory

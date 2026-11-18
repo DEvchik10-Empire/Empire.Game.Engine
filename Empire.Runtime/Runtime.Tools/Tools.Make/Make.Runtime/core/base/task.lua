@@ -45,13 +45,13 @@ function task.common_options()
                                                 return {"yes", "no", "def"}
                                             end                                                         }
         ,   {'v', "verbose",   "k",  nil,   "Print lots of verbose information for users."              }
-        ,   {nil, "root",      "k",  nil,   "Allow to run xmake as root."                               }
+        ,   {nil, "root",      "k",  nil,   "Allow to run MakeTool as root."                               }
         ,   {'D', "diagnosis", "k",  nil,   "Print lots of diagnosis information (backtrace, check info ..) only for developers."
                                         ,   "And we can append -v to get more whole information."
                                         ,   "    e.g. $ xmake -vD"                                      }
         ,   {'h', "help",      "k",  nil,   "Print this help message and exit."                         }
         ,   {}
-        ,   {'F', "file",      "kv", nil,   "Read a given xmake.lua file."                              }
+        ,   {'F', "file",      "kv", nil,   "Read a given project configuration file."                              }
         ,   {'P', "project",   "kv", nil,   "Change to the given project directory."
                                         ,   "Search priority:"
                                         ,   "    1. The Given Command Argument"

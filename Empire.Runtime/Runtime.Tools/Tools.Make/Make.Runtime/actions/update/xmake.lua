@@ -23,9 +23,9 @@ task("update")
     on_run("main")
     set_menu {
         usage = "xmake update [options] [xmakever]",
-        description = "Update and uninstall the xmake program.",
+        description = "Update and uninstall the MakeTool program.",
         options = {
-            {nil, "uninstall",  "k", nil, "Uninstall the current xmake program."},
+            {nil, "uninstall",  "k", nil, "Uninstall the current MakeTool program."},
             {},
             {'s', "scriptonly", "k", nil, "Update scripts only."},
             {nil, "integrate",  "k", nil, "Integrate xmake with default shell."},

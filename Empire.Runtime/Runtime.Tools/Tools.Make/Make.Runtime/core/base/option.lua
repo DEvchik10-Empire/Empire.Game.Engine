@@ -461,13 +461,13 @@ function option.show_logo(logo, opt)
 
     -- define logo
     logo = logo or [[
-                         _
-    __  ___ __  __  __ _| | ______
-    \ \/ / |  \/  |/ _  | |/ / __ \
-     >  <  | \__/ | /_| |   <  ___/
-    /_/\_\_|_|  |_|\__ \|_|\_\____|
+ __  __       _        _____           _
+|  \/  | __ _| | _____|_   _|__   ___ | |
+| |\/| |/ _` | |/ / _ \| |/ _ \ / _ \| |
+| |  | | (_| |   <  __/| | (_) | (_) | |
+|_|  |_|\__,_|_|\_\___||_|\___/ \___/|_|
 
-                         by ruki, xmake.io
+              Empire Engine
 ]]
 
     -- make rainbow for logo
@@ -493,8 +493,7 @@ function option.show_logo(logo, opt)
 
     -- define footer
     local footer = [[
-    ${point_right}  ${bright}Manual${clear}: ${underline}https://xmake.io/guide/quick-start${clear}
-    ${pray}  ${bright}Donate${clear}: ${underline}https://xmake.io/about/sponsor${clear}
+    ${bright}Empire MakeTool${clear} - integrated build tool for Empire Game Engine
 ]]
 
     -- show footer

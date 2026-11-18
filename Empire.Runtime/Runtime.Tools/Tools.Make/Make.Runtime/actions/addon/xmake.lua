@@ -23,7 +23,7 @@ task("addon")
     on_run("main")
     set_menu {
         usage = "xmake addon [options]",
-        description = "Manage addons of xmake.",
+        description = "Manage addons of MakeTool.",
         options = {
             {'i', "install", "k", nil, "Install addons."},
             {'r', "remove",  "k", nil, "Remove the given installed addons."},

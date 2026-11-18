@@ -2,8 +2,8 @@
 xmake_binaries=(
     "build/xmake"
     "build/xmake.exe"
-    "Make.Kernel/build/build"
-    "Make.Kernel/build/build.exe"
+    "core/build/xmake"
+    "core/build/xmake.exe"
 )
 
 export XMAKE_PROGRAM_DIR=`pwd`/xmake

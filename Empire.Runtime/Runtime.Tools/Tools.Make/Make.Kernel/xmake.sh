@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set_project "xmake"
+set_project "MakeTool"
 set_version "3.1.2" "%Y%m%d"
 
 # set warning all
@@ -245,14 +245,14 @@ option_find_tbox() {
 # add projects
 if ! has_config "external"; then
     if is_config "runtime" "luajit"; then
-        includes "src/luajit"
+        includes "LuaJIT"
     else
-        includes "src/lua"
+        includes "Lua"
     fi
-    includes "src/lua-cjson"
-    includes "src/lz4"
-    includes "src/sv"
-    includes "src/tbox"
+    includes "CJSON"
+    includes "LZ4"
+    includes "SV"
+    includes "TBOX"
 fi
-includes "src/xmake"
-includes "src/cli"
+includes "Make"
+includes "CLI"
