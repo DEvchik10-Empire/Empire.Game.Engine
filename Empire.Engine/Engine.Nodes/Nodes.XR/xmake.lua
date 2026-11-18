@@ -1,0 +1,15 @@
+includes(
+    "XR.Anchor3D",
+    "XR.Camera3D",
+    "XR.Controller3D",
+    "XR.Hand",
+    "XR.Node3D",
+    "XR.Origin3D",
+    "XR.Layer",
+    "XR.LayerCylinder",
+    "XR.LayerEq",
+    "XR.LayerQuad",
+    "XR.Model",
+    "XR.ModelMgr",
+    "XR.VisMask"
+)

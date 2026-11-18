@@ -1,0 +1,9 @@
+includes(
+    "Server.Shared",
+    "Server.Launcher",
+    "Server.Debug",
+    "Server.DebugGame",
+    "Server.Development",
+    "Server.Test",
+    "Server.Shipping"
+)

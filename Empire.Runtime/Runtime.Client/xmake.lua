@@ -1,0 +1,9 @@
+includes(
+    "Client.Shared",
+    "Client.Launcher",
+    "Client.Debug",
+    "Client.DebugGame",
+    "Client.Development",
+    "Client.Test",
+    "Client.Shipping"
+)

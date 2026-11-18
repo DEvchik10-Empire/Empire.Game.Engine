@@ -1,0 +1,3 @@
+target("Kernel.Streams")
+    add_headerfiles("*.hpp")
+    add_files("*.cpp")

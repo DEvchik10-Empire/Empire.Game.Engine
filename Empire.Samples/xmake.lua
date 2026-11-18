@@ -1,0 +1,18 @@
+includes(
+    "Samples.Kernel",
+    "Samples.Math",
+    "Samples.Platform",
+    "Samples.Graphics",
+    "Samples.Rendering",
+    "Samples.Physics",
+    "Samples.Animation",
+    "Samples.Sound",
+    "Samples.AI",
+    "Samples.Networking",
+    "Samples.ECS",
+    "Samples.Nodes",
+    "Samples.Assets",
+    "Samples.Input",
+    "Samples.Gui",
+    "Samples.Abilities"
+)

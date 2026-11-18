@@ -1,0 +1,13 @@
+includes(
+    "Rendering.Culling",
+    "Rendering.Debug",
+    "Rendering.Lighting",
+    "Rendering.Material",
+    "Rendering.Mesh",
+    "Rendering.PostProcess",
+    "Rendering.RenderGraph",
+    "Rendering.Scene",
+    "Rendering.Shader",
+    "Rendering.Shadow",
+    "Rendering.View"
+)

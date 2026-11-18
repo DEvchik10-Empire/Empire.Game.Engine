@@ -1,0 +1,3 @@
+target("Networking.Transport")
+    add_headerfiles("*.hpp")
+    add_files("*.cpp")

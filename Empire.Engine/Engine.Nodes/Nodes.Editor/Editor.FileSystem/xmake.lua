@@ -1,0 +1,3 @@
+target("Editor.FileSystem")
+    add_headerfiles("*.hpp")
+    add_files("*.cpp")

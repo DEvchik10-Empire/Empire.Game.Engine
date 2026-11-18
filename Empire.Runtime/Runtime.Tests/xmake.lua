@@ -1,0 +1,19 @@
+includes(
+    "Tests.Kernel",
+    "Tests.Math",
+    "Tests.Mock",
+    "Tests.Platform",
+    "Tests.Graphics",
+    "Tests.Rendering",
+    "Tests.Physics",
+    "Tests.Animation",
+    "Tests.Sound",
+    "Tests.AI",
+    "Tests.Networking",
+    "Tests.ECS",
+    "Tests.Nodes",
+    "Tests.Assets",
+    "Tests.Input",
+    "Tests.Gui",
+    "Tests.Abilities"
+)

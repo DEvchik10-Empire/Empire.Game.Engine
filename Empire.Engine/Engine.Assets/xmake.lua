@@ -1,0 +1,10 @@
+includes(
+    "Assets.Cache",
+    "Assets.Dependency",
+    "Assets.Handle",
+    "Assets.Importer",
+    "Assets.Loader",
+    "Assets.Package",
+    "Assets.Registry",
+    "Assets.Streaming"
+)

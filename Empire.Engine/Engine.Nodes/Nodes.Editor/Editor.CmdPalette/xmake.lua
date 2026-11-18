@@ -1,0 +1,3 @@
+target("Editor.CmdPalette")
+    add_headerfiles("*.hpp")
+    add_files("*.cpp")

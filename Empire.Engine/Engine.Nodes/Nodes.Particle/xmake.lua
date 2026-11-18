@@ -1,0 +1,12 @@
+includes(
+    "Particle.CPUParts2D",
+    "Particle.CPUParts3D",
+    "Particle.GPUParts2D",
+    "Particle.GPUParts3D",
+    "Particle.Attractor3D",
+    "Particle.Collision3D",
+    "Particle.Box3D",
+    "Particle.Height3D",
+    "Particle.SDF3D",
+    "Particle.Sphere3D"
+)

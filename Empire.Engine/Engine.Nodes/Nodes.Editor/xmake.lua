@@ -1,0 +1,18 @@
+includes(
+    "Editor.CmdPalette",
+    "Editor.Dock",
+    "Editor.FileDialog",
+    "Editor.FileSystem",
+    "Editor.Inspector",
+    "Editor.Plugin",
+    "Editor.Property",
+    "Editor.ResPicker",
+    "Editor.ResPreview",
+    "Editor.ScriptPicker",
+    "Editor.SpinSlider",
+    "Editor.Toaster",
+    "Editor.FSDock",
+    "Editor.ScriptNewDlg",
+    "Editor.ScriptEditor",
+    "Editor.ScriptEditBase"
+)

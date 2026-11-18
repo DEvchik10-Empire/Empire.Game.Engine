@@ -1,0 +1,3 @@
+target("UI.Slider")
+    add_headerfiles("*.hpp")
+    add_files("*.cpp")

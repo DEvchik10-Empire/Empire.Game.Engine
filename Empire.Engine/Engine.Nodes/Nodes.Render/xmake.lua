@@ -1,0 +1,10 @@
+includes(
+    "Render.DirLight2D",
+    "Render.DirLight3D",
+    "Render.Light2D",
+    "Render.Light3D",
+    "Render.OmniLight3D",
+    "Render.PointLight2D",
+    "Render.ShaderVars",
+    "Render.SpotLight3D"
+)

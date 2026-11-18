@@ -1,0 +1,9 @@
+includes(
+    "Game.Shared",
+    "Game.Launcher",
+    "Game.Debug",
+    "Game.DebugGame",
+    "Game.Development",
+    "Game.Test",
+    "Game.Shipping"
+)

@@ -1,0 +1,3 @@
+target("Kernel.HTTPReq")
+    add_headerfiles("*.hpp")
+    add_files("*.cpp")

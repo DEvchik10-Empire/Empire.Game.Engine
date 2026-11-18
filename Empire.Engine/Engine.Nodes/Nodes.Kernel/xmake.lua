@@ -1,0 +1,20 @@
+includes(
+    "Kernel.Node",
+    "Kernel.Node2D",
+    "Kernel.Node3D",
+    "Kernel.Canvas",
+    "Kernel.CanvasLvl",
+    "Kernel.CanvasGrp",
+    "Kernel.Viewport",
+    "Kernel.SubView",
+    "Kernel.SubViewBox",
+    "Kernel.Window",
+    "Kernel.Timer",
+    "Kernel.HTTPReq",
+    "Kernel.ResPreload",
+    "Kernel.InstStub",
+    "Kernel.Missing",
+    "Kernel.NetSpawn",
+    "Kernel.NetSync",
+    "Kernel.StatusInd"
+)

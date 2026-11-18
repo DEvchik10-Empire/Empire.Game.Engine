@@ -1,0 +1,13 @@
+includes(
+    "Physics.Body",
+    "Physics.Character",
+    "Physics.Collision",
+    "Physics.Constraint",
+    "Physics.Debug",
+    "Physics.Query",
+    "Physics.Serialization",
+    "Physics.Shape",
+    "Physics.SoftBody",
+    "Physics.Solver",
+    "Physics.Vehicle"
+)

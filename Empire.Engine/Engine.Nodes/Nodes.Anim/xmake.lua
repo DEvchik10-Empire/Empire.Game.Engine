@@ -1,0 +1,16 @@
+includes(
+    "Anim.AimMod3D",
+    "Anim.Mixer",
+    "Anim.Player",
+    "Anim.Tree",
+    "Anim.BoneConst3D",
+    "Anim.BoneTwist3D",
+    "Anim.CCDIK3D",
+    "Anim.FABRIK3D",
+    "Anim.IKMod3D",
+    "Anim.LookAt3D",
+    "Anim.SkelIK3D",
+    "Anim.SkelMod3D",
+    "Anim.SpringBone3D",
+    "Anim.TwoIK3D"
+)

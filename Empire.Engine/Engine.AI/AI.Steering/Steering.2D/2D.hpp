@@ -1,0 +1,20 @@
+#pragma once
+
+namespace DEvchik10Empire
+{
+    namespace EmpireGameEngine
+    {
+        namespace EmpireEngine
+        {
+            namespace EngineAI
+            {
+                namespace AISteering
+                {
+                    namespace Steering2D
+                    {
+                    }
+                }
+            }
+        }
+    }
+}

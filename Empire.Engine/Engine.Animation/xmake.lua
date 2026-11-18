@@ -1,0 +1,9 @@
+includes(
+    "Animation.Blend",
+    "Animation.Clip",
+    "Animation.IK",
+    "Animation.Pose",
+    "Animation.Retarget",
+    "Animation.Skeleton",
+    "Animation.StateMachine"
+)

@@ -1,0 +1,18 @@
+includes(
+    "Engine.Kernel",
+    "Engine.Math",
+    "Engine.Platform",
+    "Engine.Graphics",
+    "Engine.Rendering",
+    "Engine.Physics",
+    "Engine.Animation",
+    "Engine.Sound",
+    "Engine.AI",
+    "Engine.Networking",
+    "Engine.ECS",
+    "Engine.Nodes",
+    "Engine.Assets",
+    "Engine.Input",
+    "Engine.Gui",
+    "Engine.Abilities"
+)
