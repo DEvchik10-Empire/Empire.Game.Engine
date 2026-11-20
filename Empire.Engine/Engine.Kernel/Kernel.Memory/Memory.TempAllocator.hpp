@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Empire.Engine/Engine.Kernel/Kernel.Assert/Assert.hpp"
+#include "Empire.Engine/Engine.Kernel/Kernel.Compiler/Compiler.hpp"
+#include "Empire.Engine/Engine.Kernel/Kernel.Config/Config.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Memory/Memory.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Types/Types.NonCopyable.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Types/Types.Utility.hpp"
@@ -31,7 +33,22 @@ namespace DEvchik10Empire
                             virtual void Free(void* Address, KernelTypes::UInt32 Size) = 0;
 
                             // Выравнивание всех блоков
-                            static constexpr KernelTypes::Size TempAllocatorAlignment = DefaultAlignment;
+                            static constexpr KernelTypes::Size TempAllocatorAlignment = KernelConfig::WorldUsesDoublePrecision
+                                ? KernelCompiler::DoubleVectorAlignment
+                                : KernelCompiler::VectorAlignment;
+
+                            // Совместимый по смыслу признак Jolt needs_aligned_allocate: здесь общий allocator
+                            // умеет принимать явное выравнивание, поэтому TempAllocatorImpl всегда передаёт его явно.
+                            static constexpr KernelTypes::Bool NeedsAlignedAllocate = TempAllocatorAlignment > KernelMemory::DefaultAlignment;
+
+                            static KernelTypes::Size GetAlignedSize(KernelTypes::UInt32 Size)
+                            {
+                                KernelAssert::Check(
+                                    static_cast<KernelTypes::Size>(Size) <= KernelTypes::MaxValue<KernelTypes::Size>() - (TempAllocatorAlignment - 1),
+                                    "TempAllocator: размер выделения переполняет Size"
+                                );
+                                return KernelTypes::AlignUp(Size, TempAllocatorAlignment);
+                            }
                     };
 
                     // Реализация по умолчанию: один большой блок, выделенный заранее
@@ -58,11 +75,14 @@ namespace DEvchik10Empire
                                     return nullptr;
                                 }
 
-                                KernelTypes::Size NewTop = Top + KernelTypes::AlignUp(Size, TempAllocatorAlignment);
-                                KernelAssert::Check(NewTop <= BlockSize, "TempAllocator: не хватает памяти");
+                                const KernelTypes::Size AlignedSize = GetAlignedSize(Size);
+                                KernelAssert::Check(
+                                    Top <= BlockSize && AlignedSize <= BlockSize - Top,
+                                    "TempAllocator: не хватает памяти"
+                                );
 
                                 void* Address = Base + Top;
-                                Top = NewTop;
+                                Top += AlignedSize;
                                 return Address;
                             }
 
@@ -74,9 +94,14 @@ namespace DEvchik10Empire
                                     return;
                                 }
 
-                                // Порядок проверяется до изменения состояния
-                                KernelTypes::Size NewTop = Top - KernelTypes::AlignUp(Size, TempAllocatorAlignment);
-                                KernelAssert::Check(Base + NewTop == Address, "TempAllocator: освобождение в неправильном порядке");
+                                // Порядок и размер проверяются до изменения состояния; адреса сравниваются как целые,
+                                // чтобы некорректный размер не приводил к pointer arithmetic за пределами блока.
+                                const KernelTypes::Size AlignedSize = GetAlignedSize(Size);
+                                KernelAssert::Check(AlignedSize <= Top, "TempAllocator: размер освобождения больше занятой памяти");
+                                const KernelTypes::Size NewTop = Top - AlignedSize;
+                                const KernelTypes::UIntPtr ExpectedAddress = reinterpret_cast<KernelTypes::UIntPtr>(Base) + NewTop;
+                                KernelAssert::Check(ExpectedAddress == reinterpret_cast<KernelTypes::UIntPtr>(Address),
+                                    "TempAllocator: освобождение в неправильном порядке");
                                 Top = NewTop;
                             }
 
@@ -101,13 +126,18 @@ namespace DEvchik10Empire
                             // Поместится ли выделение Size байт
                             KernelTypes::Bool CanAllocate(KernelTypes::UInt32 Size) const
                             {
-                                return Top + KernelTypes::AlignUp(Size, TempAllocatorAlignment) <= BlockSize;
+                                if (static_cast<KernelTypes::Size>(Size) > KernelTypes::MaxValue<KernelTypes::Size>() - (TempAllocatorAlignment - 1))
+                                    return false;
+                                const KernelTypes::Size AlignedSize = GetAlignedSize(Size);
+                                return Top <= BlockSize && AlignedSize <= BlockSize - Top;
                             }
 
                             // Принадлежит ли адрес этому буферу
                             KernelTypes::Bool OwnsMemory(const void* Address) const
                             {
-                                return Address >= Base && Address < Base + BlockSize;
+                                const KernelTypes::UIntPtr AddressValue = reinterpret_cast<KernelTypes::UIntPtr>(Address);
+                                const KernelTypes::UIntPtr BaseValue = reinterpret_cast<KernelTypes::UIntPtr>(Base);
+                                return AddressValue >= BaseValue && AddressValue - BaseValue < BlockSize;
                             }
 
                         private:

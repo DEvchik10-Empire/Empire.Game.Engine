@@ -1,19 +1,21 @@
-// Тесты Math: Scalar, Vector, Matrix, Quaternion, Transform, Geometry.
+// Tests for the currently ported Math modules.
 #include "Empire.Runtime/Runtime.Tests/Tests.Math/Math.Unit/Unit.Math.hpp"
 #include "Empire.Runtime/Runtime.Tests/Tests.Math/Math.Unit/Unit.Check.hpp"
 
 int RunMathUnitTests()
 {
     TestScalar();
-    TestVector2();
+    TestColor();
+    TestVectorStorage();
     TestVector3();
     TestVector4();
-    TestMatrix2();
-    TestMatrix3();
     TestMatrix4();
+    TestDynamicMatrix();
+    TestSymmetricEigenvalues();
+    TestAABB();
+    TestConvexHull2D();
+    TestConvexHull3D();
     TestQuaternion();
-    TestTransform();
-    TestGeometry();
 
     std::printf("\nпроверок: %d, провалов: %d\n", MathTests::Checks, MathTests::Failures);
     return MathTests::Failures == 0 ? 0 : 1;

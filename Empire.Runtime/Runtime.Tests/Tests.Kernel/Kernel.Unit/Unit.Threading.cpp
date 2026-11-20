@@ -2,6 +2,7 @@
 #include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.Threading.hpp"
 
 #include "Empire.Engine/Engine.Kernel/Kernel.Sync/Sync.Atomic.hpp"
+#include "Empire.Engine/Engine.Kernel/Kernel.Sync/Sync.Mutex.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Threading/Threading.hpp"
 #include <cstdio>
 
@@ -115,6 +116,43 @@ static void TestSemaphorePingPong()
     CHECK(P.ToWorker.GetValue() == 0 && P.ToMain.GetValue() == 0);
 }
 
+static void TestAtomicMinMax()
+{
+    KernelSync::Atomic<int> Value{10};
+    CHECK(KernelSync::AtomicMin(Value, 5) && Value.Load() == 5);
+    CHECK(!KernelSync::AtomicMin(Value, 7) && Value.Load() == 5);
+    CHECK(!KernelSync::AtomicMin(Value, 5) && Value.Load() == 5);
+    CHECK(KernelSync::AtomicMax(Value, 20) && Value.Load() == 20);
+    CHECK(!KernelSync::AtomicMax(Value, 19) && Value.Load() == 20);
+    CHECK(!KernelSync::AtomicMax(Value, 20) && Value.Load() == 20);
+
+    // Беззнаковые и с явным порядком памяти
+    KernelSync::Atomic<unsigned> Unsigned{100};
+    CHECK(KernelSync::AtomicMin(Unsigned, 3u, KernelSync::MemoryOrder::Relaxed) && Unsigned.Load() == 3u);
+    CHECK(KernelSync::AtomicMax(Unsigned, 4000000000u, KernelSync::MemoryOrder::AcquireRelease) && Unsigned.Load() == 4000000000u);
+}
+
+static void TestIsLocked()
+{
+    KernelSync::Mutex Plain;
+    CHECK(!Plain.IsLocked());
+    Plain.Lock();
+    CHECK(Plain.IsLocked());
+    Plain.Unlock();
+    CHECK(!Plain.IsLocked());
+
+    KernelSync::SharedMutex Shared;
+    CHECK(!Shared.IsLocked());
+    Shared.LockShared();
+    CHECK(Shared.IsLocked());
+    Shared.UnlockShared();
+    CHECK(!Shared.IsLocked());
+    Shared.Lock();
+    CHECK(Shared.IsLocked());
+    Shared.Unlock();
+    CHECK(!Shared.IsLocked());
+}
+
 int RunThreadingUnitTests()
 {
     Failures.Store(0);
@@ -122,6 +160,8 @@ int RunThreadingUnitTests()
     TestThreadBasic();
     TestSemaphoreSingleThread();
     TestSemaphorePingPong();
+    TestAtomicMinMax();
+    TestIsLocked();
     std::printf("Threading: %d checks, %d failures\n", Checks.Load(), Failures.Load());
     return Failures.Load() == 0 ? 0 : 1;
 }

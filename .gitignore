@@ -5,3 +5,4 @@ build/
 .xmake/
 .xmake/linux/x86_64/cache/history
 compile_commands.json
+.MakeTool

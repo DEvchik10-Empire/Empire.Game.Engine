@@ -1,0 +1,14 @@
+  <PropertyGroup Label="XmakeConfig" Condition="'$(Configuration)|$(Platform)'=='#mode#|#vsarch#'">
+    <XmakeBasename>#basename#</XmakeBasename>
+    <XmakeFilename>#filename#</XmakeFilename>
+    <XmakeMode>#mode#</XmakeMode>
+    <XmakePlat>#plat#</XmakePlat>
+    <XmakeArch>#arch#</XmakeArch>
+    <XmakeKind>#kind#</XmakeKind>
+    <XmakeDefault>#default#</XmakeDefault>
+    <XmakeDefines>#defines#</XmakeDefines>
+    <XmakeLanguages>#languages#</XmakeLanguages>
+    <XmakeRunEnvs>#runenvs#</XmakeRunEnvs>
+    <XmakeRunArgs>#runargs#</XmakeRunArgs>
+    <XmakeConfigFlags>#configflags#</XmakeConfigFlags>
+  </PropertyGroup>

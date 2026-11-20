@@ -58,7 +58,7 @@ namespace DEvchik10Empire
                                 KernelSync::LockGuard Lock(StateMutex);
 
                                 if (NextId == 0)
-                                    throw KernelAssert::OverflowError("EventBus subscription id space is exhausted");
+                                    KernelAssert::Fail("EventBus subscription id space is exhausted");
 
                                 const SubscriptionId Id = NextId++;
                                 const KernelTypes::TypeKey Key = KernelTypes::GetTypeKey<EventType>();

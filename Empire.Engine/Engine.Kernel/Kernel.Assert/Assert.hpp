@@ -82,6 +82,25 @@ namespace DEvchik10Empire
                             const KernelTypes::Char* GetKind() const noexcept override;
                     };
 
+                    // Jolt Core/IssueReporting.h equivalent: application-overridable trace and assertion hooks.
+                    // Trace receives an already formatted message; formatting remains type-safe in Empire.
+                    using TraceFunction = void (*)(const KernelTypes::Char* Message, const KernelTypes::SourceLocation& Location);
+                    using AssertFailedFunction = KernelTypes::Bool (*)(
+                        const KernelTypes::Char* Expression,
+                        const KernelTypes::Char* Message,
+                        const KernelTypes::SourceLocation& Location
+                    );
+
+                    void SetTraceFunction(TraceFunction Callback) noexcept;
+                    void SetAssertFailedFunction(AssertFailedFunction Callback) noexcept;
+                    void Trace(const KernelTypes::Char* Message, const KernelTypes::SourceLocation& Location = KernelTypes::SourceLocation::Current());
+                    // Returns true when the caller should trigger a debugger breakpoint.
+                    [[nodiscard]] KernelTypes::Bool ReportAssertFailure(
+                        const KernelTypes::Char* Expression,
+                        const KernelTypes::Char* Message,
+                        const KernelTypes::SourceLocation& Location = KernelTypes::SourceLocation::Current()
+                    );
+
                     void Check(
                         KernelTypes::Bool Condition,
                         const KernelTypes::Char* Message,
@@ -93,20 +112,32 @@ namespace DEvchik10Empire
                     // вызов с побочным эффектом, пользуйся обычным Check только если проверка нужна и в релизе.
                     inline void DebugCheck(
                         KernelTypes::Bool Condition,
+                        const KernelTypes::Char* Expression,
                         const KernelTypes::Char* Message,
                         const KernelTypes::SourceLocation& Location = KernelTypes::SourceLocation::Current()
                     )
                     {
                         if constexpr (KernelCompiler::IsDebugBuild)
                         {
-                            Check(Condition, Message, Location);
+                            if (!Condition && ReportAssertFailure(Expression, Message, Location))
+                                KernelCompiler::Breakpoint();
                         }
                         else
                         {
                             (void)Condition;
+                            (void)Expression;
                             (void)Message;
                             (void)Location;
                         }
+                    }
+
+                    inline void DebugCheck(
+                        KernelTypes::Bool Condition,
+                        const KernelTypes::Char* Message,
+                        const KernelTypes::SourceLocation& Location = KernelTypes::SourceLocation::Current()
+                    )
+                    {
+                        DebugCheck(Condition, "DebugCheck", Message, Location);
                     }
 
                     [[noreturn]] void Fail(

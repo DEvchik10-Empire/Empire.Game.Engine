@@ -1,5 +1,5 @@
 target("Kernel.Unit")
     set_kind("binary")
     add_files("*.cpp")
-    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Kernel.Containers", "Kernel.Algorithms", "Kernel.Sync", "Kernel.Threading", "Kernel.Jobs", "Kernel.Events", "Kernel.Logging", "Kernel.Reflection", "Kernel.Services")
+    add_deps("Kernel.Types", "Kernel.Compiler", "Kernel.Assert", "Kernel.Memory", "Kernel.Containers", "Kernel.Algorithms", "Kernel.Sync", "Kernel.Threading", "Kernel.Jobs", "Kernel.Events", "Kernel.Logging", "Kernel.Reflection", "Kernel.Services", "Kernel.Config", "Kernel.Streams", "Kernel.Profiler", "Kernel.Time")
     add_tests("default")

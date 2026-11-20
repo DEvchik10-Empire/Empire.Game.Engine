@@ -60,6 +60,12 @@ namespace DEvchik10Empire
                                 StartThreads(ThreadCount);
                             }
 
+                            // Имя публичного метода сохранено по Jolt 5.7.0.
+                            void SetNumThreads(KernelTypes::Int32 ThreadCount)
+                            {
+                                SetThreadCount(ThreadCount);
+                            }
+
                         protected:
                             void QueueJob(Job* Target) override;
                             void QueueJobs(Job** Jobs, KernelTypes::UInt32 JobCount) override;

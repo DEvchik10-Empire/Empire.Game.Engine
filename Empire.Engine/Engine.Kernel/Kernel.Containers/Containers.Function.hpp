@@ -69,7 +69,7 @@ namespace DEvchik10Empire
                             Result operator()(Arguments... Args) const
                             {
                                 if (!Target)
-                                    throw KernelAssert::LogicError("Function is empty");
+                                    KernelAssert::Fail("Function is empty");
 
                                 return Target->Invoke(KernelTypes::Forward<Arguments>(Args)...);
                             }

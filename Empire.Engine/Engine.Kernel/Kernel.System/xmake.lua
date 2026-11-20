@@ -1,6 +1,6 @@
 target("Kernel.System")
     add_headerfiles("*.hpp")
-    add_deps("Kernel.Types")
+    add_deps("Kernel.Types", "Kernel.Compiler")
     add_cxxflags("-fvisibility=default", {tools = {"gcc", "clang"}})
 
 -- бэкенды: ровно один на платформу

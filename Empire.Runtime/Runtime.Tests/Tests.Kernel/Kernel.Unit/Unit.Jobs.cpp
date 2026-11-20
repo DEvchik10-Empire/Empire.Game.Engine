@@ -3,8 +3,10 @@
 #include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.Jobs.hpp"
 
 #include "Empire.Engine/Engine.Kernel/Kernel.Containers/Containers.StaticArray.hpp"
+#include "Empire.Engine/Engine.Kernel/Kernel.Containers/Containers.StringView.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Jobs/Jobs.JobSystemSingleThreaded.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Jobs/Jobs.JobSystemThreadPool.hpp"
+#include "Empire.Engine/Engine.Kernel/Kernel.Profiler/Profiler.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Sync/Sync.Atomic.hpp"
 #include <chrono>
 #include <cstdio>
@@ -12,7 +14,9 @@
 
 namespace KernelSync = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelSync;
 namespace KernelTypes = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelTypes;
+namespace KernelContainers = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelContainers;
 using namespace DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelJobs;
+namespace KernelProfiler = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelProfiler;
 using DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelContainers::StaticArray;
 
 static KernelSync::Atomic<int> Failures{0};
@@ -137,6 +141,28 @@ static void TestBarrierDoesNotReleaseEarly()
     System.DestroyBarrier(Barrier);
 }
 
+static void TestJobProfilerIntegration()
+{
+    KernelProfiler::Profiler::NextFrame();
+    KernelProfiler::Profiler::SetSamplingEnabled(true);
+    {
+        JobSystemSingleThreaded System(8);
+        JobHandle Handle = System.CreateJob("ProfiledJob", 0x12345678, [] {});
+        CHECK(Handle.IsDone());
+    }
+
+    const auto Samples = KernelProfiler::Profiler::GetSamples();
+    CHECK(Samples.GetCount() == 1);
+    if (Samples.GetCount() == 1)
+    {
+        CHECK(KernelContainers::StringView(Samples[0].Name) == KernelContainers::StringView("ProfiledJob"));
+        CHECK(Samples[0].Color == 0x12345678);
+        CHECK(Samples[0].EndTick >= Samples[0].StartTick);
+    }
+    KernelProfiler::Profiler::NextFrame();
+    KernelProfiler::Profiler::SetSamplingEnabled(false);
+}
+
 static void TestSingleThreaded()
 {
     JobSystemSingleThreaded System(16);
@@ -207,7 +233,8 @@ static void TestBatchRemoveDependencies()
 static void TestStress()
 {
     // Много раундов: пачки задач, пересоздание барьера, повторное использование пула
-    JobSystemThreadPool System(512, 4, 3);
+    // Пул с запасом на все 8000 задач: на одном ядре воркеры могут не успеть отпустить задачи между раундами
+    JobSystemThreadPool System(8192, 4, 3);
     CHECK(System.GetMaxConcurrency() == 4);
 
     Atomic<UInt32> Sum{0};
@@ -258,6 +285,7 @@ int RunJobsUnitTests()
     TestRunJobs();
     TestRunChain();
     TestBarrierDoesNotReleaseEarly();
+    TestJobProfilerIntegration();
     TestSingleThreaded();
     TestBatchRemoveDependencies();
     TestStress();

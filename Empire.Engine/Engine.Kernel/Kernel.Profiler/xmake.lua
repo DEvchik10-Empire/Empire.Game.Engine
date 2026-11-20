@@ -1,3 +1,5 @@
 target("Kernel.Profiler")
     add_headerfiles("*.hpp")
     add_files("*.cpp")
+    add_deps("Kernel.Types", "Kernel.Sync", "Kernel.Containers", "Kernel.Time", "Kernel.Memory")
+    add_cxxflags("-fvisibility=default", {tools = {"gcc", "clang"}})

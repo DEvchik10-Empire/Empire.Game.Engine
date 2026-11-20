@@ -5,6 +5,7 @@
 #include "Empire.Engine/Engine.Kernel/Kernel.Containers/Containers.Function.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Containers/Containers.StaticArray.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Memory/Memory.Reference.hpp"
+#include "Empire.Engine/Engine.Kernel/Kernel.Profiler/Profiler.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Sync/Sync.Atomic.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Types/Types.NonCopyable.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Types/Types.hpp"
@@ -19,8 +20,7 @@ namespace DEvchik10Empire
             {
                 namespace KernelJobs
                 {
-                    // Цвет задачи в профайлере, 0xAARRGGBB. Пока профайлера нет, значение нигде не используется,
-                    // но параметр оставлен, чтобы интерфейс не менялся, когда появится Kernel.Profiler.
+                    // Цвет задачи в профайлере, 0xAARRGGBB.
                     using JobColor = KernelTypes::UInt32;
 
                     // Интерфейс планировщика задач (перенесён из Jolt, Core/JobSystem.h).
@@ -150,8 +150,8 @@ namespace DEvchik10Empire
                             class Job
                             {
                                 public:
-                                    Job([[maybe_unused]] const KernelTypes::Char* JobName, [[maybe_unused]] JobColor Color, JobSystem* OwnerSystem, const JobFunction& Function, KernelTypes::UInt32 Dependencies)
-                                        : Body(Function), System(OwnerSystem), DependencyCount(Dependencies)
+                                    Job(const KernelTypes::Char* JobName, JobColor ColorValue, JobSystem* OwnerSystem, const JobFunction& Function, KernelTypes::UInt32 Dependencies)
+                                        : Body(Function), Name(JobName), Color(ColorValue), System(OwnerSystem), DependencyCount(Dependencies)
                                     {
                                     }
 
@@ -222,7 +222,10 @@ namespace DEvchik10Empire
                                             return State; // CompareExchange записал сюда текущее значение
                                         }
 
-                                        Body();
+                                        {
+                                            KernelProfiler::Scope Measurement(Name, Color);
+                                            Body();
+                                        }
 
                                         // Тело задачи может держать захваченное состояние, поэтому уничтожаем его здесь, до уведомления барьера:
                                         // после уведомления это состояние уже могло бы указывать на удалённые данные.
@@ -269,6 +272,8 @@ namespace DEvchik10Empire
 
                                 private:
                                     JobFunction Body;                                                   // тело задачи (первое поле: занимает целую строку кэша)
+                                    const KernelTypes::Char* Name;                                      // имя для профайлера
+                                    JobColor Color;                                                      // цвет для профайлера
                                     JobSystem* System;                                                  // планировщик, которому принадлежит задача
                                     KernelSync::Atomic<KernelTypes::IntPtr> BarrierPointer{0};          // барьер этой задачи (указатель на Barrier)
                                     KernelSync::Atomic<KernelTypes::UInt32> ReferenceCount{0};          // число JobHandle на эту задачу

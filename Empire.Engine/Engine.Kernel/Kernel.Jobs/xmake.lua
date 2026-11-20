@@ -1,5 +1,5 @@
 target("Kernel.Jobs")
     add_headerfiles("*.hpp")
     add_files("*.cpp")
-    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Kernel.Sync", "Kernel.Threading", "Kernel.Containers", "Kernel.System", "Kernel.Compiler")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Kernel.Sync", "Kernel.Threading", "Kernel.Containers", "Kernel.System", "Kernel.Compiler", "Kernel.Config", "Kernel.Profiler")
     add_cxxflags("-fvisibility=default", {tools = {"gcc", "clang"}})

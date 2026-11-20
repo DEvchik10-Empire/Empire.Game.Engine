@@ -1,0 +1,9 @@
+add_rules("mode.release", "mode.debug")
+
+set_languages("c11", "objc")
+
+target("demo")
+    add_rules("xcode.application")
+    add_rpathdirs("@executable_path/../Frameworks")
+    add_files("src/main.m")
+    add_files("src/Info.plist")

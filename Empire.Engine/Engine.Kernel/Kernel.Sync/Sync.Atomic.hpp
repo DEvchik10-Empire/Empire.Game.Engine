@@ -76,6 +76,32 @@ namespace DEvchik10Empire
                                 return KernelCompiler::AtomicFetchSub(&Value, Amount, Order);
                             }
                     };
+
+                    // Атомарно записывает min(Target, Value). Возвращает true, если значение было обновлено (Jolt 5.7.0, Core/Atomics.h).
+                    template <typename T>
+                    KernelTypes::Bool AtomicMin(Atomic<T>& Target, T Value, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
+                    {
+                        T Current = Target.Load(MemoryOrder::Relaxed);
+                        while (Current > Value)
+                        {
+                            if (Target.CompareExchange(Current, Value, Order, MemoryOrder::Relaxed))
+                                return true;
+                        }
+                        return false;
+                    }
+
+                    // Атомарно записывает max(Target, Value). Возвращает true, если значение было обновлено.
+                    template <typename T>
+                    KernelTypes::Bool AtomicMax(Atomic<T>& Target, T Value, MemoryOrder Order = MemoryOrder::SequentiallyConsistent) noexcept
+                    {
+                        T Current = Target.Load(MemoryOrder::Relaxed);
+                        while (Current < Value)
+                        {
+                            if (Target.CompareExchange(Current, Value, Order, MemoryOrder::Relaxed))
+                                return true;
+                        }
+                        return false;
+                    }
                 }
             }
         }

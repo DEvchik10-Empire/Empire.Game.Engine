@@ -18,6 +18,15 @@ namespace DEvchik10Empire
             {
                 namespace KernelContainers
                 {
+                    struct LockFreeHashMapStatistics
+                    {
+                        static constexpr KernelTypes::UInt32 HistogramSize = 256;
+                        KernelTypes::UInt32 MaxObjectsPerBucket = 0;
+                        KernelTypes::UInt32 BucketCount = 0;
+                        KernelTypes::UInt32 ObjectCount = 0;
+                        KernelTypes::UInt32 Histogram[HistogramSize]{};
+                    };
+
                     // Аллокатор для LockFreeHashMap (перенесён из Jolt, Core/LockFreeHashMap.h): один большой блок памяти под все пары ключ-значение.
                     class LockFreeAllocator : public KernelTypes::NonCopyable
                     {
@@ -75,9 +84,13 @@ namespace DEvchik10Empire
                             template <typename T>
                             KernelTypes::UInt32 ToOffset(const T* Data) const
                             {
-                                const KernelTypes::UInt8* Bytes = reinterpret_cast<const KernelTypes::UInt8*>(Data);
-                                KernelAssert::DebugCheck(Bytes >= ObjectStore && Bytes < ObjectStore + ObjectStoreSizeBytes, "LockFreeAllocator::ToOffset: указатель вне буфера");
-                                return static_cast<KernelTypes::UInt32>(Bytes - ObjectStore);
+                                const KernelTypes::UIntPtr Address = reinterpret_cast<KernelTypes::UIntPtr>(Data);
+                                const KernelTypes::UIntPtr BaseAddress = reinterpret_cast<KernelTypes::UIntPtr>(ObjectStore);
+                                KernelAssert::DebugCheck(
+                                    Address >= BaseAddress && Address - BaseAddress < ObjectStoreSizeBytes,
+                                    "LockFreeAllocator::ToOffset: указатель вне буфера"
+                                );
+                                return static_cast<KernelTypes::UInt32>(Address - BaseAddress);
                             }
 
                             // Смещение в указатель
@@ -178,6 +191,9 @@ namespace DEvchik10Empire
                             // Удалить все элементы. Нельзя вызывать одновременно со вставкой.
                             void Clear()
                             {
+                                if (BucketCountValue == 0)
+                                    return;
+
                                 if constexpr (KernelCompiler::IsDebugBuild)
                                 {
                                     KeyValueCount.Store(0, KernelSync::MemoryOrder::Relaxed);
@@ -194,10 +210,21 @@ namespace DEvchik10Empire
                                 return BucketCountValue;
                             }
 
+                            // Точное имя публичного метода Jolt 5.7.0.
+                            KernelTypes::UInt32 GetNumBuckets() const
+                            {
+                                return GetBucketCount();
+                            }
+
                             // Наибольшее число корзин
                             KernelTypes::UInt32 GetMaxBucketCount() const
                             {
                                 return MaxBuckets;
+                            }
+
+                            KernelTypes::UInt32 GetMaxBuckets() const
+                            {
+                                return GetMaxBucketCount();
                             }
 
                             // Изменить число корзин (степень двойки, не больше заданного в Init). Только после Clear и не одновременно с другими операциями.
@@ -208,6 +235,11 @@ namespace DEvchik10Empire
                                 KernelAssert::DebugCheck(NewBucketCount >= 4 && KernelTypes::IsPowerOfTwo(NewBucketCount), "LockFreeHashMap::SetBucketCount: нужна степень двойки не меньше 4");
 
                                 BucketCountValue = NewBucketCount;
+                            }
+
+                            void SetNumBuckets(KernelTypes::UInt32 NewBucketCount)
+                            {
+                                SetBucketCount(NewBucketCount);
                             }
 
                             // Пара ключ-значение
@@ -331,9 +363,17 @@ namespace DEvchik10Empire
                                 return KeyValueCount.Load(KernelSync::MemoryOrder::Relaxed);
                             }
 
+                            KernelTypes::UInt32 GetNumKeyValues() const
+                            {
+                                return GetKeyValueCount();
+                            }
+
                             // Собрать все пары
                             void GetAllKeyValues(FastArray<const KeyValue*>& OutAll) const
                             {
+                                if (BucketCountValue == 0)
+                                    return;
+
                                 for (const KernelSync::Atomic<KernelTypes::UInt32>* Bucket = Buckets; Bucket < Buckets + BucketCountValue; ++Bucket)
                                 {
                                     KernelTypes::UInt32 Offset = Bucket->Load();
@@ -403,6 +443,9 @@ namespace DEvchik10Empire
                             // begin() и end() записаны строчными, потому что их требует цикл range-for
                             Iterator begin()
                             {
+                                if (BucketCountValue == 0)
+                                    return end();
+
                                 Iterator It{this, 0, Buckets[0].Load()};
 
                                 if (It.Offset == InvalidHandle)
@@ -416,6 +459,36 @@ namespace DEvchik10Empire
                             Iterator end()
                             {
                                 return {this, BucketCountValue, InvalidHandle};
+                            }
+
+                            // Статистика распределения элементов по корзинам (аналог Jolt TraceStats).
+                            // Возвращаем данные, а не вызываем глобальный логгер: Kernel.Containers не зависит от Kernel.Logging.
+                            [[nodiscard]] LockFreeHashMapStatistics GetStatistics() const
+                            {
+                                LockFreeHashMapStatistics Statistics;
+                                Statistics.BucketCount = BucketCountValue;
+
+                                for (KernelTypes::UInt32 BucketIndex = 0; BucketIndex < BucketCountValue; ++BucketIndex)
+                                {
+                                    KernelTypes::UInt32 ObjectsInBucket = 0;
+                                    KernelTypes::UInt32 Offset = Buckets[BucketIndex].Load(KernelSync::MemoryOrder::Relaxed);
+                                    while (Offset != InvalidHandle)
+                                    {
+                                        const KeyValue* Pair = Allocator.template FromOffset<const KeyValue>(Offset);
+                                        Offset = Pair->NextOffset;
+                                        ++ObjectsInBucket;
+                                        ++Statistics.ObjectCount;
+                                    }
+
+                                    Statistics.MaxObjectsPerBucket = KernelTypes::Max(Statistics.MaxObjectsPerBucket, ObjectsInBucket);
+                                    const KernelTypes::UInt32 HistogramIndex = KernelTypes::Min(
+                                        ObjectsInBucket,
+                                        LockFreeHashMapStatistics::HistogramSize - 1
+                                    );
+                                    ++Statistics.Histogram[HistogramIndex];
+                                }
+
+                                return Statistics;
                             }
 
                         private:

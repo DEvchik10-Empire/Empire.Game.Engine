@@ -646,6 +646,36 @@ namespace
 		CHECK(arr != arr2);
 	}
 
+	void TestEmptyIterators()
+	{
+		FastArray<int> arr;
+		CHECK(arr.begin() == arr.end());
+		CHECK(arr.rbegin() == arr.rend());
+		CHECK((arr.rbegin() + 0) == arr.rend());
+		(void)arr.GetHash();
+		arr.Assign(arr.begin(), arr.end());
+		arr.Insert(arr.begin(), arr.begin(), arr.end());
+		CHECK(arr.Erase(arr.begin(), arr.end()) == arr.end());
+		const FastArray<int>& const_arr = arr;
+		CHECK(const_arr.begin() == const_arr.end());
+		CHECK(const_arr.rbegin() == const_arr.rend());
+
+		FastArray<NonTriv> non_trivial;
+		NonTriv value(7);
+		non_trivial.Resize(0);
+		non_trivial.Resize(0, value);
+		CHECK(non_trivial.Empty());
+
+		int values[] = {6, 7};
+		FastArray<int> empty_insert;
+		empty_insert.Insert(empty_insert.begin(), values, values + 2);
+		CHECK(empty_insert.Size() == 2 && empty_insert[0] == 6 && empty_insert[1] == 7);
+
+		FastArray<int> tail_insert = FastArray<int>::Of(5);
+		tail_insert.Insert(tail_insert.end(), values, values + 2);
+		CHECK(tail_insert.Size() == 3 && tail_insert[0] == 5 && tail_insert[1] == 6 && tail_insert[2] == 7);
+	}
+
 	void TestReverseIterator()
 	{
 		FastArray<int> arr = FastArray<int>::Of(1, 2, 3, 4, 5, 6);
@@ -684,6 +714,7 @@ namespace
 
 		CHECK(*(arr.rbegin() + 3) == 3);
 		CHECK(*(arr.rend() - 3) == 3);
+		CHECK(arr.rbegin()[2] == 4 && arr.rend() - arr.rbegin() == 6);
 	}
 
 	void TestConstReverseIterator()
@@ -727,6 +758,7 @@ namespace
 
 		CHECK(*(arr.rbegin() + 3) == 3);
 		CHECK(*(arr.rend() - 3) == 3);
+		CHECK(arr.rbegin()[2] == 4 && arr.rend() - arr.rbegin() == 6);
 	}
 }
 
@@ -780,12 +812,13 @@ int RunFastArrayUnitTests()
     TestEraseMultipleMid();
     TestEraseMultipleEnd();
     TestEquals();
+    TestEmptyIterators();
     TestReverseIterator();
     TestConstReverseIterator();
 
     // Ни один тест не должен оставить память в Kernel.Memory
     CHECK(KM::GetLiveBlockCount() == BaseBlocks);
 
-    std::printf("FastArray: %d тестов, %d проверок, %d ошибок\n", 47, Checks, Failures);
+    std::printf("FastArray: %d тестов, %d проверок, %d ошибок\n", 48, Checks, Failures);
     return Failures == 0 ? 0 : 1;
 }

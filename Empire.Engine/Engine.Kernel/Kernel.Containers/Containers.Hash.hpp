@@ -33,6 +33,8 @@ namespace DEvchik10Empire
                     ) noexcept
                     {
                         KernelTypes::UInt64 Result = Seed;
+                        if (ByteCount == 0)
+                            return Result;
                         const KernelTypes::UInt8* Bytes = static_cast<const KernelTypes::UInt8*>(Data);
 
                         for (const KernelTypes::UInt8* Current = Bytes; Current < Bytes + ByteCount; ++Current)
@@ -84,7 +86,7 @@ namespace DEvchik10Empire
                     {
                         KernelTypes::UInt64 operator()(T Value) const noexcept
                         {
-                            return MixBits(static_cast<KernelTypes::UInt64>(Value));
+                            return HashBytes(&Value, static_cast<KernelTypes::UInt32>(sizeof(T)));
                         }
                     };
 
@@ -127,7 +129,16 @@ namespace DEvchik10Empire
                     {
                         KernelTypes::UInt64 operator()(const T* Value) const noexcept
                         {
-                            return MixBits(static_cast<KernelTypes::UInt64>(reinterpret_cast<KernelTypes::UIntPtr>(Value)));
+                            return HashBytes(&Value, static_cast<KernelTypes::UInt32>(sizeof(Value)));
+                        }
+                    };
+
+                    template <>
+                    struct Hash<const KernelTypes::Char*>
+                    {
+                        KernelTypes::UInt64 operator()(const KernelTypes::Char* Value) const noexcept
+                        {
+                            return HashString(Value);
                         }
                     };
 
@@ -136,7 +147,7 @@ namespace DEvchik10Empire
                     {
                         KernelTypes::UInt64 operator()(StringView Value) const noexcept
                         {
-                            KernelTypes::UInt64 Result = 14695981039346656037ULL;
+                            KernelTypes::UInt64 Result = 0xcbf29ce484222325ULL;
 
                             for (KernelTypes::Size Index = 0; Index < Value.GetCount(); Index++)
                             {
@@ -144,7 +155,7 @@ namespace DEvchik10Empire
                                 Result *= 1099511628211ULL;
                             }
 
-                            return MixBits(Result);
+                            return Result;
                         }
                     };
 

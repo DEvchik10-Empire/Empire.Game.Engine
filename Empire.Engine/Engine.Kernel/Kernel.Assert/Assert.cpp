@@ -16,10 +16,8 @@ namespace DEvchik10Empire
                 {
                     namespace
                     {
-                        void WriteToStandardError(const Char* Text, Size ByteCount) noexcept
-                        {
-                            KernelSystem::WriteOutput(true, Text, ByteCount);
-                        }
+                        TraceFunction CurrentTraceFunction = nullptr;
+                        AssertFailedFunction CurrentAssertFailedFunction = nullptr;
 
                         class MessageBuffer
                         {
@@ -53,9 +51,9 @@ namespace DEvchik10Empire
                                         Data[Length++] = Digits[Position];
                                 }
 
-                                void Flush() noexcept
+                                void Flush(Bool ToStandardError = true) noexcept
                                 {
-                                    WriteToStandardError(Data, Length);
+                                    KernelSystem::WriteOutput(ToStandardError, Data, Length);
                                 }
                         };
                     }
@@ -117,6 +115,61 @@ namespace DEvchik10Empire
                     const Char* AllocationError::GetKind() const noexcept
                     {
                         return "AllocationError";
+                    }
+
+                    void SetTraceFunction(TraceFunction Callback) noexcept
+                    {
+                        CurrentTraceFunction = Callback;
+                    }
+
+                    void SetAssertFailedFunction(AssertFailedFunction Callback) noexcept
+                    {
+                        CurrentAssertFailedFunction = Callback;
+                    }
+
+                    void Trace(const Char* Message, const SourceLocation& Location)
+                    {
+                        TraceFunction Callback = CurrentTraceFunction;
+                        if (Callback != nullptr)
+                        {
+                            Callback(Message, Location);
+                            return;
+                        }
+
+                        MessageBuffer Buffer;
+                        Buffer.Append("[TRACE] ");
+                        Buffer.Append(Message);
+                        Buffer.Append("\n");
+                        Buffer.Flush(false);
+                    }
+
+                    Bool ReportAssertFailure(
+                        const Char* Expression,
+                        const Char* Message,
+                        const SourceLocation& Location
+                    )
+                    {
+                        AssertFailedFunction Callback = CurrentAssertFailedFunction;
+                        if (Callback != nullptr)
+                            return Callback(Expression, Message, Location);
+
+                        MessageBuffer Buffer;
+                        Buffer.Append("Assertion failed: ");
+                        Buffer.Append(Expression);
+                        if (Message != nullptr && Message[0] != '\0')
+                        {
+                            Buffer.Append(" - ");
+                            Buffer.Append(Message);
+                        }
+                        Buffer.Append("\nFile: ");
+                        Buffer.Append(Location.GetFile());
+                        Buffer.Append("\nFunction: ");
+                        Buffer.Append(Location.GetFunction());
+                        Buffer.Append("\nLine: ");
+                        Buffer.AppendNumber(Location.GetLine());
+                        Buffer.Append("\n");
+                        Buffer.Flush();
+                        return true;
                     }
 
                     void Check(Bool Condition, const Char* Message, const SourceLocation& Location)

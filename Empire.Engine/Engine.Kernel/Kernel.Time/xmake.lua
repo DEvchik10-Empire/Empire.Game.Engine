@@ -1,7 +1,7 @@
 target("Kernel.Time")
     add_headerfiles("*.hpp")
     add_files("*.cpp")
-    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory")
+    add_deps("Kernel.Types", "Kernel.Assert", "Kernel.Memory", "Kernel.Compiler")
     add_cxxflags("-fvisibility=default", {tools = {"gcc", "clang"}})
 
 if is_plat("windows") then includes("Time.Windows") end
