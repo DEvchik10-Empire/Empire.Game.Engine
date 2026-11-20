@@ -1,5 +1,7 @@
 #include "Empire.Engine/Engine.Kernel/Kernel.Jobs/Jobs.JobSystemThreadPool.hpp"
 
+#include "Empire.Engine/Engine.Kernel/Kernel.Config/Config.hpp"
+#include "Empire.Engine/Engine.Kernel/Kernel.Compiler/Compiler.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.System/System.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Types/Types.Utility.hpp"
 
@@ -147,6 +149,7 @@ namespace DEvchik10Empire
 
                     JobHandle JobSystemThreadPool::CreateJob(const KernelTypes::Char* Name, JobColor Color, const JobFunction& Function, KernelTypes::UInt32 Dependencies)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemThreadPool::CreateJob");
                         Job* Created = AllocateJob(Name, Color, Function, Dependencies);
 
                         // Хендл держит ссылку: задача ставится в очередь ниже и может сразу завершиться
@@ -163,6 +166,7 @@ namespace DEvchik10Empire
 
                     void JobSystemThreadPool::CreateJobs(const KernelTypes::Char* Name, JobColor Color, const JobFunction& Function, JobHandle* OutJobs, KernelTypes::UInt32 JobCount, KernelTypes::UInt32 Dependencies)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemThreadPool::CreateJobs");
                         for (KernelTypes::UInt32 Index = 0; Index < JobCount; ++Index)
                         {
                             Job* Created = AllocateJob(Name, Color, Function, Dependencies);
@@ -260,6 +264,7 @@ namespace DEvchik10Empire
 
                     void JobSystemThreadPool::QueueJob(Job* Target)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemThreadPool::QueueJob");
                         // Если рабочих потоков нет, задачу в очередь не поставить. В этом случае предполагается, что она будет добавлена
                         // в барьер и барьер сам выполнит её в Wait().
                         if (Threads.Empty())
@@ -275,6 +280,7 @@ namespace DEvchik10Empire
 
                     void JobSystemThreadPool::QueueJobs(Job** Jobs, KernelTypes::UInt32 JobCount)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemThreadPool::QueueJobs");
                         if (JobCount == 0)
                         {
                             return;
@@ -297,6 +303,7 @@ namespace DEvchik10Empire
 
                     void JobSystemThreadPool::ExecuteJobs()
                     {
+                        KernelProfiler::Scope Measurement("Executing Jobs");
                         while (Job* Next = Dequeue())
                         {
                             // Выполняем задачу
@@ -313,21 +320,29 @@ namespace DEvchik10Empire
 
                     void JobSystemThreadPool::ThreadMain(KernelTypes::Int32 ThreadIndex)
                     {
-                        // Включение исключений с плавающей точкой (FPExceptionsEnable в Jolt) будет добавлено вместе с FP-управлением в Kernel.Compiler.
-
-                        // Функция инициализации потока
-                        ThreadInitFunction(ThreadIndex);
-
-                        while (!Quit.Load(KernelSync::MemoryOrder::Relaxed))
+                        auto RunThread = [this, ThreadIndex]()
                         {
-                            // Ждём задачи
-                            WorkSemaphore.Acquire();
+                            ThreadInitFunction(ThreadIndex);
 
-                            ExecuteJobs();
+                            while (!Quit.Load(KernelSync::MemoryOrder::Relaxed))
+                            {
+                                WorkSemaphore.Acquire();
+                                ExecuteJobs();
+                            }
+
+                            ThreadExitFunction(ThreadIndex);
+                        };
+
+                        if constexpr (KernelConfig::FloatingPointExceptions)
+                        {
+                            KernelCompiler::FPExceptionsEnable ExceptionMode;
+                            static_cast<void>(ExceptionMode);
+                            RunThread();
                         }
-
-                        // Функция завершения потока
-                        ThreadExitFunction(ThreadIndex);
+                        else
+                        {
+                            RunThread();
+                        }
                     }
                 }
             }

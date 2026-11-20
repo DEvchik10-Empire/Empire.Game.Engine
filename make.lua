@@ -77,6 +77,9 @@ rule("Empire.Module")
     on_load(function (target)
         import("core.project.config")
 
+        target:add("cxxflags", "-ffp-contract=off", {tools = {"gcc", "clang"}})
+        target:add("cxxflags", "/fp:strict", {tools = {"cl", "clang_cl"}})
+
         local plats = {linux = "Linux", windows = "Windows", macosx = "MacOS", android = "Android", iphoneos = "iOS", wasm = "WASM"}
         local modes = {debug = "Debug", debuggame = "DebugGame", development = "Development", test = "Test", shipping = "Shipping"}
         local plat = plats[config.get("plat")] or config.get("plat")
@@ -117,6 +120,8 @@ rule("Empire.Module")
         if is_game then
             local engine_mode = modes[mode == "debuggame" and "development" or mode] or mode
             target:add("rpathdirs", origin .. "/../../Build." .. plat .. ".Engine." .. engine_mode .. "/Build.Engine")
+        elseif rel:match("^Empire%.Runtime/Runtime%.Tests") then
+            target:add("rpathdirs", origin .. "/../Build.Engine")
         end
     end)
 rule_end()

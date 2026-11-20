@@ -135,6 +135,33 @@ namespace DEvchik10Empire
                         };
 
                         KernelSync::Mutex PoolMutex;
+                        AllocatorCallbacks StoredAllocatorCallbacks{};
+                        KernelSync::Atomic<const AllocatorCallbacks*> ActiveAllocatorCallbacks{nullptr};
+                        KernelSync::Atomic<UInt32> AllocatorConfigurationState{0};
+                        KernelSync::Atomic<UInt64> ExternalLiveBytes{0};
+                        KernelSync::Atomic<UInt64> ExternalLiveBlocks{0};
+                        KernelSync::Atomic<UInt64> ExternalTotalAllocations{0};
+
+                        void LockAllocatorConfiguration() noexcept
+                        {
+                            UInt32 State = AllocatorConfigurationState.Load(KernelSync::MemoryOrder::Acquire);
+                            while (State != 2)
+                            {
+                                if (State == 1)
+                                {
+                                    State = AllocatorConfigurationState.Load(KernelSync::MemoryOrder::Acquire);
+                                    continue;
+                                }
+
+                                UInt32 Expected = 0;
+                                if (AllocatorConfigurationState.CompareExchange(
+                                    Expected, 2, KernelSync::MemoryOrder::AcquireRelease, KernelSync::MemoryOrder::Acquire
+                                ))
+                                    return;
+                                State = Expected;
+                            }
+                        }
+
                         // Общий пул: целые пачки (BatchFor блоков, связанные через Next; пачки связаны через NextBatch у первого блока)
                         // отдаются и берутся за O(1), одиночные блоки (остатки завершившихся потоков) лежат в FreeLists.
                         FreeBlock* FreeBatches[ClassCount] = {};
@@ -241,7 +268,7 @@ namespace DEvchik10Empire
                         // Ниже все функции со словом Locked вызываются под PoolMutex.
 
                         // Индекс первого куска с Base > Address (то есть куски до него начинаются не выше Address).
-                        Size UpperBoundSpan(const UInt8* Address) noexcept
+                        Size UpperBoundSpan(UIntPtr Address) noexcept
                         {
                             Size Low = 0;
                             Size High = SpanCount;
@@ -249,8 +276,9 @@ namespace DEvchik10Empire
                             while (Low < High)
                             {
                                 const Size Middle = Low + (High - Low) / 2;
+                                const UIntPtr SpanAddress = reinterpret_cast<UIntPtr>(Spans[Middle].Base);
 
-                                if (Spans[Middle].Base <= Address)
+                                if (SpanAddress <= Address)
                                     Low = Middle + 1;
                                 else
                                     High = Middle;
@@ -262,14 +290,15 @@ namespace DEvchik10Empire
                         // Кусок, которому принадлежит адрес (nullptr, если адрес не из малых блоков).
                         SpanInfo* FindSpanLocked(const void* Address) noexcept
                         {
-                            const UInt8* Bytes = static_cast<const UInt8*>(Address);
-                            const Size After = UpperBoundSpan(Bytes);
+                            const UIntPtr AddressValue = reinterpret_cast<UIntPtr>(Address);
+                            const Size After = UpperBoundSpan(AddressValue);
 
                             if (After == 0)
                                 return nullptr;
 
                             SpanInfo* Candidate = &Spans[After - 1];
-                            return Bytes < Candidate->Base + Candidate->ByteCount ? Candidate : nullptr;
+                            const UIntPtr SpanAddress = reinterpret_cast<UIntPtr>(Candidate->Base);
+                            return AddressValue - SpanAddress < Candidate->ByteCount ? Candidate : nullptr;
                         }
 
                         void CommitActiveSpanLocked() noexcept
@@ -302,7 +331,7 @@ namespace DEvchik10Empire
                                 SpanCapacity = NewCapacity;
                             }
 
-                            Size Position = UpperBoundSpan(Base);
+                            Size Position = UpperBoundSpan(reinterpret_cast<UIntPtr>(Base));
 
                             for (Size Index = SpanCount; Index > Position; Index--)
                                 Spans[Index] = Spans[Index - 1];
@@ -712,7 +741,7 @@ namespace DEvchik10Empire
                             }
 
                             if (Block == nullptr) [[unlikely]]
-                                throw KernelAssert::AllocationError("Out of memory");
+                                KernelAssert::Fail("Out of memory");
 
                             GetHeader(static_cast<void*>(Block))->ByteCount = ByteCount;
                             CountAllocation(Current, ByteCount);
@@ -746,13 +775,13 @@ namespace DEvchik10Empire
                             const Size PageSize = KernelSystem::GetPageSize();
 
                             if (ByteCount > MaxValue<Size>() - Overhead - PageSize)
-                                throw KernelAssert::AllocationError("Allocation size is too large");
+                                KernelAssert::Fail("Allocation size is too large");
 
                             const Size RawSize = (ByteCount + Overhead + PageSize - 1) / PageSize * PageSize;
                             void* RawBase = KernelSystem::ReservePages(RawSize);
 
                             if (RawBase == nullptr)
-                                throw KernelAssert::AllocationError("Out of memory");
+                                KernelAssert::Fail("Out of memory");
 
                             const UIntPtr Start = reinterpret_cast<UIntPtr>(RawBase) + sizeof(LargeInfo) + sizeof(BlockHeader);
                             const UIntPtr Aligned = (Start + Alignment - 1) & ~(static_cast<UIntPtr>(Alignment) - 1);
@@ -773,12 +802,31 @@ namespace DEvchik10Empire
                         }
                     }
 
+                    Bool SetAllocatorCallbacks(const AllocatorCallbacks& Callbacks) noexcept
+                    {
+                        if (Callbacks.Allocate == nullptr || Callbacks.Reallocate == nullptr ||
+                            Callbacks.Deallocate == nullptr || Callbacks.GetBlockByteCount == nullptr ||
+                            Callbacks.GetBlockAlignment == nullptr)
+                            return false;
+
+                        UInt32 Expected = 0;
+                        if (!AllocatorConfigurationState.CompareExchange(
+                            Expected, 1, KernelSync::MemoryOrder::AcquireRelease, KernelSync::MemoryOrder::Acquire
+                        ))
+                            return false;
+
+                        StoredAllocatorCallbacks = Callbacks;
+                        ActiveAllocatorCallbacks.Store(&StoredAllocatorCallbacks, KernelSync::MemoryOrder::Release);
+                        AllocatorConfigurationState.Store(0, KernelSync::MemoryOrder::Release);
+                        return true;
+                    }
+
                     void* Allocate(Size ByteCount, Size Alignment)
                     {
                         if (Alignment != MinimumAlignment) [[unlikely]]
                         {
                             if (!IsValidAlignment(Alignment))
-                                throw KernelAssert::AllocationError("Alignment must be a non-zero power of two");
+                                KernelAssert::Fail("Alignment must be a non-zero power of two");
 
                             if (Alignment < MinimumAlignment)
                                 Alignment = MinimumAlignment;
@@ -786,6 +834,20 @@ namespace DEvchik10Empire
 
                         if (ByteCount == 0) [[unlikely]]
                             ByteCount = 1;
+
+                        LockAllocatorConfiguration();
+                        if (const AllocatorCallbacks* Callbacks = ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire))
+                        {
+                            void* MemoryBlock = Callbacks->Allocate(ByteCount, Alignment);
+                            if (MemoryBlock == nullptr)
+                                KernelAssert::Fail("Custom allocator failed to allocate memory");
+                            if (reinterpret_cast<UIntPtr>(MemoryBlock) % Alignment != 0)
+                                KernelAssert::Fail("Custom allocator returned a misaligned block");
+                            ExternalLiveBytes.FetchAdd(ByteCount, KernelSync::MemoryOrder::Relaxed);
+                            ExternalLiveBlocks.FetchAdd(1, KernelSync::MemoryOrder::Relaxed);
+                            ExternalTotalAllocations.FetchAdd(1, KernelSync::MemoryOrder::Relaxed);
+                            return MemoryBlock;
+                        }
 
                         const Size ClassIndex = Alignment == MinimumAlignment ? FindClassIndex(ByteCount) : LargeBlock;
 
@@ -803,6 +865,25 @@ namespace DEvchik10Empire
                             return nullptr;
                         }
 
+                        if (const AllocatorCallbacks* Callbacks = ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire))
+                        {
+                            const Size OldByteCount = Callbacks->GetBlockByteCount(MemoryBlock);
+                            const Size Alignment = Callbacks->GetBlockAlignment(MemoryBlock);
+                            if (Alignment < MinimumAlignment || !IsValidAlignment(Alignment))
+                                KernelAssert::Fail("Custom allocator returned invalid block alignment");
+                            void* NewBlock = Callbacks->Reallocate(MemoryBlock, OldByteCount, NewByteCount, Alignment);
+                            if (NewBlock == nullptr)
+                                KernelAssert::Fail("Custom allocator failed to reallocate memory");
+                            if (reinterpret_cast<UIntPtr>(NewBlock) % Alignment != 0)
+                                KernelAssert::Fail("Custom allocator returned a misaligned reallocated block");
+                            if (NewByteCount >= OldByteCount)
+                                ExternalLiveBytes.FetchAdd(NewByteCount - OldByteCount, KernelSync::MemoryOrder::Relaxed);
+                            else
+                                ExternalLiveBytes.FetchSub(OldByteCount - NewByteCount, KernelSync::MemoryOrder::Relaxed);
+                            ExternalTotalAllocations.FetchAdd(1, KernelSync::MemoryOrder::Relaxed);
+                            return NewBlock;
+                        }
+
                         BlockHeader* OldHeader = GetHeader(MemoryBlock);
                         const Size OldByteCount = OldHeader->ByteCount;
                         const Size OldAlignment = OldHeader->ClassIndex == LargeBlock ? GetLargeInfo(OldHeader)->Alignment : MinimumAlignment;
@@ -818,6 +899,15 @@ namespace DEvchik10Empire
                     {
                         if (MemoryBlock == nullptr)
                             return;
+
+                        if (const AllocatorCallbacks* Callbacks = ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire))
+                        {
+                            const Size ByteCount = Callbacks->GetBlockByteCount(MemoryBlock);
+                            Callbacks->Deallocate(MemoryBlock);
+                            ExternalLiveBytes.FetchSub(ByteCount, KernelSync::MemoryOrder::Relaxed);
+                            ExternalLiveBlocks.FetchSub(1, KernelSync::MemoryOrder::Relaxed);
+                            return;
+                        }
 
                         BlockHeader* Header = GetHeader(MemoryBlock);
 
@@ -838,7 +928,11 @@ namespace DEvchik10Empire
 
                     Size GetBlockByteCount(const void* MemoryBlock) noexcept
                     {
-                        return MemoryBlock == nullptr ? 0 : GetHeader(MemoryBlock)->ByteCount;
+                        if (MemoryBlock == nullptr)
+                            return 0;
+                        if (const AllocatorCallbacks* Callbacks = ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire))
+                            return Callbacks->GetBlockByteCount(MemoryBlock);
+                        return GetHeader(MemoryBlock)->ByteCount;
                     }
 
                     void CopyBytes(void* Destination, const void* Source, Size ByteCount) noexcept
@@ -895,6 +989,9 @@ namespace DEvchik10Empire
 
                     Size Trim() noexcept
                     {
+                        if (ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire) != nullptr)
+                            return 0;
+
                         // Кэш вызывающего потока тоже уходит в пул, иначе его блоки удерживали бы куски.
                         if (ThreadState* Current = GetThreadState())
                             FlushWholeCache(*Current);
@@ -905,22 +1002,30 @@ namespace DEvchik10Empire
 
                     Size GetReservedByteCount() noexcept
                     {
+                        if (ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire) != nullptr)
+                            return 0;
                         KernelSync::LockGuard Lock(PoolMutex);
                         return ReservedBytes;
                     }
 
                     UInt64 GetLiveByteCount() noexcept
                     {
+                        if (ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire) != nullptr)
+                            return ExternalLiveBytes.Load(KernelSync::MemoryOrder::Relaxed);
                         return SumCounters(&CounterBlock::LiveBytes);
                     }
 
                     UInt64 GetLiveBlockCount() noexcept
                     {
+                        if (ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire) != nullptr)
+                            return ExternalLiveBlocks.Load(KernelSync::MemoryOrder::Relaxed);
                         return SumCounters(&CounterBlock::Allocations) - SumCounters(&CounterBlock::Deallocations);
                     }
 
                     UInt64 GetTotalAllocationCount() noexcept
                     {
+                        if (ActiveAllocatorCallbacks.Load(KernelSync::MemoryOrder::Acquire) != nullptr)
+                            return ExternalTotalAllocations.Load(KernelSync::MemoryOrder::Relaxed);
                         return SumCounters(&CounterBlock::Allocations);
                     }
                 }

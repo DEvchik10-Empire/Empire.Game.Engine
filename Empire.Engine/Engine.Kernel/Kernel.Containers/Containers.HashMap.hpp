@@ -55,26 +55,18 @@ namespace DEvchik10Empire
                             void Rehash(KernelTypes::Size NewCapacity)
                             {
                                 if (NewCapacity > KernelTypes::MaxValue<KernelTypes::Size>() / (sizeof(K) + sizeof(V) + 1))
-                                    throw KernelAssert::LengthError("HashMap capacity is too large");
+                                    KernelAssert::Fail("HashMap capacity is too large");
 
                                 KernelTypes::UInt8* NewStates = nullptr;
                                 K* NewKeys = nullptr;
                                 V* NewValues = nullptr;
 
-                                try
-                                {
+
                                     NewStates = static_cast<KernelTypes::UInt8*>(KernelMemory::Allocate(NewCapacity));
                                     KernelMemory::FillBytes(NewStates, EmptyState, NewCapacity);
                                     NewKeys = static_cast<K*>(KernelMemory::Allocate(NewCapacity * sizeof(K), alignof(K)));
                                     NewValues = static_cast<V*>(KernelMemory::Allocate(NewCapacity * sizeof(V), alignof(V)));
-                                }
-                                catch (...)
-                                {
-                                    KernelMemory::Deallocate(NewStates);
-                                    KernelMemory::Deallocate(NewKeys);
-                                    KernelMemory::Deallocate(NewValues);
-                                    throw;
-                                }
+
 
                                 const KernelTypes::Size Mask = NewCapacity - 1;
 
@@ -121,7 +113,7 @@ namespace DEvchik10Empire
                                 if ((Count + 1) * 10 > Capacity * 4)
                                 {
                                     if (Capacity > KernelTypes::MaxValue<KernelTypes::Size>() / 4)
-                                        throw KernelAssert::LengthError("HashMap capacity is too large");
+                                        KernelAssert::Fail("HashMap capacity is too large");
 
                                     NewCapacity = Capacity * 2;
                                 }
@@ -173,15 +165,9 @@ namespace DEvchik10Empire
 
                                 KernelTypes::ConstructAt(Keys + Index, Key);
 
-                                try
-                                {
+
                                     KernelTypes::ConstructAt(Values + Index, KernelTypes::Move(Value));
-                                }
-                                catch (...)
-                                {
-                                    KernelTypes::DestroyAt(Keys + Index);
-                                    throw;
-                                }
+
 
                                 if (States[Index] == DeletedState)
                                     Tombstones--;
@@ -192,6 +178,70 @@ namespace DEvchik10Empire
                             }
 
                         public:
+                            struct EntryRef
+                            {
+                                const K& First;
+                                V& Second;
+                            };
+
+                            struct ConstEntryRef
+                            {
+                                const K& First;
+                                const V& Second;
+                            };
+
+                            class Iterator
+                            {
+                                private:
+                                    HashMap* Owner = nullptr;
+                                    KernelTypes::Size Index = 0;
+
+                                    void SkipEmpty() noexcept
+                                    {
+                                        while (Owner != nullptr && Index < Owner->Capacity && Owner->States[Index] != UsedState)
+                                            ++Index;
+                                    }
+
+                                public:
+                                    Iterator() = default;
+                                    Iterator(HashMap* Map, KernelTypes::Bool AtEnd) noexcept : Owner(Map), Index(AtEnd ? Map->Capacity : 0)
+                                    {
+                                        if (!AtEnd)
+                                            SkipEmpty();
+                                    }
+                                    EntryRef operator*() const noexcept { return {Owner->Keys[Index], Owner->Values[Index]}; }
+                                    Iterator& operator++() noexcept { ++Index; SkipEmpty(); return *this; }
+                                    Iterator operator++(int) noexcept { Iterator Previous(*this); ++(*this); return Previous; }
+                                    [[nodiscard]] KernelTypes::Bool operator==(const Iterator& Other) const noexcept { return Owner == Other.Owner && Index == Other.Index; }
+                                    [[nodiscard]] KernelTypes::Bool operator!=(const Iterator& Other) const noexcept { return !(*this == Other); }
+                            };
+
+                            class ConstIterator
+                            {
+                                private:
+                                    const HashMap* Owner = nullptr;
+                                    KernelTypes::Size Index = 0;
+
+                                    void SkipEmpty() noexcept
+                                    {
+                                        while (Owner != nullptr && Index < Owner->Capacity && Owner->States[Index] != UsedState)
+                                            ++Index;
+                                    }
+
+                                public:
+                                    ConstIterator() = default;
+                                    ConstIterator(const HashMap* Map, KernelTypes::Bool AtEnd) noexcept : Owner(Map), Index(AtEnd ? Map->Capacity : 0)
+                                    {
+                                        if (!AtEnd)
+                                            SkipEmpty();
+                                    }
+                                    ConstEntryRef operator*() const noexcept { return {Owner->Keys[Index], Owner->Values[Index]}; }
+                                    ConstIterator& operator++() noexcept { ++Index; SkipEmpty(); return *this; }
+                                    ConstIterator operator++(int) noexcept { ConstIterator Previous(*this); ++(*this); return Previous; }
+                                    [[nodiscard]] KernelTypes::Bool operator==(const ConstIterator& Other) const noexcept { return Owner == Other.Owner && Index == Other.Index; }
+                                    [[nodiscard]] KernelTypes::Bool operator!=(const ConstIterator& Other) const noexcept { return !(*this == Other); }
+                            };
+
                             HashMap() = default;
 
                             HashMap(const HashMap&) = delete;
@@ -246,6 +296,32 @@ namespace DEvchik10Empire
 
                             KernelTypes::Size GetCount() const noexcept { return Count; }
                             KernelTypes::Bool IsEmpty() const noexcept { return Count == 0; }
+                            KernelTypes::Size GetCapacity() const noexcept { return Capacity; }
+                            Iterator begin() noexcept { return Iterator(this, false); }
+                            Iterator end() noexcept { return Iterator(this, true); }
+                            ConstIterator begin() const noexcept { return ConstIterator(this, false); }
+                            ConstIterator end() const noexcept { return ConstIterator(this, true); }
+                            ConstIterator cbegin() const noexcept { return begin(); }
+                            ConstIterator cend() const noexcept { return end(); }
+
+                            void Reserve(KernelTypes::Size DesiredCount)
+                            {
+                                KernelTypes::Size NewCapacity = Capacity == 0 ? 8 : Capacity;
+                                const auto MaximumCount = [](KernelTypes::Size Value) noexcept
+                                {
+                                    return (Value / 10) * 7 + ((Value % 10) * 7) / 10;
+                                };
+
+                                while (DesiredCount > MaximumCount(NewCapacity))
+                                {
+                                    if (NewCapacity > KernelTypes::MaxValue<KernelTypes::Size>() / 2)
+                                        KernelAssert::Fail("HashMap capacity is too large");
+                                    NewCapacity *= 2;
+                                }
+
+                                if (NewCapacity != Capacity || Tombstones > Count)
+                                    Rehash(NewCapacity);
+                            }
 
                             // Возвращает true, если ключ был добавлен, и false, если он уже существовал (значение не меняется).
                             KernelTypes::Bool Insert(const K& Key, V Value)
@@ -257,6 +333,21 @@ namespace DEvchik10Empire
                             void Set(const K& Key, V Value)
                             {
                                 Place(Key, KernelTypes::Move(Value), true);
+                            }
+
+                            template <typename... Arguments>
+                            V& TryEmplace(const K& Key, Arguments&&... Args)
+                            {
+                                if (V* Existing = Find(Key))
+                                    return *Existing;
+                                Place(Key, V(KernelTypes::Forward<Arguments>(Args)...), false);
+                                return *Find(Key);
+                            }
+
+                            V& operator[](const K& Key)
+                                requires requires { V{}; }
+                            {
+                                return TryEmplace(Key);
                             }
 
                             V* Find(const K& Key)

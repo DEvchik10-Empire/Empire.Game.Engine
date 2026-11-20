@@ -7,6 +7,9 @@
 
 namespace KernelMemory = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelMemory;
 
+static_assert(KernelMemory::TempAllocator::NeedsAlignedAllocate ==
+    (KernelMemory::TempAllocator::TempAllocatorAlignment > KernelMemory::DefaultAlignment));
+
 static int Failures = 0, Checks = 0;
 #define CHECK(c) do { ++Checks; if (!(c)) { ++Failures; std::printf("  FAIL %s:%d  %s\n", __FILE__, __LINE__, #c); } } while (0)
 
@@ -26,6 +29,7 @@ static void TestImpl()
     CHECK(Allocator.OwnsMemory(A) && !Allocator.OwnsMemory(&Allocator));
     CHECK(Allocator.CanAllocate(1024 - 128));
     CHECK(!Allocator.CanAllocate(1024 - 127));
+    CHECK(!Allocator.CanAllocate(0xffffffffu));
 
     Allocator.Free(B, 100);
     Allocator.Free(A, 10);

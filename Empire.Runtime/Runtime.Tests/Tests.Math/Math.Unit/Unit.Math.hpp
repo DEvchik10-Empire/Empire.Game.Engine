@@ -5,12 +5,14 @@ int RunMathUnitTests();
 
 // Тесты по модулям Math (каждая функция в своём Unit.<Модуль>.cpp).
 void TestScalar();
-void TestVector2();
+void TestColor();
+void TestVectorStorage();
 void TestVector3();
 void TestVector4();
-void TestMatrix2();
-void TestMatrix3();
 void TestMatrix4();
+void TestDynamicMatrix();
+void TestSymmetricEigenvalues();
+void TestAABB();
+void TestConvexHull2D();
+void TestConvexHull3D();
 void TestQuaternion();
-void TestTransform();
-void TestGeometry();

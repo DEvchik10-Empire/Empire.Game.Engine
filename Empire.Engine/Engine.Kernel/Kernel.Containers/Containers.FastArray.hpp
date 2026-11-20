@@ -41,6 +41,8 @@ namespace DEvchik10Empire
                             using Iterator = T*;
 
                             // Итератор, который идёт по массиву в обратном порядке
+                            class ConstReverseIterator;
+
                             class ReverseIterator
                             {
                                 public:
@@ -58,17 +60,25 @@ namespace DEvchik10Empire
                                     ReverseIterator& operator--() { ++Current; return *this; }
                                     ReverseIterator operator--(int) { return ReverseIterator(Current++); }
 
-                                    ReverseIterator operator+(int Value) const { return ReverseIterator(Current - Value); }
-                                    ReverseIterator operator-(int Value) const { return ReverseIterator(Current + Value); }
+                                    ReverseIterator operator+(DifferenceType Value) const { return ReverseIterator(Current == nullptr ? nullptr : Current - Value); }
+                                    friend ReverseIterator operator+(DifferenceType Value, const ReverseIterator& It) { return It + Value; }
+                                    ReverseIterator operator-(DifferenceType Value) const { return ReverseIterator(Current == nullptr ? nullptr : Current + Value); }
 
-                                    ReverseIterator& operator+=(int Value) { Current -= Value; return *this; }
-                                    ReverseIterator& operator-=(int Value) { Current += Value; return *this; }
+                                    ReverseIterator& operator+=(DifferenceType Value) { if (Current != nullptr) Current -= Value; return *this; }
+                                    ReverseIterator& operator-=(DifferenceType Value) { if (Current != nullptr) Current += Value; return *this; }
+                                    DifferenceType operator-(const ReverseIterator& Other) const { return Current == Other.Current ? 0 : Other.Current - Current; }
+                                    T& operator[](DifferenceType Value) const { return *(*this + Value); }
+                                    bool operator<(const ReverseIterator& Other) const { return Current != Other.Current && Current > Other.Current; }
+                                    bool operator<=(const ReverseIterator& Other) const { return *this == Other || *this < Other; }
+                                    bool operator>(const ReverseIterator& Other) const { return Other < *this; }
+                                    bool operator>=(const ReverseIterator& Other) const { return *this == Other || *this > Other; }
 
-                                    T& operator*() const { return *Current; }
-                                    T* operator->() const { return Current; }
+                                    T& operator*() const { return *(Current - 1); }
+                                    T* operator->() const { return Current - 1; }
 
                                 private:
                                     friend class FastArray;
+                                    friend class ConstReverseIterator;
 
                                     T* Current = nullptr;
                             };
@@ -93,14 +103,21 @@ namespace DEvchik10Empire
                                     ConstReverseIterator& operator--() { ++Current; return *this; }
                                     ConstReverseIterator operator--(int) { return ConstReverseIterator(Current++); }
 
-                                    ConstReverseIterator operator+(int Value) const { return ConstReverseIterator(Current - Value); }
-                                    ConstReverseIterator operator-(int Value) const { return ConstReverseIterator(Current + Value); }
+                                    ConstReverseIterator operator+(DifferenceType Value) const { return ConstReverseIterator(Current == nullptr ? nullptr : Current - Value); }
+                                    friend ConstReverseIterator operator+(DifferenceType Value, const ConstReverseIterator& It) { return It + Value; }
+                                    ConstReverseIterator operator-(DifferenceType Value) const { return ConstReverseIterator(Current == nullptr ? nullptr : Current + Value); }
 
-                                    ConstReverseIterator& operator+=(int Value) { Current -= Value; return *this; }
-                                    ConstReverseIterator& operator-=(int Value) { Current += Value; return *this; }
+                                    ConstReverseIterator& operator+=(DifferenceType Value) { if (Current != nullptr) Current -= Value; return *this; }
+                                    ConstReverseIterator& operator-=(DifferenceType Value) { if (Current != nullptr) Current += Value; return *this; }
+                                    DifferenceType operator-(const ConstReverseIterator& Other) const { return Current == Other.Current ? 0 : Other.Current - Current; }
+                                    const T& operator[](DifferenceType Value) const { return *(*this + Value); }
+                                    bool operator<(const ConstReverseIterator& Other) const { return Current != Other.Current && Current > Other.Current; }
+                                    bool operator<=(const ConstReverseIterator& Other) const { return *this == Other || *this < Other; }
+                                    bool operator>(const ConstReverseIterator& Other) const { return Other < *this; }
+                                    bool operator>=(const ConstReverseIterator& Other) const { return *this == Other || *this > Other; }
 
-                                    const T& operator*() const { return *Current; }
-                                    const T* operator->() const { return Current; }
+                                    const T& operator*() const { return *(Current - 1); }
+                                    const T* operator->() const { return Current - 1; }
 
                                 private:
                                     const T* Current = nullptr;
@@ -113,19 +130,23 @@ namespace DEvchik10Empire
 
                             static T* AllocateBlock(SizeType Capacity)
                             {
+                                KernelAssert::Check(Capacity <= KernelTypes::MaxValue<SizeType>() / sizeof(T), "FastArray: размер массива переполнен");
                                 return static_cast<T*>(KernelMemory::Allocate(Capacity * sizeof(T), BlockAlignment));
                             }
 
                             // Переносит элементы из одного места в другое. Области могут пересекаться.
                             void Move(Pointer Destination, Pointer Source, SizeType Count)
                             {
+                                if (Count == 0 || Destination == Source)
+                                    return;
+
                                 if constexpr (KernelTypes::IsTriviallyCopyable<T>)
                                 {
                                     KernelMemory::MoveBytes(Destination, Source, Count * sizeof(T));
                                 }
                                 else
                                 {
-                                    if (Destination < Source)
+                                    if (reinterpret_cast<KernelTypes::UIntPtr>(Destination) < reinterpret_cast<KernelTypes::UIntPtr>(Source))
                                     {
                                         for (T* DestinationEnd = Destination + Count; Destination < DestinationEnd; ++Destination, ++Source)
                                         {
@@ -148,6 +169,7 @@ namespace DEvchik10Empire
                             void Reallocate(SizeType NewCapacity)
                             {
                                 KernelAssert::DebugCheck(NewCapacity > 0 && NewCapacity >= Count, "FastArray::Reallocate: ёмкость меньше размера");
+                                KernelAssert::Check(NewCapacity <= KernelTypes::MaxValue<SizeType>() / sizeof(T), "FastArray::Reallocate: размер массива переполнен");
 
                                 Pointer Block;
 
@@ -192,11 +214,15 @@ namespace DEvchik10Empire
                             // Увеличивает массив минимум на Amount элементов
                             void Grow(SizeType Amount = 1)
                             {
+                                KernelAssert::Check(Amount <= KernelTypes::MaxValue<SizeType>() - Count, "FastArray::Grow: размер массива переполнен");
                                 const SizeType MinimumSize = Count + Amount;
 
                                 if (MinimumSize > Capacity)
                                 {
-                                    Reserve(KernelTypes::Max(MinimumSize, Capacity * 2));
+                                    const SizeType DoubledCapacity = Capacity > KernelTypes::MaxValue<SizeType>() / 2
+                                        ? MinimumSize
+                                        : Capacity * 2;
+                                    Reserve(KernelTypes::Max(MinimumSize, DoubledCapacity));
                                 }
                             }
 
@@ -237,9 +263,12 @@ namespace DEvchik10Empire
 
                                 if constexpr (!KernelTypes::IsTriviallyConstructible<T>)
                                 {
-                                    for (T *Element = Items + Count, *ElementEnd = Items + NewSize; Element < ElementEnd; ++Element)
+                                    if (NewSize > Count)
                                     {
-                                        ::new (KernelTypes::PlacementTag{}, static_cast<void*>(Element)) T;
+                                        for (T *Element = Items + Count, *ElementEnd = Items + NewSize; Element < ElementEnd; ++Element)
+                                        {
+                                            ::new (KernelTypes::PlacementTag{}, static_cast<void*>(Element)) T;
+                                        }
                                     }
                                 }
 
@@ -249,14 +278,23 @@ namespace DEvchik10Empire
                             // Меняет длину массива и заполняет новые элементы значением Value
                             void Resize(SizeType NewSize, const T& Value)
                             {
-                                KernelAssert::DebugCheck(&Value < Items || &Value >= Items + Count, "FastArray::Resize: нельзя передавать элемент этого же массива");
+                                if (Items != nullptr)
+                                {
+                                    const KernelTypes::UIntPtr ValueAddress = reinterpret_cast<KernelTypes::UIntPtr>(&Value);
+                                    const KernelTypes::UIntPtr ItemsAddress = reinterpret_cast<KernelTypes::UIntPtr>(Items);
+                                    const KernelTypes::UIntPtr ItemsEndAddress = ItemsAddress + Count * sizeof(T);
+                                    KernelAssert::DebugCheck(ValueAddress < ItemsAddress || ValueAddress >= ItemsEndAddress, "FastArray::Resize: нельзя передавать элемент этого же массива");
+                                }
 
                                 Destruct(NewSize, Count);
                                 Reserve(NewSize);
 
-                                for (T *Element = Items + Count, *ElementEnd = Items + NewSize; Element < ElementEnd; ++Element)
+                                if (NewSize > Count)
                                 {
-                                    KernelTypes::ConstructAt(Element, Value);
+                                    for (T *Element = Items + Count, *ElementEnd = Items + NewSize; Element < ElementEnd; ++Element)
+                                    {
+                                        KernelTypes::ConstructAt(Element, Value);
+                                    }
                                 }
 
                                 Count = NewSize;
@@ -274,6 +312,8 @@ namespace DEvchik10Empire
                             void Assign(InputIterator Begin, InputIterator End)
                             {
                                 Clear();
+                                if (Begin == End)
+                                    return;
                                 Reserve(static_cast<SizeType>(End - Begin));
 
                                 for (InputIterator Element = Begin; Element != End; ++Element)
@@ -332,7 +372,13 @@ namespace DEvchik10Empire
                             // Добавляет элемент в конец
                             void PushBack(const T& Value)
                             {
-                                KernelAssert::DebugCheck(&Value < Items || &Value >= Items + Count, "FastArray::PushBack: нельзя передавать элемент этого же массива");
+                                if (Items != nullptr)
+                                {
+                                    const KernelTypes::UIntPtr ValueAddress = reinterpret_cast<KernelTypes::UIntPtr>(&Value);
+                                    const KernelTypes::UIntPtr ItemsAddress = reinterpret_cast<KernelTypes::UIntPtr>(Items);
+                                    const KernelTypes::UIntPtr ItemsEndAddress = ItemsAddress + Count * sizeof(T);
+                                    KernelAssert::DebugCheck(ValueAddress < ItemsAddress || ValueAddress >= ItemsEndAddress, "FastArray::PushBack: нельзя передавать элемент этого же массива");
+                                }
 
                                 Grow();
                                 KernelTypes::ConstructAt(Items + Count++, Value);
@@ -394,12 +440,14 @@ namespace DEvchik10Empire
                             template <typename InputIterator>
                             void Insert(ConstIterator Position, InputIterator Begin, InputIterator End)
                             {
+                                if (Begin == End)
+                                    return;
                                 const SizeType NewElementCount = static_cast<SizeType>(End - Begin);
 
                                 if (NewElementCount > 0)
                                 {
                                     // После Grow() Position может стать недействительным
-                                    const SizeType FirstElement = static_cast<SizeType>(Position - Items);
+                                    const SizeType FirstElement = Items == nullptr ? 0 : static_cast<SizeType>(Position - Items);
 
                                     Grow(NewElementCount);
 
@@ -418,7 +466,13 @@ namespace DEvchik10Empire
 
                             void Insert(ConstIterator Position, const T& Value)
                             {
-                                KernelAssert::DebugCheck(&Value < Items || &Value >= Items + Count, "FastArray::Insert: нельзя передавать элемент этого же массива");
+                                if (Items != nullptr)
+                                {
+                                    const KernelTypes::UIntPtr ValueAddress = reinterpret_cast<KernelTypes::UIntPtr>(&Value);
+                                    const KernelTypes::UIntPtr ItemsAddress = reinterpret_cast<KernelTypes::UIntPtr>(Items);
+                                    const KernelTypes::UIntPtr ItemsEndAddress = ItemsAddress + Count * sizeof(T);
+                                    KernelAssert::DebugCheck(ValueAddress < ItemsAddress || ValueAddress >= ItemsEndAddress, "FastArray::Insert: нельзя передавать элемент этого же массива");
+                                }
 
                                 // После Grow() Position может стать недействительным
                                 const SizeType FirstElement = static_cast<SizeType>(Position - Items);
@@ -452,6 +506,8 @@ namespace DEvchik10Empire
                             // Убирает несколько элементов
                             Iterator Erase(ConstIterator Begin, ConstIterator End)
                             {
+                                if (Begin == End)
+                                    return Items == nullptr ? nullptr : const_cast<Iterator>(Begin);
                                 const SizeType Index = static_cast<SizeType>(Begin - begin());
                                 const SizeType RemovedCount = static_cast<SizeType>(End - Begin);
                                 KernelAssert::DebugCheck(End <= this->end(), "FastArray::Erase: конец диапазона вне массива");
@@ -468,18 +524,18 @@ namespace DEvchik10Empire
                             }
 
                             ConstIterator begin() const { return Items; }
-                            ConstIterator end() const { return Items + Count; }
-                            ConstReverseIterator rbegin() const { return ConstReverseIterator(Items + Count - 1); }
-                            ConstReverseIterator rend() const { return ConstReverseIterator(Items - 1); }
+                            ConstIterator end() const { return Count == 0 ? Items : Items + Count; }
+                            ConstReverseIterator rbegin() const { return ConstReverseIterator(Count == 0 ? Items : Items + Count); }
+                            ConstReverseIterator rend() const { return ConstReverseIterator(Items); }
                             ConstIterator cbegin() const { return begin(); }
                             ConstIterator cend() const { return end(); }
                             ConstReverseIterator crbegin() const { return rbegin(); }
                             ConstReverseIterator crend() const { return rend(); }
 
                             Iterator begin() { return Items; }
-                            Iterator end() { return Items + Count; }
-                            ReverseIterator rbegin() { return ReverseIterator(Items + Count - 1); }
-                            ReverseIterator rend() { return ReverseIterator(Items - 1); }
+                            Iterator end() { return Count == 0 ? Items : Items + Count; }
+                            ReverseIterator rbegin() { return ReverseIterator(Count == 0 ? Items : Items + Count); }
+                            ReverseIterator rend() { return ReverseIterator(Items); }
 
                             const T* Data() const { return Items; }
                             T* Data() { return Items; }
@@ -588,9 +644,12 @@ namespace DEvchik10Empire
                             {
                                 KernelTypes::UInt64 Result = Hash<KernelTypes::UInt32>{}(static_cast<KernelTypes::UInt32>(Size()));
 
-                                for (const T *Element = Items, *ElementEnd = Items + Count; Element < ElementEnd; ++Element)
+                                if (Count > 0)
                                 {
-                                    HashCombine(Result, *Element);
+                                    for (const T *Element = Items, *ElementEnd = Items + Count; Element < ElementEnd; ++Element)
+                                    {
+                                        HashCombine(Result, *Element);
+                                    }
                                 }
 
                                 return Result;

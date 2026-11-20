@@ -49,7 +49,7 @@ namespace DEvchik10Empire
                     const Char& StringView::operator[](Size Index) const
                     {
                         if (Index >= Count)
-                            throw KernelAssert::OutOfRangeError("StringView index is out of range");
+                            KernelAssert::Fail("StringView index is out of range");
 
                         return Text[Index];
                     }

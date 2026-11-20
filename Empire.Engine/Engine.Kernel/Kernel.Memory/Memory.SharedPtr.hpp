@@ -74,8 +74,7 @@ namespace DEvchik10Empire
 
                             void Free() noexcept override
                             {
-                                this->~InlineControlBlock();
-                                KernelMemory::Deallocate(this);
+                                KernelMemory::Destroy(this);
                             }
                     };
 
@@ -239,18 +238,7 @@ namespace DEvchik10Empire
                     {
                         using Block = InlineControlBlock<T>;
 
-                        void* Storage = KernelMemory::Allocate(sizeof(Block), alignof(Block));
-                        Block* NewBlock = nullptr;
-
-                        try
-                        {
-                            NewBlock = KernelTypes::ConstructAt(static_cast<Block*>(Storage), KernelTypes::Forward<Arguments>(Args)...);
-                        }
-                        catch (...)
-                        {
-                            KernelMemory::Deallocate(Storage);
-                            throw;
-                        }
+                        Block* NewBlock = KernelMemory::Make<Block>(KernelTypes::Forward<Arguments>(Args)...);
 
                         SharedPtr<T> Result;
                         Result.Pointer = NewBlock->GetObject();

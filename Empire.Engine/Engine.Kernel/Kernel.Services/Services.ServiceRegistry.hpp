@@ -31,13 +31,13 @@ namespace DEvchik10Empire
                             void Register(KernelMemory::SharedPtr<ServiceType> Service)
                             {
                                 if (!Service)
-                                    throw KernelAssert::InvalidArgumentError("Cannot register a null service");
+                                    KernelAssert::Fail("Cannot register a null service");
 
                                 KernelSync::LockGuard Lock(StateMutex);
                                 const KernelTypes::TypeKey Key = KernelTypes::GetTypeKey<ServiceType>();
 
                                 if (RegisteredServices.Contains(Key))
-                                    throw KernelAssert::LogicError("Service is already registered");
+                                    KernelAssert::Fail("Service is already registered");
 
                                 RegisteredServices.Insert(Key, KernelMemory::SharedPtr<void>(KernelTypes::Move(Service)));
                             }

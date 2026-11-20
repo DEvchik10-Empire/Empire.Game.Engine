@@ -21,6 +21,23 @@ static int Failures = 0, Checks = 0;
 
 static bool sReversedHash = false;
 
+// Проверяет поддержку пользовательских Hash и KeyEqual, как в Jolt UnorderedMap/Set.
+struct ModuloHash
+{
+    KernelTypes::UInt64 operator()(int Value) const noexcept
+    {
+        return static_cast<KernelTypes::UInt64>(Value % 10);
+    }
+};
+
+struct ModuloEqual
+{
+    bool operator()(int Left, int Right) const noexcept
+    {
+        return Left % 10 == Right % 10;
+    }
+};
+
 	static void TestFastHashSet()
 	{
 		FastHashSet<int> set;
@@ -396,10 +413,30 @@ static bool sReversedHash = false;
 		CHECK(map2.Find(5)->Second == 7);
 		CHECK(map2.Find(7) == map2.end());
 
-		// Try emplace
-		map.TryEmplace(7, 8);
-		CHECK(map.Size() == 4);
-		CHECK(map.Find(7)->Second == 8);
+		// Try emplace: возвращает итератор и признак вставки; повторная вставка не перезаписывает значение.
+        auto Inserted = map.TryEmplace(7, 8);
+        CHECK(Inserted.Second);
+        CHECK(Inserted.First->First == 7);
+        CHECK(Inserted.First->Second == 8);
+        CHECK(map.Size() == 4);
+        CHECK(map.Find(7)->Second == 8);
+        auto Existing = map.TryEmplace(7, 99);
+        CHECK(!Existing.Second);
+        CHECK(Existing.First->Second == 8);
+
+        // Оба шаблонных параметра Hash и KeyEqual должны работать независимо от стандартных.
+        FastHashMap<int, int, ModuloHash, ModuloEqual> EquivalentMap;
+        CHECK(EquivalentMap.TryEmplace(12, 120).Second);
+        auto Equivalent = EquivalentMap.TryEmplace(22, 220);
+        CHECK(!Equivalent.Second);
+        CHECK(Equivalent.First->First == 12);
+        CHECK(Equivalent.First->Second == 120);
+        CHECK(EquivalentMap.Find(32)->Second == 120);
+
+        FastHashSet<int, ModuloHash, ModuloEqual> EquivalentSet;
+        CHECK(EquivalentSet.Insert(13).Second);
+        CHECK(!EquivalentSet.Insert(23).Second);
+        CHECK(*EquivalentSet.Find(33) == 13);
 
 		// Swap
 		FastHashMap<int, int> map3;

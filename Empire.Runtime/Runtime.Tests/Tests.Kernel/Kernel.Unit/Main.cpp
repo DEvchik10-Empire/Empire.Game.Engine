@@ -1,6 +1,7 @@
 #include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.Algorithms.hpp"
 #include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.Concurrent.hpp"
 #include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.Containers.hpp"
+#include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.Compiler.hpp"
 #include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.FastArray.hpp"
 #include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.HashTables.hpp"
 #include "Empire.Runtime/Runtime.Tests/Tests.Kernel/Kernel.Unit/Unit.Kernel.hpp"
@@ -15,6 +16,7 @@ int main(int argc, char** argv)
     (void)argv;
 
     const int KernelResult = RunKernelUnitTests();
+    const int CompilerResult = RunCompilerUnitTests();
     const int AlgorithmsResult = RunAlgorithmsUnitTests();
     const int FastArrayResult = RunFastArrayUnitTests();
     const int ContainersResult = RunContainersUnitTests();
@@ -28,6 +30,11 @@ int main(int argc, char** argv)
     if (KernelResult != 0)
     {
         return KernelResult;
+    }
+
+    if (CompilerResult != 0)
+    {
+        return CompilerResult;
     }
 
     if (AlgorithmsResult != 0)

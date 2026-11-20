@@ -14,7 +14,16 @@
 namespace KernelTypes = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelTypes;
 namespace KernelSync = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelSync;
 namespace KernelCompiler = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelCompiler;
+namespace KernelContainers = DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelContainers;
 using namespace DEvchik10Empire::EmpireGameEngine::EmpireEngine::EngineKernel::KernelContainers;
+
+static_assert(requires(KernelContainers::LockFreeHashMap<int, int>& Map) {
+    Map.GetNumBuckets();
+    Map.GetMaxBuckets();
+    Map.SetNumBuckets(4);
+    Map.GetNumKeyValues();
+    Map.GetStatistics();
+});
 
 static KernelSync::Atomic<int> Failures{0};
 static KernelSync::Atomic<int> Checks{0};
@@ -130,6 +139,11 @@ static void TestLockFreeMapBasic()
     LockFreeAllocator Allocator;
     Allocator.Init(1 << 16);
     LockFreeHashMap<int, int> Map(Allocator);
+    CHECK(Map.begin() == Map.end());
+    FastArray<const LockFreeHashMap<int, int>::KeyValue*> UninitializedValues;
+    Map.GetAllKeyValues(UninitializedValues);
+    CHECK(UninitializedValues.Empty());
+    CHECK(Map.GetStatistics().BucketCount == 0);
     Map.Init(64);
     LockFreeAllocatorContext Context(Allocator, 256);
 
@@ -150,6 +164,12 @@ static void TestLockFreeMapBasic()
     FastArray<const LockFreeHashMap<int, int>::KeyValue*> All;
     Map.GetAllKeyValues(All);
     CHECK(All.Size() == 100);
+    const auto Statistics = Map.GetStatistics();
+    CHECK(Statistics.BucketCount == 64 && Statistics.ObjectCount == 100 && Statistics.MaxObjectsPerBucket > 0);
+    KernelTypes::UInt32 HistogramBuckets = 0;
+    for (KernelTypes::UInt32 BucketCount : Statistics.Histogram)
+        HistogramBuckets += BucketCount;
+    CHECK(HistogramBuckets == 64);
 
     int Count = 0;
     long Sum = 0;
@@ -167,6 +187,8 @@ static void TestLockFreeMapBasic()
     Map.SetBucketCount(16);
     CHECK(Map.GetBucketCount() == 16);
     CHECK(Map.GetMaxBucketCount() == 64);
+    const auto EmptyStatistics = Map.GetStatistics();
+    CHECK(EmptyStatistics.BucketCount == 16 && EmptyStatistics.ObjectCount == 0 && EmptyStatistics.Histogram[0] == 16);
     CHECK(Map.Find(5, Hasher(5)) == nullptr);
     CHECK(Map.begin() == Map.end());
 }

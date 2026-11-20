@@ -1,6 +1,7 @@
 #include "Empire.Engine/Engine.Kernel/Kernel.Jobs/Jobs.JobSystemWithBarrier.hpp"
 
 #include "Empire.Engine/Engine.Kernel/Kernel.System/System.hpp"
+#include "Empire.Engine/Engine.Kernel/Kernel.Memory/Memory.hpp"
 #include "Empire.Engine/Engine.Kernel/Kernel.Types/Types.Utility.hpp"
 
 namespace DEvchik10Empire
@@ -28,6 +29,7 @@ namespace DEvchik10Empire
 
                     void JobSystemWithBarrier::BarrierImpl::AddJob(const JobHandle& Handle)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemWithBarrier::BarrierImpl::AddJob");
                         // Сначала увеличиваем NumToAcquire, чтобы барьер знал, что надо ждать. Если сделать это после SetBarrier,
                         // задача может успеть завершиться и вызвать OnJobFinished до увеличения, и WaitForJobs вернётся слишком рано.
                         NumToAcquire.FetchAdd(1, KernelSync::MemoryOrder::Relaxed);
@@ -73,6 +75,7 @@ namespace DEvchik10Empire
 
                     void JobSystemWithBarrier::BarrierImpl::AddJobs(const JobHandle* Handles, KernelTypes::UInt32 HandleCount)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemWithBarrier::BarrierImpl::AddJobs");
                         KernelTypes::Bool ReleaseSemaphore = false;
 
                         for (const JobHandle* Handle = Handles, *HandlesEnd = Handles + HandleCount; Handle < HandlesEnd; ++Handle)
@@ -113,14 +116,17 @@ namespace DEvchik10Empire
 
                     void JobSystemWithBarrier::BarrierImpl::OnJobFinished(Job*)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemWithBarrier::BarrierImpl::OnJobFinished");
                         Semaphore.Release();
                     }
 
                     void JobSystemWithBarrier::BarrierImpl::Wait()
                     {
+                        KernelProfiler::Scope Measurement("JobSystemWithBarrier::BarrierImpl::Wait");
                         while (NumToAcquire.Load(KernelSync::MemoryOrder::Relaxed) > 0)
                         {
                             {
+                                KernelProfiler::Scope ExecuteMeasurement("Execute Jobs");
                                 // Выполняем задачи
                                 KernelTypes::Bool HasExecuted;
                                 do
@@ -188,9 +194,24 @@ namespace DEvchik10Empire
                     void JobSystemWithBarrier::Init(KernelTypes::UInt32 MaxBarriers)
                     {
                         KernelAssert::DebugCheck(Barriers == nullptr, "JobSystemWithBarrier::Init: уже подготовлено");
+                        KernelAssert::Check(MaxBarriers > 0, "JobSystemWithBarrier::Init: количество барьеров должно быть больше нуля");
+                        const KernelTypes::Size BarrierByteCount = static_cast<KernelTypes::Size>(MaxBarriers) * sizeof(BarrierImpl);
+                        KernelAssert::Check(
+                            BarrierByteCount / sizeof(BarrierImpl) == MaxBarriers,
+                            "JobSystemWithBarrier::Init: слишком много барьеров"
+                        );
 
+                        BarrierImpl* NewBarriers = static_cast<BarrierImpl*>(KernelMemory::Allocate(
+                            BarrierByteCount, alignof(BarrierImpl)
+                        ));
+                        KernelTypes::UInt32 Constructed = 0;
+
+                            for (; Constructed < MaxBarriers; ++Constructed)
+                                KernelTypes::ConstructAt(NewBarriers + Constructed);
+
+
+                        Barriers = NewBarriers;
                         MaxBarrierCount = MaxBarriers;
-                        Barriers = new BarrierImpl[MaxBarriers];
                     }
 
                     JobSystemWithBarrier::JobSystemWithBarrier(KernelTypes::UInt32 MaxBarriers)
@@ -209,11 +230,14 @@ namespace DEvchik10Empire
                             }
                         }
 
-                        delete[] Barriers;
+                        for (KernelTypes::UInt32 Index = MaxBarrierCount; Index > 0; --Index)
+                            KernelTypes::DestroyAt(Barriers + Index - 1);
+                        KernelMemory::Deallocate(Barriers);
                     }
 
                     JobSystem::Barrier* JobSystemWithBarrier::CreateBarrier()
                     {
+                        KernelProfiler::Scope Measurement("JobSystemWithBarrier::CreateBarrier");
                         // Ищем первый свободный барьер
                         for (KernelTypes::UInt32 Index = 0; Index < MaxBarrierCount; ++Index)
                         {
@@ -229,6 +253,7 @@ namespace DEvchik10Empire
 
                     void JobSystemWithBarrier::DestroyBarrier(Barrier* Target)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemWithBarrier::DestroyBarrier");
                         KernelAssert::DebugCheck(static_cast<BarrierImpl*>(Target)->IsEmpty(), "DestroyBarrier: в барьере остались задачи");
 
                         // Помечаем барьер свободным
@@ -239,6 +264,7 @@ namespace DEvchik10Empire
 
                     void JobSystemWithBarrier::WaitForJobs(Barrier* Target)
                     {
+                        KernelProfiler::Scope Measurement("JobSystemWithBarrier::WaitForJobs");
                         static_cast<BarrierImpl*>(Target)->Wait();
                     }
                 }

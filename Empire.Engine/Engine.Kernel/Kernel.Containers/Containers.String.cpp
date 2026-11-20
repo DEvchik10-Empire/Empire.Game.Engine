@@ -150,7 +150,7 @@ namespace DEvchik10Empire
                     Char& String::operator[](Size Index)
                     {
                         if (Index >= Count)
-                            throw KernelAssert::OutOfRangeError("String index is out of range");
+                            KernelAssert::Fail("String index is out of range");
 
                         return Text[Index];
                     }
@@ -158,7 +158,7 @@ namespace DEvchik10Empire
                     const Char& String::operator[](Size Index) const
                     {
                         if (Index >= Count)
-                            throw KernelAssert::OutOfRangeError("String index is out of range");
+                            KernelAssert::Fail("String index is out of range");
 
                         return Text[Index];
                     }
@@ -169,7 +169,7 @@ namespace DEvchik10Empire
                             return;
 
                         if (NewCapacity == MaxValue<Size>())
-                            throw KernelAssert::LengthError("String capacity is too large");
+                            KernelAssert::Fail("String capacity is too large");
 
                         Char* NewText = static_cast<Char*>(KernelMemory::Allocate(NewCapacity + 1, alignof(Char)));
 
@@ -187,7 +187,7 @@ namespace DEvchik10Empire
                             return;
 
                         if (SourceCount > MaxValue<Size>() - Count - 1)
-                            throw KernelAssert::LengthError("String size is too large");
+                            KernelAssert::Fail("String size is too large");
 
                         const UIntPtr SourceAddress = reinterpret_cast<UIntPtr>(Source);
                         const UIntPtr TextAddress = reinterpret_cast<UIntPtr>(Text);
